@@ -1,0 +1,55 @@
+export interface UserData {
+  uid: string;
+  email: string;
+  displayName: string;
+  role: 'admin' | 'user';
+  level: number;
+  points: number;
+  totalStudyTime: number; // in seconds
+  masteredVocabCount: number;
+  lastActiveDate: string;
+  lastLoginDate: string;
+  loginStreak: number;
+  loginHistory?: string[];
+  isProfileComplete?: boolean;
+}
+
+export interface Vocabulary {
+  id: string;
+  jp: string; // Japanese word
+  id_translation: string; // Indonesian translation
+  category: string; // e.g., 'MNN1', 'Irodori_A1'
+  romaji?: string;
+  failCount?: number;
+  hardCount?: number;
+}
+
+export interface UserProgress {
+  id: string; // Document ID
+  userId: string;
+  vocabId: string;
+  nextReviewTime: number; // timestamp in ms
+  interval: number; // in minutes (1, 10, 1440, 5760)
+  reps: number;
+  srsLevel: 'again' | 'hard' | 'good' | 'easy' | 'new';
+}
+
+export interface StudySession {
+  id: string;
+  userId: string;
+  startTime: number;
+  endTime: number;
+  totalDuration: number; // in seconds
+  cardsReviewed: number;
+  correctCount?: number;
+  incorrectCount?: number;
+}
+
+export interface StudyReport {
+  vocabId: string;
+  jp: string;
+  id_translation: string;
+  timeSpentMs: number;
+  status: 'Hafal' | 'Belum otomatis' | 'Belum hafal';
+  isCorrect: boolean;
+}
