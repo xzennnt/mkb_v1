@@ -50,10 +50,17 @@ export const calculateNextReview = (
 export const generateOptions = (
   correctVocab: Vocabulary,
   allVocabs: Vocabulary[],
-  direction: 'jp-to-id' | 'id-to-jp'
+  direction: 'jp-to-id' | 'id-to-jp' | 'jp-to-romaji' | 'romaji-to-id' | 'id-to-romaji'
 ) => {
   const options = new Set<string>();
-  const correctOption = direction === 'jp-to-id' ? correctVocab.id_translation : correctVocab.jp;
+  let correctOption = correctVocab.jp;
+  if (direction === 'jp-to-id' || direction === 'romaji-to-id') {
+    correctOption = correctVocab.id_translation;
+  } else if (direction === 'id-to-jp') {
+    correctOption = correctVocab.jp;
+  } else if (direction === 'jp-to-romaji' || direction === 'id-to-romaji') {
+    correctOption = correctVocab.romaji || correctVocab.jp;
+  }
   options.add(correctOption);
 
   const pool = allVocabs.filter(v => v.id !== correctVocab.id);
@@ -62,7 +69,10 @@ export const generateOptions = (
   const shuffled = pool.sort(() => 0.5 - Math.random());
   for (const v of shuffled) {
     if (options.size >= 4) break;
-    options.add(direction === 'jp-to-id' ? v.id_translation : v.jp);
+    let opt = v.jp;
+    if (direction === 'jp-to-id' || direction === 'romaji-to-id') opt = v.id_translation;
+    else if (direction === 'jp-to-romaji' || direction === 'id-to-romaji') opt = v.romaji || v.jp;
+    options.add(opt);
   }
 
   return Array.from(options).sort(() => 0.5 - Math.random());

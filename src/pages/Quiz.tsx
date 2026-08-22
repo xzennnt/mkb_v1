@@ -27,7 +27,7 @@ export default function Quiz() {
   const [options, setOptions] = useState<string[]>([]);
   
   // Array of directions for each question
-  const [directions, setDirections] = useState<('jp-to-id' | 'id-to-jp')[]>([]);
+  const [directions, setDirections] = useState<('jp-to-id' | 'id-to-jp' | 'jp-to-romaji' | 'romaji-to-id' | 'id-to-romaji')[]>([]);
 
   // Timer State
   const [startTime, setStartTime] = useState<number>(0);
@@ -168,7 +168,7 @@ export default function Quiz() {
     }
   }, [currentIndex, reports, loading, isFinished, category, sessionIndex, options, selectedAnswer]);
 
-  const setupCard = (vocab: Vocabulary, allV: Vocabulary[], dir: 'jp-to-id' | 'id-to-jp') => {
+  const setupCard = (vocab: Vocabulary, allV: Vocabulary[], dir: 'jp-to-id' | 'id-to-jp' | 'jp-to-romaji' | 'romaji-to-id' | 'id-to-romaji') => {
     setStartTime(Date.now());
     setSelectedAnswer(null);
     setOptions(generateOptions(vocab, allV, dir));
@@ -181,7 +181,9 @@ export default function Quiz() {
     const timeSpentMs = Date.now() - startTime;
     const currentVocab = sessionCards[currentIndex];
     const dir = directions[currentIndex];
-    const correctAns = dir === 'jp-to-id' ? currentVocab.id_translation : currentVocab.jp;
+    let correctAns = currentVocab.jp;
+    if (dir === 'jp-to-id' || dir === 'romaji-to-id') correctAns = currentVocab.id_translation;
+    else if (dir === 'jp-to-romaji' || dir === 'id-to-romaji') correctAns = currentVocab.romaji || currentVocab.jp;
     const isCorrect = answer === correctAns;
 
     let status: 'Hafal' | 'Belum otomatis' | 'Belum hafal' = 'Belum hafal';
@@ -360,12 +362,17 @@ export default function Quiz() {
 
   const currentVocab = sessionCards[currentIndex];
   const dir = directions[currentIndex];
-  const questionText = dir === 'jp-to-id' ? currentVocab.jp : currentVocab.id_translation;
+  let questionText = currentVocab.id_translation;
+  if (dir === 'jp-to-id' || dir === 'jp-to-romaji') questionText = currentVocab.jp;
+  else if (dir === 'romaji-to-id') questionText = currentVocab.romaji || currentVocab.jp;
 
   const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
-  const promptText = dir === 'jp-to-id' 
-    ? (isKana ? 'Huruf Jepang → Romaji' : 'Japanese → Indonesian') 
-    : (isKana ? 'Romaji → Huruf Jepang' : 'Indonesian → Japanese');
+  let promptText = '';
+  if (dir === 'jp-to-romaji') promptText = 'Kanji → Hiragana';
+  else if (dir === 'romaji-to-id') promptText = 'Hiragana → Indonesian';
+  else if (dir === 'id-to-romaji') promptText = 'Indonesian → Hiragana';
+  else if (dir === 'jp-to-id') promptText = isKana ? 'Huruf Jepang → Romaji' : 'Japanese → Indonesian';
+  else promptText = isKana ? 'Romaji → Huruf Jepang' : 'Indonesian → Japanese';
 
   return (
     <div className="max-w-4xl mx-auto p-4 py-8 min-h-screen flex flex-col w-full">
@@ -407,7 +414,9 @@ export default function Quiz() {
             let btnClass = "bg-white border-2 border-slate-100 hover:border-indigo-500 hover:bg-indigo-50 text-slate-800 group";
             
             if (selectedAnswer !== null) {
-              const correctAns = dir === 'jp-to-id' ? currentVocab.id_translation : currentVocab.jp;
+              let correctAns = currentVocab.jp;
+    if (dir === 'jp-to-id' || dir === 'romaji-to-id') correctAns = currentVocab.id_translation;
+    else if (dir === 'jp-to-romaji' || dir === 'id-to-romaji') correctAns = currentVocab.romaji || currentVocab.jp;
               if (opt === correctAns) {
                 btnClass = "bg-emerald-50 border-2 border-emerald-500 text-emerald-900";
               } else if (opt === selectedAnswer) {
@@ -430,10 +439,10 @@ export default function Quiz() {
                 <span className="text-2xl font-medium flex-1">
                   {opt}
                 </span>
-                {selectedAnswer !== null && opt === (dir === 'jp-to-id' ? currentVocab.id_translation : currentVocab.jp) && (
+                {selectedAnswer !== null && opt === correctAns && (
                   <CheckCircle className="text-emerald-500 ml-4" />
                 )}
-                {selectedAnswer === opt && opt !== (dir === 'jp-to-id' ? currentVocab.id_translation : currentVocab.jp) && (
+                {selectedAnswer === opt && opt !== correctAns && (
                   <XCircle className="text-rose-500 ml-4" />
                 )}
               </button>

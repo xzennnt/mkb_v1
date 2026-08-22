@@ -10,6 +10,7 @@ import mnn2_bab31_35 from './mnn2_bab31_35.json';
 import mnn2_bab36_40 from './mnn2_bab36_40.json';
 import mnn2_bab41_45 from './mnn2_bab41_45.json';
 import mnn2_bab46_50 from './mnn2_bab46_50.json';
+import jft_a2 from './jft_a2_1_50.json';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from './kana';
 
 // Combine all JSON
@@ -24,7 +25,8 @@ const allJson = [
   ...mnn2_bab31_35,
   ...mnn2_bab36_40,
   ...mnn2_bab41_45,
-  ...mnn2_bab46_50
+  ...mnn2_bab46_50,
+  ...jft_a2
 ];
 
 const kana = [...hiraganaData, ...katakanaData, ...hiraganaAdvancedData, ...katakanaAdvancedData];
@@ -57,6 +59,9 @@ export const formatCategoryName = (cat: string) => {
   }
   if (cat.startsWith('MNN2_Bab')) {
     return cat.replace('MNN2_Bab', 'Minna no Nihongo 2 Bab ');
+  }
+  if (cat.startsWith('JFT_A2')) {
+    return 'Kosakata JFT A2 (1-50)';
   }
   return cat;
 };
