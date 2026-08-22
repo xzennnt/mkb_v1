@@ -1,0 +1,1962 @@
+[
+  {
+    "jp": "「しきが～」 始まります 「式が～」 [ (はじまります)",
+    "id_translation": "upacara] Mulai,dimulai",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "続けます (つづけます)",
+    "id_translation": "Meneruskan,melanj utkan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "見つけます (みつけます)",
+    "id_translation": "Menemukan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "受けます「試験を～」 (うけます「しけんを～」)",
+    "id_translation": "Menempuh,mengikuti (uj ian)",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "入学します (にゅうがくします)",
+    "id_translation": "Masuk (universitas)",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "「だいがくを～」 卒業します 「大学を～」 (そつぎょうします)",
+    "id_translation": "Lulus(dari universitas)",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "「かいぎに～」 出席します 「会議に～」 (しゅっせきします)",
+    "id_translation": "Menghadiri (rapat)",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "休憩します (きゅうけいします)",
+    "id_translation": "Beristirahat",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "連休 (れんきゅう)",
+    "id_translation": "Hari libur beruntun/ berurutan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "作文 (さくぶん)",
+    "id_translation": "Karangan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "展覧会 (てんらんかい)",
+    "id_translation": "Pameran",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "結婚式 (けっこんしき)",
+    "id_translation": "Upacara perkawinan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "「お」葬式 (「お」そうしき)",
+    "id_translation": "Upacara kematian",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "式 (しき)",
+    "id_translation": "Upacara",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "本社 (ほんしゃ)",
+    "id_translation": "Kantor pusat",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "支店 (してん)",
+    "id_translation": "Kantor cabang",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "協会 (きょうかい)",
+    "id_translation": "Gerej a",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "大学院 (だいがくいん)",
+    "id_translation": "Pasca sarj ana",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "動物園 (どうぶつえん)",
+    "id_translation": "Kebun binatang",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "温泉 (おんせん)",
+    "id_translation": "Sumber air panas,pemandian air panas",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "「お」客「さん」 (「お」きゃく「さん」)",
+    "id_translation": "Tamu,pelanggan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "誰か (だれか)",
+    "id_translation": "Seseorang,siapapun",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "ほう ～の 方 (～の)",
+    "id_translation": "(Tempat duduk) bagian",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "ずっと",
+    "id_translation": "Terus- menerus",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "ピカソ",
+    "id_translation": "PabloPicasso, pelukisSpanyol (1881- 1973)",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "上野公園 (うえのこうえん)",
+    "id_translation": "Taman Ueno (di Tokyo)",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "残ります (のこります)",
+    "id_translation": "Tinggal, sisa",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "月に (つきに)",
+    "id_translation": "Sebulan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "普通 (ふつう)",
+    "id_translation": "Umum,biasa",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "インターネット",
+    "id_translation": "I nternet",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "村 (むら)",
+    "id_translation": "Desa,kampong",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "映画館 (えいがかん)",
+    "id_translation": "Gedung bioskop",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "嫌（な） (いや（な）)",
+    "id_translation": "Tidak suka,tidak setuj u",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "空 (そら)",
+    "id_translation": "Langit",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "閉じます (とじます)",
+    "id_translation": "Menutup,memej amkan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "都会 (とかい)",
+    "id_translation": "Kota",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "子供達 (こどもたち)",
+    "id_translation": "Anak- anak",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "自由 (じゆう)",
+    "id_translation": "Bebas",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "自由に (じゆうに)",
+    "id_translation": "Dengan bebas",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "世界中 (せかいじゅう)",
+    "id_translation": "Seluruh dunia",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "集まります (あつまります)",
+    "id_translation": "Berkumpul",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "美しい (うつくしい)",
+    "id_translation": "I ndah",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "自然 (しぜん)",
+    "id_translation": "Alam, alamiah",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "素晴らしい (すばらしい)",
+    "id_translation": "Bij ak, luar biasa",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "素晴らしさ (すばらしさ)",
+    "id_translation": "Kebaikan, Kebaj ikan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "気が付きます (きがつきます)",
+    "id_translation": "Menyadari, ingat, merasa",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "専門 (せんもん)",
+    "id_translation": "Bidang Keilmuan, Keahlian",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "医学 (いがく)",
+    "id_translation": "Kedokteran",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "薬学 (やくがく)",
+    "id_translation": "Farmasi",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "科学 (かがく)",
+    "id_translation": "Kimia",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "生化学 (せいかがく)",
+    "id_translation": "Biokimia",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "生物学 (せいぶつがく)",
+    "id_translation": "Biologi",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "農学 (のうがく)",
+    "id_translation": "Pertanian",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "地学 (ちがく)",
+    "id_translation": "Geologi",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "地理学 (ちりがく)",
+    "id_translation": "Geograf i",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "数学 (すうがく)",
+    "id_translation": "Matematika",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "物理学 (ぶつりがく)",
+    "id_translation": "Fisika",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "工学 (こうがく)",
+    "id_translation": "Teknik",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "土木工学 (どぼくこうがく)",
+    "id_translation": "Teknik Sipil",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "電子工学 (でんしかがく)",
+    "id_translation": "Elektronika",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "電気工学 (でんきこうがく)",
+    "id_translation": "Teknik Listrik",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "機械工学 (きかいこうがく)",
+    "id_translation": "Teknik Mesin",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "コンピューター工学 (コンピューターこうがく)",
+    "id_translation": "I nf ormatika",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "遺伝子工学 (いでんしこうがく)",
+    "id_translation": "Genetika",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "建築学 (けんちくがく)",
+    "id_translation": "Arsitektur",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "天文学 (てんもんがく)",
+    "id_translation": "Astronomi",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "環境科学 (かんきょうかがく)",
+    "id_translation": "I lmu Tata Lingkungan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "政治学 (せいじがく)",
+    "id_translation": "I llmu Politik",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "国際関係学 (こくさいかんけいがく)",
+    "id_translation": "Hubungan I nternasional",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "法律学 (ほうりつがく)",
+    "id_translation": "Hokum",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "経済学 (けいざいがく)",
+    "id_translation": "Ekonomi",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "経営学 (けいえいがく)",
+    "id_translation": "Manaj emen Bisnis",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "社会学 (しゃかいがく)",
+    "id_translation": "Sosiologi",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "教育学 (きょういくがく)",
+    "id_translation": "Kependidikan",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "文学 (ぶんがく)",
+    "id_translation": "Sastra",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "言語学 (げんごがく)",
+    "id_translation": "Linguistik",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "心理学 (しんりがく)",
+    "id_translation": "Psikologi",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "哲学 (てつがく)",
+    "id_translation": "Filsaf at",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "宗教学 (しゅうきょうがく)",
+    "id_translation": "Teologi",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "芸術 (げいじゅつ)",
+    "id_translation": "Seni",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "美術 (びじゅつ)",
+    "id_translation": "Seni Murni",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "音楽 (おんがく)",
+    "id_translation": "Seni Musik",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "体育学 (たいいくがく)",
+    "id_translation": "Pendidikan Jasmani",
+    "category": "MNN2_Bab31"
+  },
+  {
+    "jp": "運動します (うんどうします)",
+    "id_translation": "Berolahraga",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "成功します (せいこうします)",
+    "id_translation": "Berhasil, sukses",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "「しけんに～」 失敗します 「試験に～」 (しっぱいします)",
+    "id_translation": "Gagal,mengalami kegagalan (dalam uj ian)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "「しけんに～」 合格します 「試験に～」 (ごうかくします)",
+    "id_translation": "Lulus(uj ian)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "戻ります (もどります)",
+    "id_translation": "Kembali",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "止みます「雨が～」 (やみます「あめが～」)",
+    "id_translation": "(huj an)Berhenti",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "晴れます (はれます)",
+    "id_translation": "Menj adi cerah",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "曇ります (くもります)",
+    "id_translation": "Menj adi mendung",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "吹きます「風が～」 (ふきます「かぜが～」)",
+    "id_translation": "Bertiup (angin)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "「びょうきが～」 「こしょうが～」 直ります・治ります 「病気が～」 「故障が～」 (なおります)",
+    "id_translation": "Sembuh (dari penyakit) ( Mesin) diperbaiki",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "「ねつが～」 続きます 「熱が～」 (つづきます)",
+    "id_translation": "(demam yang tinggi) Berlanj ut,bersambung",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "風邪を引きます (かぜをひきます)",
+    "id_translation": "Masuk angin",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "冷やします (ひやします)",
+    "id_translation": "Mendinginkan",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "心配（な） (しんぱい（な）)",
+    "id_translation": "Mengkhawatir kan, khawatir",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "十分（な） (じゅうぶん（な）)",
+    "id_translation": "Cukup",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "焼けど (やけど)",
+    "id_translation": "Luka bakar ( ～を します: terbakar)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "怪我 (けが)",
+    "id_translation": "Luka, cedera ( ～を します: terluka)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "咳 (せき)",
+    "id_translation": "Batuk ( ～が でます)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "インフルエンザ",
+    "id_translation": "I nf luenza",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "空 (そら)",
+    "id_translation": "Langit",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "太陽 (たいよう)",
+    "id_translation": "Matahari",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "星 (ほし)",
+    "id_translation": "Bintang",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "月 (つき)",
+    "id_translation": "Bulan",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "風 (かぜ)",
+    "id_translation": "Angin",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "水道 (すいどう)",
+    "id_translation": "Air ledeng",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "エンジン",
+    "id_translation": "Mesin",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "チーム",
+    "id_translation": "Tim",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "今夜 (こんや)",
+    "id_translation": "Malam ini",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "夕方 (ゆうがた)",
+    "id_translation": "Sore,senj a",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "前 (まえ)",
+    "id_translation": "Depan, sebelumnya",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "遅く (おそく)",
+    "id_translation": "Larut (malam)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "こんなに",
+    "id_translation": "Seperti ini",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "そんなに",
+    "id_translation": "Seperti itu (tentang suatu hal/ barang yang berhubungan dengan lawan bicara)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "あんなに",
+    "id_translation": "Seperti itu (tentang suatu hal/ barang yang tidak berhubungan baik dengan si pembicara/ lawan bicara)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "若しかしたら (もしかしたら)",
+    "id_translation": "Kemungkinannya",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "いけませんね。 それは 行けませんね。 (それは)",
+    "id_translation": "Kasihan, ya. (Pada saat megucapkan rasa simpati)",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "オリンピック",
+    "id_translation": "Olimpiade",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "元気（な） (げんき（な）)",
+    "id_translation": "Sehat",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "胃 (い)",
+    "id_translation": "Lambung,perut",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "働き過ぎ (はたらきすぎ)",
+    "id_translation": "Terlalu banyak bekerj a",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "ストレス",
+    "id_translation": "Stress",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "無理をします (むりをします)",
+    "id_translation": "Memaksakan diri",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "ゆっくりします",
+    "id_translation": "Beristirahat",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "星占い (ほしうらない)",
+    "id_translation": "Ramalan bintang",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "牡牛座 (おうしざ)",
+    "id_translation": "Bintang Taurus",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "宝くじ (たからくじ)",
+    "id_translation": "Lotre",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "当たります (あたります)",
+    "id_translation": "Menang [ lotre]",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "健康 (けんこう)",
+    "id_translation": "Kesehatan",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "恋愛 (れんあい)",
+    "id_translation": "Percintaan",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "恋人 (こいびと)",
+    "id_translation": "Pacar",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "「お」金持ち (「お」かねもち)",
+    "id_translation": "Orang kaya",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "天気予報 (てんきよほう)",
+    "id_translation": "Prakiraan cuaca",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "晴れ (はれ)",
+    "id_translation": "Cerah",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "曇り (くもり)",
+    "id_translation": "Berawan",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "雨 (あめ)",
+    "id_translation": "Huj an",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "雪 (ゆき)",
+    "id_translation": "Salj u",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "晴れのち曇り (はれのちくもり)",
+    "id_translation": "Cerah, kemudian berawan",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "「いちじ」あめ 曇り時々「一時」雨 (くもりときどき)",
+    "id_translation": "Berawan, kadang- kadang turun huj an",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "あめ 曇り所によって雨 (くもりところによって)",
+    "id_translation": "Berawan dan Huj an di beberapa tempat",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "降水確率 (こうすいかくりつ)",
+    "id_translation": "Kemungkinan Huj an",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "最高気温 (さいこうきおん)",
+    "id_translation": "Suhu Tertinggi",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "最低気温ん (さいていきおん)",
+    "id_translation": "Suhu Terendah",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "北海道地方 (ほっかいどうちほう)",
+    "id_translation": "Wilayah Hokkaidou",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "東北地方 (とうほくちほう)",
+    "id_translation": "Wilayah Touhoku",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "関東地方 (かんとうちほう)",
+    "id_translation": "Wilayah Kantou",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "中部地方 (ちゅうぶちいほう)",
+    "id_translation": "Wilayah Chubu",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "近畿地方 (きんきちほう)",
+    "id_translation": "Wilayah Kinki",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "四国地方 (しこくちほう)",
+    "id_translation": "Wilayah Shikoku",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "中国地方 (ちゅうごくちほう)",
+    "id_translation": "Wilayah Chuugoku",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "九州地方 (きゅうしゅうちほう)",
+    "id_translation": "Wilayah Kyuushuu",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "/ ゆだち 俄雨 / 夕立 (にわかあめ)",
+    "id_translation": "Hhuj an yang turun mendadak",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "雷 (かみなり)",
+    "id_translation": "Petir",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "台風 (たいふう)",
+    "id_translation": "Topan",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "虹 (にじ)",
+    "id_translation": "Pelangi",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "風 (かぜ)",
+    "id_translation": "Angin",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "雲 (くも)",
+    "id_translation": "Awan",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "湿度 (しつど)",
+    "id_translation": "Kelembaban",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "蒸し暑い (むしあつい)",
+    "id_translation": "Panas Lembab",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "爽やか「な」 (さわやか「な」)",
+    "id_translation": "Segar",
+    "category": "MNN2_Bab32"
+  },
+  {
+    "jp": "逃げます (にげます)",
+    "id_translation": "Melarikan diri",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "騒ぎます (さわぎます)",
+    "id_translation": "Berbuat gaduh,berisik",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "諦めます (あきらめます)",
+    "id_translation": "Menyerah,putusasa",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "投げます (なげます)",
+    "id_translation": "Melempar",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "守ります (まもります)",
+    "id_translation": "Menj aga,mematuhi,melindungi",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "上げます (あげます)",
+    "id_translation": "Menaikkan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "下げます (さげます)",
+    "id_translation": "Menurunkan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "伝えます (つたえます)",
+    "id_translation": "Menyampaikan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "「くるまに～」 注意します 「車に～」 (ちゅういします)",
+    "id_translation": "Memperhatikan (mobil)",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "「せきを～」 外します 「席を～」 (はずします)",
+    "id_translation": "Tidak ada (ditempat) [ * Mengendurkan,melepaskan,menj auhkan diri]",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "駄目（な） (だめ（な）)",
+    "id_translation": "Jangan,tidak boleh",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "席 (せき)",
+    "id_translation": "Tempat duduk",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "ファイト",
+    "id_translation": "Berj uang",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "マーク",
+    "id_translation": "Tanda",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "ボール",
+    "id_translation": "Bola",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "洗濯機 (せんたくき)",
+    "id_translation": "Mesin cuci",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "～機 (～き)",
+    "id_translation": "Mesin",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "規則 (きそく)",
+    "id_translation": "Aturan, peraturan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "使用禁止 (しようきんし)",
+    "id_translation": "Dilarang pakai",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "立入禁止 (たちいりきんし)",
+    "id_translation": "Dilarang masuk",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "入り口 (いりぐち)",
+    "id_translation": "Pintu masuk",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "出口 (でぐち)",
+    "id_translation": "Pintu keluar",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "非常口 (ひじょうぐち)",
+    "id_translation": "Pintu keluar darurat",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "無料 (むりょう)",
+    "id_translation": "Gratis",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "本日 (ほんじつ)",
+    "id_translation": "Hari ini",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "休業 (きゅうぎょう)",
+    "id_translation": "Tidak beroperasi (libur)",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "本日休業 (ほんじつきゅうぎょう)",
+    "id_translation": "Hari ini Tutup",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "営業中 (えいぎょうちゅう)",
+    "id_translation": "Sedang beroperasi (buka)",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "使用中 (しようちゅう)",
+    "id_translation": "Sedang dipakai",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "～中 (～ちゅう)",
+    "id_translation": "Sedang, dalam",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "どういう",
+    "id_translation": "どういう Apa～,bagaimana～",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "あと～",
+    "id_translation": "あと～ Tinggal～lagi",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "駐車違反 (ちゅうしゃいはん)",
+    "id_translation": "Pelanggaran parker",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "そりゃあ",
+    "id_translation": "Hal itu",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "～以内 (～いない)",
+    "id_translation": "Dalam~",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "警察 (けいさつ)",
+    "id_translation": "Polisi",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "罰金 (ばっきん)",
+    "id_translation": "Denda",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "電報 (でんぽう)",
+    "id_translation": "Telegram",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "人々 (ひとびと)",
+    "id_translation": "Orang- orang",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "急用 (きゅうよう)",
+    "id_translation": "Urusan/tugasmendadak",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "「でんぽうを～」 打ちます 「電報を～」 (うちます)",
+    "id_translation": "Mengirim (telegram)",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "電報代 (でんぽうだい)",
+    "id_translation": "Biaya telegram",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "出来るだけ (できるだけ)",
+    "id_translation": "Sebisa mungkin",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "短い (みじかい)",
+    "id_translation": "Pendek, singkat",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "短く (みじかく)",
+    "id_translation": "Dengan singkat",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "また",
+    "id_translation": "Dan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "例えば (たとえば)",
+    "id_translation": "Misalnya, contohnya",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "危篤 (きとく)",
+    "id_translation": "Genting, kritis, koma",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "重い (おもい)",
+    "id_translation": "Berat, genting",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "病気 (びょうき)",
+    "id_translation": "Penyakit",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "重い病気 (おもいびょうき)",
+    "id_translation": "Sakit keras/parah",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "明日 (あす)",
+    "id_translation": "Besok",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "留守 (るす)",
+    "id_translation": "Tidak ada di rumah",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "留守番 (るすばん)",
+    "id_translation": "Penj aga rumah",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "「お」祝い (「お」いわい)",
+    "id_translation": "Perayaan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "亡くなります (なくなります)",
+    "id_translation": "Meninggal",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "悲しい (かなしい)",
+    "id_translation": "Sedih",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "悲しみます (かなしみます)",
+    "id_translation": "Sedih",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "悲しみ (かなしみ)",
+    "id_translation": "Kesedihan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "利用します (りようします)",
+    "id_translation": "Memanf aatkan, menggunakan, memakai",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "標識 (ひょうしき)",
+    "id_translation": "Petunj uk",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "準備中 (じゅんびちゅう)",
+    "id_translation": "Dalam per siapan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "もう",
+    "id_translation": "(Tidak) ～lagi (diikuti bentuk negative)",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "閉店 (へいてん)",
+    "id_translation": "Tutup",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "定休日 (ていきゅうび)",
+    "id_translation": "Hari Libur Tetap",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "化粧室 (けしょうしつ)",
+    "id_translation": "Kamara Kecil (untuk merias)",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "記念席 (きねんせき)",
+    "id_translation": "Tempat duduk bebasrokok",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "喫煙席 (きつえんせき)",
+    "id_translation": "Tempat duduk untuk merokok",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "予約席 (よやくせき)",
+    "id_translation": "Tempat duduk yang sudah dipesan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "火気厳禁 (かきげんきん)",
+    "id_translation": "Mudah Terbakar",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "割れ物注意 (われものちゅうい)",
+    "id_translation": "Hati- hati barang pecah belah",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "ちゅうい 運転昇進者注意 (うんてんしょうしんしゃ)",
+    "id_translation": "Tanda bagi pengemudi yang baru mendapatkan SI M",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "工事中 (こうじちゅう)",
+    "id_translation": "Dalam perbaikan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "ざいふか 塩素系漂白剤不可 (えんそけいひょうはく)",
+    "id_translation": "Jangan gunakan pemutih (chlorine)",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "手新相 (てあらい)",
+    "id_translation": "Cuci dengan tangan",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "アイロン「低音」 (アイロン「ていおん」)",
+    "id_translation": "Harusdisetrika (dengan suhu rendah)",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "ドライクリーニング",
+    "id_translation": "Hanya untuk dry- cleaning",
+    "category": "MNN2_Bab33"
+  },
+  {
+    "jp": "磨きます「歯を～」 (みがきます「はを～」)",
+    "id_translation": "Menggosok (gigi)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "組み立てます (くみたてます)",
+    "id_translation": "Merakit",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "折ります (おります)",
+    "id_translation": "Melipat, mematahkan",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "「わすれものに～」 気が付きます 「忘れ物に～」 (きがつきます)",
+    "id_translation": "Menyadari, ingat, merasa ( barang yang tertinggal)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "「しょうゆを～」 附けます 「醤油を～」 (つけます)",
+    "id_translation": "Membubuhi,mencelupkan (kecap asin j epang)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "「かぎが～」 見つかります 「鍵が～」 (みつかります)",
+    "id_translation": "(Kunci) Ketemu,diketemukan",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "「ネクタイを～」 します 「ネクタイを～」 (します)",
+    "id_translation": "Memakai (dasi)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "質問します (しつもんします)",
+    "id_translation": "Bertanya",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "細い (ほそい)",
+    "id_translation": "Tipis",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "太い (ふとい)",
+    "id_translation": "Tebal",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "盆踊り (ぼんおどり)",
+    "id_translation": "Festival tarian Bon",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "ツポーツクラブ",
+    "id_translation": "Perkumpulan / klub olahraga",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "家具 (かぐ)",
+    "id_translation": "Perabot rumah tangga",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "キー",
+    "id_translation": "Tombol j ari, Tuts",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "シートベルト",
+    "id_translation": "Sabuk pengaman",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "説明書 (せつめいしょ)",
+    "id_translation": "Buku petunj uk/ instruksi",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "図 (ず)",
+    "id_translation": "Gambar,denah",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "線 (せん)",
+    "id_translation": "Garis",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "矢印 (やじるし)",
+    "id_translation": "Tanda panah",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "黒 (くろ)",
+    "id_translation": "Hitam ( kata benda)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "白 (しろ)",
+    "id_translation": "Putih (kata benda)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "赤 (あか)",
+    "id_translation": "Merah (kata benda)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "青 (あお)",
+    "id_translation": "Biru (kata benda)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "紺 (こん)",
+    "id_translation": "Biru tua (kata benda)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "黄色 (きいろ)",
+    "id_translation": "Kuning ( kata benda)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "茶色 (ちゃいろ)",
+    "id_translation": "Coklat (kata benda)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "醤油 (しょうゆ)",
+    "id_translation": "Kecap asin, shoyu",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "ソース",
+    "id_translation": "Saus",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "～か～",
+    "id_translation": "～か～ ～atau～",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "夕べ (ゆうべ)",
+    "id_translation": "Tadi malam",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "先 (さっき)",
+    "id_translation": "Tadi, Beberapa waktu yang lalu",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "茶道 (さどう)",
+    "id_translation": "Upacara minum Teh",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "お茶を点てます (おちゃをたてます)",
+    "id_translation": "Membuat teh Jepang",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "先に (さきに)",
+    "id_translation": "Terlebih dahulu,duluan (Dipakai untuk mengatakan urutan perbuatan)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "載せます (のせます)",
+    "id_translation": "Memuat, menaruh",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "これでいいですか。",
+    "id_translation": "I ni sudah benar kan? (pada saat minta pertimbangan)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "苦い (にがい)",
+    "id_translation": "Pahit",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "親子丼 (おやこどん)",
+    "id_translation": "Oyakodon",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "材料 (ざいりょう)",
+    "id_translation": "Bahan, material",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "～分 (～ぶん)",
+    "id_translation": "Bagian, j atah (untuk kwalitas)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "鶏肉 (とりにく)",
+    "id_translation": "Daging ayam",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "～グラム",
+    "id_translation": "Gram",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "～個 (～こ)",
+    "id_translation": "Satuan untuk benda kecil",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "玉ねぎ (たまねぎ)",
+    "id_translation": "Bawang bombai",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "４分の１ (４ぶんの１)",
+    "id_translation": "Satu per empat/ seper empat",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "鍋 (なべ)",
+    "id_translation": "Panci",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "火 (ひ)",
+    "id_translation": "Api",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "火にかけます (ひにかけます)",
+    "id_translation": "Meletakkan di atasapi",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "煮ます (にます)",
+    "id_translation": "Merebus",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "煮えます (にえます)",
+    "id_translation": "Matang (direbusmatang)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "丼 (どんぶり)",
+    "id_translation": "Mangkuk besar",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "料理 (りょうり)",
+    "id_translation": "Masakan",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "焼く (やく)",
+    "id_translation": "Membakar, Memanggang",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "揚げる (あげる)",
+    "id_translation": "Menggoreng",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "炒める (いためる)",
+    "id_translation": "Menumis",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "茹でる (ゆでる)",
+    "id_translation": "Merebus(telur, kentang,dll)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "蒸す (むす)",
+    "id_translation": "Mengukus",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "炊く (たく)",
+    "id_translation": "Menanak (nasi)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "剥く (むく)",
+    "id_translation": "Megupas",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "刻む (きざむ)",
+    "id_translation": "Mencincang",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "かき混ぜる (かきまぜる)",
+    "id_translation": "Megaduk",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "調味料 (ちょうみりょう)",
+    "id_translation": "Bumbu dapur/ masak",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "醤油 (しょうゆ)",
+    "id_translation": "Kecap asin j epang",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "砂糖 (さとう)",
+    "id_translation": "Gula",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "塩 (しお)",
+    "id_translation": "Garam",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "酢 (す)",
+    "id_translation": "Cuka",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "味噌 (みそ)",
+    "id_translation": "Miso (tauco j epang)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "油 (あぶら)",
+    "id_translation": "Minyak",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "ソース",
+    "id_translation": "Saus",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "マヨネース",
+    "id_translation": "Mayones",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "ケチャップ",
+    "id_translation": "Saus tomat",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "辛子「マスタード」 (からし「マスタード」)",
+    "id_translation": "Mustard",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "胡椒 (こしょう)",
+    "id_translation": "Merica",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "唐辛子 (とうがらし)",
+    "id_translation": "Cabe Merah",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "生姜「ジンジャー」 (しょうが「ジンジャー」)",
+    "id_translation": "Jahe",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "山葵 (わさび)",
+    "id_translation": "Wasabi (lobak hij au j epang)",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "カレー粉 (カレーこ)",
+    "id_translation": "Tepung kari",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "台所用品 (だいどころようひん)",
+    "id_translation": "Perabot Dapur",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "鍋 (なべ)",
+    "id_translation": "Panci",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "薬缶 (やかん)",
+    "id_translation": "Ceret, teko",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "お玉 (おたま)",
+    "id_translation": "Tutup gelas, Panci, dll",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "蓋 (ふた)",
+    "id_translation": "Sendok Sayur",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "俎板 (まないた)",
+    "id_translation": "Talenan",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "包丁 (ほうちょう)",
+    "id_translation": "Pisau Dapur",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "布巾 (ふきん)",
+    "id_translation": "Kain Lap Dapur",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "フライパン",
+    "id_translation": "Waj an",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "電子オーブンレンジ (でんしオーブンレンジ)",
+    "id_translation": "Oven Microwave",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "炊飯器 (すいはんき)",
+    "id_translation": "Rice Cooker",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "杓文字 (しゃもじ)",
+    "id_translation": "Sendok Nasi",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "缶切り (かんきり)",
+    "id_translation": "Pembuka Kaleng",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "栓抜き (せんぬき)",
+    "id_translation": "Pembuka Botol",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "笊 (ざる)",
+    "id_translation": "Saringan Bambu",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "ポット",
+    "id_translation": "Termos",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "ガス台 (ガスだい)",
+    "id_translation": "Kompor Gas",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "流し「台」 (ながし「だい」)",
+    "id_translation": "Bak untuk cuci piring",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "換気扇 (かんきせん)",
+    "id_translation": "Kipas Ventilasi",
+    "category": "MNN2_Bab34"
+  },
+  {
+    "jp": "咲きます「花が～」 [ (さきます「はなが～」)",
+    "id_translation": "Bunga] Mekar",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "変わります「色が～」 [ (かわります「いろが～」)",
+    "id_translation": "Warna] Berganti, berubah",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "困ります (こまります)",
+    "id_translation": "Mendapat masalah/ kesulitan",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "付けます「丸を～」 (つけます「まるを～」)",
+    "id_translation": "Memberi tanda [ lingkaran]",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "拾います (ひろいます)",
+    "id_translation": "Memungut, mengambil",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "「でんわが～」 掛かります 「電話が～」 (かかります)",
+    "id_translation": "Ada [ telepon]",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "楽（な） (らく（な）)",
+    "id_translation": "Mudah,ringan, gampang",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "正しい (ただしい)",
+    "id_translation": "Betul, benar",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "珍しい (めずらしい)",
+    "id_translation": "Aneh, langka",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "方 (かた)",
+    "id_translation": "Orang ( versi sopan dari ひと)",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "向こう (むこう)",
+    "id_translation": "Seberang sana, sebelah sana",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "島 (しま)",
+    "id_translation": "Pulau",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "村 (むら)",
+    "id_translation": "Kampung, desa",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "港 (みなと)",
+    "id_translation": "Pelabuhan",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "近所 (きんじょ)",
+    "id_translation": "Tetangga, ~terdekat",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "屋上 (おくじょう)",
+    "id_translation": "Atap, lantai puncak",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "海外 (かいがい)",
+    "id_translation": "Luar negeri",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "山登り (やまのぼり)",
+    "id_translation": "Pendakian gunung",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "ハイキング",
+    "id_translation": "Hiking, piknik",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "機会 (きかい)",
+    "id_translation": "Kesempatan",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "許可 (きょか)",
+    "id_translation": "I zin",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "丸 (まる)",
+    "id_translation": "Bulat",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "操作 (そうさ)",
+    "id_translation": "Pengoperasian",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "方法 (ほうほう)",
+    "id_translation": "Cara, langkah,metode",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "設備 (せつび)",
+    "id_translation": "Peralatan, f asilitas",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "カーテン",
+    "id_translation": "Korden",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "紐 (ひも)",
+    "id_translation": "Tali",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "蓋 (ふた)",
+    "id_translation": "Tutup,penutup",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "葉 (は)",
+    "id_translation": "Daun",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "曲 (きょく)",
+    "id_translation": "Lagu,music",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "楽しみ (たのしみ)",
+    "id_translation": "Kesenangan",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "もっと",
+    "id_translation": "Lebih",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "初めに (はじめに)",
+    "id_translation": "Awal,mula- mula,pertama- tama",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "これで終わります (これでおわります)",
+    "id_translation": "Kita akhiri sampai disini, Sekian dulu",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "箱根 (はこね)",
+    "id_translation": "Tempat beristirahat di Pref ektur Kanagawa",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "日光 (にっこう)",
+    "id_translation": "Tempat wisata di Pref ektur Tochigi",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "白馬 (はくば)",
+    "id_translation": "Tempat beristirahat di Pref ektur Nagano",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "アフリカ",
+    "id_translation": "Afrika",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "それなら",
+    "id_translation": "Kalau begitu",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "夜行バス (やこうバス)",
+    "id_translation": "Bismalam",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "旅行者 (りょこうしゃ)",
+    "id_translation": "Agen perj alanan",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "詳しい (くわしい)",
+    "id_translation": "Terperinci, detil",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "スキー場 (スキーじょう)",
+    "id_translation": "Tempat bermain ski",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "草津 (くさつ)",
+    "id_translation": "Tempat untuk beristirahat di Pref ektur Gunma",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "志賀高原 (しがこうげん)",
+    "id_translation": "Taman Nasional",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "朱 (しゅ)",
+    "id_translation": "Warna Merah terang",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "交わります (まじわります)",
+    "id_translation": "Bergaul",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "仲良くします (なかよくします)",
+    "id_translation": "Berteman akrab, hidup rukun",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "必要（な） (ひつよう（な）)",
+    "id_translation": "Perlu",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "諺 (ことわざ)",
+    "id_translation": "Peribahasa",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "住めば都 (すめばみやこ)",
+    "id_translation": "Dimana bumi dipij ak,disitu langit dij unj ung. Dimanapun kita berada.j ika kita lama tinggal disana, kita akan merasa bahwa tempat itu adalah tempat yang paling menyenangkan.",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "ちえ 三人寄れば文殊の知恵 (さんにんよればもんじゅ)",
+    "id_translation": "Dua kepala lebih baik daripada satu. Pemikiran dari banyak orang lebih baik daripada pemikiran dari satu orng saj a.",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "すわればぼたん、あるく すがたはゆりのはな 立てばしゃくやく、座れば ぼたん、歩く姿はゆりの花 (たてばしゃくやく、)",
+    "id_translation": "Senyummu bak mawar merekah, dagunya bak lebah bergantung, dan suar anya merdu bak buluh perindu. Perumpamaan terhadap seor ang gadiscantik, j ika ia ber diri langkahnya bagai bunga rumput, j ika ia duduk eloknya bagai bunga peony, j ika ia berj alan indahnya bagai bunga lili.",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "つもれば やまと なる 塵も積もれば山となる (ちりも)",
+    "id_translation": "Sedikit demi sedikit lama- lama menj adio bukit. Benda/ hal sekecil apapun j ika dikumpulkan sedikit demi sedikit akan menj adi banyak.",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "噂をすれば影 (うわさをすればかげ)",
+    "id_translation": "Panj ang umur. Perumpamaan terhadap orang yang sering kali muncul j ika ia sedang dibicarakan.",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "花より団子 (はなよりだんご)",
+    "id_translation": "Leih baik kue daripada bunga. Kualitaslebih baik daripada penampilan.",
+    "category": "MNN2_Bab35"
+  },
+  {
+    "jp": "しょうぜず 転石苔を生ぜず (てんせきこけを)",
+    "id_translation": "Lumut tidak akan tumbuh kalau batu berguling. Memiliki 2 arti: ① Orang yang selalu aktif akan maj u. ② Orsng yang suka berpindah pekerj aan atau rumah tidak akan memperoleh kesuksesan.",
+    "category": "MNN2_Bab35"
+  }
+]

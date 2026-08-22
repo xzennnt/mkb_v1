@@ -5,6 +5,8 @@ import mnn1_bab9_10 from './mnn1_bab9_10.json';
 import mnn1_bab11_15 from './mnn1_bab11_15.json';
 import mnn1_bab16_20 from './mnn1_bab16_20.json';
 import mnn1_bab21_25 from './mnn1_bab21_25.json';
+import mnn2_bab26_30 from './mnn2_bab26_30.json';
+import mnn2_bab31_35 from './mnn2_bab31_35.json';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from './kana';
 
 // Combine all JSON
@@ -14,22 +16,24 @@ const allJson = [
   ...mnn1_bab9_10,
   ...mnn1_bab11_15,
   ...mnn1_bab16_20,
-  ...mnn1_bab21_25
+  ...mnn1_bab21_25,
+  ...mnn2_bab26_30,
+  ...mnn2_bab31_35
 ];
 
 const kana = [...hiraganaData, ...katakanaData, ...hiraganaAdvancedData, ...katakanaAdvancedData];
 
 // Combine JSON and Kana, then map to Vocabulary format with deterministic ID
 export const allVocabularies: Vocabulary[] = [
-  ...allJson.map((item: any) => ({
-    id: `${item.category}_${item.jp}`.replace(/[^a-zA-Z0-9_]/g, '_'),
+  ...allJson.map((item: any, idx: number) => ({
+    id: `${item.category}_${idx}`,
     jp: item.jp,
     romaji: item.romaji || "",
     id_translation: item.id_translation || "",
     category: item.category,
   })),
-  ...kana.map(item => ({
-    id: `${item.category}_${item.jp}`.replace(/[^a-zA-Z0-9_]/g, '_'),
+  ...kana.map((item, idx) => ({
+    id: `${item.category}_${idx}`,
     jp: item.jp,
     romaji: item.romaji || "",
     id_translation: item.id_translation || "",
@@ -43,7 +47,10 @@ export const getVocabulariesByCategory = (category: string): Vocabulary[] => {
 
 export const formatCategoryName = (cat: string) => {
   if (cat.startsWith('MNN1_Bab')) {
-    return cat.replace('MNN1_Bab', 'Minna no Nihongo Bab ');
+    return cat.replace('MNN1_Bab', 'Minna no Nihongo 1 Bab ');
+  }
+  if (cat.startsWith('MNN2_Bab')) {
+    return cat.replace('MNN2_Bab', 'Minna no Nihongo 2 Bab ');
   }
   return cat;
 };

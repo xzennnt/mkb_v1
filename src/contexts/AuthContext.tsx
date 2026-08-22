@@ -39,6 +39,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           if (user.email === 'edwinageng113@gmail.com' && data.role !== 'admin') {
             data.role = 'admin';
             shouldUpdate = true;
+          } else if (user.email !== 'edwinageng113@gmail.com' && data.role === 'admin') {
+            data.role = 'user';
+            shouldUpdate = true;
           }
           
           if (lastLogin !== today) {
@@ -74,7 +77,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               updates.email = user.email;
               data.email = user.email;
             }
-            setDoc(userRef, updates, { merge: true }).catch(console.error);
+            await setDoc(userRef, updates, { merge: true });
             setUserData({ ...data, ...updates });
           } else {
             setUserData(data);

@@ -66,7 +66,7 @@ export default function DeckView() {
         });
       } else {
         // Fallback sort
-        setUserProgressMap(pMap);
+        setUserProgressMap({});
         fetchedVocabs.sort((a, b) => {
           return a.jp.localeCompare(b.jp);
         });

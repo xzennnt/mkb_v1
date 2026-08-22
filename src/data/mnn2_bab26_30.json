@@ -1,0 +1,1802 @@
+[
+  {
+    "jp": "見ます (みます)",
+    "id_translation": "Melihat",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "「いしゃに～」 診ます 「医者に～」 (みます)",
+    "id_translation": "Memeriksa [ ke Dokter]",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "探します・捜します (さがします)",
+    "id_translation": "Mencari",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（じかん に ～） 遅れます 「時間に～」 (おくれます)",
+    "id_translation": "Terlambat",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（じかん に ～） 間に合います 「時間に～」 (まにあいます)",
+    "id_translation": "Tepat waktu",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "遣ります (やります)",
+    "id_translation": "Melakukan, mengerj akan",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（パーティー に～） 参加します （パーティー に～） (さんかします)",
+    "id_translation": "Turut serta, ikut (dalam pesta)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "申し込みます (もうしこみます)",
+    "id_translation": "Mendaf tar, melamar",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "都合がいい (つごうがいい)",
+    "id_translation": "Tidak ada halangan (waktu)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "都合が悪い (つごうがわるい)",
+    "id_translation": "Berhalangan/ ada halangan ( waktu)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "気分がいい (きぶんがいい)",
+    "id_translation": "Kondisi badan/ perasaan baik",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "気分が悪い (きぶんがわるい)",
+    "id_translation": "Tidak enak badan (waktu sakit)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "新 社 (しんぶんしゃ)",
+    "id_translation": "Perusahaan surat kabar/ kantor surat kabar",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "柔道 (じゅうどう)",
+    "id_translation": "Judo (olahraga)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "運動会 (うんどうかい)",
+    "id_translation": "Pesta olahraga",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "場所 (ばしょ)",
+    "id_translation": "Tempat",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "ボランティア",
+    "id_translation": "Volunteer, sukarelawan",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "～弁 (～べん)",
+    "id_translation": "Logat,dialek",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "今度 (こんど)",
+    "id_translation": "Lain kali,berikutnya",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "随分 (ずいぶん)",
+    "id_translation": "Cukup (lebih dari perkiraan)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "直接 (ちょくせつ)",
+    "id_translation": "Langsung",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "何時でも (いつでも)",
+    "id_translation": "Kapanpun",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "どこでも",
+    "id_translation": "Dimanapun",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "誰でも (だれでも)",
+    "id_translation": "Siapapun",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "何でも (なんでも)",
+    "id_translation": "Apapun",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "こんな～ ～Seperti (こんな～)",
+    "id_translation": "ini",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "そんな～ ～Seperti (そんな～)",
+    "id_translation": "itu",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "あんな～ ～Seperti (あんな～)",
+    "id_translation": "yang disana",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "NHK",
+    "id_translation": "NHK Nippon hoso kyoukai (perusahaan penyiaran)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "の ひ 子供の日 (こども)",
+    "id_translation": "Hari anak- anak",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "エドヤストア",
+    "id_translation": "Nama supermarket (hanya perumpamaan)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（にもつ が ～） 片付きます （荷物 が～） (かたづきます)",
+    "id_translation": "(barang- barang) Dibereskan,dirapikan",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（にもつ を～） 片付けます （荷物 を～） (かたづけます)",
+    "id_translation": "Membereskan,merapikan(barang- barang)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "塵 (ごみ)",
+    "id_translation": "Sampah",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（ごみ を～） 出します （塵 を～） (だします)",
+    "id_translation": "Membuang (sampah)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（ごみ が～） 燃えます （塵 が～） (もえます)",
+    "id_translation": "(sampah)Terbakar/ dapat dibakar",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "。すい 。きん 月。水。きん (げつ)",
+    "id_translation": "Senin, rabu, j umat",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "置き場 (おきば)",
+    "id_translation": "Tempat pembuangan",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "横 (よこ)",
+    "id_translation": "Horizontal, sebelah, seder et",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "瓶 (びん)",
+    "id_translation": "Botol",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "缶 (かん)",
+    "id_translation": "Kaleng",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（お）湯 (（お）ゆ)",
+    "id_translation": "Air panas",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "ガス",
+    "id_translation": "Gas",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "～会社 (～がいしゃ)",
+    "id_translation": "Perusahaan",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "連絡します (れんらくします)",
+    "id_translation": "Menghubungi",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "困ります (こまります)",
+    "id_translation": "Mendapat masalah",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "困ったなあ。 (こまったなあ。)",
+    "id_translation": "Payah ya. Gawat.",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "電子メール (でんしメール)",
+    "id_translation": "E- mail",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "宇宙 (うちゅう)",
+    "id_translation": "Luar angkasa",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "怖い (こわい)",
+    "id_translation": "Takut,ngeri",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "宇宙船 (うちゅうせん)",
+    "id_translation": "Pesawat luar angkasa",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "別の (べつの)",
+    "id_translation": "Yang lain",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "宇宙飛行士 (うちゅうひこうし)",
+    "id_translation": "Astronot",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "たかお 土井 隆雄 (どい)",
+    "id_translation": "Takao Doi (astronot j epang)",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "塵の出し方 (ごみのだしかた)",
+    "id_translation": "Cara membuang sampah",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "おしらせ 塵収集日のお知らせ (ごみしゅうしゅうびの)",
+    "id_translation": "Pemberitahuan hari pembuangansampah",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "可燃塵（燃える塵 (かねんごみ（もえるごみ)",
+    "id_translation": "Sampah yang dapat dibakar",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "げつ、 すい、きんようび 収集日： 月、水、金曜日 (しゅうしゅうび：)",
+    "id_translation": "Hari pengumpulan sampah: Senin,Rabu,Jumat",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "紙屑 (かみくず)",
+    "id_translation": "Sampah kertas, misalnya: kertaspembungkus, tissue, dll",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "生塵 (なまごみ)",
+    "id_translation": "Sampah dapur",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "（もえないごみ） 不燃塵（燃えない塵 (ふねんごみ)",
+    "id_translation": "Sampah yang Tidak Dapat Dibakar",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "もうようび 収集： 木曜日 (しゅうしゅう：)",
+    "id_translation": "Hari pengumpulan sampah: Kamis",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "ガラス製品 (ガラスせいひん)",
+    "id_translation": "Barang- arang yang terbuat dari kaca",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "プラスチック製品 (プラスチックせいひん)",
+    "id_translation": "Barang- arang yang terbuat dari plastic",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "だいどころ ようひん 金属製 台所 用品 (きんぞくせい)",
+    "id_translation": "Barang- barang yang dipakai di dapur dan terbuat dari logam",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "粗大塵 (そだいごみ)",
+    "id_translation": "Sampah besar",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "だい３かようび 収集日： 第３火曜日 (しゅうしゅうび：)",
+    "id_translation": "hari pengumpulan sampah: Selasa, minggu ke- 3",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "家具 (かぐ)",
+    "id_translation": "Perabot rumah tangga",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "でんか せいひん 家庭 電化 製品 (かてい)",
+    "id_translation": "Barang- barang elektronik rumah tangga",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "資源塵 (しげんごみ)",
+    "id_translation": "Sampah yang dapat didaur ulang",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "自転車 (じてんしゃ)",
+    "id_translation": "Sepeda",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "だい２、 だい４、かようび 収集日： 第２、第４、 火曜日 (しゅうしゅうび：)",
+    "id_translation": "Hari pengumpulan sampah: Selasa,minggu ke- 2 dan ke- 4",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "空き缶 (あきかん)",
+    "id_translation": "Kaleng bekas",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "空き瓶 (あきびん)",
+    "id_translation": "Botol bekas",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "古新 (ふるしんぶん)",
+    "id_translation": "Koran bekas",
+    "category": "MNN2_Bab26"
+  },
+  {
+    "jp": "飼います (かいます)",
+    "id_translation": "Memelihara (binatang)",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "建てます (たてます)",
+    "id_translation": "Membangun, mendirikan",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "を～） 走ります（道を～） (はしります（みち)",
+    "id_translation": "Berlari, berj alan (di j alan)",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "を～） 取ります（休みを～） (とります（やすみ)",
+    "id_translation": "Mengambil (libur), cuti",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "が～） 見えます（山が～） (みえます（やま)",
+    "id_translation": "Kelihatan, terlihat ( gunung)",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "が～） こえます（音が～） (きこえます（おと)",
+    "id_translation": "Terdengar (suara)",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "（くうこう が～） 出来ます（空港が～） (できます)",
+    "id_translation": "(Bandara)Bisa,rampung, selesai, didirikan",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "（きょうしつ を～） 開きます（教室を～） (ひらきます)",
+    "id_translation": "Membuka(kursus)",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "ペット",
+    "id_translation": "Binatang peliharaan",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "鳥 (とり)",
+    "id_translation": "Burung",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "声 (こえ)",
+    "id_translation": "Suara",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "波 (なみ)",
+    "id_translation": "Ombak",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "花火 (はなび)",
+    "id_translation": "Kembang api",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "景色 (けしき)",
+    "id_translation": "Pemandangan",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "昼間 (ひるま)",
+    "id_translation": "Siang hari",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "昔 (むかし)",
+    "id_translation": "Masa lalu,dahulu kala",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "道具 (どうぐ)",
+    "id_translation": "Perkakas, alat",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "自動販売機 (じどうはんばいき)",
+    "id_translation": "Mesin penj ual otomatis",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "通信販売 (つうしんはんばい)",
+    "id_translation": "Penj ualan melalui pos",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "クリーニング",
+    "id_translation": "Pembersihan, pencucian",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "マンション",
+    "id_translation": "Kondominium, apartemen",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "台所 (だいどころ)",
+    "id_translation": "Dapur",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "～きょうしつ",
+    "id_translation": "～教室 Kursus～",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "パーティールーム",
+    "id_translation": "Tempat/ ruang untuk pesta",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "～後 (～ご)",
+    "id_translation": "Sesudah/ setelah (diikuti waktu, j angka waktu)",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "～しか",
+    "id_translation": "Tidak ～lain selain (diikuti dengan bentuk negatif )",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "他の (ほかの)",
+    "id_translation": "Yang lain, lainnya",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "はっきり",
+    "id_translation": "Dengan j elas",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "殆ど (ほとんど)",
+    "id_translation": "Hampir,hampir- hampir",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "関西空港 (かんさいくうこう)",
+    "id_translation": "Bandara I nternasional Kansai",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "秋葉原 (あきはばら)",
+    "id_translation": "Nama daerah belanj a di Tokyo dimana ada banyak toko elektronik",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "伊豆 (いず)",
+    "id_translation": "Semenanj ung di pref ektur Shizuoka",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "日曜大工 (にちょうだいく)",
+    "id_translation": "Bertukang di hari minggu",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "本棚 (ほんだな)",
+    "id_translation": "Lemari/rak buku",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "夢 (ゆめ)",
+    "id_translation": "Mimpi, impian （～をみます: bermimpi ）",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "何時か (いつか)",
+    "id_translation": "Suatu hari nanti, kapan- kapan",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "家 (いえ)",
+    "id_translation": "Rumah",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "素晴らしい (すばらしい)",
+    "id_translation": "Sangat menarik, cemerlang, hebat",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "子供達 (こどもたち)",
+    "id_translation": "Anak- anak",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "大好き（な） (だいすき（な）)",
+    "id_translation": "Suka sekali,sangat suka",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "漫画 (まんが)",
+    "id_translation": "Komik, kartun",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "主人公 (しゅじんこう)",
+    "id_translation": "Peran utama,tokoh utama",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "形 (かたち)",
+    "id_translation": "Bentuk",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "ロボット",
+    "id_translation": "Robot",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "不思議（な） (ふしぎ（な）)",
+    "id_translation": "Luar biasa, aneh",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "ポケット",
+    "id_translation": "Kantong, saku",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "例えば (たとえば)",
+    "id_translation": "Misalnya, contohnya",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "付けます (つけます)",
+    "id_translation": "Menyematkan, memakai, memasang",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "自由（な） (じゆう（な）)",
+    "id_translation": "Bebas",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "自由に (じゆうに)",
+    "id_translation": "Dengan bebas",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "空 (そら)",
+    "id_translation": "Langit",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "飛びます (とびます)",
+    "id_translation": "Terbang",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "自分 (じぶん)",
+    "id_translation": "Diri sendiri",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "将来 (しょうらい)",
+    "id_translation": "Masa depan,hari depan",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "ドラえもん",
+    "id_translation": "Nama peran dalam komik j epang",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "近くの店 (ちかくのみせ)",
+    "id_translation": "Toko di sekitar rumah",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "写真屋 (しゃしんや)",
+    "id_translation": "Tempat Cucu Cetak Foto",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "現像 (げんぞう)",
+    "id_translation": "Cuci film",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "プリント",
+    "id_translation": "Cetak",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "焼き増し (やきまし)",
+    "id_translation": "Cetak tambah",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "引き伸ばし (ひきのばし)",
+    "id_translation": "Cetak perbesar",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "ネガ",
+    "id_translation": "Klise",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "スライド",
+    "id_translation": "Slide",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "サービスサイズ",
+    "id_translation": "Ukuran servis",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "パノラマサイズ",
+    "id_translation": "Ukuran panorama",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "クリーニング屋 (クリーニングや)",
+    "id_translation": "Binatu",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "ドライクリーニング",
+    "id_translation": "Dry- cleaning",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "水洗い (みずあらい)",
+    "id_translation": "Mencuci",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "染み抜き (しみぬき)",
+    "id_translation": "Menghilangkan noda",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "防水加工 (ぼうすいかこう)",
+    "id_translation": "Tahan air",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "サイズ直し (サイズなおし)",
+    "id_translation": "Perbaikan ukuran",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "縮む (ちぢむ)",
+    "id_translation": "Menyusut",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "伸びる (のびる)",
+    "id_translation": "Melebar",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "コンビニ",
+    "id_translation": "Minimarket (yang buka 24 j am)",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "宅配便の受付 (たくはいびんのうけつけ)",
+    "id_translation": "Jasa pengantaran barang/ paket",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "写真現像 (しゃしんげんぞう)",
+    "id_translation": "Cuci- cetak f oto",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "りょうきん ふりこむ 公共料金振り込む (こうきょう)",
+    "id_translation": "Pembayaran rekening listrik, air ledeng, telepon, tarif j asa- j asa pemerintah dll.",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "コピー、ファクス",
+    "id_translation": "Fotokopi, f aks",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "葉書、切手の販売 (はがき、きってのはんばい)",
+    "id_translation": "Penj ualan kartu posdan perangko",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "はんばい コンサートチケットの 販売 (コンサートチケットの)",
+    "id_translation": "Penj ualan tiket konser",
+    "category": "MNN2_Bab27"
+  },
+  {
+    "jp": "売れます（パンが～） (うれます（パンが～）)",
+    "id_translation": "(Roti) Terj ual",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "踊ります (おどります)",
+    "id_translation": "Menari",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "噛みます (かみます)",
+    "id_translation": "Mengunyah ,mengggigit",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "選びます (えらびます)",
+    "id_translation": "Memilih",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "違います (ちがいます)",
+    "id_translation": "Berbeda",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "（だいがくに～） 通います（大学に～） (かよいます)",
+    "id_translation": "Pulang- pergi {(hadir setiap hari) ke Univer sitas}",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "メモします",
+    "id_translation": "Membuat catatan",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "真面目（な） (まじめ（な）)",
+    "id_translation": "Raj in,tekun,sungguh- sungguh",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "熱心（な） (ねっしん（な）)",
+    "id_translation": "Tekun, antusias",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "優しい (やさしい)",
+    "id_translation": "Lemah lembut,baik hati",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "偉い (えらい)",
+    "id_translation": "Hebat, luar biasa",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "経験 (けいけん)",
+    "id_translation": "Pengalaman",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "習慣 (しゅうかん)",
+    "id_translation": "Kebiasaan",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "力 (ちから)",
+    "id_translation": "Kekuatan, tenaga",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "人気 (にんき)",
+    "id_translation": "Populer,terkenal",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "形 (かたち)",
+    "id_translation": "Bentuk",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "色 (いろ)",
+    "id_translation": "Warna",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "味 (あじ)",
+    "id_translation": "Rasa",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "ガム",
+    "id_translation": "Karet",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "品物 (しなもの)",
+    "id_translation": "Barang, komoditas",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "値段 (ねだん)",
+    "id_translation": "Harga",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "給料 (きゅうりょう)",
+    "id_translation": "Gaj i (konteksgaj i harian)",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "ボーナス",
+    "id_translation": "Bonus",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "番組 (ばんぐみ)",
+    "id_translation": "Acara, program",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "ドラマ",
+    "id_translation": "Drama",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "小説 (しょうせつ)",
+    "id_translation": "Novel",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "小説家 (しょうせつか)",
+    "id_translation": "Pengarang novel/ novelis",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "歌手 (かしゅ)",
+    "id_translation": "Penyanyi",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "管理人 (かんりにん)",
+    "id_translation": "Pengawas,penj aga",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "息子 (むすこ)",
+    "id_translation": "Putra (sendiri)",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "息子さん (むすこさん)",
+    "id_translation": "Putra (orang lain)",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "娘 (むすめ)",
+    "id_translation": "Putri (sendiri)",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "娘さん (むすめさん)",
+    "id_translation": "Putri (orang lain)",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "自分 (じぶん)",
+    "id_translation": "Diri sendiri",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "将来 (しょうらい)",
+    "id_translation": "Masa depan,hari depan",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "暫く (しばらく)",
+    "id_translation": "Sementara,sementara waktu,sebentar",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "大抵 (たいてい)",
+    "id_translation": "Biasanya, kebanyakan",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "それに",
+    "id_translation": "Dan lagi",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "それで",
+    "id_translation": "Jadi, lalu",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "あります 「ちょっと」お願いが あります (「ちょっと」おねがいが)",
+    "id_translation": "Saya ada (sedikit) permintaan. Saya harapkan bantuan anda",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "ホムーステイ",
+    "id_translation": "Homestay",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "会話 (かいわ)",
+    "id_translation": "Percakapan",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "喋ります (しゃべります)",
+    "id_translation": "Ngobrol",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "お喋りします (おしゃべりします)",
+    "id_translation": "Ngobrol",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "お知らせ (おしらせ)",
+    "id_translation": "Pengumuman",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "日にち (ひにち)",
+    "id_translation": "Tanggal",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "土 (ど)",
+    "id_translation": "Hari sabtu",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "体育館 (たいいくかん)",
+    "id_translation": "Gedung olahraga",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "無料 (むりょう)",
+    "id_translation": "Gratis",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "家を借りる (うちをかりる)",
+    "id_translation": "Penyewaan rumah",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "中央線 (ちゅうおうせん)",
+    "id_translation": "Nama j alur kereta listrik",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "西荻窪駅 (にしおぎくぼえき)",
+    "id_translation": "Stasiun Nishiogikuboeki (Nama stasiun kereta listrik terdekat)",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "マンション",
+    "id_translation": "Kondominium {*アパト: apartemen, * いっこだて（一戸建て）: rumah }",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "築３年 (ちく３ねん)",
+    "id_translation": "Didirikan 3 tahun yang lalu",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "家賃 (やちん)",
+    "id_translation": "Uang sewa",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "歩５分 5 (ほ５分)",
+    "id_translation": "menit berj alan kaki dari stasiun",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "敷金 (しききん)",
+    "id_translation": "Uang j aminan ( Uang yang dititipkan pada pemilik apartemen,dan dikembalikan sebagian saat penyewa akan pindah)",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "礼金 (れいきん)",
+    "id_translation": "Uang tanda terima kasih (uang yang diberikan kepada pemilik rumah)",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "管理費 (かんりひ)",
+    "id_translation": "Biaya perawatan",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "南向き (みなみむき)",
+    "id_translation": "Menghadap ke selatan",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "１０階建ての８階 (１０かいたての８かい)",
+    "id_translation": "Di tingkat 8 dari 10 tingkat",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "～ (2LDK)",
+    "id_translation": "Rumah yang terdiri dari 2 kamar dan 1 ruangan yang sekaligus berf ungsi sebaai ruang makan,ruang keluarga, dan ruang dapur",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "６畳 6 (６じょう)",
+    "id_translation": "tatami ( 畳: ukuran yang digunakan untuk mengukur luasruangan j epang,{ 1 畳 = 1 lembar tatami ( 180cm X 90cm) }",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "やすい不動産 (やすいふどうさん)",
+    "id_translation": "Nama agen perumahan",
+    "category": "MNN2_Bab28"
+  },
+  {
+    "jp": "開きます「ドアが～」 [ (あきます「ドアが～」)",
+    "id_translation": "pintu] Terbuka",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "閉まります「ドアが～」 [ (しまります「ドアが～」)",
+    "id_translation": "pintu] Tertutup",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "点きます「電気が～」 [ (つきます「でんきが～」)",
+    "id_translation": "lampu] Nyala",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "消えます「電気が～」 [ (きえます「でんきが～」)",
+    "id_translation": "lampu] Mati,padam, lenyap",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "込みます「道が～」 [ (こみます「みちが～」)",
+    "id_translation": "Jalannya] Ramai,macet,padat,penuh sesak",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "空きます「道が～」 [ (すきます「みちが～」)",
+    "id_translation": "Jalannya] Sepi, kosong",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "壊れます「椅子が～」 [ (こわれます「いすが～」)",
+    "id_translation": "Kursi] Rusak",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "割れます「コップが～」 [ (われます「コップが～」)",
+    "id_translation": "Gelas] Pecah,retak",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "折れます「木が～」 [ (おれます「きが～」)",
+    "id_translation": "Pohon] Patah",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "破れます「紙が～」 [ (やぶれます「かみが～」)",
+    "id_translation": "Kertas] Sobek,robek",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "汚れます「服が～」 [ (よごれます「ふくが～」)",
+    "id_translation": "Baj u] Kotor",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "「ポケットが～」 付きます 「ポケットが～」 [ (つきます)",
+    "id_translation": "saku] Terdapat,dilengkapi",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "「ボタンが～」 外れます 「ボタンが～」 [ (はずれます)",
+    "id_translation": "Kancing] Terlepas,terbuka",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "「エレベーターが～」 止まります 「エレベーターが～」 [ (とまります)",
+    "id_translation": "Lif t] Berhenti",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "間違えます (まちがえます)",
+    "id_translation": "Berbuat salah, keliru",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "落とします (おとします)",
+    "id_translation": "Menj atuhkan, kehilangan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "掛かります「鍵が～」 (かかります「かぎが～」)",
+    "id_translation": "Terkunci",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "（お）皿 (（お）さら)",
+    "id_translation": "Piring",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "（お）茶碗 (（お）ちゃわん)",
+    "id_translation": "Mangkuk",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "コップ",
+    "id_translation": "Gelas",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "ガラス",
+    "id_translation": "Kaca",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "袋 (ふくろ)",
+    "id_translation": "Kantong",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "手袋 (てぶくろ)",
+    "id_translation": "Sarung tangan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "財布 (さいふ)",
+    "id_translation": "Dompet",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "枝 (えだ)",
+    "id_translation": "Ranting, dahan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "駅員 (えきいん)",
+    "id_translation": "Pegawai stasiun",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "この辺 (このへん)",
+    "id_translation": "Sekitar sini",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "～辺 (～へん)",
+    "id_translation": "Area, sekitar",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "このくらい",
+    "id_translation": "Kira- kira sebesar ini",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "忘れ物 (わすれもの)",
+    "id_translation": "Barang terlupa, barang hilang",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "～側 (～がわ)",
+    "id_translation": "Sebelah~",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "お先にどうぞ (おさきにどうぞ)",
+    "id_translation": "Silahkan duluan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "「ああ。。」良かった (「ああ。。」よかった)",
+    "id_translation": "Syukurlah [ dipakai saat lega]",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "今の電車 (いまのでんしゃ)",
+    "id_translation": "Kereta api yang barusan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "忘れ物 (わすれもの)",
+    "id_translation": "Barang yang ketinggalan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "～がわ",
+    "id_translation": "～側 Sebelah～",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "ポケット",
+    "id_translation": "Saku",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "覚えます (おぼえます)",
+    "id_translation": "I ngat,menghaf al",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "覚えていません (おぼえていません)",
+    "id_translation": "Saya tidak ingat",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "網棚 (あみだな)",
+    "id_translation": "Rak j aring (rak kereta api)",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "確か (たしか)",
+    "id_translation": "Kalau tidak salah",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "四谷 (よつや)",
+    "id_translation": "Nama stasiun di j epang",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "地震 (じしん)",
+    "id_translation": "Gempa bumi",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "壁 (かべ)",
+    "id_translation": "Dinding",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "針 (はり)",
+    "id_translation": "Jarum",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "指します (さします)",
+    "id_translation": "Menunj ukkan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "駅前 (えきまえ)",
+    "id_translation": "Depan stasiun",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "倒れます (たおれます)",
+    "id_translation": "Roboh,tumbang",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "西 (にし)",
+    "id_translation": "Barat",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "東 (ひがし)",
+    "id_translation": "Timur",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "南 (みなみ)",
+    "id_translation": "Selatan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "北 (きた)",
+    "id_translation": "Utara",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "方 (ほう)",
+    "id_translation": "Arah",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "三宮 (さんのみや)",
+    "id_translation": "Nama tempat di Kobe",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "状態 (じょうたい)",
+    "id_translation": "Keadaan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "様子 (ようす)",
+    "id_translation": "Penampilan",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "太っている (ふとっている)",
+    "id_translation": "Gemuk",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "痩せている (やせている)",
+    "id_translation": "Kurus",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "膨らんでいる (ふくらんでいる)",
+    "id_translation": "Gembung",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "穴が入っている (あながはいっている)",
+    "id_translation": "Berlubang",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "曲がっている (まがっている)",
+    "id_translation": "Bengkok",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "歪んでいる (ゆがんでいる)",
+    "id_translation": "Mencong",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "凹んでいる (へこんでいる)",
+    "id_translation": "Penyok",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "捩じれている (ねじれている)",
+    "id_translation": "Berbelit",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "欠けている (かけている)",
+    "id_translation": "Pecah pinggirnya",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "罅が入っている (ひびがはいっている)",
+    "id_translation": "Retak",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "腐っている (くさっている)",
+    "id_translation": "Busuk",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "乾いている (かわいている)",
+    "id_translation": "Kering",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "濡れている (ぬれている)",
+    "id_translation": "Basah",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "凍っている (こおっている)",
+    "id_translation": "Beku",
+    "category": "MNN2_Bab29"
+  },
+  {
+    "jp": "貼ります (はります)",
+    "id_translation": "Menempelkan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "掛けます (かけます)",
+    "id_translation": "Menggantungkan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "飾ります (かざります)",
+    "id_translation": "Menghias,mendekor",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "並べます (ならべます)",
+    "id_translation": "Menj aj arkan,menderetkan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "植えます (うえます)",
+    "id_translation": "Menanam",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "戻します (もどします)",
+    "id_translation": "Mengembalikan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "纏めます (まとめます)",
+    "id_translation": "Meringkas, menyusun",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "片付けます (かたづけます)",
+    "id_translation": "Membereskan,merapikan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "仕舞います (しまいます)",
+    "id_translation": "Memasukkan, menyimpan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "決めます (きめます)",
+    "id_translation": "Memutuskan, menentukan, menetapkan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "知らせます (しらせます)",
+    "id_translation": "Memberitahukan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "相談します (そうだんします)",
+    "id_translation": "Berunding, membicarakan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "予習します (よしゅうします)",
+    "id_translation": "Mempersiapkan pelaj aran",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "復習します (ふくしゅうします)",
+    "id_translation": "Mengulang pelaj aran/ mereviewkembali",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "その儘にします (そのままにします)",
+    "id_translation": "Membiarkan begitu saj a",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "お子さん (おこさん)",
+    "id_translation": "Anak (orang lain)",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "授業 (じゅぎょう)",
+    "id_translation": "Pelaj aran",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "講義 (こうぎ)",
+    "id_translation": "Perkuliahan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "ミーティング",
+    "id_translation": "Rapat, pertemuan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "予定 (よてい)",
+    "id_translation": "Acara, rencana",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "お知らせ (おしらせ)",
+    "id_translation": "Pengumuman, pemberitahuan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "案内書 (あんないしょ)",
+    "id_translation": "Buku panduan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "カレンダー",
+    "id_translation": "Kalender",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "ポスター",
+    "id_translation": "Poster",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "塵箱 (ごみばこ)",
+    "id_translation": "Tempat sampah",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "人形 (にんぎょう)",
+    "id_translation": "Boneka",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "花瓶 (かびん)",
+    "id_translation": "Vasbunga",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "鏡 (かがみ)",
+    "id_translation": "Cermin",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "引き出し (ひきだし)",
+    "id_translation": "Laci",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "玄関 (げんかん)",
+    "id_translation": "Pintu masuk ala Jepang,ruang muka depan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "廊下 (ろうか)",
+    "id_translation": "Lorong,koridor",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "壁 (かべ)",
+    "id_translation": "Dinding",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "池 (いけ)",
+    "id_translation": "Kolam",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "交番 (こうばん)",
+    "id_translation": "Pospolisi",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "元の所 (もとのところ)",
+    "id_translation": "Tempat semula",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "周り (まわり)",
+    "id_translation": "Sekeliling, sekitar",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "真ん中 (まんなか)",
+    "id_translation": "Tengah- tengah,pusat",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "隅 (すみ)",
+    "id_translation": "Sudut,poj ok",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "まだ",
+    "id_translation": "Masih (diikuti bentuk positif )",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "～ほど",
+    "id_translation": "Kira- kira",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "予定表 (よていひょう)",
+    "id_translation": "Daf tar/ rencana",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "ご苦労様 (ごくろうさま)",
+    "id_translation": "Terima kasih ataskerj a kerasnya hari ini (ungkapan)",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "希望 (きぼう)",
+    "id_translation": "Keinginan, harapan, permohonan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "ごきぼうが ありますか 何か ご希望が ありますか (なにか)",
+    "id_translation": "Apakah ada sesuatu keinginan?",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "ミュージカル",
+    "id_translation": "Drama musik",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "それはいいですね",
+    "id_translation": "I de yang baik ya.",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "ブロードウェイ",
+    "id_translation": "Broadway",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "丸い (まるい)",
+    "id_translation": "Bulat",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "月 (つき)",
+    "id_translation": "Bulan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "ある～",
+    "id_translation": "Pada suatu malam",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "地球 (ちきゅう)",
+    "id_translation": "Bumi",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "嬉しい (うれしい)",
+    "id_translation": "Senang,gembira",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "嫌（な） (いや（な）)",
+    "id_translation": "Tidak suka,tidak setuj u",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "すると",
+    "id_translation": "Jadi, lalu",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "目覚めます (めざめます)",
+    "id_translation": "Terbangun, tersadar",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "目が覚める (めがさめる)",
+    "id_translation": "Terbangun, tersadar",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "位置 (いち)",
+    "id_translation": "Letak",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "（テレビの）横 (（テレビの）よこ)",
+    "id_translation": "Disebelah (televisi)",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "上から２段目 (うえから２だんめ)",
+    "id_translation": "Ke- 2 dari atas",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "隅 (すみ)",
+    "id_translation": "Poj ok, sudut",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "奥 (おく)",
+    "id_translation": "Bagian dalam",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "手前 (てまえ)",
+    "id_translation": "Bagian depan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "前から２列目 (まえから２れつめ)",
+    "id_translation": "Bariske- 2 dari depan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "斜め前 (ななめまえ)",
+    "id_translation": "Samping depan",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "「机の」周り (「つくえの」まわり)",
+    "id_translation": "Sekitar(mej a)",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "まんなか 「教室の」真ん中 (「きょうしつの」)",
+    "id_translation": "Di tengah- tengah (kelas)",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "斜め後ろ (ななめうしろ)",
+    "id_translation": "Samping belakang",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "「ほんの」側 (「ほんの」そば)",
+    "id_translation": "Di samping (buku)",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "２行目 (２ぎょうめ)",
+    "id_translation": "Bariske- 2",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "４ページ",
+    "id_translation": "Halaman ke- 4",
+    "category": "MNN2_Bab30"
+  },
+  {
+    "jp": "３行目 (３ぎょうめ)",
+    "id_translation": "Bariske- 3",
+    "category": "MNN2_Bab30"
+  }
+]

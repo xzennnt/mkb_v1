@@ -39,6 +39,20 @@
   </head>
   <body>
     <div id="root"></div>
+    
+    <script>
+      try {
+        const desc = Object.getOwnPropertyDescriptor(window, 'fetch');
+        if (desc && desc.get && !desc.set && desc.configurable) {
+          Object.defineProperty(window, 'fetch', {
+            get: desc.get,
+            set: function(v) { console.warn("Ignored window.fetch assignment"); },
+            configurable: true,
+            enumerable: desc.enumerable
+          });
+        }
+      } catch(e) {}
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
