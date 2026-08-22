@@ -16,9 +16,18 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [showMnn1, setShowMnn1] = useState(true);
   const [showMnn2, setShowMnn2] = useState(false);
+  const [lastActivity, setLastActivity] = useState<{title: string, type: string, link: string} | null>(null);
 
   useEffect(() => {
     if (!currentUser) return;
+    
+    const activity = localStorage.getItem('last_activity');
+    if (activity) {
+      try {
+        setLastActivity(JSON.parse(activity));
+      } catch (e) {}
+    }
+
     
     // Using local static vocabularies
     const catArray = getCategoriesCount();

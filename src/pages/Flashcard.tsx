@@ -6,7 +6,7 @@ import { Vocabulary, UserProgress } from '../types';
 import { ArrowLeft } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from '../data/kana';
 import { useAuth } from '../contexts/AuthContext';
-import { getVocabulariesByCategory } from '../data';
+import { getVocabulariesByCategory, formatCategoryName } from '../data';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Flashcard() {
@@ -21,6 +21,7 @@ export default function Flashcard() {
   
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [notRememberedIds, setNotRememberedIds] = useState<string[]>([]);
   
   const [masteredCount, setMasteredCount] = useState(0);
   const [sessionTotal, setSessionTotal] = useState(0);
@@ -28,6 +29,29 @@ export default function Flashcard() {
   useEffect(() => {
     const fetchVocabs = async () => {
       if (!category) return;
+      
+      const savedState = localStorage.getItem('flashcard_state_' + category);
+      if (savedState) {
+        try {
+          const parsed = JSON.parse(savedState);
+          setQueue(parsed.queue);
+          setInitialVocabs(parsed.initialVocabs);
+          setSessionTotal(parsed.sessionTotal);
+          setMasteredCount(parsed.masteredCount);
+          setNotRememberedIds(parsed.notRememberedIds || []);
+          setLoading(false);
+          
+          localStorage.setItem('last_activity', JSON.stringify({ 
+            category, 
+            type: 'Flashcard', 
+            title: `Flashcard: ${formatCategoryName(category)}`, 
+            link: `/flashcard/${encodeURIComponent(category)}` 
+          }));
+          return;
+        } catch(e) {
+          console.error(e);
+        }
+      }
       
       let fetchedVocabs: Vocabulary[] = [];
       if (category === 'Hiragana') {
@@ -139,8 +163,11 @@ export default function Flashcard() {
         const card = newQueue.shift(); // remove from front
         
         if (!isRemembered && card) {
-          // If not remembered, add back to end of queue
           newQueue.push(card);
+          setNotRememberedIds(prev => {
+            if (!prev.includes(card.id)) return [...prev, card.id];
+            return prev;
+          });
         } else {
           setMasteredCount(m => m + 1);
         }
@@ -233,7 +260,7 @@ export default function Flashcard() {
         <div className="w-full max-w-xl mb-6">
           <div className="flex justify-between items-center">
             <div className="w-auto px-4 h-12 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg shadow-sm">
-              Sisa: {remainingCount}
+              Belum Hafal: {notRememberedIds.length}
             </div>
             <div className="font-bold text-xl text-slate-700">
               {sessionTotal - remainingCount + 1 > sessionTotal ? sessionTotal : sessionTotal - remainingCount + 1} / {sessionTotal}
