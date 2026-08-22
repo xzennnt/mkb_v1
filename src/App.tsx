@@ -13,6 +13,10 @@ import Leaderboard from './pages/Leaderboard';
 import Admin from './pages/Admin';
 import SetupProfile from './pages/SetupProfile';
 
+import DeckView from './pages/DeckView';
+import Flashcard from './pages/Flashcard';
+import Quiz from './pages/Quiz';
+
 const PrivateRoute = ({ children }: { children: React.ReactElement }) => {
   const { currentUser, userData, loading } = useAuth();
   
@@ -75,6 +79,9 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/setup-profile" element={<SetupRoute><SetupProfile /></SetupRoute>} />
             <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path="/deck/:category" element={<PrivateRoute><DeckView /></PrivateRoute>} />
+            <Route path="/flashcard/:category" element={<PrivateRoute><Flashcard /></PrivateRoute>} />
+            <Route path="/quiz/:category/:sessionIndex" element={<PrivateRoute><Quiz /></PrivateRoute>} />
             <Route path="/study" element={<PrivateRoute><Study /></PrivateRoute>} />
             <Route path="/leaderboard" element={<PrivateRoute><Leaderboard /></PrivateRoute>} />
             <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />

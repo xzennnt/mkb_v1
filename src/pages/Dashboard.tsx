@@ -2,28 +2,47 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { auth, db } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
-import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut } from 'lucide-react';
+import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight } from 'lucide-react';
 import StreakCalendar from '../components/StreakCalendar';
 
 export default function Dashboard() {
   const { userData, currentUser } = useAuth();
   const navigate = useNavigate();
-  const [dueCardsCount, setDueCardsCount] = useState(0);
+  const [categories, setCategories] = useState<{name: string, count: number}[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!currentUser) return;
-    const fetchDueCards = async () => {
-      const q = query(
-        collection(db, 'user_progress'),
-        where('userId', '==', currentUser.uid),
-        where('nextReviewTime', '<=', Date.now())
-      );
+    const fetchCategories = async () => {
+      const q = query(collection(db, 'vocabularies'));
       const snap = await getDocs(q);
-      setDueCardsCount(snap.size);
+      
+      const counts: Record<string, number> = {};
+      snap.docs.forEach(doc => {
+        const cat = doc.data().category || 'Uncategorized';
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
+
+      const extractNumber = (str: string) => {
+        const match = str.match(/\d+/g);
+        return match ? parseInt(match[match.length - 1], 10) : 0;
+      };
+
+      const catArray = Object.keys(counts)
+        .filter(k => k !== 'Hiragana' && k !== 'Katakana')
+        .map(k => ({ name: k, count: counts[k] }))
+        .sort((a, b) => {
+          const numA = extractNumber(a.name);
+          const numB = extractNumber(b.name);
+          if (numA !== numB) return numA - numB;
+          return a.name.localeCompare(b.name);
+        });
+      setCategories(catArray);
+      setLoading(false);
     };
-    fetchDueCards();
+    fetchCategories();
   }, [currentUser]);
 
   const handleLogout = async () => {
@@ -87,7 +106,6 @@ export default function Dashboard() {
             <p className="text-xs text-rose-600 font-bold mt-1">Exp x{(1 + ((userData.loginStreak || 1) - 1) * 0.05).toFixed(2)}</p>
           </div>
         </div>
-
         <div className="bg-white p-6 rounded-2xl shadow-md border border-slate-200 flex items-center gap-4">
           <div className="bg-indigo-50 p-4 rounded-xl text-indigo-500">
             <Trophy size={32} />
@@ -107,7 +125,6 @@ export default function Dashboard() {
             <p className="text-3xl font-black text-slate-800">{formatTime(userData.totalStudyTime)}</p>
           </div>
         </div>
-
         <div className="bg-white p-6 rounded-2xl shadow-md border border-slate-200 flex items-center gap-4">
           <div className="bg-amber-50 p-4 rounded-xl text-amber-500">
             <BrainCircuit size={32} />
@@ -120,21 +137,116 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <div className="lg:col-span-2 bg-white rounded-2xl shadow-md border border-slate-200 p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-indigo-50 rounded-full mb-4">
-            <Play size={40} className="text-indigo-600 ml-2" />
-          </div>
-          <h2 className="text-3xl font-black text-slate-800 mb-2">Sesi Belajar</h2>
-          <p className="text-slate-500 mb-6 max-w-md mx-auto">
-            Ada <span className="font-bold text-indigo-600">{dueCardsCount}</span> kartu yang perlu Anda review sekarang, 
-            dan Anda bisa mempelajari kosakata baru.
-          </p>
-          <button 
-            onClick={() => navigate('/study')}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
-          >
-            Mulai Belajar Sekarang
-          </button>
+        <div className="lg:col-span-2">
+          {loading ? (
+            <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-8 text-center animate-pulse">
+              <p className="text-slate-500 font-medium">Memuat deck...</p>
+            </div>
+          ) : (
+            <>
+              <h2 className="text-2xl font-black text-slate-800 mb-4">Belajar Huruf Kana</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                
+                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-emerald-50 p-3 rounded-xl text-emerald-500">
+                      <span className="text-2xl font-bold">あ</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-800 text-lg leading-tight">Hiragana</h3>
+                      <p className="text-sm text-slate-500">46 huruf dasar</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 mt-auto">
+                    <button 
+                      onClick={() => navigate(`/deck/Hiragana`)}
+                      className="bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Tabel
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/flashcard/Hiragana`)}
+                      className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Flashcard
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/quiz/Hiragana`)}
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Latihan
+                    </button>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-emerald-50 p-3 rounded-xl text-emerald-500">
+                      <span className="text-2xl font-bold">ア</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-800 text-lg leading-tight">Katakana</h3>
+                      <p className="text-sm text-slate-500">46 huruf dasar</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 mt-auto">
+                    <button 
+                      onClick={() => navigate(`/deck/Katakana`)}
+                      className="bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Tabel
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/flashcard/Katakana`)}
+                      className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Flashcard
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/quiz/Katakana`)}
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Latihan
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              <h2 className="text-2xl font-black text-slate-800 mb-4">Menu Belajar (Bab)</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {categories.map((cat, idx) => (
+                  <div 
+                    key={idx}
+                    className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="bg-indigo-50 p-3 rounded-xl text-indigo-500">
+                        <BookOpen size={24} />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-slate-800 text-lg leading-tight">{cat.name}</h3>
+                        <p className="text-sm text-slate-500">{cat.count} kosakata</p>
+                      </div>
+                    </div>
+                    <div className="mt-auto">
+                      <button 
+                        onClick={() => navigate(`/deck/${encodeURIComponent(cat.name)}`)}
+                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm text-center transition-colors flex items-center justify-center gap-2"
+                      >
+                        <Play size={18} /> Mulai Belajar
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                {categories.length === 0 && (
+                  <div className="col-span-1 sm:col-span-2 bg-white rounded-2xl shadow-md border border-slate-200 p-8 text-center">
+                    <p className="text-slate-500 font-medium">Belum ada deck kosakata. Minta admin untuk menambahkan.</p>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
         </div>
         
         <div className="lg:col-span-1">

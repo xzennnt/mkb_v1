@@ -9,7 +9,6 @@ import { UserData, StudySession, Vocabulary } from '../types';
 
 export default function Admin() {
   const [activeTab, setActiveTab] = useState<'upload' | 'users' | 'sessions' | 'difficult'>('upload');
-  const [jsonInput, setJsonInput] = useState('');
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   
@@ -36,7 +35,7 @@ export default function Admin() {
       if (activeTab === 'users' || activeTab === 'sessions') {
         // Fetch Users
         const usersSnap = await getDocs(collection(db, 'users'));
-        const fetchedUsers = usersSnap.docs.map(d => d.data() as UserData);
+        const fetchedUsers = usersSnap.docs.map(d => ({ ...d.data(), uid: d.id } as UserData));
         setUsers(fetchedUsers);
         
         const map: Record<string, UserData> = {};
@@ -48,12 +47,12 @@ export default function Admin() {
         // Fetch Sessions
         const sessionsQ = query(collection(db, 'study_sessions'), orderBy('startTime', 'desc'), limit(100));
         const sessionsSnap = await getDocs(sessionsQ);
-        setSessions(sessionsSnap.docs.map(d => d.data() as StudySession));
+        setSessions(sessionsSnap.docs.map(d => ({ ...d.data(), id: d.id } as StudySession)));
       }
 
       if (activeTab === 'difficult') {
         const vocabsSnap = await getDocs(collection(db, 'vocabularies'));
-        const allVocabs = vocabsSnap.docs.map(d => d.data() as Vocabulary);
+        const allVocabs = vocabsSnap.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
         const filteredAndSorted = allVocabs
           .filter(v => (v.failCount && v.failCount > 0) || (v.hardCount && v.hardCount > 0))
           .sort((a, b) => ((b.failCount || 0) * 2 + (b.hardCount || 0)) - ((a.failCount || 0) * 2 + (a.hardCount || 0)));
@@ -78,42 +77,59 @@ export default function Admin() {
     }
   };
 
-  const handleUpload = async () => {
+  const handleSeedKana = async () => {
     try {
       setLoading(true);
-      setStatus('Parsing JSON...');
-      const parsed = JSON.parse(jsonInput);
-      
-      if (!Array.isArray(parsed)) {
-        throw new Error('Format harus berupa array JSON');
-      }
+      setStatus('Seeding Hiragana & Katakana...');
+      const hiragana = [
+        { jp: "あ", romaji: "a" }, { jp: "い", romaji: "i" }, { jp: "う", romaji: "u" }, { jp: "え", romaji: "e" }, { jp: "お", romaji: "o" },
+        { jp: "か", romaji: "ka" }, { jp: "き", romaji: "ki" }, { jp: "く", romaji: "ku" }, { jp: "け", romaji: "ke" }, { jp: "こ", romaji: "ko" },
+        { jp: "さ", romaji: "sa" }, { jp: "し", romaji: "shi" }, { jp: "す", romaji: "su" }, { jp: "せ", romaji: "se" }, { jp: "そ", romaji: "so" },
+        { jp: "た", romaji: "ta" }, { jp: "ち", romaji: "chi" }, { jp: "つ", romaji: "tsu" }, { jp: "て", romaji: "te" }, { jp: "と", romaji: "to" },
+        { jp: "な", romaji: "na" }, { jp: "に", romaji: "ni" }, { jp: "ぬ", romaji: "nu" }, { jp: "ね", romaji: "ne" }, { jp: "の", romaji: "no" },
+        { jp: "は", romaji: "ha" }, { jp: "ひ", romaji: "hi" }, { jp: "ふ", romaji: "fu" }, { jp: "へ", romaji: "he" }, { jp: "ほ", romaji: "ho" },
+        { jp: "ま", romaji: "ma" }, { jp: "み", romaji: "mi" }, { jp: "む", romaji: "mu" }, { jp: "め", romaji: "me" }, { jp: "も", romaji: "mo" },
+        { jp: "や", romaji: "ya" }, { jp: "ゆ", romaji: "yu" }, { jp: "よ", romaji: "yo" },
+        { jp: "ら", romaji: "ra" }, { jp: "り", romaji: "ri" }, { jp: "る", romaji: "ru" }, { jp: "れ", romaji: "re" }, { jp: "ろ", romaji: "ro" },
+        { jp: "わ", romaji: "wa" }, { jp: "を", romaji: "wo" }, { jp: "ん", romaji: "n" }
+      ];
 
-      setStatus(`Menyimpan ${parsed.length} kosakata...`);
-      
-      let count = 0;
-      for (const item of parsed) {
-        if (!item.jp || !item.id_translation || !item.category) {
-          throw new Error('Tiap item butuh jp, id_translation, dan category');
-        }
-        
-        // Generate a random ID if not provided
-        const vocabId = item.id || doc(collection(db, 'vocabularies')).id;
-        
-        await setDoc(doc(db, 'vocabularies', vocabId), {
-          id: vocabId,
+      const katakana = [
+        { jp: "ア", romaji: "a" }, { jp: "イ", romaji: "i" }, { jp: "ウ", romaji: "u" }, { jp: "エ", romaji: "e" }, { jp: "オ", romaji: "o" },
+        { jp: "カ", romaji: "ka" }, { jp: "キ", romaji: "ki" }, { jp: "ク", romaji: "ku" }, { jp: "ケ", romaji: "ke" }, { jp: "コ", romaji: "ko" },
+        { jp: "サ", romaji: "sa" }, { jp: "シ", romaji: "shi" }, { jp: "ス", romaji: "su" }, { jp: "セ", romaji: "se" }, { jp: "ソ", romaji: "so" },
+        { jp: "タ", romaji: "ta" }, { jp: "チ", romaji: "chi" }, { jp: "ツ", romaji: "tsu" }, { jp: "テ", romaji: "te" }, { jp: "ト", romaji: "to" },
+        { jp: "ナ", romaji: "na" }, { jp: "ニ", romaji: "ni" }, { jp: "ヌ", romaji: "nu" }, { jp: "ネ", romaji: "ne" }, { jp: "ノ", romaji: "no" },
+        { jp: "ハ", romaji: "ha" }, { jp: "ヒ", romaji: "hi" }, { jp: "フ", romaji: "fu" }, { jp: "ヘ", romaji: "he" }, { jp: "ホ", romaji: "ho" },
+        { jp: "マ", romaji: "ma" }, { jp: "ミ", romaji: "mi" }, { jp: "ム", romaji: "mu" }, { jp: "メ", romaji: "me" }, { jp: "モ", romaji: "mo" },
+        { jp: "ヤ", romaji: "ya" }, { jp: "ユ", romaji: "yu" }, { jp: "ヨ", romaji: "yo" },
+        { jp: "ラ", romaji: "ra" }, { jp: "リ", romaji: "ri" }, { jp: "ル", romaji: "ru" }, { jp: "レ", romaji: "re" }, { jp: "ロ", romaji: "ro" },
+        { jp: "ワ", romaji: "wa" }, { jp: "ヲ", romaji: "wo" }, { jp: "ン", romaji: "n" }
+      ];
+
+      for (const item of hiragana) {
+        const d = doc(collection(db, 'vocabularies'));
+        await setDoc(d, {
+          id: d.id,
           jp: item.jp,
-          id_translation: item.id_translation,
-          category: item.category,
-          romaji: item.romaji || ''
+          id_translation: item.romaji,
+          category: 'Hiragana',
+          romaji: item.romaji
         });
-        count++;
-        if (count % 10 === 0) setStatus(`Tersimpan ${count}/${parsed.length}...`);
       }
-      
-      setStatus(`Berhasil menyimpan ${count} kosakata!`);
-      setJsonInput('');
+      for (const item of katakana) {
+        const d = doc(collection(db, 'vocabularies'));
+        await setDoc(d, {
+          id: d.id,
+          jp: item.jp,
+          id_translation: item.romaji,
+          category: 'Katakana',
+          romaji: item.romaji
+        });
+      }
+      setStatus('Berhasil menambahkan data Hiragana & Katakana!');
     } catch (err: any) {
-      setStatus(`Error: ${err.message}`);
+      setStatus(`Error seeding: ${err.message}`);
     } finally {
       setLoading(false);
     }
@@ -144,7 +160,7 @@ export default function Admin() {
             onClick={() => setActiveTab('upload')}
             className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold transition-all ${activeTab === 'upload' ? 'bg-white shadow text-indigo-700' : 'text-slate-500 hover:text-slate-800'}`}
           >
-            <UploadCloud size={16} /> Upload
+            <UploadCloud size={16} /> Data Base
           </button>
           <button 
             onClick={() => setActiveTab('users')}
@@ -176,30 +192,17 @@ export default function Admin() {
 
       {activeTab === 'upload' && (
         <div className="bg-white p-8 rounded-2xl shadow-md border border-slate-200">
-          <h2 className="text-xl font-bold mb-4 text-slate-800">Upload Kosakata Batch (JSON)</h2>
-          <p className="text-sm text-slate-500 mb-4">
-            Format JSON harus berupa array objek. Contoh:<br/>
-            <pre className="bg-slate-50 p-4 rounded-xl text-xs mt-2 border border-slate-100 text-slate-600 font-mono">
-              {`[
-    { "jp": "わたし", "id_translation": "Saya", "category": "MNN1_Bab1" },
-    { "jp": "あなた", "id_translation": "Anda", "category": "MNN1_Bab1" }
-  ]`}
-            </pre>
-          </p>
-
-          <textarea
-            className="w-full h-64 p-4 border border-slate-200 rounded-xl mb-4 font-mono text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-slate-50"
-            value={jsonInput}
-            onChange={(e) => setJsonInput(e.target.value)}
-            placeholder="Paste array JSON di sini..."
-          ></textarea>
-
+          <h2 className="text-xl font-bold mb-4 text-slate-800">Manajemen Data Kosakata</h2>
+          <div className="text-sm text-slate-500 mb-6">
+            Pilih opsi di bawah ini untuk menambahkan data otomatis ke dalam database. (Upload kustom via JSON telah dinonaktifkan).
+          </div>
+          
           <button
-            onClick={handleUpload}
-            disabled={loading || !jsonInput.trim()}
-            className="bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl shadow-sm hover:bg-indigo-700 disabled:bg-slate-300 transition-colors"
+            onClick={handleSeedKana}
+            disabled={loading}
+            className="bg-emerald-600 text-white font-bold py-3 px-8 rounded-xl shadow-sm hover:bg-emerald-700 disabled:bg-slate-300 transition-colors"
           >
-            {loading ? 'Menyimpan...' : 'Upload JSON'}
+            {loading ? 'Menyimpan...' : 'Tambah Hiragana & Katakana'}
           </button>
 
           {status && (
@@ -230,8 +233,8 @@ export default function Admin() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {users.map(u => (
-                  <tr key={u.uid} className="hover:bg-slate-50 transition-colors">
+                {users.map((u, index) => (
+                  <tr key={u.uid || index} className="hover:bg-slate-50 transition-colors">
                     <td className="p-4">
                       <div className="font-bold text-slate-800">{u.displayName || u.email?.split('@')[0] || 'User'}</div>
                       <div className="text-slate-500 text-xs">{u.email}</div>
@@ -281,10 +284,10 @@ export default function Admin() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {sessions.map(s => {
+                {sessions.map((s, index) => {
                   const u = userMap[s.userId];
                   return (
-                    <tr key={s.id} className="hover:bg-slate-50 transition-colors">
+                    <tr key={s.id || index} className="hover:bg-slate-50 transition-colors">
                       <td className="p-4 font-medium text-slate-700 whitespace-nowrap">
                         {formatDateTime(s.startTime)}
                       </td>
@@ -344,7 +347,7 @@ export default function Admin() {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {difficultVocabs.map((v, index) => (
-                  <tr key={v.id} className="hover:bg-slate-50 transition-colors">
+                  <tr key={v.id || index} className="hover:bg-slate-50 transition-colors">
                     <td className="p-4 text-center font-black text-slate-400">
                       #{index + 1}
                     </td>

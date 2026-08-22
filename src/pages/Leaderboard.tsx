@@ -13,7 +13,7 @@ export default function Leaderboard() {
     const fetchLeaders = async () => {
       const q = query(collection(db, 'users'), orderBy('points', 'desc'), limit(100));
       const snap = await getDocs(q);
-      const fetchedLeaders = snap.docs.map(doc => doc.data() as UserData);
+      const fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));
       setLeaders(fetchedLeaders);
       setLoading(false);
     };

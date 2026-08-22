@@ -1,6 +1,33 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      // Patch for environment-specific fetch interception that defines only a getter.
+      // This prevents third-party libraries from crashing when they try to polyfill/bind fetch.
+      try {
+        var obj = window;
+        var descriptor = null;
+        while (obj) {
+          descriptor = Object.getOwnPropertyDescriptor(obj, 'fetch');
+          if (descriptor) {
+            break;
+          }
+          obj = Object.getPrototypeOf(obj);
+        }
+        if (obj && descriptor && descriptor.get && !descriptor.set) {
+          Object.defineProperty(obj, 'fetch', {
+            get: descriptor.get,
+            set: function(val) {
+              console.warn('Ignored attempt to set fetch');
+            },
+            configurable: true,
+            enumerable: descriptor.enumerable
+          });
+        }
+      } catch (e) {
+        console.error('Failed to patch fetch', e);
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MKB (Makan Kotoba Bergizi)</title>

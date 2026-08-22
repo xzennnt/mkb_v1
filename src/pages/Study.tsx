@@ -42,7 +42,7 @@ export default function Study() {
       
       // 1. Fetch all vocabs (in real app, limit this or fetch by category)
       const vocabsSnap = await getDocs(collection(db, 'vocabularies'));
-      const vocabs = vocabsSnap.docs.map(d => d.data() as Vocabulary);
+      const vocabs = vocabsSnap.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
       
       if (vocabs.length === 0) {
         setLoading(false);
@@ -55,7 +55,7 @@ export default function Study() {
       const progSnap = await getDocs(q);
       const progMap: Record<string, UserProgress> = {};
       progSnap.docs.forEach(d => {
-        const data = d.data() as UserProgress;
+        const data = { ...d.data(), id: d.id } as UserProgress;
         progMap[data.vocabId] = data;
       });
       setUserProgressMap(progMap);
