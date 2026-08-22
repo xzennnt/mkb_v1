@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { Vocabulary } from '../types';
-import { ArrowLeft, Play, BookOpen, ArrowUp } from 'lucide-react';
+import { ArrowLeft, Play, BookOpen, ArrowUp, Zap } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaGrid, katakanaGrid, hiraganaAdvancedData, katakanaAdvancedData, hiraganaAdvancedGrid, katakanaAdvancedGrid } from '../data/kana';
 import { getVocabulariesByCategory, formatCategoryName } from '../data';
 import { useAuth } from '../contexts/AuthContext';
@@ -121,13 +121,17 @@ export default function DeckView() {
         <h1 className="text-3xl font-black text-slate-800 mb-2">{formatCategoryName(category || '')}</h1>
         <p className="text-slate-500 font-medium mb-8">Ada {vocabs.length} kosakata di deck ini.</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <button 
             onClick={() => navigate(`/flashcard/${category}`)}
-            className="flex items-center justify-center gap-3 bg-white border-2 border-indigo-100 hover:border-indigo-500 hover:bg-indigo-50 text-indigo-700 font-bold py-4 px-6 rounded-xl transition-all shadow-sm group"
+            className="flex items-center justify-center gap-3 bg-[#003399] border border-[#002277] hover:bg-[#002277] text-white font-black text-3xl py-6 px-8 rounded-2xl transition-all shadow-md hover:shadow-lg group w-full h-full min-h-[140px]"
           >
-            <BookOpen size={24} className="group-hover:scale-110 transition-transform" />
-            Flashcard
+            <div className="flex flex-col items-center justify-center gap-1 group-hover:scale-105 transition-transform">
+              <div className="flex items-center gap-1">
+                FLASH<Zap size={32} className="fill-white text-white" />
+              </div>
+              <div className="tracking-widest uppercase">CARD</div>
+            </div>
           </button>
           
           <div className="flex flex-col gap-2">

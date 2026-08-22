@@ -271,7 +271,7 @@ export default function Flashcard() {
           </div>
         </div>
 
-        <div className="w-full max-w-xl flex-1 flex flex-col relative perspective-[1000px] mt-4 mb-8">
+        <div className="w-full max-w-xl relative perspective-[1000px] my-auto flex items-center justify-center min-h-[400px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentCard?.id || 'empty'}
@@ -279,16 +279,16 @@ export default function Flashcard() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -50, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="absolute inset-0 w-full"
+              className="w-full h-full flex items-center justify-center absolute"
             >
               <div 
                 onClick={() => setIsFlipped(!isFlipped)}
-                className={`relative w-full aspect-[4/3] max-h-[400px] cursor-pointer transition-all duration-500 transform-style-3d ${isFlipped ? 'rotate-x-180' : ''}`}
+                className={`relative w-full max-w-md h-[400px] cursor-pointer transition-all duration-500 transform-style-3d ${isFlipped ? 'rotate-x-180' : ''} mx-auto hover:scale-[1.02] shadow-xl hover:shadow-2xl rounded-3xl`}
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 {/* Front */}
                 <div 
-                  className="absolute inset-0 bg-white rounded-3xl shadow-md border border-slate-200 flex flex-col items-center justify-center p-8 backface-hidden"
+                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 backface-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
                   style={{ backfaceVisibility: 'hidden' }}
                 >
                   <h2 className="text-6xl md:text-7xl font-black text-[#1a1f36] text-center mb-8">{currentCard?.jp}</h2>
@@ -299,7 +299,7 @@ export default function Flashcard() {
 
                 {/* Back */}
                 <div 
-                  className="absolute inset-0 bg-white rounded-3xl shadow-md border border-slate-200 flex flex-col items-center justify-center p-8 backface-hidden"
+                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 backface-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
                   style={{ backfaceVisibility: 'hidden', transform: 'rotateX(180deg)' }}
                 >
                   <h2 className="text-4xl md:text-5xl font-black text-[#1a1f36] text-center mb-4">{currentCard?.id_translation}</h2>
