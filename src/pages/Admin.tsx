@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, setDoc, doc, getDocs, query, orderBy, limit, deleteDoc, where, updateDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { ArrowLeft, Users, Clock, UploadCloud, LogOut, AlertTriangle, Trash2, Edit2 } from 'lucide-react';
+import { ArrowLeft, Users, Clock, LayoutDashboard, LogOut, AlertTriangle, Trash2, Edit2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase';
@@ -12,7 +12,7 @@ import mnnBab9_10 from '../data/mnn1_bab9_10.json';
 import { allVocabularies } from '../data';
 
 export default function Admin() {
-  const [activeTab, setActiveTab] = useState<'upload' | 'users' | 'sessions' | 'difficult'>('upload');
+  const [activeTab, setActiveTab] = useState<'users' | 'sessions' | 'difficult'>('users');
   const [activeUserTab, setActiveUserTab] = useState<'active' | 'banned'>('active');
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
@@ -286,10 +286,10 @@ export default function Admin() {
         
         <div className="flex bg-slate-100 p-1 rounded-lg">
           <button 
-            onClick={() => setActiveTab('upload')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold transition-all ${activeTab === 'upload' ? 'bg-white shadow text-indigo-700' : 'text-slate-500 hover:text-slate-800'}`}
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold transition-all text-slate-500 hover:text-slate-800 hover:bg-slate-200"
           >
-            <UploadCloud size={16} /> Data Base
+            <LayoutDashboard size={16} /> Dashboard
           </button>
           <button 
             onClick={() => setActiveTab('users')}
@@ -319,20 +319,6 @@ export default function Admin() {
         </div>
       </header>
 
-      {activeTab === 'upload' && (
-        <div className="bg-white p-8 rounded-2xl shadow-md border border-slate-200">
-          <h2 className="text-xl font-bold mb-4 text-slate-800">Manajemen Data Kosakata</h2>
-          <div className="text-sm text-slate-500 mb-6">
-            Upload kustom via JSON atau Firebase seeding telah dinonaktifkan. Silakan tambahkan file vocabularies secara langsung ke dalam aplikasi.
-          </div>
-
-          {status && (
-            <div className="mt-6 p-4 bg-indigo-50 rounded-xl text-sm font-bold text-indigo-800 border border-indigo-100">
-              {status}
-            </div>
-          )}
-        </div>
-      )}
 
       {activeTab === 'users' && (
         <div className="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">

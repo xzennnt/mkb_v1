@@ -110,6 +110,16 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-5xl mx-auto p-4 py-8 w-full flex-1">
+      {userData?.role === 'admin' && (
+        <div className="bg-slate-800 text-white p-3 rounded-xl mb-4 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-sm uppercase tracking-widest text-slate-300">Admin Mode</span>
+          </div>
+          <button onClick={() => navigate('/admin')} className="bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
+            Ke Admin Panel
+          </button>
+        </div>
+      )}
       <header className="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6">
         <div className="flex items-center gap-4">
           <div className="bg-indigo-600 text-white p-2 rounded-lg">

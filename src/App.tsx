@@ -36,7 +36,6 @@ const PrivateRoute = ({ children }: { children: React.ReactElement }) => {
   if (userData?.isBanned) return <Navigate to="/banned" />;
   if (!userData?.isProfileComplete) return <Navigate to="/setup-profile" />;
   
-  if (userData?.role === 'admin') return <Navigate to="/admin" />;
   
   return children;
 };
