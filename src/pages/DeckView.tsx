@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { Vocabulary } from '../types';
-import { ArrowLeft, Play, BookOpen } from 'lucide-react';
+import { ArrowLeft, Play, BookOpen, ArrowUp } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaGrid, katakanaGrid, hiraganaAdvancedData, katakanaAdvancedData, hiraganaAdvancedGrid, katakanaAdvancedGrid } from '../data/kana';
 import { getVocabulariesByCategory, formatCategoryName } from '../data';
 import { useAuth } from '../contexts/AuthContext';
@@ -15,6 +15,27 @@ export default function DeckView() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
+
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   useEffect(() => {
     const fetchVocabs = async () => {
@@ -175,6 +196,15 @@ export default function DeckView() {
           )}
         </div>
       </div>
+      )}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-indigo-600 text-white p-4 rounded-full shadow-xl hover:bg-indigo-700 hover:-translate-y-1 transition-all z-50 flex items-center justify-center"
+          title="Ke Atas"
+        >
+          <ArrowUp size={24} />
+        </button>
       )}
     </div>
   );
