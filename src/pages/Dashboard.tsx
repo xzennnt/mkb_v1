@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { auth, db } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
-import { collection, query, getDocs, where, limit } from 'firebase/firestore';
+import { collection, query, getDocs, where, limit, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
 import StreakCalendar from '../components/StreakCalendar';
@@ -13,6 +13,45 @@ import { getCategoriesCount } from '../data';
 export default function Dashboard() {
   const { userData, currentUser } = useAuth();
   const navigate = useNavigate();
+
+  const handleResetMyProgress = async () => {
+    if (!userData) return;
+    if (window.confirm('Yakin ingin mereset progress belajar Anda untuk penelitian? (Semua riwayat belajar akan terhapus)')) {
+      try {
+        const uid = userData.uid;
+        
+        // Delete user_progress
+        const progQ = query(collection(db, 'user_progress'), where('userId', '==', uid));
+        const progSnap = await getDocs(progQ);
+        for (const docSnap of progSnap.docs) {
+          await deleteDoc(docSnap.ref);
+        }
+        
+        // Delete study_sessions
+        const sessQ = query(collection(db, 'study_sessions'), where('userId', '==', uid));
+        const sessSnap = await getDocs(sessQ);
+        for (const docSnap of sessSnap.docs) {
+          await deleteDoc(docSnap.ref);
+        }
+        
+        const resetData = { 
+          points: 0, 
+          level: 1, 
+          masteredVocabCount: 0, 
+          totalStudyTime: 0,
+          loginStreak: 1,
+          loginHistory: []
+        };
+        await updateDoc(doc(db, 'users', uid), resetData);
+        alert('Progress berhasil direset!');
+        window.location.reload();
+      } catch (err) {
+        console.error('Gagal reset progress', err);
+        alert('Gagal reset progress');
+      }
+    }
+  };
+
   const [categories, setCategories] = useState<{name: string, count: number}[]>([]);
   const [hardVocabs, setHardVocabs] = useState<{category: string, count: number}[]>([]);
   const [loading, setLoading] = useState(true);
@@ -129,14 +168,23 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-5xl mx-auto p-4 py-8 w-full flex-1">
-      {userData?.role === 'admin' && (
+      {(userData?.role === 'admin' || userData?.role === 'sub_admin') && (
         <div className="bg-slate-800 text-white p-3 rounded-xl mb-4 flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-sm uppercase tracking-widest text-slate-300">Admin Mode</span>
+            <span className="font-bold text-sm uppercase tracking-widest text-slate-300">
+              {userData.role === 'admin' ? 'Admin Mode' : 'Sub Admin Mode'}
+            </span>
           </div>
-          <button onClick={() => navigate('/admin')} className="bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
-            Ke Admin Panel
-          </button>
+          <div className="flex items-center gap-2">
+            {userData.role === 'admin' && (
+              <button onClick={handleResetMyProgress} className="bg-rose-500 hover:bg-rose-600 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
+                Reset Progress Saya
+              </button>
+            )}
+            <button onClick={() => navigate('/admin')} className="bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
+              Ke Admin Panel
+            </button>
+          </div>
         </div>
       )}
       <header className="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6">
@@ -170,7 +218,7 @@ export default function Dashboard() {
           </div>
           <div className="h-10 w-[1px] bg-slate-200"></div>
           <div className="flex items-center gap-2">
-            {userData.role === 'admin' && (
+            {(userData.role === 'admin' || userData.role === 'sub_admin') && (
               <Link to="/admin" className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
                 <Settings size={20} />
               </Link>
