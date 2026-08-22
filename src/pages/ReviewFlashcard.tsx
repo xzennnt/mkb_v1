@@ -96,6 +96,20 @@ export default function ReviewFlashcard() {
     fetchVocabs();
   }, [currentUser]);
 
+  useEffect(() => {
+    if (!loading && initialVocabs.length > 0 && !isFinished && queue.length > 0) {
+      localStorage.setItem('review_flashcard_state', JSON.stringify({
+        queue,
+        initialVocabs,
+        sessionTotal,
+        masteredCount,
+        notRememberedIds
+      }));
+    } else if (isFinished || (sessionTotal === 0 && initialVocabs.length > 0)) {
+      localStorage.removeItem('review_flashcard_state');
+    }
+  }, [queue, initialVocabs, sessionTotal, masteredCount, notRememberedIds, loading, isFinished]);
+
   const handleRating = async (isRemembered: boolean) => {
     if (queue.length === 0 || isProcessing) return;
     setIsProcessing(true);
@@ -168,7 +182,7 @@ export default function ReviewFlashcard() {
   };
 
   const handleReset = () => {
-    localStorage.removeItem('flashcard_state_Review');
+    localStorage.removeItem('review_flashcard_state');
     setQueue([...initialVocabs]);
     setSessionTotal(initialVocabs.length);
     setMasteredCount(0);
