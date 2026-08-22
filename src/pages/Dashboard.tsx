@@ -4,7 +4,7 @@ import { auth, db } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
 import { collection, query, getDocs, where, limit } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
-import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
 import StreakCalendar from '../components/StreakCalendar';
 import { getXpForLevel } from '../utils/levelUtils';
 
@@ -14,6 +14,7 @@ export default function Dashboard() {
   const { userData, currentUser } = useAuth();
   const navigate = useNavigate();
   const [categories, setCategories] = useState<{name: string, count: number}[]>([]);
+  const [hardVocabs, setHardVocabs] = useState<{category: string, count: number}[]>([]);
   const [loading, setLoading] = useState(true);
   const [showMnn1, setShowMnn1] = useState(() => {
     if (currentUser?.uid) {

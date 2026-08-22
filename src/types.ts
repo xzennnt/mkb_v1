@@ -29,10 +29,13 @@ export interface UserProgress {
   id: string; // Document ID
   userId: string;
   vocabId: string;
+  category?: string; // e.g. MNN1, for easy grouping
   nextReviewTime: number; // timestamp in ms
   interval: number; // in minutes (1, 10, 1440, 5760)
   reps: number;
   srsLevel: 'again' | 'hard' | 'good' | 'easy' | 'new';
+  failCount?: number;
+  easyCount?: number;
 }
 
 export interface StudySession {

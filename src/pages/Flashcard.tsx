@@ -140,10 +140,13 @@ export default function Flashcard() {
         id: progressId,
         userId: currentUser.uid,
         vocabId: currentCard.id,
+        category: category || currentCard.category,
         interval: nextInterval,
         nextReviewTime,
         reps,
-        srsLevel
+        srsLevel,
+        failCount: (currentProg?.failCount || 0) + (isRemembered ? 0 : 1),
+        easyCount: currentProg?.easyCount || 0
       };
       
       setProgressData(prev => ({ ...prev, [currentCard.id]: newProg }));
