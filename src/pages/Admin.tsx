@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, setDoc, doc, getDocs, query, orderBy, limit, deleteDoc, where, updateDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { ArrowLeft, Users, Clock, UploadCloud, LogOut, AlertTriangle, Trash2 } from 'lucide-react';
+import { ArrowLeft, Users, Clock, UploadCloud, LogOut, AlertTriangle, Trash2, Edit2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase';
@@ -129,6 +129,19 @@ export default function Admin() {
         alert('Gagal reset progress');
       } finally {
         setLoading(false);
+      }
+    }
+  };
+
+  const handleRenameUser = async (uid: string, currentName: string) => {
+    const newName = window.prompt('Masukkan nama baru untuk pengguna ini:', currentName || '');
+    if (newName !== null && newName.trim() !== '') {
+      try {
+        await updateDoc(doc(db, 'users', uid), { displayName: newName.trim() });
+        setUsers(users.map(u => u.uid === uid ? { ...u, displayName: newName.trim() } : u));
+      } catch (err) {
+        console.error('Gagal mengganti nama', err);
+        alert('Gagal mengganti nama');
       }
     }
   };
@@ -389,6 +402,9 @@ export default function Admin() {
                               Unban
                             </button>
                           )}
+                          <button onClick={() => handleRenameUser(u.uid, u.displayName || u.email || '')} className="p-1.5 text-blue-500 hover:text-white hover:bg-blue-500 rounded-lg transition-colors" title="Ganti Nama">
+                            <Edit2 size={16} />
+                          </button>
                           <button onClick={() => handleDeleteUser(u.uid)} className="p-1.5 text-rose-500 hover:text-white hover:bg-rose-500 rounded-lg transition-colors" title="Hapus Akun">
                             <Trash2 size={16} />
                           </button>

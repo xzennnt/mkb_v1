@@ -15,8 +15,32 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState<{name: string, count: number}[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showMnn1, setShowMnn1] = useState(true);
-  const [showMnn2, setShowMnn2] = useState(false);
+  const [showMnn1, setShowMnn1] = useState(() => {
+    if (currentUser?.uid) {
+      const stored = localStorage.getItem(`ui_showMnn1_${currentUser.uid}`);
+      if (stored !== null) return stored === 'true';
+    }
+    return true;
+  });
+  const [showMnn2, setShowMnn2] = useState(() => {
+    if (currentUser?.uid) {
+      const stored = localStorage.getItem(`ui_showMnn2_${currentUser.uid}`);
+      if (stored !== null) return stored === 'true';
+    }
+    return false;
+  });
+
+  const toggleMnn1 = () => {
+    const newVal = !showMnn1;
+    setShowMnn1(newVal);
+    if (currentUser?.uid) localStorage.setItem(`ui_showMnn1_${currentUser.uid}`, String(newVal));
+  };
+
+  const toggleMnn2 = () => {
+    const newVal = !showMnn2;
+    setShowMnn2(newVal);
+    if (currentUser?.uid) localStorage.setItem(`ui_showMnn2_${currentUser.uid}`, String(newVal));
+  };
   const [lastActivity, setLastActivity] = useState<{title: string, type: string, link: string} | null>(null);
   const [dueReviewCount, setDueReviewCount] = useState<number>(0);
   const [recentUsers, setRecentUsers] = useState<any[]>([]);
@@ -336,7 +360,7 @@ export default function Dashboard() {
               {/* Minna no Nihongo 1 */}
               <div className="mb-6">
                 <button 
-                  onClick={() => setShowMnn1(!showMnn1)} 
+                  onClick={toggleMnn1} 
                   className="w-full flex items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors mb-4"
                 >
                   <div className="flex items-center gap-3">
@@ -381,7 +405,7 @@ export default function Dashboard() {
               {/* Minna no Nihongo 2 */}
               <div className="mb-6">
                 <button 
-                  onClick={() => setShowMnn2(!showMnn2)} 
+                  onClick={toggleMnn2} 
                   className="w-full flex items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors mb-4"
                 >
                   <div className="flex items-center gap-3">
