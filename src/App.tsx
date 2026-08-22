@@ -56,7 +56,7 @@ const AdminRoute = ({ children }: { children: React.ReactElement }) => {
   if (userData?.isBanned) return <Navigate to="/banned" />;
   if (!userData?.isProfileComplete) return <Navigate to="/setup-profile" />;
   
-  return currentUser && userData?.role === 'admin' ? children : <Navigate to="/" />;
+  return currentUser && (userData?.role === 'admin' || userData?.role === 'sub_admin') ? children : <Navigate to="/" />;
 };
 
 const SetupRoute = ({ children }: { children: React.ReactElement }) => {

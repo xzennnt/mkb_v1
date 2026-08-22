@@ -5,13 +5,14 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import { Vocabulary } from '../types';
 import { ArrowLeft, Play, BookOpen, ArrowUp, Zap } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaGrid, katakanaGrid, hiraganaAdvancedData, katakanaAdvancedData, hiraganaAdvancedGrid, katakanaAdvancedGrid } from '../data/kana';
-import { getVocabulariesByCategory, formatCategoryName } from '../data';
+import { getVocabulariesByCategory, formatCategoryName, allVocabularies } from '../data';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function DeckView() {
   const { category } = useParams<{ category: string }>();
   const [vocabs, setVocabs] = useState<Vocabulary[]>([]);
   const [userProgressMap, setUserProgressMap] = useState<Record<string, any>>({});
+  const [hardCount, setHardCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
@@ -43,7 +44,29 @@ export default function DeckView() {
       
       let fetchedVocabs: Vocabulary[] = [];
 
-      if (category === 'Hiragana') {
+      let pMap: Record<string, any> = {};
+      if (currentUser) {
+        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
+        const progSnap = await getDocs(progQ);
+        progSnap.docs.forEach(d => {
+          pMap[d.data().vocabId] = d.data();
+        });
+      }
+
+      if (category === 'Review') {
+        // Special case: "Kotoba Lemah" / Review mode
+        fetchedVocabs = allVocabularies.filter(v => {
+           const p = pMap[v.id];
+           return p && ((p.failCount && p.failCount > 0) || p.srsLevel === 'again' || p.srsLevel === 'hard');
+        });
+        // Remove duplicates
+        const seen = new Set();
+        fetchedVocabs = fetchedVocabs.filter(v => {
+          if (seen.has(v.jp)) return false;
+          seen.add(v.jp);
+          return true;
+        });
+      } else if (category === 'Hiragana') {
         fetchedVocabs = hiraganaData as any;
       } else if (category === 'Hiragana Lanjutan') {
         fetchedVocabs = hiraganaAdvancedData as any;
@@ -64,13 +87,15 @@ export default function DeckView() {
       }
 
       if (currentUser && fetchedVocabs.length > 0) {
-        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
-        const progSnap = await getDocs(progQ);
-        const pMap: Record<string, any> = {};
-        progSnap.docs.forEach(d => {
-          pMap[d.data().vocabId] = d.data();
+        let hCount = 0;
+        fetchedVocabs.forEach(v => {
+           const p = pMap[v.id];
+           if (p && ((p.failCount && p.failCount > 0) || p.srsLevel === 'again' || p.srsLevel === 'hard')) {
+               hCount++;
+           }
         });
-
+        setHardCount(hCount);
+        
         setUserProgressMap(pMap);
         fetchedVocabs.sort((a, b) => {
           const pa = pMap[a.id];
@@ -122,17 +147,31 @@ export default function DeckView() {
         <p className="text-slate-500 font-medium mb-8">Ada {vocabs.length} kosakata di deck ini.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-          <button 
-            onClick={() => navigate(`/flashcard/${category}`)}
-            className="flex items-center justify-center gap-3 bg-[#003399] border border-[#002277] hover:bg-[#002277] text-white font-black text-3xl py-6 px-8 rounded-2xl transition-all shadow-md hover:shadow-lg group w-full h-full min-h-[140px]"
-          >
-            <div className="flex flex-col items-center justify-center gap-1 group-hover:scale-105 transition-transform">
-              <div className="flex items-center gap-1">
-                FLASH<Zap size={32} className="fill-white text-white" />
+          <div className="flex flex-col items-center gap-3 w-full sticky top-4">
+            <button 
+              onClick={() => navigate(`/flashcard/${category}`)}
+              className="flex items-center justify-center gap-3 bg-[#003399] border border-[#002277] hover:bg-[#002277] text-white font-black text-3xl py-12 px-8 rounded-2xl transition-all shadow-md hover:shadow-lg group w-full max-w-sm mx-auto min-h-[200px]"
+            >
+              <div className="flex flex-col items-center justify-center gap-1 group-hover:scale-105 transition-transform">
+                <div className="flex items-center gap-1">
+                  FLASH<Zap size={32} className="fill-white text-white" />
+                </div>
+                <div className="tracking-widest uppercase text-lg">UTAMA</div>
               </div>
-              <div className="tracking-widest uppercase">CARD</div>
-            </div>
-          </button>
+            </button>
+            
+            {hardCount > 0 && (
+              <button 
+                onClick={() => navigate(`/srs/${category}`)}
+                className="flex items-center justify-center gap-2 bg-rose-500 border border-rose-600 hover:bg-rose-600 text-white font-bold py-4 px-6 rounded-2xl transition-all shadow-md group w-full max-w-sm mx-auto"
+              >
+                <div className="flex items-center gap-2 group-hover:scale-105 transition-transform">
+                  <BookOpen size={20} />
+                  <span>REMIDI FLASHCARD ({hardCount})</span>
+                </div>
+              </button>
+            )}
+          </div>
           
           <div className="flex flex-col gap-2">
             <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Pilih Sesi Latihan Soal</h3>
@@ -177,6 +216,11 @@ export default function DeckView() {
               <div className="mb-2 sm:mb-0">
                 <div className="flex items-center gap-2">
                   <p className="text-lg font-bold text-slate-800">{v.jp}</p>
+                  {category === 'Review' && (
+                    <span className="text-[10px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-bold whitespace-nowrap">
+                      {formatCategoryName(v.category)}
+                    </span>
+                  )}
                 </div>
                 <p className="text-xs text-slate-500">{v.romaji}</p>
               </div>

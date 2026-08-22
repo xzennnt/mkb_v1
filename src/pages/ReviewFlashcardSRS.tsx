@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
+import { calculateAnkiProgress, formatInterval } from '../lib/srs';
 import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
 import { Vocabulary, UserProgress } from '../types';
 import { ArrowLeft, BookOpen } from 'lucide-react';
@@ -19,6 +20,7 @@ export default function ReviewFlashcardSRS() {
   
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     const fetchVocabs = async () => {
@@ -28,9 +30,7 @@ export default function ReviewFlashcardSRS() {
       const progRef = collection(db, 'user_progress');
       const q = query(
         progRef, 
-        where('userId', '==', currentUser.uid),
-        where('category', '==', category),
-        where('failCount', '>', 1)
+        where('userId', '==', currentUser.uid)
       );
       
       try {
@@ -42,9 +42,8 @@ export default function ReviewFlashcardSRS() {
 
         querySnapshot.forEach(docSnap => {
           const prog = docSnap.data() as UserProgress;
-          progresses[prog.vocabId] = prog;
-          // Only include if due for review
-          if (now >= prog.nextReviewTime) {
+          if (prog.category === category && ((prog.failCount && prog.failCount > 0) || prog.srsLevel === 'again' || prog.srsLevel === 'hard')) {
+            progresses[prog.vocabId] = prog;
             hardVocabIds.push(prog.vocabId);
           }
         });
@@ -68,7 +67,8 @@ export default function ReviewFlashcardSRS() {
   }, [category, currentUser]);
 
   const handleRating = async (rating: 'again' | 'hard' | 'good' | 'easy') => {
-    if (queue.length === 0) return;
+    if (queue.length === 0 || isProcessing) return;
+    setIsProcessing(true);
     
     const currentCard = queue[0];
     
@@ -105,7 +105,7 @@ export default function ReviewFlashcardSRS() {
       // Wait, user says "jika user sudah memencet tombol mudah 2x maka kalikan sesuai SRS algoritma". 
       // User didn't specify when it drops out. Let's just keep failCount as is for now, 
       // or if easyCount >= 2 we could reset failCount to 0 so it disappears from this hard list.
-      let newFailCount = currentProg?.failCount || 2;
+      let newFailCount = currentProg?.failCount || 1;
       if (easyCount >= 2) {
          newFailCount = 0; // Graduated from Hard list!
       }
@@ -137,16 +137,12 @@ export default function ReviewFlashcardSRS() {
     setTimeout(() => {
       setQueue(prevQueue => {
         const newQueue = [...prevQueue];
-        const card = newQueue.shift();
-        
-        if (rating === 'again' || rating === 'hard') {
-           // Put back at the end of queue if they didn't get it right
-           if (card) newQueue.push(card);
-        }
+        newQueue.shift();
         
         if (newQueue.length === 0) {
           setIsFinished(true);
         }
+        setIsProcessing(false);
         return newQueue;
       });
     }, 150);
@@ -165,7 +161,7 @@ export default function ReviewFlashcardSRS() {
             Anda telah menyelesaikan semua kosakata sulit di bab ini untuk saat ini.
           </p>
           <button 
-            onClick={() => navigate('/')} 
+            onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)} 
             className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow hover:bg-indigo-700 transition"
           >
             Kembali ke Dashboard
@@ -181,7 +177,7 @@ export default function ReviewFlashcardSRS() {
     <div className="min-h-screen bg-[#F1F5F9] text-slate-800 flex flex-col font-sans overflow-hidden">
       <header className="flex justify-between items-center p-6 relative max-w-5xl mx-auto w-full">
         <button 
-          onClick={() => navigate('/')}
+          onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)}
           className="flex items-center gap-2 font-bold text-lg text-indigo-600 hover:text-indigo-800 transition-colors z-10"
         >
           <ArrowLeft size={24} />
@@ -216,12 +212,12 @@ export default function ReviewFlashcardSRS() {
               className="w-full h-full flex items-center justify-center absolute"
             >
               <div 
-                className={`relative w-full max-w-md h-[400px] cursor-pointer transition-all duration-500 transform-style-3d ${isFlipped ? 'rotate-x-180' : ''} mx-auto hover:scale-[1.02] shadow-xl hover:shadow-2xl rounded-3xl`}
+                className={`relative w-full max-w-md h-[400px] cursor-pointer transition-all duration-500 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} mx-auto hover:scale-[1.02] shadow-xl hover:shadow-2xl rounded-3xl`}
                 onClick={() => setIsFlipped(!isFlipped)}
               >
                 {/* Depan */}
                 <div 
-                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 backface-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
+                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 [backface-visibility:hidden] shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
                 >
                   <h2 className="text-6xl md:text-7xl font-black text-[#1a1f36] text-center mb-8">{currentCard?.jp}</h2>
                   <p className="text-slate-400 font-bold tracking-widest uppercase text-sm mt-auto">Klik untuk membalik</p>
@@ -229,15 +225,10 @@ export default function ReviewFlashcardSRS() {
                 
                 {/* Belakang */}
                 <div 
-                  className="absolute inset-0 bg-[#003399] rounded-3xl shadow-xl flex flex-col items-center justify-center p-8 backface-hidden rotate-x-180 text-white"
+                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
                 >
-                  {currentCard?.romaji && (
-                    <p className="text-blue-200 text-2xl font-medium mb-4 text-center">{currentCard.romaji}</p>
-                  )}
-                  <h3 className="text-4xl md:text-5xl font-black text-center leading-tight mb-8">
-                    {currentCard?.id_translation}
-                  </h3>
-                  <p className="text-blue-300 font-bold tracking-widest uppercase text-sm mt-auto">Pilih level hafalan</p>
+                  <h2 className="text-4xl md:text-5xl font-black text-[#1a1f36] text-center mb-4">{currentCard?.id_translation}</h2>
+                  {currentCard?.romaji && <p className="text-slate-500 text-xl font-medium text-center">{currentCard?.romaji}</p>}
                 </div>
               </div>
             </motion.div>
@@ -245,42 +236,44 @@ export default function ReviewFlashcardSRS() {
         </div>
 
         {/* Buttons SRS */}
-        {isFlipped ? (
-          <div className="w-full max-w-xl grid grid-cols-4 gap-2 mt-auto">
+        <div className="w-full max-w-xl grid grid-cols-4 gap-2 mt-auto">
             <button 
               onClick={(e) => { e.stopPropagation(); handleRating('again'); }}
               className="py-3 bg-rose-100 border-2 border-rose-200 text-rose-700 font-bold text-sm md:text-base rounded-2xl hover:bg-rose-200 transition-colors shadow-sm flex flex-col items-center"
             >
               <span>Lagi</span>
-              <span className="text-xs text-rose-500 font-medium">1 mnt</span>
+              <span className="text-xs text-rose-500 font-medium">
+                {currentCard ? formatInterval(calculateAnkiProgress('again', progressData[currentCard.id]).nextInterval) : ''}
+              </span>
             </button>
             <button 
               onClick={(e) => { e.stopPropagation(); handleRating('hard'); }}
               className="py-3 bg-orange-100 border-2 border-orange-200 text-orange-700 font-bold text-sm md:text-base rounded-2xl hover:bg-orange-200 transition-colors shadow-sm flex flex-col items-center"
             >
               <span>Susah</span>
-              <span className="text-xs text-orange-500 font-medium">10 mnt</span>
+              <span className="text-xs text-orange-500 font-medium">
+                {currentCard ? formatInterval(calculateAnkiProgress('hard', progressData[currentCard.id]).nextInterval) : ''}
+              </span>
             </button>
             <button 
               onClick={(e) => { e.stopPropagation(); handleRating('good'); }}
               className="py-3 bg-blue-100 border-2 border-blue-200 text-blue-700 font-bold text-sm md:text-base rounded-2xl hover:bg-blue-200 transition-colors shadow-sm flex flex-col items-center"
             >
               <span>Baik</span>
-              <span className="text-xs text-blue-500 font-medium">1 hr</span>
+              <span className="text-xs text-blue-500 font-medium">
+                {currentCard ? formatInterval(calculateAnkiProgress('good', progressData[currentCard.id]).nextInterval) : ''}
+              </span>
             </button>
             <button 
               onClick={(e) => { e.stopPropagation(); handleRating('easy'); }}
               className="py-3 bg-emerald-100 border-2 border-emerald-200 text-emerald-700 font-bold text-sm md:text-base rounded-2xl hover:bg-emerald-200 transition-colors shadow-sm flex flex-col items-center"
             >
               <span>Mudah</span>
-              <span className="text-xs text-emerald-500 font-medium">2 hr+</span>
+              <span className="text-xs text-emerald-500 font-medium">
+                {currentCard ? formatInterval(calculateAnkiProgress('easy', progressData[currentCard.id]).nextInterval) : ''}
+              </span>
             </button>
           </div>
-        ) : (
-          <div className="w-full max-w-xl mt-auto py-3 md:py-6 h-[88px] flex justify-center text-slate-400 font-medium">
-            (Pikirkan artinya, lalu klik kartu untuk mengecek)
-          </div>
-        )}
       </div>
     </div>
   );

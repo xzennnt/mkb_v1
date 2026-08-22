@@ -75,12 +75,30 @@ export default function Dashboard() {
     const catArray = getCategoriesCount();
     setCategories(catArray);
     
-    // Fetch Due Reviews
+    // Fetch Due Reviews & Hard Vocabs
     const fetchReviews = async () => {
       try {
-        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid), where('nextReviewTime', '<=', Date.now()));
+        // We fetch ALL progress for this user to avoid composite index requirements
+        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
         const progSnap = await getDocs(progQ);
-        setDueReviewCount(progSnap.size);
+        
+        const now = Date.now();
+        let dueCount = 0;
+        const hardMap: Record<string, number> = {};
+        
+        progSnap.forEach(docSnap => {
+           const data = docSnap.data();
+           if (data.nextReviewTime <= now) {
+              dueCount++;
+           }
+           if (data.category && ((data.failCount && data.failCount > 0) || data.srsLevel === 'again' || data.srsLevel === 'hard')) {
+              hardMap[data.category] = (hardMap[data.category] || 0) + 1;
+           }
+        });
+        
+        setDueReviewCount(dueCount);
+        const hardArr = Object.entries(hardMap).map(([category, count]) => ({ category, count }));
+        setHardVocabs(hardArr);
         
         const usersSnap = await getDocs(query(collection(db, 'users'), limit(50)));
         let usersData = usersSnap.docs.map(d => d.data());

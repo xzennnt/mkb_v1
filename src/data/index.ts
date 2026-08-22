@@ -54,6 +54,7 @@ export const getVocabulariesByCategory = (category: string): Vocabulary[] => {
 };
 
 export const formatCategoryName = (cat: string) => {
+  if (cat === 'Review') return 'Kotoba Lemah';
   if (cat.startsWith('MNN1_Bab')) {
     return cat.replace('MNN1_Bab', 'Minna no Nihongo 1 Bab ');
   }

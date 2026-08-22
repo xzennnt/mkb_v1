@@ -21,6 +21,7 @@ export default function ReviewFlashcard() {
   
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [notRememberedIds, setNotRememberedIds] = useState<string[]>([]);
   
   const [masteredCount, setMasteredCount] = useState(0);
@@ -55,8 +56,18 @@ export default function ReviewFlashcard() {
       
             let allV = allVocabularies;
       
-      const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid), where('nextReviewTime', '<=', Date.now()));
-      const progSnap = await getDocs(progQ);
+      // Fetch all for this user, filter nextReviewTime locally to avoid needing a composite index
+      const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
+      const allProgSnap = await getDocs(progQ);
+      
+      const now = Date.now();
+      const progSnap = {
+        docs: allProgSnap.docs.filter(d => {
+          const data = d.data();
+          // In Review Flashcard (general), we want to review things that are overdue OR things that are marked as hard/again/failed
+          return data.nextReviewTime <= now || (data.failCount && data.failCount > 0) || data.srsLevel === 'again' || data.srsLevel === 'hard';
+        })
+      };
       
       const pData: Record<string, UserProgress> = {};
       const fetchedVocabs: Vocabulary[] = [];
@@ -86,7 +97,8 @@ export default function ReviewFlashcard() {
   }, [currentUser]);
 
   const handleRating = async (isRemembered: boolean) => {
-    if (queue.length === 0) return;
+    if (queue.length === 0 || isProcessing) return;
+    setIsProcessing(true);
     
     const currentCard = queue[0];
     
@@ -137,7 +149,6 @@ export default function ReviewFlashcard() {
         const card = newQueue.shift(); // remove from front
         
         if (!isRemembered && card) {
-          newQueue.push(card);
           setNotRememberedIds(prev => {
             if (!prev.includes(card.id)) return [...prev, card.id];
             return prev;
@@ -150,9 +161,19 @@ export default function ReviewFlashcard() {
           setIsFinished(true);
         }
         
+        setIsProcessing(false);
         return newQueue;
       });
     }, 200);
+  };
+
+  const handleReset = () => {
+    localStorage.removeItem('flashcard_state_Review');
+    setQueue([...initialVocabs]);
+    setSessionTotal(initialVocabs.length);
+    setMasteredCount(0);
+    setNotRememberedIds([]);
+    setIsFinished(false);
   };
 
   if (loading) {
@@ -163,7 +184,7 @@ export default function ReviewFlashcard() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#F1F5F9] p-4">
         <h2 className="text-2xl font-bold mb-4 text-slate-800">Tidak ada kartu</h2>
-        <button onClick={() => navigate('/')} className="px-6 py-2 bg-indigo-600 text-white rounded-xl">Kembali</button>
+        <button onClick={() => navigate(`/deck/${encodeURIComponent('Review')}`)} className="px-6 py-2 bg-indigo-600 text-white rounded-xl">Kembali</button>
       </div>
     );
   }
@@ -176,12 +197,20 @@ export default function ReviewFlashcard() {
           <p className="text-lg text-slate-600 mb-8 max-w-md">
             Kamu sudah mengingat semua kartu dalam kategori ini. Tidak ada kartu yang perlu diulang saat ini. Silakan kembali lagi nanti untuk mereview.
           </p>
-          <button 
-            onClick={() => navigate(`/deck/${encodeURIComponent('Review')}`)} 
-            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow hover:bg-indigo-700 transition"
-          >
-            Kembali ke Menu
-          </button>
+          <div className="flex gap-4 justify-center">
+            <button 
+              onClick={() => navigate(`/deck/${encodeURIComponent('Review')}`)} 
+              className="px-6 py-3 bg-slate-200 text-slate-700 font-bold rounded-xl shadow hover:bg-slate-300 transition"
+            >
+              Kembali
+            </button>
+            <button 
+              onClick={handleReset} 
+              className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow hover:bg-indigo-700 transition"
+            >
+              Ulangi Flashcard
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -198,10 +227,16 @@ export default function ReviewFlashcard() {
         <p className="text-lg text-slate-600 mb-8 text-center max-w-md">
           Kamu telah mengingat semua kartu pada sesi ini.
         </p>
-        <div className="flex flex-col gap-4 w-full max-w-sm">
+        <div className="flex flex-col gap-3 w-full max-w-sm">
+          <button 
+            onClick={handleReset}
+            className="py-3 px-6 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors w-full"
+          >
+            Ulangi Flashcard
+          </button>
           <button 
             onClick={() => navigate(`/deck/${encodeURIComponent('Review')}`)}
-            className="py-3 px-6 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors w-full"
+            className="py-3 px-6 bg-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-300 transition-colors w-full"
           >
             Kembali ke Menu
           </button>
@@ -257,12 +292,12 @@ export default function ReviewFlashcard() {
             >
               <div 
                 onClick={() => setIsFlipped(!isFlipped)}
-                className={`relative w-full max-w-md h-[400px] cursor-pointer transition-all duration-500 transform-style-3d ${isFlipped ? 'rotate-x-180' : ''} mx-auto hover:scale-[1.02] shadow-xl hover:shadow-2xl rounded-3xl`}
+                className={`relative w-full max-w-md h-[400px] cursor-pointer transition-all duration-500 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} mx-auto hover:scale-[1.02] shadow-xl hover:shadow-2xl rounded-3xl`}
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 {/* Front */}
                 <div 
-                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 backface-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
+                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 [backface-visibility:hidden] shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
                   style={{ backfaceVisibility: 'hidden' }}
                 >
                   <h2 className="text-6xl md:text-7xl font-black text-[#1a1f36] text-center mb-8">{currentCard?.jp}</h2>
@@ -273,8 +308,8 @@ export default function ReviewFlashcard() {
 
                 {/* Back */}
                 <div 
-                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 backface-hidden shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
-                  style={{ backfaceVisibility: 'hidden', transform: 'rotateX(180deg)' }}
+                  className="absolute inset-0 bg-gradient-to-br from-white to-slate-50 rounded-3xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 [backface-visibility:hidden] shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
+                  style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                 >
                   <h2 className="text-4xl md:text-5xl font-black text-[#1a1f36] text-center mb-4">{currentCard?.id_translation}</h2>
                   {!isKana && <p className="text-slate-500 text-xl font-medium">{currentCard?.romaji || ''}</p>}

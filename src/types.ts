@@ -2,7 +2,7 @@ export interface UserData {
   uid: string;
   email: string;
   displayName: string;
-  role: 'admin' | 'user';
+  role: 'admin' | 'sub_admin' | 'user';
   level: number;
   points: number;
   totalStudyTime: number; // in seconds
@@ -36,6 +36,11 @@ export interface UserProgress {
   srsLevel: 'again' | 'hard' | 'good' | 'easy' | 'new';
   failCount?: number;
   easyCount?: number;
+  
+  // SRS Anki fields
+  easeFactor?: number;
+  step?: number;
+  status?: 'learning' | 'review' | 'relearning';
 }
 
 export interface StudySession {
