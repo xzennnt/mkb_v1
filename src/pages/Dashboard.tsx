@@ -45,7 +45,7 @@ export default function Dashboard() {
         
         const usersSnap = await getDocs(query(collection(db, 'users'), limit(50)));
         let usersData = usersSnap.docs.map(d => d.data());
-        usersData = usersData.filter(u => u.uid !== currentUser.uid && u.lastActiveDate);
+        usersData = usersData.filter(u => u.uid !== currentUser.uid && u.lastActiveDate && !u.isBanned && u.email !== 'edwinageng113@gmail.com' && u.role !== 'admin');
         usersData.sort((a, b) => new Date(b.lastActiveDate).getTime() - new Date(a.lastActiveDate).getTime());
         setRecentUsers(usersData.slice(0, 4));
       } catch (err) {

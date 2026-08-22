@@ -18,6 +18,7 @@ export default function Leaderboard() {
       try {
         const snap = await getDocs(query(collection(db, 'users'), limit(100)));
         let fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));
+        fetchedLeaders = fetchedLeaders.filter(u => !u.isBanned && u.email !== 'edwinageng113@gmail.com' && u.role !== 'admin');
         
         fetchedLeaders.sort((a, b) => {
           const levelA = a.level || 0;
