@@ -20,6 +20,11 @@ service cloud.firestore {
       allow update: if isOwner(userId) || isAdmin();
     }
 
+    
+    match /vocabStats/{statId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
     match /vocabularies/{vocabId} {
       allow read: if isAuthenticated();
       allow write: if isAdmin();

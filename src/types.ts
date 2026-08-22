@@ -12,6 +12,7 @@ export interface UserData {
   loginStreak: number;
   loginHistory?: string[];
   isProfileComplete?: boolean;
+  isBanned?: boolean;
 }
 
 export interface Vocabulary {

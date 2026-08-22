@@ -13,10 +13,10 @@ export default function Leaderboard() {
   useEffect(() => {
     const fetchLeaders = async () => {
       try {
-        const q = query(collection(db, 'users'), orderBy('points', 'desc'), limit(100));
-        const snap = await getDocs(q);
-        const fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));
-        setLeaders(fetchedLeaders);
+        const snap = await getDocs(collection(db, 'users'));
+        let fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));
+        fetchedLeaders.sort((a, b) => (b.points || 0) - (a.points || 0));
+        setLeaders(fetchedLeaders.slice(0, 100));
       } catch (err: any) {
         console.error(err);
         setError('Gagal memuat leaderboard. ' + err.message);

@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Study from './pages/Study';
 import Leaderboard from './pages/Leaderboard';
 import Admin from './pages/Admin';
+import Banned from './pages/Banned';
 import SetupProfile from './pages/SetupProfile';
 
 import DeckView from './pages/DeckView';
@@ -29,6 +30,7 @@ const PrivateRoute = ({ children }: { children: React.ReactElement }) => {
   }
   
   if (!currentUser) return <Navigate to="/login" />;
+  if (userData?.isBanned) return <Navigate to="/banned" />;
   if (!userData?.isProfileComplete) return <Navigate to="/setup-profile" />;
   
   if (userData?.role === 'admin') return <Navigate to="/admin" />;
@@ -48,6 +50,7 @@ const AdminRoute = ({ children }: { children: React.ReactElement }) => {
   }
   
   if (!currentUser) return <Navigate to="/login" />;
+  if (userData?.isBanned) return <Navigate to="/banned" />;
   if (!userData?.isProfileComplete) return <Navigate to="/setup-profile" />;
   
   return currentUser && userData?.role === 'admin' ? children : <Navigate to="/" />;
@@ -65,6 +68,7 @@ const SetupRoute = ({ children }: { children: React.ReactElement }) => {
   }
   
   if (!currentUser) return <Navigate to="/login" />;
+  if (userData?.isBanned) return <Navigate to="/banned" />;
   if (userData?.isProfileComplete) return <Navigate to="/" />;
   
   return children;
@@ -76,6 +80,7 @@ export default function App() {
       <Router>
         <div className="min-h-screen bg-[#F1F5F9] text-slate-800 font-sans flex flex-col">
           <Routes>
+            <Route path="/banned" element={<Banned />} />
             <Route path="/login" element={<Login />} />
             <Route path="/setup-profile" element={<SetupRoute><SetupProfile /></SetupRoute>} />
             <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />

@@ -67,8 +67,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               lastActiveDate: new Date().toISOString(),
               loginHistory
             };
-            if (data.role === 'admin') {
-              updates.role = 'admin';
+            if (updates.role === undefined && data.role) {
+              updates.role = data.role;
             }
             if (!data.email && user.email) {
               updates.email = user.email;
