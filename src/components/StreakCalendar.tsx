@@ -48,7 +48,7 @@ export default function StreakCalendar({ history = [] }: { history: string[] }) 
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 h-full flex flex-col">
+    <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col h-fit">
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-lg font-black text-slate-800 tracking-tight">Kalender Aktif</h3>
         <span className="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg">
@@ -56,7 +56,7 @@ export default function StreakCalendar({ history = [] }: { history: string[] }) 
         </span>
       </div>
       
-      <div className="flex-1 flex flex-col justify-center">
+      <div className="flex flex-col justify-center">
         <div className="grid grid-cols-7 gap-1 sm:gap-2 mb-2 text-center">
           {dayNames.map(day => (
             <div key={day} className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">

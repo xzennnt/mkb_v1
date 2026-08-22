@@ -293,7 +293,7 @@ export default function Dashboard() {
           )}
         </div>
         
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 h-fit self-start">
           <StreakCalendar history={userData.loginHistory || []} />
         </div>
       </div>
