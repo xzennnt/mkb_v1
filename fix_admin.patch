@@ -1,0 +1,31 @@
+--- src/pages/Admin.tsx
++++ src/pages/Admin.tsx
+@@ -9,6 +9,7 @@
+ import mnnBab1_5 from '../data/mnn1_bab1_5.json';
+ import mnnBab6_8 from '../data/mnn1_bab6_8.json';
+ import mnnBab9_10 from '../data/mnn1_bab9_10.json';
++import { allVocabularies } from '../data';
+ 
+ export default function Admin() {
+   const [activeTab, setActiveTab] = useState<'upload' | 'users' | 'sessions' | 'difficult'>('upload');
+@@ -54,10 +55,16 @@
+       }
+ 
+       if (activeTab === 'difficult') {
+-        const vocabsSnap = await getDocs(collection(db, 'vocabularies'));
+-        const allVocabs = vocabsSnap.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
+-        const filteredAndSorted = allVocabs
+-          .filter(v => (v.failCount && v.failCount > 0) || (v.hardCount && v.hardCount > 0))
++        const statsSnap = await getDocs(collection(db, 'vocabStats'));
++        const statsMap: Record<string, { failCount?: number, hardCount?: number }> = {};
++        statsSnap.docs.forEach(d => {
++          statsMap[d.id] = d.data();
++        });
++        
++        const mappedVocabs = allVocabularies.map(v => ({ ...v, ...statsMap[v.id] }));
++        
++        const filteredAndSorted = mappedVocabs
++          .filter(v => ((v.failCount || 0) > 0) || ((v.hardCount || 0) > 0))
+           .sort((a, b) => ((b.failCount || 0) * 2 + (b.hardCount || 0)) - ((a.failCount || 0) * 2 + (a.hardCount || 0)));
+         setDifficultVocabs(filteredAndSorted);
+       }

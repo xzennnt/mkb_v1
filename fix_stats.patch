@@ -1,0 +1,19 @@
+--- src/pages/Quiz.tsx
++++ src/pages/Quiz.tsx
+@@ -161,7 +161,15 @@
+     updateDoc(userRef, {
+       points: increment(pointsGained),
+       masteredVocabCount: increment(newlyMastered),
+-      totalStudyTime: increment(Math.floor(timeSpentSec))
++      totalStudyTime: increment(Math.ceil(timeSpentSec))
+     }).catch(console.error);
+ 
++    // Update vocab difficult stats in a separate vocabStats collection
++    const vocabStatsRef = doc(db, 'vocabStats', currentVocab.id);
++    if (!isCorrect) {
++      setDoc(vocabStatsRef, { failCount: increment(1) }, { merge: true }).catch(console.error);
++    } else if (timeSpentSec > 10) {
++      setDoc(vocabStatsRef, { hardCount: increment(1) }, { merge: true }).catch(console.error);
++    }
++
+     // Wait a bit before next card

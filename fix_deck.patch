@@ -1,0 +1,45 @@
+--- src/pages/DeckView.tsx
++++ src/pages/DeckView.tsx
+@@ -10,6 +10,7 @@
+ export default function DeckView() {
+   const { category } = useParams<{ category: string }>();
+   const [vocabs, setVocabs] = useState<Vocabulary[]>([]);
++  const [userProgress, setUserProgress] = useState<Record<string, any>>({});
+   const [loading, setLoading] = useState(true);
+   const navigate = useNavigate();
+   const { currentUser } = useAuth();
+@@ -43,6 +44,7 @@
+         progSnap.docs.forEach(d => {
+           pMap[d.data().vocabId] = d.data();
+         });
++        setUserProgress(pMap);
+ 
+         // Sort by difficulty (again/hard first)
+         fetchedVocabs.sort((a, b) => {
+@@ -147,6 +149,8 @@
+         </div>
+         <div className="divide-y divide-slate-100">
+           {vocabs.map((v, index) => {
++            const p = userProgress[v.id];
++            const status = p ? p.srsLevel : 'new';
+             return (
+             <div key={v.id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between transition-colors hover:bg-slate-50">
+               <div className="mb-2 sm:mb-0">
+@@ -155,6 +159,18 @@
+                 </div>
+                 <p className="text-xs text-slate-500">{v.romaji}</p>
+               </div>
+               <div className="text-left sm:text-right">
+                 <p className="text-slate-600 font-medium">{v.id_translation}</p>
++                <div className="flex items-center sm:justify-end gap-2 mt-2">
++                  {status === 'again' || status === 'hard' ? (
++                    <span className="text-[10px] font-bold bg-rose-50 text-rose-600 px-2 py-1 rounded-full border border-rose-100 flex items-center gap-1">❌ Susah</span>
++                  ) : status === 'easy' || status === 'good' ? (
++                    <span className="text-[10px] font-bold bg-emerald-50 text-emerald-600 px-2 py-1 rounded-full border border-emerald-100 flex items-center gap-1">✅ Gampang (Hafal)</span>
++                  ) : (
++                    <span className="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded-full border border-slate-100 flex items-center gap-1">⬜ Belum Dipelajari</span>
++                  )}
++                </div>
+               </div>
+             </div>
+             );

@@ -1,0 +1,40 @@
+--- src/pages/Quiz.tsx
++++ src/pages/Quiz.tsx
+@@ -8,7 +8,7 @@
+ import { Trophy, CheckCircle, XCircle } from 'lucide-react';
+ import { hiraganaData, katakanaData } from '../data/kana';
+ 
+-import { getVocabulariesByCategory, allVocabularies } from '../data';
++import { getVocabulariesByCategory, allVocabularies, formatCategoryName } from '../data';
+ 
+ export default function Quiz() {
+   const { category, sessionIndex } = useParams<{ category: string, sessionIndex: string }>();
+@@ -232,7 +232,7 @@
+         <div className="flex flex-col items-center justify-center p-12 bg-white rounded-2xl shadow-md border border-slate-200 text-center">
+           <Trophy className="text-amber-500 mb-6" size={80} />
+           <h2 className="text-3xl font-black text-slate-800 mb-2">Selesai!</h2>
+-          <p className="text-slate-500 font-medium mb-8">Anda telah menyelesaikan sesi {parseInt(sessionIndex || '0') + 1} untuk {category}.</p>
++          <p className="text-slate-500 font-medium mb-8">Anda telah menyelesaikan sesi {parseInt(sessionIndex || '0') + 1} untuk {formatCategoryName(category || '')}.</p>
+           
+           <div className="flex gap-4 w-full max-w-sm">
+             <button
+--- src/pages/Flashcard.tsx
++++ src/pages/Flashcard.tsx
+@@ -7,7 +7,7 @@
+ import { hiraganaData, katakanaData } from '../data/kana';
+ import { useAuth } from '../contexts/AuthContext';
+ 
+-import { getVocabulariesByCategory } from '../data';
++import { getVocabulariesByCategory, formatCategoryName } from '../data';
+ 
+ export default function Flashcard() {
+   const { category } = useParams<{ category: string }>();
+@@ -102,7 +102,7 @@
+         </Link>
+         <div className="flex items-center gap-3">
+           <h1 className="text-xl font-bold tracking-tight text-slate-800">
+-            Flashcard {category}
++            Flashcard {formatCategoryName(category || '')}
+           </h1>
+           <span className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">
+             {currentIndex + 1} / {vocabs.length}

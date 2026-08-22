@@ -9,6 +9,7 @@ import { UserData, StudySession, Vocabulary } from '../types';
 import mnnBab1_5 from '../data/mnn1_bab1_5.json';
 import mnnBab6_8 from '../data/mnn1_bab6_8.json';
 import mnnBab9_10 from '../data/mnn1_bab9_10.json';
+import { allVocabularies } from '../data';
 
 export default function Admin() {
   const [activeTab, setActiveTab] = useState<'upload' | 'users' | 'sessions' | 'difficult'>('upload');
@@ -54,10 +55,16 @@ export default function Admin() {
       }
 
       if (activeTab === 'difficult') {
-        const vocabsSnap = await getDocs(collection(db, 'vocabularies'));
-        const allVocabs = vocabsSnap.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
-        const filteredAndSorted = allVocabs
-          .filter(v => (v.failCount && v.failCount > 0) || (v.hardCount && v.hardCount > 0))
+        const statsSnap = await getDocs(collection(db, 'vocabStats'));
+        const statsMap: Record<string, { failCount?: number, hardCount?: number }> = {};
+        statsSnap.docs.forEach(d => {
+          statsMap[d.id] = d.data();
+        });
+        
+        const mappedVocabs = allVocabularies.map(v => ({ ...v, ...statsMap[v.id] }));
+        
+        const filteredAndSorted = mappedVocabs
+          .filter(v => ((v.failCount || 0) > 0) || ((v.hardCount || 0) > 0))
           .sort((a, b) => ((b.failCount || 0) * 2 + (b.hardCount || 0)) - ((a.failCount || 0) * 2 + (a.hardCount || 0)));
         setDifficultVocabs(filteredAndSorted);
       }
@@ -227,24 +234,7 @@ export default function Admin() {
         <div className="bg-white p-8 rounded-2xl shadow-md border border-slate-200">
           <h2 className="text-xl font-bold mb-4 text-slate-800">Manajemen Data Kosakata</h2>
           <div className="text-sm text-slate-500 mb-6">
-            Pilih opsi di bawah ini untuk menambahkan data otomatis ke dalam database. (Upload kustom via JSON telah dinonaktifkan).
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              onClick={handleSeedKana}
-              disabled={loading}
-              className="bg-emerald-600 text-white font-bold py-3 px-8 rounded-xl shadow-sm hover:bg-emerald-700 disabled:bg-slate-300 transition-colors"
-            >
-              {loading ? 'Menyimpan...' : 'Tambah Hiragana & Katakana'}
-            </button>
-            <button
-              onClick={handleSeedBab1to10}
-              disabled={loading}
-              className="bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl shadow-sm hover:bg-indigo-700 disabled:bg-slate-300 transition-colors"
-            >
-              {loading ? 'Menyimpan...' : 'Migrasi / Tambah Bab 1-10'}
-            </button>
+            Upload kustom via JSON atau Firebase seeding telah dinonaktifkan. Silakan tambahkan file vocabularies secara langsung ke dalam aplikasi.
           </div>
 
           {status && (

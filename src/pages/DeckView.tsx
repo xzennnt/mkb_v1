@@ -4,12 +4,14 @@ import { db } from '../lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { Vocabulary } from '../types';
 import { ArrowLeft, Play, BookOpen } from 'lucide-react';
-import { hiraganaData, katakanaData, hiraganaGrid, katakanaGrid } from '../data/kana';
+import { hiraganaData, katakanaData, hiraganaGrid, katakanaGrid, hiraganaAdvancedData, katakanaAdvancedData, hiraganaAdvancedGrid, katakanaAdvancedGrid } from '../data/kana';
+import { getVocabulariesByCategory, formatCategoryName } from '../data';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function DeckView() {
   const { category } = useParams<{ category: string }>();
   const [vocabs, setVocabs] = useState<Vocabulary[]>([]);
+  const [userProgressMap, setUserProgressMap] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
@@ -22,12 +24,14 @@ export default function DeckView() {
 
       if (category === 'Hiragana') {
         fetchedVocabs = hiraganaData as any;
+      } else if (category === 'Hiragana Lanjutan') {
+        fetchedVocabs = hiraganaAdvancedData as any;
+      } else if (category === 'Katakana Lanjutan') {
+        fetchedVocabs = katakanaAdvancedData as any;
       } else if (category === 'Katakana') {
         fetchedVocabs = katakanaData as any;
       } else {
-        const q = query(collection(db, 'vocabularies'), where('category', '==', category));
-        const snap = await getDocs(q);
-        const rawVocabs = snap.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
+        const rawVocabs = getVocabulariesByCategory(category);
         
         // Remove duplicates
         const seen = new Set();
@@ -46,6 +50,7 @@ export default function DeckView() {
           pMap[d.data().vocabId] = d.data();
         });
 
+        setUserProgressMap(pMap);
         fetchedVocabs.sort((a, b) => {
           const pa = pMap[a.id];
           const pb = pMap[b.id];
@@ -61,10 +66,8 @@ export default function DeckView() {
         });
       } else {
         // Fallback sort
+        setUserProgressMap(pMap);
         fetchedVocabs.sort((a, b) => {
-          const scoreA = (a.failCount || 0) * 2 + (a.hardCount || 0);
-          const scoreB = (b.failCount || 0) * 2 + (b.hardCount || 0);
-          if (scoreA !== scoreB) return scoreB - scoreA;
           return a.jp.localeCompare(b.jp);
         });
       }
@@ -94,7 +97,7 @@ export default function DeckView() {
       </button>
 
       <div className="bg-white p-8 rounded-2xl shadow-md border border-slate-200 mb-8">
-        <h1 className="text-3xl font-black text-slate-800 mb-2">{category}</h1>
+        <h1 className="text-3xl font-black text-slate-800 mb-2">{formatCategoryName(category || '')}</h1>
         <p className="text-slate-500 font-medium mb-8">Ada {vocabs.length} kosakata di deck ini.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -123,9 +126,9 @@ export default function DeckView() {
         </div>
       </div>
 
-      {category === 'Hiragana' || category === 'Katakana' ? (
+      {category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan' ? (
         <div className="grid grid-cols-5 gap-2 sm:gap-4 mb-8 mt-12">
-          {(category === 'Hiragana' ? hiraganaGrid : katakanaGrid).map((item, idx) => (
+          {(category === 'Hiragana' ? hiraganaGrid : category === 'Katakana' ? katakanaGrid : category === 'Hiragana Lanjutan' ? hiraganaAdvancedGrid : katakanaAdvancedGrid).map((item, idx) => (
             item.empty ? <div key={idx} /> : (
               <div key={idx} className="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 text-center shadow-sm flex flex-col items-center justify-center">
                 <span className="text-2xl sm:text-3xl font-black text-slate-800 mb-1">{item.jp}</span>
@@ -142,42 +145,27 @@ export default function DeckView() {
         </div>
         <div className="divide-y divide-slate-100">
           {vocabs.map((v, index) => {
-            const isDifficult = (v.failCount || 0) > 0 || (v.hardCount || 0) > 0;
+            const p = userProgressMap[v.id];
+            const status = p ? p.srsLevel : 'new';
             return (
-            <div key={v.id} className={`p-4 flex flex-col sm:flex-row sm:items-center justify-between transition-colors ${isDifficult && index < 3 ? 'bg-rose-50/30' : 'hover:bg-slate-50'}`}>
+            <div key={v.id} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between transition-colors hover:bg-slate-50">
               <div className="mb-2 sm:mb-0">
                 <div className="flex items-center gap-2">
                   <p className="text-lg font-bold text-slate-800">{v.jp}</p>
-                  {isDifficult && index < 3 && (
-                    <span className="text-[10px] font-bold bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full uppercase tracking-widest">
-                      Fokus Utama
-                    </span>
-                  )}
                 </div>
                 <p className="text-xs text-slate-500">{v.romaji}</p>
               </div>
               <div className="text-left sm:text-right">
                 <p className="text-slate-600 font-medium">{v.id_translation}</p>
-                {(v.failCount || v.hardCount) ? (
-                  <div className="flex items-center sm:justify-end gap-2 mt-2">
-                    {v.failCount ? (
-                      <span className="text-[10px] font-bold bg-rose-50 text-rose-600 px-2 py-1 rounded-full border border-rose-100 flex items-center gap-1" title="Sering salah dijawab">
-                        ❌ Gagal {v.failCount}x
-                      </span>
-                    ) : null}
-                    {v.hardCount ? (
-                      <span className="text-[10px] font-bold bg-amber-50 text-amber-600 px-2 py-1 rounded-full border border-amber-100 flex items-center gap-1" title="Sering lama saat dijawab">
-                        🐢 Sulit {v.hardCount}x
-                      </span>
-                    ) : null}
-                  </div>
-                ) : (
-                  <div className="flex items-center sm:justify-end gap-2 mt-2">
-                     <span className="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded-full border border-slate-100 flex items-center gap-1">
-                        Belum ada data kesulitan
-                     </span>
-                  </div>
-                )}
+                <div className="flex items-center sm:justify-end gap-2 mt-2">
+                  {status === 'again' || status === 'hard' ? (
+                    <span className="text-[10px] font-bold bg-rose-50 text-rose-600 px-2 py-1 rounded-full border border-rose-100 flex items-center gap-1">❌ Susah</span>
+                  ) : status === 'easy' || status === 'good' ? (
+                    <span className="text-[10px] font-bold bg-emerald-50 text-emerald-600 px-2 py-1 rounded-full border border-emerald-100 flex items-center gap-1">✅ Gampang (Hafal)</span>
+                  ) : (
+                    <span className="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded-full border border-slate-100 flex items-center gap-1">⬜ Belum Dipelajari</span>
+                  )}
+                </div>
               </div>
             </div>
             );

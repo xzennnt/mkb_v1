@@ -8,14 +8,21 @@ import { Link } from 'react-router-dom';
 export default function Leaderboard() {
   const [leaders, setLeaders] = useState<UserData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchLeaders = async () => {
-      const q = query(collection(db, 'users'), orderBy('points', 'desc'), limit(100));
-      const snap = await getDocs(q);
-      const fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));
-      setLeaders(fetchedLeaders);
-      setLoading(false);
+      try {
+        const q = query(collection(db, 'users'), orderBy('points', 'desc'), limit(100));
+        const snap = await getDocs(q);
+        const fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));
+        setLeaders(fetchedLeaders);
+      } catch (err: any) {
+        console.error(err);
+        setError('Gagal memuat leaderboard. ' + err.message);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchLeaders();
   }, []);
@@ -48,6 +55,8 @@ export default function Leaderboard() {
         </div>
         {loading ? (
           <div className="p-8 text-center text-slate-500">Memuat peringkat...</div>
+        ) : error ? (
+          <div className="p-8 text-center text-rose-500 font-medium">{error}</div>
         ) : (
           <div className="flex-1 overflow-hidden space-y-0 p-4">
             {leaders.map((user, idx) => {

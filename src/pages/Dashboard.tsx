@@ -7,6 +7,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight } from 'lucide-react';
 import StreakCalendar from '../components/StreakCalendar';
 
+import { getCategoriesCount } from '../data';
+
 export default function Dashboard() {
   const { userData, currentUser } = useAuth();
   const navigate = useNavigate();
@@ -15,34 +17,11 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!currentUser) return;
-    const fetchCategories = async () => {
-      const q = query(collection(db, 'vocabularies'));
-      const snap = await getDocs(q);
-      
-      const counts: Record<string, number> = {};
-      snap.docs.forEach(doc => {
-        const cat = doc.data().category || 'Uncategorized';
-        counts[cat] = (counts[cat] || 0) + 1;
-      });
-
-      const extractNumber = (str: string) => {
-        const match = str.match(/\d+/g);
-        return match ? parseInt(match[match.length - 1], 10) : 0;
-      };
-
-      const catArray = Object.keys(counts)
-        .filter(k => k !== 'Hiragana' && k !== 'Katakana')
-        .map(k => ({ name: k, count: counts[k] }))
-        .sort((a, b) => {
-          const numA = extractNumber(a.name);
-          const numB = extractNumber(b.name);
-          if (numA !== numB) return numA - numB;
-          return a.name.localeCompare(b.name);
-        });
-      setCategories(catArray);
-      setLoading(false);
-    };
-    fetchCategories();
+    
+    // Using local static vocabularies
+    const catArray = getCategoriesCount();
+    setCategories(catArray);
+    setLoading(false);
   }, [currentUser]);
 
   const handleLogout = async () => {
@@ -171,7 +150,7 @@ export default function Dashboard() {
                       Flashcard
                     </button>
                     <button 
-                      onClick={() => navigate(`/quiz/Hiragana`)}
+                      onClick={() => navigate(`/quiz/Hiragana/0`)}
                       className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
                     >
                       Latihan
@@ -203,7 +182,41 @@ export default function Dashboard() {
                       Flashcard
                     </button>
                     <button 
-                      onClick={() => navigate(`/quiz/Katakana`)}
+                      onClick={() => navigate(`/quiz/Katakana/0`)}
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Latihan
+                    </button>
+                  </div>
+                                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-emerald-50 p-3 rounded-xl text-emerald-500">
+                      <span className="text-2xl font-bold">が</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-800 text-lg leading-tight">Hiragana Lanjutan</h3>
+                      <p className="text-sm text-slate-500">Dakuten, Yoon, dll</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 mt-auto">
+                    <button 
+                      onClick={() => navigate(`/deck/Hiragana Lanjutan`)}
+                      className="bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Tabel
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/flashcard/Hiragana Lanjutan`)}
+                      className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Flashcard
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/quiz/Hiragana Lanjutan/0`)}
                       className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
                     >
                       Latihan
@@ -211,6 +224,37 @@ export default function Dashboard() {
                   </div>
                 </div>
 
+                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-emerald-50 p-3 rounded-xl text-emerald-500">
+                      <span className="text-2xl font-bold">ガ</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-800 text-lg leading-tight">Katakana Lanjutan</h3>
+                      <p className="text-sm text-slate-500">Dakuten, Yoon, dll</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 mt-auto">
+                    <button 
+                      onClick={() => navigate(`/deck/Katakana Lanjutan`)}
+                      className="bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Tabel
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/flashcard/Katakana Lanjutan`)}
+                      className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Flashcard
+                    </button>
+                    <button 
+                      onClick={() => navigate(`/quiz/Katakana Lanjutan/0`)}
+                      className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1"
+                    >
+                      Latihan
+                    </button>
+                  </div>
+                </div>
               </div>
 
               <h2 className="text-2xl font-black text-slate-800 mb-4">Menu Belajar (Bab)</h2>
@@ -225,7 +269,7 @@ export default function Dashboard() {
                         <BookOpen size={24} />
                       </div>
                       <div>
-                        <h3 className="font-bold text-slate-800 text-lg leading-tight">{cat.name}</h3>
+                        <h3 className="font-bold text-slate-800 text-lg leading-tight">{cat.formattedName || cat.name}</h3>
                         <p className="text-sm text-slate-500">{cat.count} kosakata</p>
                       </div>
                     </div>

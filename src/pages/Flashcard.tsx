@@ -4,8 +4,10 @@ import { db } from '../lib/firebase';
 import { collection, query, where, getDocs, doc, setDoc, getDoc } from 'firebase/firestore';
 import { Vocabulary, UserProgress } from '../types';
 import { ArrowLeft } from 'lucide-react';
-import { hiraganaData, katakanaData } from '../data/kana';
+import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from '../data/kana';
 import { useAuth } from '../contexts/AuthContext';
+
+import { getVocabulariesByCategory, formatCategoryName } from '../data';
 
 export default function Flashcard() {
   const { category } = useParams<{ category: string }>();
@@ -28,12 +30,14 @@ export default function Flashcard() {
 
       if (category === 'Hiragana') {
         fetchedVocabs = hiraganaData as any;
+      } else if (category === 'Hiragana Lanjutan') {
+        fetchedVocabs = hiraganaAdvancedData as any;
+      } else if (category === 'Katakana Lanjutan') {
+        fetchedVocabs = katakanaAdvancedData as any;
       } else if (category === 'Katakana') {
         fetchedVocabs = katakanaData as any;
       } else {
-        const q = query(collection(db, 'vocabularies'), where('category', '==', category));
-        const snap = await getDocs(q);
-        const rawVocabs = snap.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
+        const rawVocabs = getVocabulariesByCategory(category);
         
         // Remove duplicates based on 'jp' text
         const seen = new Set();
@@ -179,7 +183,7 @@ export default function Flashcard() {
   }
 
   const currentCard = vocabs[currentIndex];
-  const isKana = category === 'Hiragana' || category === 'Katakana';
+  const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
   
   // Calculate mastered and difficult counts for the header
   const masteredCount = vocabs.filter(v => progressData[v.id]?.srsLevel === 'good' || progressData[v.id]?.srsLevel === 'easy').length;

@@ -7,6 +7,8 @@ import { calculateNextReview, generateOptions } from '../lib/srs';
 import { useNavigate } from 'react-router-dom';
 import { Zap, Clock, CheckCircle, XCircle, ArrowRight, Trophy } from 'lucide-react';
 
+import { allVocabularies } from '../data';
+
 export default function Study() {
   const { currentUser, userData } = useAuth();
   const navigate = useNavigate();
@@ -40,9 +42,8 @@ export default function Study() {
     const fetchData = async () => {
       setLoading(true);
       
-      // 1. Fetch all vocabs (in real app, limit this or fetch by category)
-      const vocabsSnap = await getDocs(collection(db, 'vocabularies'));
-      const vocabs = vocabsSnap.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
+      // 1. Local static vocabs
+      const vocabs = allVocabularies;
       
       if (vocabs.length === 0) {
         setLoading(false);
@@ -166,20 +167,20 @@ export default function Study() {
     if (srsLevel !== 'easy' && currentProg?.srsLevel === 'easy') newlyMastered = -1; // Lost mastery
 
     const userRef = doc(db, 'users', currentUser.uid);
-    const vocabRef = doc(db, 'vocabularies', vocab.id);
     
     const updates: any[] = [
       updateDoc(userRef, {
         points: increment(pointsGained),
         masteredVocabCount: increment(newlyMastered),
-        totalStudyTime: increment(Math.floor(timeSpentSec)) // basic increment, full session time saved at end
+        totalStudyTime: increment(Math.ceil(timeSpentSec)) // basic increment, full session time saved at end
       })
     ];
 
+    const vocabStatsRef = doc(db, 'vocabStats', vocab.id);
     if (!correct) {
-      updates.push(updateDoc(vocabRef, { failCount: increment(1) }));
+      updates.push(setDoc(vocabStatsRef, { failCount: increment(1) }, { merge: true }));
     } else if (timeSpentSec > 10) {
-      updates.push(updateDoc(vocabRef, { hardCount: increment(1) }));
+      updates.push(setDoc(vocabStatsRef, { hardCount: increment(1) }, { merge: true }));
     }
 
     await Promise.all(updates).catch(console.error);

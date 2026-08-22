@@ -6,7 +6,9 @@ import { collection, query, getDocs, doc, setDoc, where, updateDoc, increment } 
 import { Vocabulary, StudyReport } from '../types';
 import { generateOptions } from '../lib/srs';
 import { Trophy, CheckCircle, XCircle } from 'lucide-react';
-import { hiraganaData, katakanaData } from '../data/kana';
+import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from '../data/kana';
+
+import { getVocabulariesByCategory, allVocabularies, formatCategoryName } from '../data';
 
 export default function Quiz() {
   const { category, sessionIndex } = useParams<{ category: string, sessionIndex: string }>();
@@ -42,19 +44,15 @@ export default function Quiz() {
       let allV: Vocabulary[] = [];
       let catV: Vocabulary[] = [];
 
-      if (category === 'Hiragana' || category === 'Katakana') {
-        catV = (category === 'Hiragana' ? hiraganaData : katakanaData) as any;
+      if (category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan') {
+        catV = (category === 'Hiragana' ? hiraganaData : category === 'Katakana' ? katakanaData : category === 'Hiragana Lanjutan' ? hiraganaAdvancedData : katakanaAdvancedData) as any;
         allV = catV;
         setAllVocabs(allV);
       } else {
-        const qAll = query(collection(db, 'vocabularies'));
-        const snapAll = await getDocs(qAll);
-        allV = snapAll.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
+        allV = allVocabularies;
         setAllVocabs(allV);
         
-        const qCat = query(collection(db, 'vocabularies'), where('category', '==', category));
-        const snapCat = await getDocs(qCat);
-        const rawCatV = snapCat.docs.map(d => ({ ...d.data(), id: d.id } as Vocabulary));
+        const rawCatV = getVocabulariesByCategory(category);
         
         // Remove duplicates
         const seen = new Set();
@@ -163,15 +161,15 @@ export default function Quiz() {
     updateDoc(userRef, {
       points: increment(pointsGained),
       masteredVocabCount: increment(newlyMastered),
-      totalStudyTime: increment(Math.floor(timeSpentSec))
+      totalStudyTime: increment(Math.ceil(timeSpentSec))
     }).catch(console.error);
 
     // Update vocab difficult stats
-    const vocabRef = doc(db, 'vocabularies', currentVocab.id);
+    const vocabStatsRef = doc(db, 'vocabStats', currentVocab.id);
     if (!isCorrect) {
-      updateDoc(vocabRef, { failCount: increment(1) }).catch(console.error);
+      setDoc(vocabStatsRef, { failCount: increment(1) }, { merge: true }).catch(console.error);
     } else if (timeSpentSec > 10) {
-      updateDoc(vocabRef, { hardCount: increment(1) }).catch(console.error);
+      setDoc(vocabStatsRef, { hardCount: increment(1) }, { merge: true }).catch(console.error);
     }
 
     // Wait a bit before next card
@@ -276,7 +274,7 @@ export default function Quiz() {
   const dir = directions[currentIndex];
   const questionText = dir === 'jp-to-id' ? currentVocab.jp : currentVocab.id_translation;
 
-  const isKana = category === 'Hiragana' || category === 'Katakana';
+  const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
   const promptText = dir === 'jp-to-id' 
     ? (isKana ? 'Huruf Jepang → Romaji' : 'Japanese → Indonesian') 
     : (isKana ? 'Romaji → Huruf Jepang' : 'Indonesian → Japanese');
@@ -303,7 +301,7 @@ export default function Quiz() {
             {promptText}
           </p>
           <h2 className="text-5xl md:text-6xl font-black mb-4 text-slate-800 leading-tight">
-            {questionText}
+            <span className="underline decoration-4 underline-offset-8 decoration-indigo-200">{questionText}</span>
           </h2>
         </div>
         

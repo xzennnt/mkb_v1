@@ -32,12 +32,12 @@ export default function StreakCalendar({ history = [] }: { history: string[] }) 
       days.push(
         <div 
           key={d} 
-          className={`flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 rounded-full text-xs sm:text-sm font-bold mx-auto transition-all ${
+          className={`flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-full text-sm font-bold mx-auto transition-all ${
             isLogged 
-              ? 'bg-rose-500 text-white shadow-sm shadow-rose-200' 
+              ? 'bg-rose-500 text-white shadow-sm shadow-rose-200 text-base' 
               : isToday 
                 ? 'border-2 border-slate-300 text-slate-800' 
-                : 'text-slate-400 hover:bg-slate-100'
+                : 'text-slate-500 hover:bg-slate-100'
           }`}
         >
           {isLogged ? '🔥' : d}

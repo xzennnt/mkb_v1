@@ -1,0 +1,11 @@
+--- src/pages/Quiz.tsx
++++ src/pages/Quiz.tsx
+@@ -298,7 +298,7 @@
+             {promptText}
+           </p>
+           <h2 className="text-5xl md:text-6xl font-black mb-4 text-slate-800 leading-tight">
+-            {questionText}
++            <span className="underline decoration-4 underline-offset-8 decoration-indigo-200">{questionText}</span>
+           </h2>
+         </div>
+ 

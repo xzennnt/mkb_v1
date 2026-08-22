@@ -59,3 +59,71 @@ export const katakanaData = katakanaGrid.filter(k => !k.empty).map(k => ({
   category: 'Katakana',
   romaji: k.romaji
 }));
+
+const hAdvRaw = [
+  'が:ga', 'ぎ:gi', 'ぐ:gu', 'げ:ge', 'ご:go',
+  'ざ:za', 'じ:ji', 'ず:zu', 'ぜ:ze', 'ぞ:zo',
+  'だ:da', 'ぢ:ji', 'づ:zu', 'で:de', 'ど:do',
+  'ば:ba', 'び:bi', 'ぶ:bu', 'べ:be', 'ぼ:bo',
+  'ぱ:pa', 'ぴ:pi', 'ぷ:pu', 'ぺ:pe', 'ぽ:po',
+  'きゃ:kya', 'きゅ:kyu', 'きょ:kyo', 'empty:', 'empty:',
+  'しゃ:sha', 'しゅ:shu', 'しょ:sho', 'empty:', 'empty:',
+  'ちゃ:cha', 'ちゅ:chu', 'ちょ:cho', 'empty:', 'empty:',
+  'にゃ:nya', 'にゅ:nyu', 'にょ:nyo', 'empty:', 'empty:',
+  'ひゃ:hya', 'ひゅ:hyu', 'ひょ:hyo', 'empty:', 'empty:',
+  'みゃ:mya', 'みゅ:myu', 'みょ:myo', 'empty:', 'empty:',
+  'りゃ:rya', 'りゅ:ryu', 'りょ:ryo', 'empty:', 'empty:',
+  'ぎゃ:gya', 'ぎゅ:gyu', 'ぎょ:gyo', 'empty:', 'empty:',
+  'じゃ:ja', 'じゅ:ju', 'じょ:jo', 'empty:', 'empty:',
+  'びゃ:bya', 'びゅ:byu', 'びょ:byo', 'empty:', 'empty:',
+  'ぴゃ:pya', 'ぴゅ:pyu', 'ぴょ:pyo', 'empty:', 'empty:',
+  'っ:sokuon', 'empty:', 'empty:', 'empty:', 'empty:'
+];
+
+export const hiraganaAdvancedGrid: KanaItem[] = hAdvRaw.map(str => {
+  const [jp, romaji] = str.split(':');
+  if (jp === 'empty') return { jp: '', romaji: '', empty: true };
+  return { jp, romaji, empty: false };
+});
+
+const kAdvRaw = [
+  'ガ:ga', 'ギ:gi', 'グ:gu', 'ゲ:ge', 'ゴ:go',
+  'ザ:za', 'ジ:ji', 'ズ:zu', 'ゼ:ze', 'ゾ:zo',
+  'ダ:da', 'ヂ:ji', 'ヅ:zu', 'デ:de', 'ド:do',
+  'バ:ba', 'ビ:bi', 'ブ:bu', 'ベ:be', 'ボ:bo',
+  'パ:pa', 'ピ:pi', 'プ:pu', 'ペ:pe', 'ポ:po',
+  'キャ:kya', 'キュ:kyu', 'キョ:kyo', 'empty:', 'empty:',
+  'シャ:sha', 'シュ:shu', 'ショ:sho', 'empty:', 'empty:',
+  'チャ:cha', 'チュ:chu', 'チョ:cho', 'empty:', 'empty:',
+  'ニャ:nya', 'ニュ:nyu', 'ニョ:nyo', 'empty:', 'empty:',
+  'ヒャ:hya', 'ヒュ:hyu', 'ヒョ:hyo', 'empty:', 'empty:',
+  'ミャ:mya', 'ミュ:myu', 'ミョ:myo', 'empty:', 'empty:',
+  'リャ:rya', 'リュ:ryu', 'リョ:ryo', 'empty:', 'empty:',
+  'ギャ:gya', 'ギュ:gyu', 'ギョ:gyo', 'empty:', 'empty:',
+  'ジャ:ja', 'ジュ:ju', 'ジョ:jo', 'empty:', 'empty:',
+  'ビャ:bya', 'ビュ:byu', 'ビョ:byo', 'empty:', 'empty:',
+  'ピャ:pya', 'ピュ:pyu', 'ピョ:pyo', 'empty:', 'empty:',
+  'ッ:sokuon', 'empty:', 'empty:', 'empty:', 'empty:'
+];
+
+export const katakanaAdvancedGrid: KanaItem[] = kAdvRaw.map(str => {
+  const [jp, romaji] = str.split(':');
+  if (jp === 'empty') return { jp: '', romaji: '', empty: true };
+  return { jp, romaji, empty: false };
+});
+
+export const hiraganaAdvancedData = hiraganaAdvancedGrid.filter(k => !k.empty).map(k => ({
+  id: `ha_${k.romaji}`,
+  jp: k.jp,
+  id_translation: k.romaji,
+  category: 'Hiragana Lanjutan',
+  romaji: k.romaji
+}));
+
+export const katakanaAdvancedData = katakanaAdvancedGrid.filter(k => !k.empty).map(k => ({
+  id: `ka_${k.romaji}`,
+  jp: k.jp,
+  id_translation: k.romaji,
+  category: 'Katakana Lanjutan',
+  romaji: k.romaji
+}));
