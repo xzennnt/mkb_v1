@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import { UserData, StudySession, Vocabulary } from '../types';
+import mnnBab1_5 from '../data/mnn1_bab1_5.json';
+import mnnBab6_8 from '../data/mnn1_bab6_8.json';
+import mnnBab9_10 from '../data/mnn1_bab9_10.json';
 
 export default function Admin() {
   const [activeTab, setActiveTab] = useState<'upload' | 'users' | 'sessions' | 'difficult'>('upload');
@@ -135,6 +138,36 @@ export default function Admin() {
     }
   };
 
+  const handleSeedBab1to10 = async () => {
+    try {
+      setLoading(true);
+      setStatus('Menambahkan data Bab 1-10...');
+      
+      const allBab = [...mnnBab1_5, ...mnnBab6_8, ...mnnBab9_10] as any[];
+      let count = 0;
+      
+      for (const item of allBab) {
+        // Create unique ID based on category and jp word to avoid duplicates
+        const safeId = `${item.category}_${item.jp}`.replace(/[^a-zA-Z0-9_]/g, '_');
+        const docRef = doc(db, 'vocabularies', safeId);
+        await setDoc(docRef, {
+          jp: item.jp,
+          romaji: item.romaji || "",
+          id_translation: item.id_translation || "",
+          category: item.category,
+          createdAt: Date.now()
+        });
+        count++;
+      }
+      
+      setStatus(`Berhasil menambahkan ${count} kosakata Bab 1-10!`);
+    } catch (err: any) {
+      setStatus(`Error seeding: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const formatTime = (seconds: number) => {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
@@ -197,13 +230,22 @@ export default function Admin() {
             Pilih opsi di bawah ini untuk menambahkan data otomatis ke dalam database. (Upload kustom via JSON telah dinonaktifkan).
           </div>
           
-          <button
-            onClick={handleSeedKana}
-            disabled={loading}
-            className="bg-emerald-600 text-white font-bold py-3 px-8 rounded-xl shadow-sm hover:bg-emerald-700 disabled:bg-slate-300 transition-colors"
-          >
-            {loading ? 'Menyimpan...' : 'Tambah Hiragana & Katakana'}
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={handleSeedKana}
+              disabled={loading}
+              className="bg-emerald-600 text-white font-bold py-3 px-8 rounded-xl shadow-sm hover:bg-emerald-700 disabled:bg-slate-300 transition-colors"
+            >
+              {loading ? 'Menyimpan...' : 'Tambah Hiragana & Katakana'}
+            </button>
+            <button
+              onClick={handleSeedBab1to10}
+              disabled={loading}
+              className="bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl shadow-sm hover:bg-indigo-700 disabled:bg-slate-300 transition-colors"
+            >
+              {loading ? 'Menyimpan...' : 'Migrasi / Tambah Bab 1-10'}
+            </button>
+          </div>
 
           {status && (
             <div className="mt-6 p-4 bg-indigo-50 rounded-xl text-sm font-bold text-indigo-800 border border-indigo-100">
