@@ -7,6 +7,9 @@ import mnn1_bab16_20 from './mnn1_bab16_20.json';
 import mnn1_bab21_25 from './mnn1_bab21_25.json';
 import mnn2_bab26_30 from './mnn2_bab26_30.json';
 import mnn2_bab31_35 from './mnn2_bab31_35.json';
+import mnn2_bab36_40 from './mnn2_bab36_40.json';
+import mnn2_bab41_45 from './mnn2_bab41_45.json';
+import mnn2_bab46_50 from './mnn2_bab46_50.json';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from './kana';
 
 // Combine all JSON
@@ -18,7 +21,10 @@ const allJson = [
   ...mnn1_bab16_20,
   ...mnn1_bab21_25,
   ...mnn2_bab26_30,
-  ...mnn2_bab31_35
+  ...mnn2_bab31_35,
+  ...mnn2_bab36_40,
+  ...mnn2_bab41_45,
+  ...mnn2_bab46_50
 ];
 
 const kana = [...hiraganaData, ...katakanaData, ...hiraganaAdvancedData, ...katakanaAdvancedData];

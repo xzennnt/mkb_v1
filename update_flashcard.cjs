@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+const fs = require('fs');
+
+const code = `import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
@@ -23,7 +25,6 @@ export default function Flashcard() {
   const [isFinished, setIsFinished] = useState(false);
   
   const [masteredCount, setMasteredCount] = useState(0);
-  const [sessionTotal, setSessionTotal] = useState(0);
 
   useEffect(() => {
     const fetchVocabs = async () => {
@@ -66,21 +67,21 @@ export default function Flashcard() {
         // Or for now, we just put everything in queue, but "Ingat" removes them from queue.
         // For SRS: if it's already 'good'/'easy', we can count it as mastered for this session.
         const dueQueue: Vocabulary[] = [];
-        const now = Date.now();
         fetchedVocabs.forEach(v => {
           const prog = pData[v.id];
-          if (!prog || prog.nextReviewTime <= now) {
-            dueQueue.push(v);
+          if (prog && (prog.srsLevel === 'good' || prog.srsLevel === 'easy')) {
+            mCount++;
           }
+          // In a real SRS we'd check if nextReviewTime < Date.now(), 
+          // but let's just let the user study all in the category for now, 
+          // just placing them in queue
+          dueQueue.push(v); 
         });
         
         setQueue(dueQueue);
-        setSessionTotal(dueQueue.length);
-        setMasteredCount(0);
+        setMasteredCount(mCount);
       } else {
         setQueue(fetchedVocabs);
-        setSessionTotal(fetchedVocabs.length);
-        setMasteredCount(0);
       }
       setLoading(false);
     };
@@ -167,25 +168,6 @@ export default function Flashcard() {
     );
   }
 
-  if (sessionTotal === 0 && initialVocabs.length > 0 && !isFinished) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F1F5F9] p-4">
-        <div className="text-center">
-          <h2 className="text-3xl font-black text-[#1a1f36] mb-4">Hebat! 🎉</h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-md">
-            Kamu sudah mengingat semua kartu dalam kategori ini. Tidak ada kartu yang perlu diulang saat ini. Silakan kembali lagi nanti untuk mereview.
-          </p>
-          <button 
-            onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)} 
-            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow hover:bg-indigo-700 transition"
-          >
-            Kembali ke Menu
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   if (isFinished) {
     return (
       <motion.div 
@@ -199,7 +181,7 @@ export default function Flashcard() {
         </p>
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <button 
-            onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)}
+            onClick={() => navigate(\`/deck/\${encodeURIComponent(category!)}\`)}
             className="py-3 px-6 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors w-full"
           >
             Kembali ke Menu
@@ -217,7 +199,7 @@ export default function Flashcard() {
     <div className="min-h-screen bg-[#F1F5F9] text-slate-800 flex flex-col font-sans overflow-hidden">
       <header className="flex justify-between items-center p-6 relative max-w-5xl mx-auto w-full">
         <button 
-          onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)}
+          onClick={() => navigate(\`/deck/\${encodeURIComponent(category!)}\`)}
           className="flex items-center gap-2 font-bold text-lg text-indigo-600 hover:text-indigo-800 transition-colors z-10"
         >
           <ArrowLeft size={20} /> Kembali
@@ -236,7 +218,7 @@ export default function Flashcard() {
               Sisa: {remainingCount}
             </div>
             <div className="font-bold text-xl text-slate-700">
-              {sessionTotal - remainingCount + 1 > sessionTotal ? sessionTotal : sessionTotal - remainingCount + 1} / {sessionTotal}
+              {initialVocabs.length - remainingCount} / {initialVocabs.length}
             </div>
             <div className="w-auto px-4 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold text-lg shadow-sm">
               Ingat: {masteredCount}
@@ -256,7 +238,7 @@ export default function Flashcard() {
             >
               <div 
                 onClick={() => setIsFlipped(!isFlipped)}
-                className={`relative w-full aspect-[4/3] max-h-[400px] cursor-pointer transition-all duration-500 transform-style-3d ${isFlipped ? 'rotate-x-180' : ''}`}
+                className={\`relative w-full aspect-[4/3] max-h-[400px] cursor-pointer transition-all duration-500 transform-style-3d \${isFlipped ? 'rotate-x-180' : ''}\`}
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 {/* Front */}
@@ -301,3 +283,7 @@ export default function Flashcard() {
     </div>
   );
 }
+`;
+
+fs.writeFileSync('src/pages/Flashcard.tsx', code);
+console.log("Updated Flashcard.tsx");
