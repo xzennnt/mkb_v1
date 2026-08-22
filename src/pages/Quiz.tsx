@@ -411,12 +411,13 @@ export default function Quiz() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl mt-auto">
           {options.map((opt, idx) => {
+            let correctAns = currentVocab.jp;
+            if (dir === 'jp-to-id' || dir === 'romaji-to-id') correctAns = currentVocab.id_translation;
+            else if (dir === 'jp-to-romaji' || dir === 'id-to-romaji') correctAns = currentVocab.romaji || currentVocab.jp;
+            
             let btnClass = "bg-white border-2 border-slate-100 hover:border-indigo-500 hover:bg-indigo-50 text-slate-800 group";
             
             if (selectedAnswer !== null) {
-              let correctAns = currentVocab.jp;
-    if (dir === 'jp-to-id' || dir === 'romaji-to-id') correctAns = currentVocab.id_translation;
-    else if (dir === 'jp-to-romaji' || dir === 'id-to-romaji') correctAns = currentVocab.romaji || currentVocab.jp;
               if (opt === correctAns) {
                 btnClass = "bg-emerald-50 border-2 border-emerald-500 text-emerald-900";
               } else if (opt === selectedAnswer) {

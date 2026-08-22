@@ -1,167 +1,5 @@
 [
   {
-    "jp": "名前",
-    "romaji": "なまえ",
-    "id_translation": "nama",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "氏名",
-    "romaji": "しめい",
-    "id_translation": "nama lengkap",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "前",
-    "romaji": "まえ",
-    "id_translation": "di depan",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "午前",
-    "romaji": "ごぜん",
-    "id_translation": "pagi/AM",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "国",
-    "romaji": "くに",
-    "id_translation": "Negara",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "国際交流",
-    "romaji": "こくさいこうりゅう",
-    "id_translation": "pertukaran internasional",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "外国",
-    "romaji": "がいこく",
-    "id_translation": "orang asing",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "私",
-    "romaji": "わたし",
-    "id_translation": "saya",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "父",
-    "romaji": "ちち",
-    "id_translation": "ayah",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "お父さん",
-    "romaji": "おとうさん",
-    "id_translation": "ayah",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "母",
-    "romaji": "はは",
-    "id_translation": "ibu",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "お母さん",
-    "romaji": "おかあさん",
-    "id_translation": "ibu",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "子ども",
-    "romaji": "こども",
-    "id_translation": "anak",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "男の子",
-    "romaji": "おとこのこ",
-    "id_translation": "anak laki-laki",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "女の子",
-    "romaji": "おんなのこ",
-    "id_translation": "anak perempuan",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "日本",
-    "romaji": "にほん",
-    "id_translation": "jepang",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "～曜日",
-    "romaji": "～ようび",
-    "id_translation": "~hari",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "～日",
-    "romaji": "～にち",
-    "id_translation": "~hari",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "今日",
-    "romaji": "きょう",
-    "id_translation": "hari ini",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "日本語",
-    "romaji": "にほんご",
-    "id_translation": "bahasa jepang",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "昨日",
-    "romaji": "きのう",
-    "id_translation": "kemarin",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "明日",
-    "romaji": "あした",
-    "id_translation": "besok",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "毎日",
-    "romaji": "まいにち",
-    "id_translation": "setiap hari",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "誕生日",
-    "romaji": "たんじょうび",
-    "id_translation": "hari ulang tahun",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "本",
-    "romaji": "ほん",
-    "id_translation": "buku",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "水",
-    "romaji": "みず",
-    "id_translation": "air",
-    "category": "JFT_A2_1_50"
-  },
-  {
-    "jp": "水",
-    "romaji": "すい",
-    "id_translation": "air",
-    "category": "JFT_A2_1_50"
-  },
-  {
     "jp": "水道",
     "romaji": "すいどう",
     "id_translation": "penyimpanan air",
@@ -360,6 +198,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "～曜日",
+    "romaji": "～ようび",
+    "id_translation": "~hari",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "朝",
     "romaji": "あさ",
     "id_translation": "pagi",
@@ -492,6 +336,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "今日",
+    "romaji": "きょう",
+    "id_translation": "hari ini",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "今週",
     "romaji": "こんしゅう",
     "id_translation": "minggu ini",
@@ -510,6 +360,24 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "今月",
+    "romaji": "こんげつ",
+    "id_translation": "bulan ini",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "今年",
+    "romaji": "ことし",
+    "id_translation": "tahun ini",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "今週",
+    "romaji": "こんしゅう",
+    "id_translation": "minggu ini",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "来週",
     "romaji": "らいしゅう",
     "id_translation": "minggu depan",
@@ -525,6 +393,12 @@
     "jp": "週末",
     "romaji": "しゅうまつ",
     "id_translation": "akhir pekan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "今度",
+    "romaji": "こんど",
+    "id_translation": "kali ini",
     "category": "JFT_A2_1_50"
   },
   {
@@ -588,6 +462,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "会社",
+    "romaji": "かいしゃ",
+    "id_translation": "perusahaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "神社",
     "romaji": "じんじゃ",
     "id_translation": "pintu kuil",
@@ -597,6 +477,18 @@
     "jp": "来ます",
     "romaji": "きます",
     "id_translation": "datang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "来週",
+    "romaji": "らいしゅう",
+    "id_translation": "minggu depan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "来年",
+    "romaji": "らいねん",
+    "id_translation": "tahun depan",
     "category": "JFT_A2_1_50"
   },
   {
@@ -762,6 +654,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "出口",
+    "romaji": "でぐち",
+    "id_translation": "pintu keluar",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "出かける",
     "romaji": "でかける",
     "id_translation": "pergi keluar",
@@ -900,15 +798,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "映画",
+    "romaji": "えいが",
+    "id_translation": "bioskop",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "計画",
     "romaji": "けいかく",
     "id_translation": "rencana",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "日本語",
+    "romaji": "にほんご",
+    "id_translation": "bahasa jepang",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "英語",
     "romaji": "えいご",
     "id_translation": "bahasa inggris",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "勉強します",
+    "romaji": "べんきょうします",
+    "id_translation": "belajar",
     "category": "JFT_A2_1_50"
   },
   {
@@ -936,6 +852,18 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "温度",
+    "romaji": "おんど",
+    "id_translation": "suhu",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "温泉",
+    "romaji": "おんせん",
+    "id_translation": "onsen",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "予定",
     "romaji": "よてい",
     "id_translation": "rencana",
@@ -948,6 +876,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "予定",
+    "romaji": "よてい",
+    "id_translation": "rencana",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "指定席",
     "romaji": "していせき",
     "id_translation": "tempat duduk yang dipesan",
@@ -957,6 +891,12 @@
     "jp": "設定する",
     "romaji": "せっていする",
     "id_translation": "penyesuaian, pengaturan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "旅行します",
+    "romaji": "りょこうします",
+    "id_translation": "bepergian",
     "category": "JFT_A2_1_50"
   },
   {
@@ -978,9 +918,21 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "大学",
+    "romaji": "だいがく",
+    "id_translation": "universitas",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "留学する",
     "romaji": "りゅうがくする",
     "id_translation": "belajar di luar negeri",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "学生",
+    "romaji": "がくせい",
+    "id_translation": "pelajar",
     "category": "JFT_A2_1_50"
   },
   {
@@ -993,6 +945,12 @@
     "jp": "先生",
     "romaji": "せんせい",
     "id_translation": "guru",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "誕生日",
+    "romaji": "たんじょうび",
+    "id_translation": "hari ulang tahun",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1014,6 +972,42 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "学校",
+    "romaji": "がっこう",
+    "id_translation": "sekolah",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "高校",
+    "romaji": "こうこう",
+    "id_translation": "SMA",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "生活",
+    "romaji": "せいかつ",
+    "id_translation": "kehidupan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "去年",
+    "romaji": "きょねん",
+    "id_translation": "tahun lalu",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "先週",
+    "romaji": "せんしゅう",
+    "id_translation": "minggu lalu",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "先生",
+    "romaji": "せんせい",
+    "id_translation": "guru",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "連絡先",
     "romaji": "れんらくさき",
     "id_translation": "kontak alamat",
@@ -1023,6 +1017,18 @@
     "jp": "仕事",
     "romaji": "しごと",
     "id_translation": "pekerjaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "仕事",
+    "romaji": "しごと",
+    "id_translation": "pekerjaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "食事",
+    "romaji": "しょくじ",
+    "id_translation": "makanan",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1104,9 +1110,27 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "大人",
+    "romaji": "おとな",
+    "id_translation": "orang dewasa",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "犬",
     "romaji": "いぬ",
     "id_translation": "anjing",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "家族",
+    "romaji": "かぞく",
+    "id_translation": "keluarga",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "夕方",
+    "romaji": "ゆうがた",
+    "id_translation": "sore",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1128,6 +1152,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "英語",
+    "romaji": "えいご",
+    "id_translation": "bahasa inggris",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "音楽",
     "romaji": "おんがく",
     "id_translation": "musik",
@@ -1137,6 +1167,12 @@
     "jp": "音",
     "romaji": "おと",
     "id_translation": "suara",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "音楽",
+    "romaji": "おんがく",
+    "id_translation": "musik",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1173,6 +1209,12 @@
     "jp": "電話番号",
     "romaji": "でんわばんごう",
     "id_translation": "nomor telepon",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "季節",
+    "romaji": "きせつ",
+    "id_translation": "musim",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1230,6 +1272,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "天気",
+    "romaji": "てんき",
+    "id_translation": "cuaca",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "晴れ",
     "romaji": "はれ",
     "id_translation": "cerah",
@@ -1260,6 +1308,24 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "昨日",
+    "romaji": "きのう",
+    "id_translation": "kemarin",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "昨年",
+    "romaji": "さくねん",
+    "id_translation": "tahun lalu",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "明日",
+    "romaji": "あした",
+    "id_translation": "besok",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "説明する",
     "romaji": "せつめいする",
     "id_translation": "menjelaskan",
@@ -1269,6 +1335,18 @@
     "jp": "明るい",
     "romaji": "あかるい",
     "id_translation": "terang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "毎日",
+    "romaji": "まいにち",
+    "id_translation": "setiap hari",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "毎年",
+    "romaji": "まいとし",
+    "id_translation": "setiap tahun",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1302,6 +1380,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "食堂",
+    "romaji": "しょくどう",
+    "id_translation": "kantin",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "便利（な）",
     "romaji": "べんり（な）",
     "id_translation": "praktis",
@@ -1320,9 +1404,21 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "便利（な）",
+    "romaji": "べんり（な）",
+    "id_translation": "praktis",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "利用する",
     "romaji": "りようする",
     "id_translation": "menggunakan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "不便（な）",
+    "romaji": "ふべん（な）",
+    "id_translation": "tidak praktis",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1368,9 +1464,21 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "水道",
+    "romaji": "すいどう",
+    "id_translation": "penampungan air",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "道具",
     "romaji": "どうぐ",
     "id_translation": "binatang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "公園",
+    "romaji": "こうえん",
+    "id_translation": "taman",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1386,9 +1494,21 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "銀行",
+    "romaji": "ぎんこう",
+    "id_translation": "bank",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "お寺",
     "romaji": "おてら",
     "id_translation": "kuil",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "神社",
+    "romaji": "じんじゃ",
+    "id_translation": "pintu kuil",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1446,9 +1566,21 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "時間",
+    "romaji": "じかん",
+    "id_translation": "waktu",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "場所",
     "romaji": "ばしょ",
     "id_translation": "tempat",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "広場",
+    "romaji": "ひろば",
+    "id_translation": "lapang luas",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1458,9 +1590,27 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "会場",
+    "romaji": "かいじょう",
+    "id_translation": "tempat pertemuan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "場所",
+    "romaji": "ばしょ",
+    "id_translation": "tempat",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "住所",
     "romaji": "じゅうしょ",
     "id_translation": "tempat tinggal, domisili",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "近所",
+    "romaji": "きんじょ",
+    "id_translation": "tetangga",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1476,9 +1626,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "受付",
+    "romaji": "うけつけ",
+    "id_translation": "resepsionis",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "門",
     "romaji": "もん",
     "id_translation": "gerbang(",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "電車",
+    "romaji": "でんしゃ",
+    "id_translation": "kereta",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "電気",
+    "romaji": "でんき",
+    "id_translation": "listrik",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "電話番号",
+    "romaji": "でんわばんごう",
+    "id_translation": "nomor telepon",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1491,6 +1665,12 @@
     "jp": "止まる",
     "romaji": "とまる",
     "id_translation": "berhenti",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "中止",
+    "romaji": "ちゅうし",
+    "id_translation": "penghentian",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1536,9 +1716,45 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "博物館",
+    "romaji": "はくぶつかん",
+    "id_translation": "museum",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "動物園",
+    "romaji": "どうぶつえん",
+    "id_translation": "kebun binatang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "飲み物",
+    "romaji": "のみもの",
+    "id_translation": "minuman",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "博物館",
+    "romaji": "はくぶつかん",
+    "id_translation": "museum",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "旅館",
+    "romaji": "りょかん",
+    "id_translation": "penginapan model jepang",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "図書館",
     "romaji": "としょかん",
     "id_translation": "perpustakaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "動物園",
+    "romaji": "どうぶつえん",
+    "id_translation": "kebun binatang",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1566,6 +1782,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "試合",
+    "romaji": "しあい",
+    "id_translation": "pertandingan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "都合",
     "romaji": "つごう",
     "id_translation": "kenyamanan",
@@ -1578,6 +1800,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "場合",
+    "romaji": "ばあい",
+    "id_translation": "keadaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "難しい",
     "romaji": "むずかしい",
     "id_translation": "sulit",
@@ -1587,6 +1815,18 @@
     "jp": "登る",
     "romaji": "のぼる",
     "id_translation": "mendaki",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "練習",
+    "romaji": "れんしゅう",
+    "id_translation": "latihan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "漢字",
+    "romaji": "かんじ",
+    "id_translation": "kanji",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1608,6 +1848,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "無料",
+    "romaji": "むりょう",
+    "id_translation": "gratis",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "材料",
     "romaji": "ざいりょう",
     "id_translation": "bahan",
@@ -1617,6 +1863,12 @@
     "jp": "料理",
     "romaji": "りょうり",
     "id_translation": "masakan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "料金",
+    "romaji": "りょうきん",
+    "id_translation": "ongkos",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1638,6 +1890,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "図書館",
+    "romaji": "としょかん",
+    "id_translation": "perpustakaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "貸す",
     "romaji": "かす",
     "id_translation": "meminjamkan",
@@ -1647,6 +1905,42 @@
     "jp": "教える",
     "romaji": "おしえる",
     "id_translation": "mengajarkan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "教科書",
+    "romaji": "きょうかしょ",
+    "id_translation": "buku sekolah",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "教室",
+    "romaji": "きょうしつ",
+    "id_translation": "kelas",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "説明する",
+    "romaji": "せつめいする",
+    "id_translation": "menjelaskan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "午前",
+    "romaji": "ごぜん",
+    "id_translation": "pagi",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "午後",
+    "romaji": "ごご",
+    "id_translation": "siang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "教科書",
+    "romaji": "きょうかしょ",
+    "id_translation": "buku sekolah",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1668,6 +1962,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "全部",
+    "romaji": "ぜんぶ",
+    "id_translation": "semua",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "～回",
     "romaji": "～かい",
     "id_translation": "~kali",
@@ -1677,6 +1977,30 @@
     "jp": "参加する",
     "romaji": "さんかする",
     "id_translation": "ikut serta",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "参加する",
+    "romaji": "さんかする",
+    "id_translation": "ikut serta",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "用意する",
+    "romaji": "よういする",
+    "id_translation": "mempersiapkan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "用事",
+    "romaji": "ようじ",
+    "id_translation": "urusan, keperluan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "利用する",
+    "romaji": "りようする",
+    "id_translation": "menggunakan",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1704,15 +2028,39 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "材料",
+    "romaji": "ざいりょう",
+    "id_translation": "bahan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "野菜",
     "romaji": "やさい",
     "id_translation": "sayuran",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "野菜",
+    "romaji": "やさい",
+    "id_translation": "sayuran",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "牛肉",
+    "romaji": "ぎゅうにく",
+    "id_translation": "daging sapi",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "牛乳",
     "romaji": "ぎゅうにゅう",
     "id_translation": "susu sapi",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "豚肉",
+    "romaji": "ぶたにく",
+    "id_translation": "daging babi",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1728,9 +2076,27 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "持って行く",
+    "romaji": "もっていく",
+    "id_translation": "membawa pergi",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "卵",
     "romaji": "たまご",
     "id_translation": "telur",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "料理",
+    "romaji": "りょうり",
+    "id_translation": "masakan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "調理方法",
+    "romaji": "ちょうりほうほう",
+    "id_translation": "nyaman mendengarkan",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1746,15 +2112,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "調理方法",
+    "romaji": "ちょうりほうほう",
+    "id_translation": "nyaman mendengarkan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "調べる",
     "romaji": "しらべる",
     "id_translation": "memerikasa",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "調理方法",
+    "romaji": "ちょうりほうほう",
+    "id_translation": "nyaman mendengarkan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "味",
     "romaji": "あじ",
     "id_translation": "rasa",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "意味",
+    "romaji": "いみ",
+    "id_translation": "artinya",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1782,6 +2166,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "苦手（な）",
+    "romaji": "にがて（な）",
+    "id_translation": "tidak suka",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "手",
     "romaji": "て",
     "id_translation": "tangan",
@@ -1794,15 +2184,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "上手（な）",
+    "romaji": "じょうず（な）",
+    "id_translation": "pintar",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "コピー機",
     "romaji": "こぴーき",
     "id_translation": "printer",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "数字",
+    "romaji": "すうじ",
+    "id_translation": "angka",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "机",
     "romaji": "つくえ",
     "id_translation": "meja",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "都合",
+    "romaji": "つごう",
+    "id_translation": "kenyamanan",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1830,9 +2238,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "氏名",
+    "romaji": "しめい",
+    "id_translation": "nama lengkap",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "理由",
+    "romaji": "りゆう",
+    "id_translation": "alsan, logika",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "自由",
     "romaji": "じゆう",
     "id_translation": "kebebasan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "連絡先",
+    "romaji": "れんらくさき",
+    "id_translation": "kontak alamat",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "連絡先",
+    "romaji": "れんらくさき",
+    "id_translation": "kontak alamat",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1890,15 +2322,45 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "病気",
+    "romaji": "びょうき",
+    "id_translation": "sakit",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "病院",
     "romaji": "びょういん",
     "id_translation": "rumah sakit",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "病院",
+    "romaji": "びょういん",
+    "id_translation": "rumah sakit",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "入院する",
+    "romaji": "にゅういんする",
+    "id_translation": "masuk rumah sakit",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "医者",
     "romaji": "いしゃ",
     "id_translation": "dokter",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "医者",
+    "romaji": "いしゃ",
+    "id_translation": "dokter",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "住所",
+    "romaji": "じゅうしょ",
+    "id_translation": "tempat tinggal, domisili",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1929,6 +2391,12 @@
     "jp": "寝る",
     "romaji": "ねる",
     "id_translation": "tidur",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "記入する",
+    "romaji": "きにゅうする",
+    "id_translation": "mengisi",
     "category": "JFT_A2_1_50"
   },
   {
@@ -1998,6 +2466,12 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "運動する",
+    "romaji": "うんどうする",
+    "id_translation": "berolahraga",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "運転",
     "romaji": "うんてん",
     "id_translation": "menyetir",
@@ -2058,15 +2532,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "両親",
+    "romaji": "りょうしん",
+    "id_translation": "orang tua",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "親切（な）",
     "romaji": "しんせつ（な）",
     "id_translation": "baik hati",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "男の子",
+    "romaji": "おとこのこ",
+    "id_translation": "anak laki-laki",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "男性",
     "romaji": "だんせい",
     "id_translation": "pria",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "女の子",
+    "romaji": "おんなのこ",
+    "id_translation": "anak perempuan",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2082,9 +2574,39 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "誕生日",
+    "romaji": "たんじょうび",
+    "id_translation": "hari ulang tahun",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "結婚",
     "romaji": "けっこん",
     "id_translation": "menikah",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "結婚",
+    "romaji": "けっこん",
+    "id_translation": "menikah",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "時計",
+    "romaji": "とけい",
+    "id_translation": "jam tangan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "会計",
+    "romaji": "かいけい",
+    "id_translation": "bendahara",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "計画",
+    "romaji": "けいかく",
+    "id_translation": "rencana",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2103,6 +2625,12 @@
     "jp": "選ぶ",
     "romaji": "えらぶ",
     "id_translation": "memilih",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "合格する",
+    "romaji": "ごうかくする",
+    "id_translation": "lulus",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2154,9 +2682,21 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "観光地",
+    "romaji": "かんこうち",
+    "id_translation": "tempat wisata, daerah pariwisata, tempat tamasya",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "光る",
     "romaji": "ひかる",
     "id_translation": "cahaya",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "観光地",
+    "romaji": "かんこうち",
+    "id_translation": "tempat wisata, daerah pariwisata, tempat tamasya",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2172,6 +2712,24 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "経験",
+    "romaji": "けいけん",
+    "id_translation": "pengalaman",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "体験",
+    "romaji": "たいけん",
+    "id_translation": "pengalaman",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "写真",
+    "romaji": "しゃしん",
+    "id_translation": "foto",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "写真",
     "romaji": "しゃしん",
     "id_translation": "foto",
@@ -2184,9 +2742,21 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "歌手",
+    "romaji": "かしゅ",
+    "id_translation": "penyanyi",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "長い",
     "romaji": "ながい",
     "id_translation": "panjang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "店長",
+    "romaji": "てんちょう",
+    "id_translation": "manajer toko",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2220,9 +2790,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "注文",
+    "romaji": "ちゅうもん",
+    "id_translation": "memesan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "文化",
     "romaji": "ぶんか",
     "id_translation": "budaya",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "予約",
+    "romaji": "よやく",
+    "id_translation": "Pemesanan tempat, pemesanan, reservasi, pesanan, buking",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "電話番号",
+    "romaji": "でんわばんごう",
+    "id_translation": "nomor telepon",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "電話番号",
+    "romaji": "でんわばんごう",
+    "id_translation": "nomor telepon",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2238,9 +2832,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "牛乳",
+    "romaji": "ぎゅうにゅう",
+    "id_translation": "susu sapi",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "禁煙",
     "romaji": "きんえん",
     "id_translation": "larangan meroko",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "禁止",
+    "romaji": "きんし",
+    "id_translation": "Masa larangan minuman keras, larang, pemegatan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "禁煙",
+    "romaji": "きんえん",
+    "id_translation": "larangan meroko",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "自由",
+    "romaji": "じゆう",
+    "id_translation": "kebebasan",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2250,9 +2868,27 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "自転車",
+    "romaji": "じてんしゃ",
+    "id_translation": "kendaraan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "事故",
     "romaji": "じこ",
     "id_translation": "kecelakaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "自分",
+    "romaji": "じぶん",
+    "id_translation": "diri sendiri",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "自動",
+    "romaji": "じどう",
+    "id_translation": "otomatisasi",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2280,15 +2916,51 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "満足（な）",
+    "romaji": "まんぞく（な）",
+    "id_translation": "puas",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "切る",
     "romaji": "きる",
     "id_translation": "memotong",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "親切（な）",
+    "romaji": "しんせつ（な）",
+    "id_translation": "baik hati",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "大切（な）",
+    "romaji": "たいせつ（な）",
+    "id_translation": "penting",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "焼く",
     "romaji": "やく",
     "id_translation": "membakar, mendiang, panggang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "自然",
+    "romaji": "しぜん",
+    "id_translation": "alam, kodrat, sifat dasar, alamiah",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "交通",
+    "romaji": "こうつう",
+    "id_translation": "komunikasi; mengangkut; lalu lintas; hubungan seksual",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "国際交流",
+    "romaji": "こくさいこうりゅう",
+    "id_translation": "pertukaran internasional",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2310,15 +2982,69 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "自転車",
+    "romaji": "じてんしゃ",
+    "id_translation": "kendaraan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "運転",
+    "romaji": "うんてん",
+    "id_translation": "menyetir",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "東京",
+    "romaji": "とうきょう",
+    "id_translation": "tokyo",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "遊ぶ",
     "romaji": "あそぶ",
     "id_translation": "bermain",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "出発する",
+    "romaji": "しゅっぱつする",
+    "id_translation": "berangkat",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "事故",
+    "romaji": "じこ",
+    "id_translation": "kecelakaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "故障",
     "romaji": "こしょう",
     "id_translation": "rusak mesin",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "故障",
+    "romaji": "こしょう",
+    "id_translation": "rusak mesin",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "指定席",
+    "romaji": "していせき",
+    "id_translation": "kursi yang dipesan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "指定席",
+    "romaji": "していせき",
+    "id_translation": "kursi yang dipesan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "週末",
+    "romaji": "しゅうまつ",
+    "id_translation": "akhir pekan",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2340,15 +3066,39 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "到着する",
+    "romaji": "とうちゃくする",
+    "id_translation": "tiba",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "お知らせ",
     "romaji": "おしらせ",
     "id_translation": "pengumuman",
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "工事",
+    "romaji": "こうじ",
+    "id_translation": "konstruksi",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "条件",
     "romaji": "じょうけん",
     "id_translation": "syarat-syarat, kondisi, pengertian",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "条件",
+    "romaji": "じょうけん",
+    "id_translation": "syarat-syarat, kondisi, pengertian",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "～以上",
+    "romaji": "～いじょう",
+    "id_translation": "atau lebih, lebih dari, melebihi, lebih besar dari",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2364,9 +3114,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "生産する",
+    "romaji": "せいさんする",
+    "id_translation": "menghasilkan, memproduksi, menelorkan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "世界",
     "romaji": "せかい",
     "id_translation": "dunia",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "世界",
+    "romaji": "せかい",
+    "id_translation": "dunia",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "国際交流",
+    "romaji": "こくさいこうりゅう",
+    "id_translation": "pertukaran internasional",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "国際交流",
+    "romaji": "こくさいこうりゅう",
+    "id_translation": "pertukaran internasional",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2388,9 +3162,27 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "申し込む",
+    "romaji": "もうしこむ",
+    "id_translation": "berlaku, menawarkan, mengajak",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "文化",
+    "romaji": "ぶんか",
+    "id_translation": "budaya",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "祭り",
     "romaji": "まつり",
     "id_translation": "festival",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "正月",
+    "romaji": "しょうがつ",
+    "id_translation": "tahun baru, bulan januari",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2403,6 +3195,12 @@
     "jp": "米",
     "romaji": "こめ",
     "id_translation": "beras",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "特別（な）",
+    "romaji": "とくべつ（な）",
+    "id_translation": "khusus",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2424,9 +3222,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "全員",
+    "romaji": "ぜんいん",
+    "id_translation": "semua",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "店員",
+    "romaji": "てんいん",
+    "id_translation": "pelayan toko",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "習慣",
+    "romaji": "しゅうかん",
+    "id_translation": "kebiasaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "慣れる",
     "romaji": "なれる",
     "id_translation": "terbiasa",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "普通",
+    "romaji": "ふつう",
+    "id_translation": "menyeluruh, umum, kelaziman",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2472,6 +3294,24 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "女性",
+    "romaji": "じょせい",
+    "id_translation": "wanita",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "男性",
+    "romaji": "だんせい",
+    "id_translation": "pria",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "営業する",
+    "romaji": "えいぎょうする",
+    "id_translation": "bisnis, manajemen, perdagangan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "営業する",
     "romaji": "えいぎょうする",
     "id_translation": "bisnis, manajemen, perdagangan",
@@ -2496,6 +3336,18 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "案内する",
+    "romaji": "あんないする",
+    "id_translation": "memandu",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "商品",
+    "romaji": "しょうひん",
+    "id_translation": "komoditi, dagangan, barang perdagangan, barang-barang, mendagangkan, barang dagangan, jualan, komoditas",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "商品",
     "romaji": "しょうひん",
     "id_translation": "komoditi, dagangan, barang perdagangan, barang-barang, mendagangkan, barang dagangan, jualan, komoditas",
@@ -2504,6 +3356,18 @@
   {
     "jp": "値段",
     "romaji": "ねだん",
+    "id_translation": "harga",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "値段",
+    "romaji": "ねだん",
+    "id_translation": "harga",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "価格",
+    "romaji": "かかく",
     "id_translation": "harga",
     "category": "JFT_A2_1_50"
   },
@@ -2517,6 +3381,24 @@
     "jp": "消す",
     "romaji": "けす",
     "id_translation": "menghapus",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "消費税",
+    "romaji": "しょうひぜい",
+    "id_translation": "cukai, pajak, tambah, pajak pertambahan nilai, mengenakan cukai, nilai",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "消費税",
+    "romaji": "しょうひぜい",
+    "id_translation": "cukai, pajak, tambah, pajak pertambahan nilai, mengenakan cukai, nilai",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "税別",
+    "romaji": "ぜいべつ",
+    "id_translation": "pajak terpisah",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2534,7 +3416,13 @@
   {
     "jp": "変わる",
     "romaji": "かわる",
-    "id_translation": "berubah, perubahan, berubah, berbeda, beralih",
+    "id_translation": "berubah, perubahan, berubah, beralih",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "大変（な）",
+    "romaji": "たいへん（な）",
+    "id_translation": "sangat, sangat berat, sangat sulit, sangat keras",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2544,9 +3432,27 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "図書館",
+    "romaji": "としょかん",
+    "id_translation": "perpustakaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "道具",
+    "romaji": "どうぐ",
+    "id_translation": "alat, instrumen, peralatan, perkakas",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "～点",
     "romaji": "～てん",
     "id_translation": "titik;tandai;titik;titik",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "必要（な）",
+    "romaji": "ひつよう（な）",
+    "id_translation": "keperluan, perlu, kebutuhan, memerlukan, seperlunya, keadaan terpaksa, kemestian, usah, perlunya",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2574,9 +3480,21 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "外国",
+    "romaji": "がいこく",
+    "id_translation": "asing",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "外",
     "romaji": "そと",
     "id_translation": "di luar",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "情報",
+    "romaji": "じょうほう",
+    "id_translation": "informasi; Intelijen (militer",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2592,6 +3510,18 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "相談",
+    "romaji": "そうだん",
+    "id_translation": "rembuk, perundingan, perembukan, musyawarah, konsultasi",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "質問",
+    "romaji": "しつもん",
+    "id_translation": "pertanyaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "質問",
     "romaji": "しつもん",
     "id_translation": "pertanyaan",
@@ -2604,9 +3534,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "窓口",
+    "romaji": "まどぐち",
+    "id_translation": "ventilasi",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "郵便局",
+    "romaji": "ゆうびんきょく",
+    "id_translation": "kantor pos",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "郵便局",
+    "romaji": "ゆうびんきょく",
+    "id_translation": "kantor pos",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "洗う",
     "romaji": "あらう",
     "id_translation": "mencuci",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "入力する",
+    "romaji": "にゅうりょくする",
+    "id_translation": "memasukkan, mengetik",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2619,6 +3573,18 @@
     "jp": "危ない",
     "romaji": "あぶない",
     "id_translation": "bahaya, berbahaya, ragu",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "危険",
+    "romaji": "きけん",
+    "id_translation": "bahaya, berbahaya, risiko",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "～種類",
+    "romaji": "～しゅるい",
+    "id_translation": "jenis",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2646,9 +3612,33 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "設定する",
+    "romaji": "せっていする",
+    "id_translation": "tataan, mengkonfigurasi",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "地震",
+    "romaji": "じしん",
+    "id_translation": "gempa",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "台風",
+    "romaji": "たいふう",
+    "id_translation": "topan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "声",
     "romaji": "こえ",
     "id_translation": "suara",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "心配（な）",
+    "romaji": "しんぱい（な）",
+    "id_translation": "khawatir",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2676,6 +3666,24 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "最近",
+    "romaji": "さいきん",
+    "id_translation": "akhir-akhir ini",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "授業",
+    "romaji": "じゅぎょう",
+    "id_translation": "kelas",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "問題",
+    "romaji": "もんだい",
+    "id_translation": "masalah",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "困る",
     "romaji": "こまる",
     "id_translation": "berada dalam kesulitan",
@@ -2700,9 +3708,27 @@
     "category": "JFT_A2_1_50"
   },
   {
+    "jp": "苦労する",
+    "romaji": "くろうする",
+    "id_translation": "penderitaan",
+    "category": "JFT_A2_1_50"
+  },
+  {
     "jp": "希望",
     "romaji": "きぼう",
     "id_translation": "harapan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "希望",
+    "romaji": "きぼう",
+    "id_translation": "harapan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "募集",
+    "romaji": "ぼしゅう",
+    "id_translation": "merekrut",
     "category": "JFT_A2_1_50"
   },
   {
@@ -2721,6 +3747,186 @@
     "jp": "考える",
     "romaji": "かんがえる",
     "id_translation": "memikirkan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "役に立つ",
+    "romaji": "やくにたつ",
+    "id_translation": "membantu, berguna",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "卒業する",
+    "romaji": "そつぎょうする",
+    "id_translation": "kelulusan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "留学する",
+    "romaji": "りゅうがくする",
+    "id_translation": "belajar di luar negeri",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "名前",
+    "romaji": "なまえ",
+    "id_translation": "nama",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "氏名",
+    "romaji": "しめい",
+    "id_translation": "nama lengkap",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "前",
+    "romaji": "まえ",
+    "id_translation": "di depan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "午前",
+    "romaji": "ごぜん",
+    "id_translation": "pagi/AM",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "国",
+    "romaji": "くに",
+    "id_translation": "Negara",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "国際交流",
+    "romaji": "こくさいこうりゅう",
+    "id_translation": "pertukaran internasional",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "外国",
+    "romaji": "がいこく",
+    "id_translation": "orang asing",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "私",
+    "romaji": "わたし",
+    "id_translation": "saya",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "父",
+    "romaji": "ちち",
+    "id_translation": "ayah",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "お父さん",
+    "romaji": "おとうさん",
+    "id_translation": "ayah",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "母",
+    "romaji": "はは",
+    "id_translation": "ibu",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "お母さん",
+    "romaji": "おかあさん",
+    "id_translation": "ibu",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "子ども",
+    "romaji": "こども",
+    "id_translation": "anak",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "男の子",
+    "romaji": "おとこのこ",
+    "id_translation": "anak laki-laki",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "女の子",
+    "romaji": "おんなのこ",
+    "id_translation": "anak perempuan",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "日本",
+    "romaji": "にほん",
+    "id_translation": "jepang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "～曜日",
+    "romaji": "～ようび",
+    "id_translation": "~hari",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "～日",
+    "romaji": "～にち",
+    "id_translation": "~hari",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "今日",
+    "romaji": "きょう",
+    "id_translation": "hari ini",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "日本語",
+    "romaji": "にほんご",
+    "id_translation": "bahasa jepang",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "昨日",
+    "romaji": "きのう",
+    "id_translation": "kemarin",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "明日",
+    "romaji": "あした",
+    "id_translation": "besok",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "毎日",
+    "romaji": "まいにち",
+    "id_translation": "setiap hari",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "誕生日",
+    "romaji": "たんじょうび",
+    "id_translation": "hari ulang tahun",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "本",
+    "romaji": "ほん",
+    "id_translation": "buku",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "水",
+    "romaji": "みず",
+    "id_translation": "air",
+    "category": "JFT_A2_1_50"
+  },
+  {
+    "jp": "水",
+    "romaji": "すい",
+    "id_translation": "air",
     "category": "JFT_A2_1_50"
   }
 ]
