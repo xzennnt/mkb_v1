@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../lib/firebase';
+import { calculatePoints } from '../utils/levelUtils';
 import { collection, query, getDocs, doc, setDoc, where, updateDoc, increment } from 'firebase/firestore';
 import { Vocabulary, StudyReport } from '../types';
 import { generateOptions, calculateNextReview } from '../lib/srs';
@@ -14,7 +15,7 @@ import { motion, AnimatePresence } from 'motion/react';
 export default function Review() {
   
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
+  const { currentUser, userData } = useAuth();
   
   const [sessionCards, setSessionCards] = useState<Vocabulary[]>([]);
   const [allVocabs, setAllVocabs] = useState<Vocabulary[]>([]);
@@ -196,7 +197,7 @@ export default function Review() {
 
     // Update user stats
     const userRef = doc(db, 'users', currentUser.uid);
-    const pointsGained = isCorrect ? 10 : 0;
+    const pointsGained = isCorrect ? calculatePoints(10, userData?.loginStreak || 1) : 0;
     const newlyMastered = (isCorrect && timeSpentMs <= 5000) ? 1 : 0;
     
     updateDoc(userRef, {

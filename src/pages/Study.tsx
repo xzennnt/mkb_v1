@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../lib/firebase';
+import { calculatePoints } from '../utils/levelUtils';
 import { collection, query, getDocs, doc, setDoc, where, updateDoc, increment } from 'firebase/firestore';
 import { Vocabulary, UserProgress, StudyReport } from '../types';
 import { calculateNextReview, generateOptions } from '../lib/srs';

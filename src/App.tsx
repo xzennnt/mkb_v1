@@ -19,6 +19,7 @@ import Flashcard from './pages/Flashcard';
 import Quiz from './pages/Quiz';
 import Review from './pages/Review';
 import ReviewFlashcard from './pages/ReviewFlashcard';
+import LevelUpModal from './components/LevelUpModal';
 
 const PrivateRoute = ({ children }: { children: React.ReactElement }) => {
   const { currentUser, userData, loading } = useAuth();
@@ -79,6 +80,7 @@ const SetupRoute = ({ children }: { children: React.ReactElement }) => {
 export default function App() {
   return (
     <AuthProvider>
+      <LevelUpModal />
       <Router>
         <div className="min-h-screen bg-[#F1F5F9] text-slate-800 font-sans flex flex-col">
           <Routes>

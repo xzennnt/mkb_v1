@@ -1,26 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { auth, db } from '../lib/firebase';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, onSnapshot } from 'firebase/firestore';
-import { UserData } from '../types';
-import { calculateLevel } from '../utils/levelUtils';
+import re
 
-interface AuthContextType {
-  currentUser: User | null;
-  userData: UserData | null;
-  loading: boolean;
-}
+with open('src/contexts/AuthContext.tsx', 'r') as f:
+    content = f.read()
 
-const AuthContext = createContext<AuthContextType>({ currentUser: null, userData: null, loading: true });
+# Add calculateLevel import
+if "import { calculateLevel }" not in content:
+    content = content.replace("import { UserData } from '../types';", "import { UserData } from '../types';\nimport { calculateLevel } from '../utils/levelUtils';")
+    content = content.replace("import { doc, getDoc, setDoc }", "import { doc, getDoc, setDoc, updateDoc, onSnapshot }")
 
-export const useAuth = () => useContext(AuthContext);
-
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [userData, setUserData] = useState<UserData | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
+new_effect = """  useEffect(() => {
     let userUnsub: () => void;
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
@@ -122,11 +110,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       unsubscribe();
       if (userUnsub) userUnsub();
     };
-  }, []);
+  }, []);"""
 
-  return (
-    <AuthContext.Provider value={{ currentUser, userData, loading }}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
-};
+# Replace the whole useEffect block
+content = re.sub(r'  useEffect\(\(\) => \{.*?    return unsubscribe;\n  \}, \[\]\);', new_effect, content, flags=re.DOTALL)
+
+with open('src/contexts/AuthContext.tsx', 'w') as f:
+    f.write(content)
+
+print("AuthContext patched")

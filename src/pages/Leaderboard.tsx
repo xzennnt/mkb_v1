@@ -16,8 +16,18 @@ export default function Leaderboard() {
     if (!currentUser) return;
     const fetchLeaders = async () => {
       try {
-        const snap = await getDocs(query(collection(db, 'users'), orderBy('points', 'desc'), limit(100)));
+        const snap = await getDocs(query(collection(db, 'users'), limit(100)));
         let fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));
+        
+        fetchedLeaders.sort((a, b) => {
+          const levelA = a.level || 0;
+          const levelB = b.level || 0;
+          if (levelA !== levelB) return levelB - levelA;
+          const timeA = a.totalStudyTime || 0;
+          const timeB = b.totalStudyTime || 0;
+          return timeB - timeA;
+        });
+        
         setLeaders(fetchedLeaders);
       } catch (err: any) {
         console.error(err);
@@ -74,24 +84,29 @@ export default function Leaderboard() {
                   </div>
                   
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-bold text-slate-900 truncate">
+                    <p className="text-sm font-bold text-slate-900 truncate flex items-center gap-2">
                       {user.displayName || user.email?.split('@')[0] || 'User'}
+                      {user.lastActiveDate && (
+                        <span className="text-[9px] font-normal text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded-md border border-slate-200">
+                          Aktif {new Date(user.lastActiveDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })}
+                        </span>
+                      )}
                     </p>
-                    <p className="text-[11px] text-slate-500 font-medium">
-                      Lv. {user.level} &bull; {user.masteredVocabCount} Vocab
+                    <p className="text-[11px] text-slate-500 font-medium mt-0.5">
+                      {user.masteredVocabCount || 0} Vocab Hafal
                     </p>
                   </div>
                   
-                  <div className="text-right">
-                    <p className={`font-black ${isTop ? 'text-indigo-700' : 'text-slate-800'}`}>
-                      {(user.points || 0).toLocaleString()}
+                  <div className="text-right ml-2">
+                    <p className={`font-black text-lg ${isTop ? 'text-indigo-700' : 'text-slate-800'}`}>
+                      Lv. {user.level || 0}
                     </p>
-                    <p className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Points</p>
+                    <p className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Level</p>
                   </div>
                   
-                  <div className="hidden sm:block text-right ml-4">
-                    <span className="text-xs font-mono font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded shadow-sm border border-slate-200">
-                      {formatTime(user.totalStudyTime)}
+                  <div className="text-right ml-4">
+                    <span className="text-xs font-mono font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded shadow-sm border border-slate-200 whitespace-nowrap">
+                      {formatTime(user.totalStudyTime || 0)}
                     </span>
                   </div>
                 </div>

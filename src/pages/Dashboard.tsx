@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { auth, db } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
-import { collection, query, getDocs, where } from 'firebase/firestore';
+import { collection, query, getDocs, where, limit } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 import StreakCalendar from '../components/StreakCalendar';
+import { getXpForLevel } from '../utils/levelUtils';
 
 import { getCategoriesCount } from '../data';
 
@@ -18,6 +19,7 @@ export default function Dashboard() {
   const [showMnn2, setShowMnn2] = useState(false);
   const [lastActivity, setLastActivity] = useState<{title: string, type: string, link: string} | null>(null);
   const [dueReviewCount, setDueReviewCount] = useState<number>(0);
+  const [recentUsers, setRecentUsers] = useState<any[]>([]);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -40,6 +42,12 @@ export default function Dashboard() {
         const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid), where('nextReviewTime', '<=', Date.now()));
         const progSnap = await getDocs(progQ);
         setDueReviewCount(progSnap.size);
+        
+        const usersSnap = await getDocs(query(collection(db, 'users'), limit(50)));
+        let usersData = usersSnap.docs.map(d => d.data());
+        usersData = usersData.filter(u => u.uid !== currentUser.uid && u.lastActiveDate);
+        usersData.sort((a, b) => new Date(b.lastActiveDate).getTime() - new Date(a.lastActiveDate).getTime());
+        setRecentUsers(usersData.slice(0, 4));
       } catch (err) {
         console.error("Error fetching reviews", err);
       } finally {
@@ -72,9 +80,16 @@ export default function Dashboard() {
           <h1 className="text-xl font-bold tracking-tight">Halo, {userData.displayName || userData.email?.split('@')[0] || 'Pelajar'}!</h1>
         </div>
         <div className="flex items-center gap-6">
-          <div className="text-right hidden sm:block">
+          <div className="text-right hidden sm:block min-w-[120px]">
             <p className="text-xs font-semibold text-slate-500 uppercase">Total Points</p>
             <p className="font-bold text-indigo-600">{(userData.points || 0).toLocaleString()} XP</p>
+            <div className="w-full bg-slate-200 h-1.5 rounded-full mt-1 overflow-hidden">
+              <div 
+                className="bg-amber-400 h-full rounded-full transition-all duration-500" 
+                style={{ width: `${Math.min(100, Math.max(0, ((userData.points || 0) - getXpForLevel(userData.level || 1)) / (getXpForLevel((userData.level || 1) + 1) - getXpForLevel(userData.level || 1)) * 100))}%` }}
+              ></div>
+            </div>
+            <p className="text-[9px] text-slate-400 mt-0.5">{getXpForLevel((userData.level || 1) + 1) - (userData.points || 0)} XP ke Lv {(userData.level || 1) + 1}</p>
           </div>
           <div className="h-10 w-[1px] bg-slate-200 hidden sm:block"></div>
           <div className="flex items-center gap-3">
@@ -108,16 +123,25 @@ export default function Dashboard() {
           <div>
             <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Login Streak</p>
             <p className="text-3xl font-black text-slate-800">{userData.loginStreak || 1} Hari</p>
-            <p className="text-xs text-rose-600 font-bold mt-1">Exp x{(1 + ((userData.loginStreak || 1) - 1) * 0.05).toFixed(2)}</p>
+            <p className="text-xs text-rose-600 font-bold mt-1">Exp x{Math.min(3.0, 1 + (((userData.loginStreak || 1) - 1) * 0.1)).toFixed(1)}</p>
           </div>
         </div>
         <div className="bg-white p-6 rounded-2xl shadow-md border border-slate-200 flex items-center gap-4">
           <div className="bg-indigo-50 p-4 rounded-xl text-indigo-500">
             <Trophy size={32} />
           </div>
-          <div>
-            <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Level Saat Ini</p>
-            <p className="text-3xl font-black text-slate-800">{userData.level}</p>
+          <div className="flex-1 w-full min-w-0">
+            <p className="text-sm text-slate-500 font-medium uppercase tracking-wider mb-1">Level Saat Ini</p>
+            <div className="flex items-end gap-2 mb-1.5">
+              <p className="text-3xl font-black text-slate-800 leading-none">{userData.level}</p>
+              <p className="text-xs font-bold text-slate-400 mb-0.5 truncate">{userData.points || 0} / {getXpForLevel((userData.level || 1) + 1)} XP</p>
+            </div>
+            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div 
+                className="bg-indigo-500 h-full rounded-full transition-all duration-500" 
+                style={{ width: `${Math.min(100, Math.max(0, ((userData.points || 0) - getXpForLevel(userData.level || 1)) / (getXpForLevel((userData.level || 1) + 1) - getXpForLevel(userData.level || 1)) * 100))}%` }}
+              ></div>
+            </div>
           </div>
         </div>
         
@@ -440,8 +464,35 @@ export default function Dashboard() {
           )}
         </div>
         
-        <div className="lg:col-span-1 h-fit self-start">
+        <div className="lg:col-span-1 h-fit self-start flex flex-col gap-6">
           <StreakCalendar history={userData.loginHistory || []} />
+          
+          {recentUsers.length > 0 && (
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+              <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Pelajar Aktif
+              </h3>
+              <div className="space-y-3">
+                {recentUsers.map((u, i) => (
+                  <div key={i} className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0">
+                        {(u.displayName || u.email || 'U').charAt(0).toUpperCase()}
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-slate-800 line-clamp-1">{u.displayName || u.email?.split('@')[0] || 'User'}</p>
+                        <p className="text-[10px] text-slate-500">{u.masteredVocabCount || 0} Vocab Hafal</p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] text-slate-400 bg-slate-50 px-2 py-1 rounded border border-slate-100">
+                      {new Date(u.lastActiveDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
