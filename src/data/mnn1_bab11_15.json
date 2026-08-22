@@ -1,0 +1,1417 @@
+[
+  {
+    "jp": "います",
+    "id_translation": "Ada, mempunyai",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "います",
+    "id_translation": "Ada, tinggal",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "掛かります (かかります)",
+    "id_translation": "Memakan,memerlukan (waktu,uang)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "休みます (やすみます)",
+    "id_translation": "Tidak masuk (kerj a)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "一つ (ひとつ)",
+    "id_translation": "Satu buah (bilangan untuk barang)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "二つ (ふたつ)",
+    "id_translation": "Dua",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "三つ (みっつ)",
+    "id_translation": "Tiga",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "四つ (よっつ)",
+    "id_translation": "Empat",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "五つ (いつつ)",
+    "id_translation": "Lima",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "六つ (むっつ)",
+    "id_translation": "Enam",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "七つ (ななつ)",
+    "id_translation": "Tuj uh",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "八つ (やっつ)",
+    "id_translation": "Delapan",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "九つ (ここのつ)",
+    "id_translation": "Sembilan",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "十 (とお)",
+    "id_translation": "Sepuluh",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "いくつ",
+    "id_translation": "Berapa banyak (buah)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "一人 (ひとり)",
+    "id_translation": "Seorang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "二人 (ふたり)",
+    "id_translation": "Dua orang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "—人 ~ (—にん)",
+    "id_translation": "orang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "—台 ~ (—だい)",
+    "id_translation": "buah (mesin,mobil)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "—枚 ~ (—まい)",
+    "id_translation": "lembar (benda tipis)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "—回 ~ (—かい)",
+    "id_translation": "kali",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "林檎 (りんご)",
+    "id_translation": "Apel",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "蜜柑 (みかん)",
+    "id_translation": "Jeruk",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "サンドイッチ",
+    "id_translation": "Sandwich",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "カレー（ライス）",
+    "id_translation": "Nasi kare",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "アイスクリーム",
+    "id_translation": "Eskrim",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "切手 (きって)",
+    "id_translation": "Perangko",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "葉書 (はがき)",
+    "id_translation": "Kartu pos",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "封筒 (ふうとう)",
+    "id_translation": "Amplop",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "速達 (そくたつ)",
+    "id_translation": "Surat kilat",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "書留 (かきとめ)",
+    "id_translation": "Surat tercatat",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "こうくうびん 航空便 (エアメール/)",
+    "id_translation": "Posudara",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "船便 (ふなびん)",
+    "id_translation": "Poslaut",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "両親 (りょうしん)",
+    "id_translation": "Orang tua",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "兄弟 (きょうだい)",
+    "id_translation": "Saudar a",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "兄 (あに)",
+    "id_translation": "Kakak laki- laki (sendiri)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "お兄さん (おにいさん)",
+    "id_translation": "Kakak laki- laki (orang lain)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "姉 (あね)",
+    "id_translation": "Kakak perempuan (sendiri)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "お姉さん (おねえさん)",
+    "id_translation": "Kakak perempuan (orang lain)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "弟 (おとうと)",
+    "id_translation": "Adik laki- laki sendiri",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "弟さん (おとうとさん)",
+    "id_translation": "Adik laki- laki orang lain",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "妹 (いもうと)",
+    "id_translation": "Adik perempuan sendiri",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "妹さん (いもうとさん)",
+    "id_translation": "Adik perempuan orang lain",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "外国 (がいこく)",
+    "id_translation": "Luar negeri",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "～時間 ~ (～じかん)",
+    "id_translation": "j am",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "～週間 ~ (～しゅうかん)",
+    "id_translation": "minggu",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "～ヶ月 ~ (～かげつ)",
+    "id_translation": "bulan",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "～年 ~ (～ねん)",
+    "id_translation": "tahun",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "～ぐらい ~ (～ぐらい)",
+    "id_translation": "kira- kira, sekitar",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "どのくらい",
+    "id_translation": "Berapa lama",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "全部で (ぜんぶで)",
+    "id_translation": "Semuanya",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "皆 (みんな)",
+    "id_translation": "Semuanya,seluruhnya (orang)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "～だけ",
+    "id_translation": "Hanya ~ saj a",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "いらっしゃいませ",
+    "id_translation": "Selamat datang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "お) てんきですね いい( お) 天気ですね (いい()",
+    "id_translation": "Cuacanya bagus, ya…",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "お出かけですか (おでかけですか)",
+    "id_translation": "Mau pergi keluar?",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "ちょっと～まで",
+    "id_translation": "Ke ~",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "いらっしゃい 行って いらっしゃい (いって)",
+    "id_translation": "Saya pergi",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "まいります 行って 参ります (いって)",
+    "id_translation": "Saya segera kembali",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "それから",
+    "id_translation": "Kemudian",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "オーストラリア",
+    "id_translation": "Australia",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "定食 (ていしょく)",
+    "id_translation": "Satu set makanan/ paketan makanan",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "ランチ",
+    "id_translation": "Makan siang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "天丼 (てんどん)",
+    "id_translation": "Nasi dengan tempura di atasnya",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "親子丼 (おやこどん)",
+    "id_translation": "Nasi dengan daging ayam dan telur di atasnya",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "牛丼 (ぎゅうどん)",
+    "id_translation": "Nasi dengan daging sapi di atasnya",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "いため 野菜炒め (やさい)",
+    "id_translation": "Sayur tumis",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "焼肉 (やきにく)",
+    "id_translation": "Daging panggang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "漬物 (つけもの)",
+    "id_translation": "Asinan (sayur)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "しる 味噌汁 (みそ)",
+    "id_translation": "Soto tauco Jepang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "お握り (おにぎり)",
+    "id_translation": "Nasi kepal",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "てんぷら",
+    "id_translation": "Gorengan",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "寿司 (すし)",
+    "id_translation": "Sushi",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "饂 (うどん)",
+    "id_translation": "Mi putih Jepang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "ラー麺 (ラーメン)",
+    "id_translation": "Mi kuah cina",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "蕎麦 (そば)",
+    "id_translation": "Mi hitam Jepang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "焼き蕎麦 (やきそば)",
+    "id_translation": "Mi goreng Jepang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "お好み焼き (おこのみやき)",
+    "id_translation": "Martabak ala Jepang",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "ハンバーグ",
+    "id_translation": "Hamburg(nama kota di j erman)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "コロッケ",
+    "id_translation": "Kroket",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "海老フライ (えびフライ)",
+    "id_translation": "Udang goring tepung roti",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "フライドチキン",
+    "id_translation": "ayam goring",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "サラダ",
+    "id_translation": "Selada",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "スープ",
+    "id_translation": "Soto\\ sup",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "スパゲティー",
+    "id_translation": "Spaghetti",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "ピザ",
+    "id_translation": "Pizza",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "ハンバーガー",
+    "id_translation": "Hamburger",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "サンドウィッチ",
+    "id_translation": "Sandwich",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "トースト",
+    "id_translation": "Toast (roti panggang)",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "ココア",
+    "id_translation": "Minuman kokoa",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "コーラ",
+    "id_translation": "Cola- cola",
+    "category": "MNN1_Bab11"
+  },
+  {
+    "jp": "簡単( な) (かんたん（な）)",
+    "id_translation": "Mudah",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "近い (ちかい)",
+    "id_translation": "Dekat",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "遠い (とおい)",
+    "id_translation": "Jauh",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "早い (はやい)",
+    "id_translation": "Cepat",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "遅い (おそい)",
+    "id_translation": "Lambat",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "少ない (すくない)",
+    "id_translation": "Sedikit",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "暖かい (あたたかい)",
+    "id_translation": "Hangat",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "涼しい (すずしい)",
+    "id_translation": "Sej uk",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "甘い (あまい)",
+    "id_translation": "Manis",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "辛い (からい)",
+    "id_translation": "Pedas",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "重い (おもい)",
+    "id_translation": "Berat",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "軽い (かるい)",
+    "id_translation": "Ringan",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "いい",
+    "id_translation": "Baik",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "季節 (きせつ)",
+    "id_translation": "Musim",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "春 (はる)",
+    "id_translation": "Musim semi",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "夏 (なつ)",
+    "id_translation": "Musim panas",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "秋 (あき)",
+    "id_translation": "Musim gugur",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "冬 (ふゆ)",
+    "id_translation": "Musim dingin",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "天気 (てんき)",
+    "id_translation": "Cuaca",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "雨 (あめ)",
+    "id_translation": "Huj an",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "雪 (ゆき)",
+    "id_translation": "Salj u",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "曇り (くもり)",
+    "id_translation": "Mendung",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "ホテル",
+    "id_translation": "Hotel",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "空港 (くうこう)",
+    "id_translation": "Bandara",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "海 (うみ)",
+    "id_translation": "Laut",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "世界 (せかい)",
+    "id_translation": "Dunia",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "パーティー",
+    "id_translation": "Pesta",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "（お）祭り (（お）まつり)",
+    "id_translation": "Perayaan, f estival",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "試験 (しけん)",
+    "id_translation": "Uj ian",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "すき焼き (すきやき)",
+    "id_translation": "Sukiyaki (semur daging sapi)",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "( お) 寿司 (（お）すし)",
+    "id_translation": "Sushi (nasi yang dicampur dengan cuka diatasnya diberi ikan mentah)",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "刺身 (さしみ)",
+    "id_translation": "Sashimi (irisan daging ikan mentah)",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "てんぷら",
+    "id_translation": "Tempura(gorengan cumi- cumi,udang,sayur)",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "活け花 (いけばな)",
+    "id_translation": "Seni merangkai bunga",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "紅葉 (もみじ)",
+    "id_translation": "Daun momij i/ maple,daun warna merah",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "どちら",
+    "id_translation": "Yang mana (dari dua)",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "どちらも",
+    "id_translation": "Keduanya",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "ずっと",
+    "id_translation": "Jauh lebih (untuk perbandingan)",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "始めまして (はじめまして)",
+    "id_translation": "Untuk pertama kali",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "ただいま",
+    "id_translation": "Saya kembali (ungkapan ketika sampai rumah)",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "お帰りなさい (おかえりなさい)",
+    "id_translation": "Selamat datang kembali",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "凄いですね (すごいですね)",
+    "id_translation": "Hebat, ya",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "でも",
+    "id_translation": "Akan tetapi",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "疲れた (つかれた)",
+    "id_translation": "Capek, lelah",
+    "category": "MNN1_Bab12"
+  },
+  {
+    "jp": "遊びます (あそびます)",
+    "id_translation": "Bermain",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "泳ぎます (およぎます)",
+    "id_translation": "Berenang",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "迎えます (むかえます)",
+    "id_translation": "Menj emput",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "疲れます (つかれます)",
+    "id_translation": "Lelah, capek",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "（てがみ を ～） 出します (だします)",
+    "id_translation": "Mengirim(surat)",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "（きっさてん に～） 入ります (はいります)",
+    "id_translation": "Masuk(ke ruang minum/ cof f e shop)",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "（きっさてん を～） 出します (でます)",
+    "id_translation": "Keluar(dari ruang minum/ cof f e shop)",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "結婚します (けっこんします)",
+    "id_translation": "Menikah",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "買い物します (かいものします)",
+    "id_translation": "Berbelanj a",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "食事します (しょくじします)",
+    "id_translation": "Makan besar",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "（こうえん を～） 散歩します (さんぽします)",
+    "id_translation": "Berj alan- j alan(taman)",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "大変（な） (たいへん（な）)",
+    "id_translation": "Berat, sulit, sukar",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "欲しい (ほしい)",
+    "id_translation": "I ngin, menginginkan",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "寂しい (さびしい)",
+    "id_translation": "Sepi, sunyi",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "広い (ひろい)",
+    "id_translation": "Luas,lebar",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "狭い (せまい)",
+    "id_translation": "Sempit",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "市役所 (しやくしょ)",
+    "id_translation": "Kantor walikota",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "プール",
+    "id_translation": "Kolam renang",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "川 (かわ)",
+    "id_translation": "Sungai",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "経済 (けいざい)",
+    "id_translation": "Ekonomi",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "美術 (びじゅつ)",
+    "id_translation": "Seni",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "釣りします (つりします)",
+    "id_translation": "Memancing",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "スキー",
+    "id_translation": "Bermain ski",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "会議 (かいぎ)",
+    "id_translation": "Rapat",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "登録 (とうろく)",
+    "id_translation": "Pendaf taran, registr asi",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "週末 (しゅうまつ)",
+    "id_translation": "Akhir minggu/pecan",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "月末 (げつまつ)",
+    "id_translation": "Akhir bulan",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "年末 (ねんまつ)",
+    "id_translation": "Akhir tahun",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "～ごろ",
+    "id_translation": "Kira- kira (menyatakan waktu)",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "何か (なにか)",
+    "id_translation": "Sesuatu",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "何処か (どこか)",
+    "id_translation": "Di suatu tempat",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "お腹が空きました (おなかがすきました)",
+    "id_translation": "Lapar",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "お腹がいっぱい (おなかがいっぱい)",
+    "id_translation": "Kenyang",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "喉が渇きました (のどがかわきました)",
+    "id_translation": "Haus",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "そうですか",
+    "id_translation": "Ya, betul",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "そうしましょう",
+    "id_translation": "Ya, mari/ baiklah",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "ご注文は (ごちゅうもんは)",
+    "id_translation": "Pesanan anda?",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "定食 (ていしょく)",
+    "id_translation": "Makanan set/ paketan",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "牛丼 (ぎゅうどん)",
+    "id_translation": "Gyudon (nasi dengan daging sapi di atasnya)",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "少々お待ちください (しょうしょうおまちください)",
+    "id_translation": "Tolong tunggu sebentar",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "別々に (べつべつに)",
+    "id_translation": "Sendiri- sendiri,masing- masing",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "ロシア",
+    "id_translation": "Rusia",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "鶴や (つるや)",
+    "id_translation": "Tsuruya (nama restoran)",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "おはようテレビ",
+    "id_translation": "Nama acara televise",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "博物館 (はくぶつかん)",
+    "id_translation": "Museum",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "美術館 (びじゅつかん)",
+    "id_translation": "Gedung kesenian",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "図書館 (としょかん)",
+    "id_translation": "Gedung perpustakaan",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "映画館 (えいがかん)",
+    "id_translation": "Gedung bioskop",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "動物園 (どうぶつえん)",
+    "id_translation": "Kebun binatang",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "植物園 (しょくぶつえん)",
+    "id_translation": "Kebun raya",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "遊園地 (ゆうえんち)",
+    "id_translation": "Taman bermain",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "お寺 (おてら)",
+    "id_translation": "Kuil Budha",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "神社 (じんじゃ)",
+    "id_translation": "Kuil Shinto",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "協会 (きょうかい)",
+    "id_translation": "Gerej a",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "モスク",
+    "id_translation": "Masj id",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "体育館 (たいいくかん)",
+    "id_translation": "Gedung olahraga",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "プール",
+    "id_translation": "Kolam renang",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "公園 (こうえん)",
+    "id_translation": "Taman",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "大使館 (たいしかん)",
+    "id_translation": "Kedutaan besar",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "入国管理局 (にゅうこくかんりきょく)",
+    "id_translation": "Biro imigrasi",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "市役所 (しやくしょ)",
+    "id_translation": "Kantor balaikota",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "警察署 (けいさつしょ)",
+    "id_translation": "Kantor polisi",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "交番 (こうばん)",
+    "id_translation": "Pospolisi",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "消防署 (しょうぼうしょ)",
+    "id_translation": "Pospemadam kebakaran",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "駐車場 (ちゅうしゃじょう)",
+    "id_translation": "Tempat parkir",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "大学 (だいがく)",
+    "id_translation": "Universitas",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "高校 (こうこう)",
+    "id_translation": "SMU",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "中学校 (ちゅうがっこう)",
+    "id_translation": "SMP",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "小学校 (しょうがっこう)",
+    "id_translation": "SD",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "幼稚園 (ようちえん)",
+    "id_translation": "TK",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "肉屋 (にくや)",
+    "id_translation": "Toko daging",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "パン屋 (パンや)",
+    "id_translation": "Toko roti",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "魚屋 (さかなや)",
+    "id_translation": "Toko ikan",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "酒屋 (さかや)",
+    "id_translation": "Toko minuman keras",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "八百屋 (やおや)",
+    "id_translation": "Toko sayur- sayuran",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "喫茶店 (きっさてん)",
+    "id_translation": "Kedai minum",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "コンビに",
+    "id_translation": "Toko kecil 24 j am",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "スーパー",
+    "id_translation": "Super market, swalayan",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "デパート",
+    "id_translation": "Departemen store, toserba",
+    "category": "MNN1_Bab13"
+  },
+  {
+    "jp": "附けます (つけます)",
+    "id_translation": "Menyalakan,memasang (listrik)",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "消します (けします)",
+    "id_translation": "Memadamkan,mematikan (listrik)",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "開けます (あけます)",
+    "id_translation": "Membuka",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "閉めます (しめます)",
+    "id_translation": "Menutup",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "急ぎます (いそぎます)",
+    "id_translation": "Terburu- buru,tergesa- gesa",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "待ちます (まちます)",
+    "id_translation": "Menunggu",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "止めます (とめます)",
+    "id_translation": "Menghentika",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "（みぎ へ～） 曲がります （右 へ～） (まがります)",
+    "id_translation": "Belok(ke kanan)",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "持ちます (もちます)",
+    "id_translation": "Memegang,membawa",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "取ります (とります)",
+    "id_translation": "Mengambil",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "手伝います (てつだいます)",
+    "id_translation": "Membantu",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "呼びます (よびます)",
+    "id_translation": "Memanggil",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "話します (はなします)",
+    "id_translation": "Berbicara",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "見せます (みせます)",
+    "id_translation": "Memperlihatkan",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "（じゅしょう を～） 教えます （住所 を～ (おしえます)",
+    "id_translation": "Memberitahukan,mengaj ar",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "始めます (はじめます)",
+    "id_translation": "Memulai",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "（あめ が～） 降ります （雨 が～） (ふります)",
+    "id_translation": "Turun(huj an, salj u)",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "コピーします",
+    "id_translation": "Mengkopi",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "エアコン",
+    "id_translation": "AC,pendingin ruangan",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "パスポート",
+    "id_translation": "Paspor",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "名前 (なまえ)",
+    "id_translation": "Nama",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "住所 (じゅうしょ)",
+    "id_translation": "Alamat",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "地図 (ちず)",
+    "id_translation": "Peta",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "塩 (しお)",
+    "id_translation": "Garam",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "砂糖 (さとう)",
+    "id_translation": "Gula",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "読み方 (よみかた)",
+    "id_translation": "Cara membaca",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "～方 (～かた)",
+    "id_translation": "Cara -",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "ゆっくり",
+    "id_translation": "Pelan- pelan",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "すぐ",
+    "id_translation": "Segera",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "また",
+    "id_translation": "Lagi, berikutnya",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "後で (あとで)",
+    "id_translation": "Nanti,setelah ini",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "もう少し (もうすこし)",
+    "id_translation": "Sedikit lagi",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "もう ~ (もう)",
+    "id_translation": "lagi",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "いいですよ",
+    "id_translation": "Tentu",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "さあ",
+    "id_translation": "Mari/ ayo (digunakan ketika mengaj ak dengan halus)",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "あれ？",
+    "id_translation": "He? (digunakan ketika menemukan hal aneh)",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "信号を右へ曲がってください (しんごうをみぎへまがってください)",
+    "id_translation": "Tolong belok kanan di tempat lampu lalu lintas",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "真っ直ぐ (まっすぐ)",
+    "id_translation": "Terus",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "これでお願いします (これでおねがいします)",
+    "id_translation": "Tolong yang ini",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "お釣り (おつり)",
+    "id_translation": "Uang kembalian",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "梅田 (うめだ)",
+    "id_translation": "Nama kota di Osaka",
+    "category": "MNN1_Bab14"
+  },
+  {
+    "jp": "立ちます (たちます)",
+    "id_translation": "Berdiri",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "座ります (すわります)",
+    "id_translation": "Duduk",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "使います (つかいます)",
+    "id_translation": "Memakai, menggunakan",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "置きます (おきます)",
+    "id_translation": "Menaruh,meletakkan",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "作ります (つくります)",
+    "id_translation": "Membuat, memproduksi",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "売ります (うります)",
+    "id_translation": "Menj ual",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "知ります (しります)",
+    "id_translation": "Tahu, kenal",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "住みます (すみます)",
+    "id_translation": "Tinggal, menempati",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "研究します (けんきゅうします)",
+    "id_translation": "Meneliti",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "知っています (しっています)",
+    "id_translation": "Mengetahui, mengenal",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "（おおさか に～） 住んでいます （大阪 に～） (すんでいます)",
+    "id_translation": "Sedang tinggal/ menempati(di oosaka)",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "資料 (しりょう)",
+    "id_translation": "Data,bahan- bahan",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "カタログ",
+    "id_translation": "Catalog",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "時刻表 (じこくひょう)",
+    "id_translation": "Jadwal",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "服 (ふく)",
+    "id_translation": "Pakaian",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "製品 (せいひん)",
+    "id_translation": "Komoditi,barang j adi",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "ソフト",
+    "id_translation": "Sof tware,perangkat lunak",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "専門 (せんもん)",
+    "id_translation": "Jurusan, keahlian",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "歯医者 (はいしゃ)",
+    "id_translation": "Dokter gigi",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "床屋 (とこや)",
+    "id_translation": "Tukang pangkasrambut, tukang cukur",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "プレイガイド",
+    "id_translation": "Tempat penj ualan karcis",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "独身 (どくしん)",
+    "id_translation": "Buj ang,belum berkeluarga",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "特に (とくに)",
+    "id_translation": "Khususnya, terutama",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "思い出します (おもいだします)",
+    "id_translation": "Mengingat, merasa",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "（ご）家族 (（ご）かぞく)",
+    "id_translation": "Keluarga (untuk orang lain)",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "いらっしゃいます",
+    "id_translation": "Ada ( lebih sopan dari います)",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "高校 (こうこう)",
+    "id_translation": "SMU",
+    "category": "MNN1_Bab15"
+  },
+  {
+    "jp": "日本橋 (にほんばし)",
+    "id_translation": "Nama tempat di Osaka",
+    "category": "MNN1_Bab15"
+  }
+]

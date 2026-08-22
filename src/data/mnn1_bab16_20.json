@@ -1,0 +1,932 @@
+[
+  {
+    "jp": "（でんしゃ に～） 乗ります （電車 に～） (のります)",
+    "id_translation": "Naik (ke kereta api)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "（でんしゃ を～） 降ります （電車 を～） (おります)",
+    "id_translation": "Turun (ke kereta api)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "乗り換えます (のりかえます)",
+    "id_translation": "Ganti/ pindah kendaraan",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "（シャワー を～） 浴びます （シャワー を～） (あびます)",
+    "id_translation": "Mandi",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "入れます (いれます)",
+    "id_translation": "Memasukkan",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "出します (だします)",
+    "id_translation": "Mengeluarkan (barang,pendapat)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "（だいがく に～) 入ります （大学 に～） (はいります)",
+    "id_translation": "Masuk(universitas)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "（だいがく を～） 出ます （大学 を～） (でます)",
+    "id_translation": "Menamatkan (universitas)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "（かいしゃ を～） 止めます （会社 を～） (やめます)",
+    "id_translation": "Meninggalkan, berhenti (kerj a)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "押します (おします)",
+    "id_translation": "Menekan, mendorong",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "若い (わかい)",
+    "id_translation": "Muda",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "長い (ながい)",
+    "id_translation": "Panj ang",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "短い (みじかい)",
+    "id_translation": "Pendek, singkat",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "明るい (あかるい)",
+    "id_translation": "Terang",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "暗い (くらい)",
+    "id_translation": "Gelap",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "背が高い (せがたかい)",
+    "id_translation": "Postur tinggi",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "頭がいい (あたまがいい)",
+    "id_translation": "Pintar, pandai",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "体 (からだ)",
+    "id_translation": "Badan, tubuh",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "頭 (あたま)",
+    "id_translation": "Kepala",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "髪 (かみ)",
+    "id_translation": "Rambut kepala",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "顔 (かお)",
+    "id_translation": "Waj ah",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "目 (め)",
+    "id_translation": "Mata",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "耳 (みみ)",
+    "id_translation": "Telinga",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "口 (くち)",
+    "id_translation": "Mulut",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "歯 (は)",
+    "id_translation": "Gigi",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "お腹 (おなか)",
+    "id_translation": "Perut",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "足 (あし)",
+    "id_translation": "Kaki",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "サービス",
+    "id_translation": "Pelayanan",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "ジョギング",
+    "id_translation": "Jogging",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "シャワー",
+    "id_translation": "Shower",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "緑 (みどり)",
+    "id_translation": "Hij au",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "お寺 (おてら)",
+    "id_translation": "Kuil Budha",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "神社 (じんじゃ)",
+    "id_translation": "Kuil Shinto",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "留学生 (りゅうがくせい)",
+    "id_translation": "Mahasiswa asing",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "～番 (～ばん)",
+    "id_translation": "Nomor -",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "どうやって",
+    "id_translation": "Dengan cara bagaimana",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "どの",
+    "id_translation": "Yang mana (lebih dari tiga)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "（いいえ）まだまだです",
+    "id_translation": "Tidak, belum memuaskan (ungkapan merendahkan diri)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "お引き出しですか (おひきだしですか)",
+    "id_translation": "Apakah anda mau mengambil uang? (bank/ atm)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "まず",
+    "id_translation": "Pertama- tama",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "キャッシュカード",
+    "id_translation": "Kartu cash, kartu ATM",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "暗証番号 (あんしょうばんごう)",
+    "id_translation": "Nomor PI N",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "次に (つぎに)",
+    "id_translation": "Selanj utnya, kemudian",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "金額 (きんがく)",
+    "id_translation": "Jumlah uang",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "確認 (かくにん)",
+    "id_translation": "Penegasan, konf irmasi",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "ボタン",
+    "id_translation": "Tombol",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "JR",
+    "id_translation": "JR Japan Railways (perusahaan kereta api Jepang)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "アジア",
+    "id_translation": "Asia",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "バンドン",
+    "id_translation": "Bandung",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "ベラクルス",
+    "id_translation": "Velacruz (Mexico)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "フランケン",
+    "id_translation": "Franken ( Jerman)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "ベトナム",
+    "id_translation": "Vietnam",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "フェ",
+    "id_translation": "Hue (Vietnam)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "だいがくまえ",
+    "id_translation": "Nama halte bus(hanya perumpamaan)",
+    "category": "MNN1_Bab16"
+  },
+  {
+    "jp": "覚えます (おぼえます)",
+    "id_translation": "Mengingat,menghaf al",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "忘れます (わすれます)",
+    "id_translation": "Lupa",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "無くします (なくします)",
+    "id_translation": "Hilang, kehilangan",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "（レポート を～） 出します （レポート を～） (だします)",
+    "id_translation": "Menyer ahkan(laporan)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "払います (はらいます)",
+    "id_translation": "Membayar",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "返します (かえします)",
+    "id_translation": "Mengembalikan",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "出かけます (でかけます)",
+    "id_translation": "Pergi ke luar, berangkat ke luar",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "脱ぎます (ぬぎます)",
+    "id_translation": "Menanggalkan,mencopoti,melepaskan (pakaian)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "持って行きます (もっていきます)",
+    "id_translation": "Membawa pergi (barang)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "持って来ます (もってきます)",
+    "id_translation": "Membawa datang (barang)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "持って帰ります (もってかえります)",
+    "id_translation": "Membawa pulang (barang)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "心配します (しんぱいします)",
+    "id_translation": "Cemas,khawatir",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "残業します (ざんぎょうします)",
+    "id_translation": "Lembur (kerj a)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "出張します (しゅっちょうします)",
+    "id_translation": "Dinaske luar kota",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "（くすり を ～） 飲みます （薬 を～） (のみます)",
+    "id_translation": "Minum(obat)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "（おふろ に ～） 入ります （お風呂 に ～） (はいります)",
+    "id_translation": "Masuk(ke kamar mandi)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "大切（な） (たいせつ（な）)",
+    "id_translation": "Penting,berharga,bernilai",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "大丈夫（な） (だいじょうぶ（な）)",
+    "id_translation": "Tidak apa- apa",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "危ない (あぶない)",
+    "id_translation": "Berbahaya",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "問題 (もんだい)",
+    "id_translation": "Pertanyaan, masalah",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "答え (こたえ)",
+    "id_translation": "Jawaban",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "禁煙 (きんえん)",
+    "id_translation": "Larangan merokok",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "ほうけんしょう （健康）法検証 (（けんこう）)",
+    "id_translation": "Kartu asuransi (kesehatan)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "風 (かぜ)",
+    "id_translation": "Angin",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "風邪 (かぜ)",
+    "id_translation": "Masuk angin",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "熱 (ねつ)",
+    "id_translation": "Panasbadan, demam",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "病気 (びょうき)",
+    "id_translation": "Penyakit, sakit",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "薬 (くすり)",
+    "id_translation": "Obat",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "お風呂 (おふろ)",
+    "id_translation": "Kamar mandi",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "上着 (うわぎ)",
+    "id_translation": "Jaket",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "下着 (したぎ)",
+    "id_translation": "Pakaian dalam",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "先生 (せんせい)",
+    "id_translation": "Dokter (panggilan untuk dokter)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "３にち ２， ３日 2 (２，)",
+    "id_translation": "atau 3 hari",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "に ～まで に (～まで)",
+    "id_translation": "Paling lambat sebelum(batas waktu)",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "ですから",
+    "id_translation": "Oleh karena itu",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "どうしましたか",
+    "id_translation": "Ada apa?",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "です （が）痛い です (- ) (（が）いたい)",
+    "id_translation": "sakit",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "喉 (のど)",
+    "id_translation": "Tenggorokan",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "お大事に (おだいじに)",
+    "id_translation": "Semoga lekassembuh",
+    "category": "MNN1_Bab17"
+  },
+  {
+    "jp": "出来ます (できます)",
+    "id_translation": "Dapat,bisa,mampu",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "洗います (あらいます)",
+    "id_translation": "Mencuci",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "引きます (ひきます)",
+    "id_translation": "Menarik",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "弾きます (ひきます)",
+    "id_translation": "Bermain (piano,gitar)",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "歌います (うたいます)",
+    "id_translation": "Bernyanyi",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "集めます (あつめます)",
+    "id_translation": "Mengumpulkan",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "捨てます (すてます)",
+    "id_translation": "Membuang",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "変えます (かえます)",
+    "id_translation": "Mengganti, menukar",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "運転します (うんてんします)",
+    "id_translation": "Mengemudi, menyetir",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "予約します (よやくします)",
+    "id_translation": "Memesan",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "ピアノ",
+    "id_translation": "Piano",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "～メートル",
+    "id_translation": "～Meter",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "国際 (こくさい)",
+    "id_translation": "I nternasional",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "現金 (げんきん)",
+    "id_translation": "Uang kontan, uang tunai",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "趣味 (しゅみ)",
+    "id_translation": "Kegemaran, hobi",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "日記 (にっき)",
+    "id_translation": "Catatan harian, buku diary",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "お祈り (おいのり)",
+    "id_translation": "Doa,sembahyang",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "お祈りします (おいのりします)",
+    "id_translation": "Berdoa, bersembahyang",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "祈ります (いのります)",
+    "id_translation": "Berdoa, bersembahyang",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "会長 (かいちょう)",
+    "id_translation": "Presiden (komunitas),kepala komunitas",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "部長 (ぶちょう)",
+    "id_translation": "Kepala bagian, kepala departemen",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "社長 (しゃちょう)",
+    "id_translation": "Kepala perusahaan",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "動物 (どうぶつ)",
+    "id_translation": "Binatang",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "馬 (うま)",
+    "id_translation": "Kuda",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "へえ",
+    "id_translation": "Masa?(digunakan ketika terkej ut/ kagum)",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "それは面白いですね (それはおもしろいですね)",
+    "id_translation": "I tu menarik ya…",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "中々 (なかなか)",
+    "id_translation": "Tidak mudah, sulit sekali (diikuti bentuk negative)",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "牧場 (ぼくじょう)",
+    "id_translation": "Padang rumput ternak",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "本当ですか (ほんとうですか)",
+    "id_translation": "Benarkah?",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "是非 (ぜひ)",
+    "id_translation": "Benar- benar,mesti (berkeinginan atau mengaj ak)",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "ビートルズ",
+    "id_translation": "Beatles(band I nggris)",
+    "category": "MNN1_Bab18"
+  },
+  {
+    "jp": "上ります/ 登ります (のぼります)",
+    "id_translation": "Naik, mendaki",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "（ホテル に ～） 泊まります （ホテル に ～） (とまります)",
+    "id_translation": "Menginap,bermalam(di hotel)",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "掃除します (そうじします)",
+    "id_translation": "Membersihkan",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "選択します (せんたくします)",
+    "id_translation": "Mencuci",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "練習します (れんしゅうします)",
+    "id_translation": "Berlatih",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "成ります (なります)",
+    "id_translation": "Menj adi",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "眠い (ねむい)",
+    "id_translation": "Mengantuk",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "強い (つよい)",
+    "id_translation": "Kuat",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "弱い (よわい)",
+    "id_translation": "Lemah",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "調子がいい (ちょうしがいい)",
+    "id_translation": "Kondisi badan baik",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "調子が悪い (ちょうしがわるい)",
+    "id_translation": "Kondisi badan kurang baik",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "調子 (ちょうし)",
+    "id_translation": "Kondisi, keadaan (badan)",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "ゴルフ",
+    "id_translation": "Golf",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "相撲 (すもう)",
+    "id_translation": "Sumo",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "パチンコ",
+    "id_translation": "Alat j udi Jepang",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "お茶",
+    "id_translation": "The",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "茶の湯 (ちゃのゆ)",
+    "id_translation": "Upacara minum teh",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "日 (ひ)",
+    "id_translation": "Hari",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "一度 (いちど)",
+    "id_translation": "Satu kali",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "一度も (いちども)",
+    "id_translation": "Satu kalipun tidak (diikuti bentuk negatif )",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "だんだん",
+    "id_translation": "Berangsur- angsur",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "もうすぐ",
+    "id_translation": "Tidak lama lagi",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "お蔭様で (おかげさまで)",
+    "id_translation": "Berkat doa/ bantuan Anda",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "乾杯 (かんぱい)",
+    "id_translation": "Tos,bersulang (diucapkan ketika bersulang)",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "は 実は (じつ)",
+    "id_translation": "Sebenarnya…",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "ダイエット",
+    "id_translation": "Diet",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "ダイエットします",
+    "id_translation": "Berdiet",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "何回も (なんかいも)",
+    "id_translation": "Beberapa kali pun",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "しかし",
+    "id_translation": "Akan tetapi",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "無理（な） (むり（な）)",
+    "id_translation": "Berlebihan, mustahil",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "に いい 体にいい (からだ)",
+    "id_translation": "Baik untuk badan",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "ケーキ",
+    "id_translation": "Cake, kue Eropa",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "葛飾北斎 (かつしかほくさい)",
+    "id_translation": "Pelukisdan pengukir papan kayu pada zaman edo ( 1760- 1849)",
+    "category": "MNN1_Bab19"
+  },
+  {
+    "jp": "が～） 要ります（ビザ が～） (いります（ビザ)",
+    "id_translation": "Memerlukan(visa)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "調べます (しらべます)",
+    "id_translation": "Memeriksa,menyelidiki",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "直します (なおします)",
+    "id_translation": "Memperbaiki,membetulkan",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "修理します (しゅうりします)",
+    "id_translation": "Memperbaiki (alat/ service)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "電話します (でんわします)",
+    "id_translation": "Menelepon",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "僕 (ぼく)",
+    "id_translation": "Aku ( kata ganti orang inf ormal pengganti 私)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "君 (きみ)",
+    "id_translation": "Kamu ( kata ganti orang inf ormal pengganti あなた)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "～君 (～くん)",
+    "id_translation": "Saudara ~ ( pengganti ~さん)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "うん",
+    "id_translation": "Ya (inf ormal)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "ううん",
+    "id_translation": "Tidak (inf ormal)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "サラリーマン",
+    "id_translation": "Pegawai, karyawan perusahaan",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "言葉 (ことば)",
+    "id_translation": "Kata, Bahasa, I stilah",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "物価 (ぶっか)",
+    "id_translation": "Harga barang",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "着物 (きもの)",
+    "id_translation": "Kimono",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "ビザ",
+    "id_translation": "Visa",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "始め (はじめ)",
+    "id_translation": "Awal,mula- mula",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "終わり (おわり)",
+    "id_translation": "Akhir, selesai",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "こっち",
+    "id_translation": "Sini ( inf ormal dari こちら)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "そっち",
+    "id_translation": "Situ ( inf ormal dari そちら)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "あっち",
+    "id_translation": "Sana ( inf ormal dari あちら)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "どっち",
+    "id_translation": "Yang mana/ sebelah mana ( inf ormal dari どちら)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "この間 (このあいだ)",
+    "id_translation": "Tempo hari,beberapa hari yang lalu",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "皆で (みんなで)",
+    "id_translation": "Kita semua, kami semua",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "～けど ～、tetapi ( (～けど)",
+    "id_translation": "inf ormal dari ~が)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "へ かえるの？ 国 へ 帰るの？ (くに)",
+    "id_translation": "Apakah kamu pulang ke negaramu?",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "どうするの？",
+    "id_translation": "Bagaimana kamu akan melakukannya?",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "どうしようかな～",
+    "id_translation": "Bagaimana melakukannya ya..(ngomong sendiri)",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "よかったら",
+    "id_translation": "Jika kamu bersedia, j ika kamu mau",
+    "category": "MNN1_Bab20"
+  },
+  {
+    "jp": "色々 (いろいろ)",
+    "id_translation": "Segala sesuatunya…",
+    "category": "MNN1_Bab20"
+  }
+]

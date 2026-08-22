@@ -2,13 +2,19 @@ import { Vocabulary } from '../types';
 import mnn1_bab1_5 from './mnn1_bab1_5.json';
 import mnn1_bab6_8 from './mnn1_bab6_8.json';
 import mnn1_bab9_10 from './mnn1_bab9_10.json';
+import mnn1_bab11_15 from './mnn1_bab11_15.json';
+import mnn1_bab16_20 from './mnn1_bab16_20.json';
+import mnn1_bab21_25 from './mnn1_bab21_25.json';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from './kana';
 
 // Combine all JSON
 const allJson = [
   ...mnn1_bab1_5,
   ...mnn1_bab6_8,
-  ...mnn1_bab9_10
+  ...mnn1_bab9_10,
+  ...mnn1_bab11_15,
+  ...mnn1_bab16_20,
+  ...mnn1_bab21_25
 ];
 
 const kana = [...hiraganaData, ...katakanaData, ...hiraganaAdvancedData, ...katakanaAdvancedData];

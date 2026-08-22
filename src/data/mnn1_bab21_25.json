@@ -1,0 +1,682 @@
+[
+  {
+    "jp": "思います (おもいます)",
+    "id_translation": "Mengira,berpikir,menduga",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "言います (いいます)",
+    "id_translation": "Berkata, mengatakan",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "足ります (たります)",
+    "id_translation": "Cukup,mencukupi",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "勝ちます (かちます)",
+    "id_translation": "Menang",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "負けます (まけます)",
+    "id_translation": "Kalah",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "（おまつり が～） あります （お祭り が ～） (あります)",
+    "id_translation": "Ada(f estival)",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "に たちます 役に立ちます (やく)",
+    "id_translation": "Berguna,berf aedah,bermanf aat",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "無駄（な） (むだ（な）)",
+    "id_translation": "Tidak berguna,sia- sia",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "不便（な） (ふべん（な）)",
+    "id_translation": "Tidak praktis",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "同じ (おなじ)",
+    "id_translation": "Sama",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "凄い (すごい)",
+    "id_translation": "Hebat,bukan main",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "首相 (しゅしょう)",
+    "id_translation": "Perdana menteri",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "大統領 (だいとうりょう)",
+    "id_translation": "Presiden",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "政治 (せいじ)",
+    "id_translation": "Politik",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "ニュース",
+    "id_translation": "Berita",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "スピーチ",
+    "id_translation": "Pidato",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "試合 (しあい)",
+    "id_translation": "Pertandingan",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "アルバイト",
+    "id_translation": "Kerj a sambilan",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "意見 (いけん)",
+    "id_translation": "Pendapat",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "（お）話 (（お）はなし)",
+    "id_translation": "Pembicaraan, cerita",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "ユーモア",
+    "id_translation": "Lelucon, humor",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "無駄 (むだ)",
+    "id_translation": "Kesia- siaan",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "デザイン",
+    "id_translation": "Desain, model",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "交通 (こうつう)",
+    "id_translation": "Lalu lintas,transportasi",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "ラッシュ",
+    "id_translation": "Jam sibuk",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "最近 (さいきん)",
+    "id_translation": "Akhir- akhir ini,belakangan ini",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "多分 (たぶん)",
+    "id_translation": "Barangkali, mungkin",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "きっと",
+    "id_translation": "Pasti",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "本当に (ほんとうに)",
+    "id_translation": "Benar- benar",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "そんなに",
+    "id_translation": "Tidak begitu (diikuti bentuk negatif )",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "ついて ～に ついて (～に)",
+    "id_translation": "Tentang",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "が ありません 仕方がありません (しかた)",
+    "id_translation": "Apa boleh buat/ Tidak ada pilihan lain",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "のみませんか ～でも 飲みませんか (～でも)",
+    "id_translation": "Bagaimana kalau kita minum/ apa saj a",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "しばらくですね",
+    "id_translation": "Sudah lama tidak berj umpa…",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "もちろん",
+    "id_translation": "Tentu saj a",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "見ないと。。。 (みないと。。。)",
+    "id_translation": "Saya harusmenonton itu",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "カンガルー",
+    "id_translation": "Kangguru",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "キャプテンクック",
+    "id_translation": "Kapten j amescook (1728- 1779",
+    "category": "MNN1_Bab21"
+  },
+  {
+    "jp": "（シャツ を ～） 着ます （シャツ を ～） (きます)",
+    "id_translation": "Memakai (baj u,kemej a)",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "（くつ を～） 履きます （靴 を～） (はきます)",
+    "id_translation": "Memakai (sepatu,rok)",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "（ぼうし を ～） 被ります （防止 を～） (かぶります)",
+    "id_translation": "Memakai (topi,dll)",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "（めがね を ～） 掛けます （眼鏡 を～） (かけます)",
+    "id_translation": "Memakai (kacamata)",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "生まれます (うまれます)",
+    "id_translation": "Lahir",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "コート",
+    "id_translation": "Mantel, j as",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "スーツ",
+    "id_translation": "Setelan pakaian/ j as",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "セーター",
+    "id_translation": "Sweater,pakaian hangat",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "帽子 (ぼうし)",
+    "id_translation": "Topi",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "眼鏡 (めがね)",
+    "id_translation": "Kacamata",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "よく",
+    "id_translation": "Sering kali,dengan baik",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "おめでとうございます",
+    "id_translation": "Selamat! (untuk ulang tahun, pernikahan, tahun baru,dll)",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "こちら",
+    "id_translation": "I ni( bentuk sopan dari こちら)",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "家賃 (やちん)",
+    "id_translation": "Sewa rumah",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "うーん",
+    "id_translation": "Ehm",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "ダイニングキチン",
+    "id_translation": "Ruang makan dengan dapur j adi satu",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "和室 (わしつ)",
+    "id_translation": "Kamar ala Jepang",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "押入れ (おしいれ)",
+    "id_translation": "Closet, lemari dinding ala Jepang",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "布団 (ふとん)",
+    "id_translation": "Futon, kasur ala Jepang",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "アパート",
+    "id_translation": "Apartemen",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "パリ",
+    "id_translation": "Paris",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "万里の長城 (ばんりのちょうじょう)",
+    "id_translation": "Tembok Besar China",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "余暇開発センター (よかかいはつセンター)",
+    "id_translation": "Pusat pengembangan pemanf aatan waktu luang",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "レジャー白書 (レジャーはくしょ)",
+    "id_translation": "Buku putih yang memuat tentang pemanf aatan waktu luang",
+    "category": "MNN1_Bab22"
+  },
+  {
+    "jp": "（せんせい に～） きます （先生 に～） (ききます)",
+    "id_translation": "Bertanya( ke guru)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "回します (まわします)",
+    "id_translation": "Memutar",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "引きます (ひきます)",
+    "id_translation": "Menarik",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "変えます (かえます)",
+    "id_translation": "Mengubah",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "（ドア に～） 触ります （ドア に～） (さわります)",
+    "id_translation": "Mengetuk, menyentuh, meraba(pintu)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "（おつり が ～） 出ます （おつり が ～） (でます)",
+    "id_translation": "Keluar (kembalian) dari mesin",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "（とけい が ～） 動きます （時計 が～） (うごきます)",
+    "id_translation": "Bergerak, berputar(j am)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "（みち を～） 歩きます （道 を～） (あるきます)",
+    "id_translation": "Berj alan kaki",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "（はし を～） 渡ります （橋 を～） (わたります)",
+    "id_translation": "Menyeberang(j embatan)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "（くるま に ～） 気を付けます （車 に～） (きをつけます)",
+    "id_translation": "Berhati- hati, memperhatikan(mobil)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "引越しします (ひっこしします)",
+    "id_translation": "Pindah rumah",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "電気屋 (でんきや)",
+    "id_translation": "Toko elektronik,tukang alat- alat listrik",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "サイズ",
+    "id_translation": "Ukuran",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "音 (おと)",
+    "id_translation": "Bunyi",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "機械 (きかい)",
+    "id_translation": "Mesin",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "撮み (つまみ)",
+    "id_translation": "Tuas,engsel,tombol",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "故障 (こしょう)",
+    "id_translation": "Kerusakan",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "故障します (こしょうします)",
+    "id_translation": "Rusak",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "道 (みち)",
+    "id_translation": "Jalan",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "交差点 (こうさてん)",
+    "id_translation": "Persimpangan/ perempatan j alan",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "信号 (しんごう)",
+    "id_translation": "Lampu lalu lintas",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "角 (かど)",
+    "id_translation": "Sudut",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "橋 (はし)",
+    "id_translation": "Jembatan",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "駐車場 (ちゅうしゃじょう)",
+    "id_translation": "Tempat parkir",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "—目 (—め)",
+    "id_translation": "Ke",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "（お）正月 (（お）しょうがつ)",
+    "id_translation": "Tahun Baru",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "ご馳走様でした (ごちそうさまでした)",
+    "id_translation": "Terima kasih atashidangannya",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "建物 (たてもの)",
+    "id_translation": "Gedung, bangunan",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "外国人登録証 (がいこくじんとうろくしょう)",
+    "id_translation": "Surat izin pendaf taran orang asing",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "承徳大子 (しょうとくたいし)",
+    "id_translation": "Putera shouoku(574- 622)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "保留時 (ほりゅうじ)",
+    "id_translation": "Kuil di daerah Nara didirikan oleh putera shoutoku pada permulaan abad ke- 7",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "元気茶 (げんきちゃ)",
+    "id_translation": "Nama teh (hanya perumpamaan)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "本田駅 (ほんだえき)",
+    "id_translation": "Nama stasiun (hanya perumpamaan)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "図書館駅 (としょかんえき)",
+    "id_translation": "Nama halte bis (hanya perumpamaan)",
+    "category": "MNN1_Bab23"
+  },
+  {
+    "jp": "呉れます (くれます)",
+    "id_translation": "Memberi (ke pembicara)",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "上げます (あげます)",
+    "id_translation": "Memberi (ke orang lain)",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "貰います (もらいます)",
+    "id_translation": "Menerima (dari orang lain)",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "連れて行きます (つれていきます)",
+    "id_translation": "Membawa pergi (orang)",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "連れて来ます (つれてきます)",
+    "id_translation": "Membawa datang (orang)",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "連れて帰ります (つれてかえります)",
+    "id_translation": "Membawa pulang (orang)",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "（ひと を～） 送ります （人 を～） (おくります)",
+    "id_translation": "Mengantar (orang), mengirim (barang)",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "紹介します (しょうかいします)",
+    "id_translation": "Memperkenalkan",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "案内します (あんないします)",
+    "id_translation": "Mengantar melihat- lihat",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "説明します (せつめいします)",
+    "id_translation": "Menj elaskan,menerangkan",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "（コーヒー を～） 淹れます （コーヒー を～） (いれます)",
+    "id_translation": "Menyeduh (teh,kopi,dll)",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "お祖父さん (おじいさん)",
+    "id_translation": "Kakek",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "お祖母さん (おばあさん)",
+    "id_translation": "Nenek",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "準備 (じゅんび)",
+    "id_translation": "Persiapan",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "準備します (じゅんびします)",
+    "id_translation": "Mempersiapkan",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "意味 (いみ)",
+    "id_translation": "Arti, makna",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "お菓子 (おかし)",
+    "id_translation": "Kue,makanan kecil",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "全部 (ぜんぶ)",
+    "id_translation": "Semua,seluruh",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "自分で (じぶんで)",
+    "id_translation": "(Oleh) diri sendiri",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "他に (ほかに)",
+    "id_translation": "Yang lain",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "ワゴン車 (わごんしゃ)",
+    "id_translation": "Mobil stasiun- wagon",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "お弁当 (おべんとう)",
+    "id_translation": "Makanan kotak/ bekal",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "の ひ 母の日 (はは)",
+    "id_translation": "Hari I bu",
+    "category": "MNN1_Bab24"
+  },
+  {
+    "jp": "考えます (かんがえます)",
+    "id_translation": "Memikirkan",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "（えき に～） 着きます （駅 に～） (つきます)",
+    "id_translation": "Tiba, sampai (di stasiun)",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "留学します (りゅうがくします)",
+    "id_translation": "Belaj ar di luar negeri",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "（とし を～） 取ります （年 を～） (とります)",
+    "id_translation": "Menj adi tua/ menua",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "田舎 (いなか)",
+    "id_translation": "Kampung halaman",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "大使館 (たいしかん)",
+    "id_translation": "Kedutaan besar",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "グループ",
+    "id_translation": "Kelompok,grup",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "チャンス",
+    "id_translation": "Kesempatan",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "億 (おく)",
+    "id_translation": "Ratusan j uta",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "（～ても） いくら （～ても） (いくら)",
+    "id_translation": "Bagaimana –j uga, seberapa- pun",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "（～たら） もし （～たら） (もし)",
+    "id_translation": "Kalau, j ika",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "転勤します (てんきんします)",
+    "id_translation": "Pindah kerj a",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "事 (こと)",
+    "id_translation": "Hal, perkara",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "（色々）お世話になりました (（いろいろ）おせわになりました)",
+    "id_translation": "Terima kasih atasbantuannya/ Telah banyak merepotkan",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "頑張ります (がんばります)",
+    "id_translation": "Berusaha,bekerj a keras",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "どうぞお元気で (どうぞおげんきで)",
+    "id_translation": "Mudah- mudahan sehat selalu",
+    "category": "MNN1_Bab25"
+  },
+  {
+    "jp": "一杯飲みましょう (いっぱいのみましょう)",
+    "id_translation": "Mari kita minum (bir)",
+    "category": "MNN1_Bab25"
+  }
+]
