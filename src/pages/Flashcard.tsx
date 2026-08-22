@@ -125,9 +125,9 @@ export default function Flashcard() {
       let reps = 1;
       
       if (currentProg) {
-        reps = currentProg.reps + 1;
+        reps = currentProg.reps + (isRemembered ? 1 : 0);
         if (isRemembered) {
-          nextInterval = currentProg.interval * 2.5; 
+          nextInterval = Math.max(24 * 60, currentProg.interval * 2.5); 
         } else {
           nextInterval = 1;
         }

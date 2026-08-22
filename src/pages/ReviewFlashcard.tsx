@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-const code = `import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
@@ -8,11 +6,11 @@ import { Vocabulary, UserProgress } from '../types';
 import { ArrowLeft } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from '../data/kana';
 import { useAuth } from '../contexts/AuthContext';
-import { getVocabulariesByCategory } from '../data';
+import { getVocabulariesByCategory, formatCategoryName, allVocabularies } from '../data';
 import { motion, AnimatePresence } from 'motion/react';
 
-export default function Flashcard() {
-  const { category } = useParams<{ category: string }>();
+export default function ReviewFlashcard() {
+  
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   
@@ -23,70 +21,69 @@ export default function Flashcard() {
   
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [notRememberedIds, setNotRememberedIds] = useState<string[]>([]);
   
   const [masteredCount, setMasteredCount] = useState(0);
+  const [sessionTotal, setSessionTotal] = useState(0);
 
   useEffect(() => {
     const fetchVocabs = async () => {
-      if (!category) return;
       
-      let fetchedVocabs: Vocabulary[] = [];
-      if (category === 'Hiragana') {
-        fetchedVocabs = hiraganaData as any;
-      } else if (category === 'Hiragana Lanjutan') {
-        fetchedVocabs = hiraganaAdvancedData as any;
-      } else if (category === 'Katakana Lanjutan') {
-        fetchedVocabs = katakanaAdvancedData as any;
-      } else if (category === 'Katakana') {
-        fetchedVocabs = katakanaData as any;
-      } else {
-        const rawVocabs = getVocabulariesByCategory(category);
-        const seen = new Set();
-        fetchedVocabs = rawVocabs.filter(v => {
-          if (seen.has(v.jp)) return false;
-          seen.add(v.jp);
-          return true;
-        });
+      
+      const savedState = localStorage.getItem('review_flashcard_state');
+      if (savedState) {
+        try {
+          const parsed = JSON.parse(savedState);
+          setQueue(parsed.queue);
+          setInitialVocabs(parsed.initialVocabs);
+          setSessionTotal(parsed.sessionTotal);
+          setMasteredCount(parsed.masteredCount);
+          setNotRememberedIds(parsed.notRememberedIds || []);
+          setLoading(false);
+          
+          localStorage.setItem('last_activity', JSON.stringify({
+             category: 'Review',
+             type: 'Flashcard',
+             title: 'Review Kotoba (Flashcard)',
+             link: '/review-flashcard'
+           }));
+          return;
+        } catch(e) {
+          console.error(e);
+        }
       }
+      
+            let allV = allVocabularies;
+      
+      const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid), where('nextReviewTime', '<=', Date.now()));
+      const progSnap = await getDocs(progQ);
+      
+      const pData: Record<string, UserProgress> = {};
+      const fetchedVocabs: Vocabulary[] = [];
+      
+      progSnap.docs.forEach(d => {
+        const p = { ...d.data(), id: d.id } as UserProgress;
+        pData[p.vocabId] = p;
+        const v = allV.find(voc => voc.id === p.vocabId);
+        if (v) {
+          fetchedVocabs.push(v);
+        }
+      });
+      
+      // Sort by most overdue
+      fetchedVocabs.sort((a, b) => pData[a.id].nextReviewTime - pData[b.id].nextReviewTime);
+      fetchedVocabs.splice(20);
       
       setInitialVocabs(fetchedVocabs);
-      
-      if (currentUser) {
-        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
-        const progSnap = await getDocs(progQ);
-        const pData: Record<string, UserProgress> = {};
-        
-        let mCount = 0;
-        progSnap.docs.forEach(d => {
-          const p = { ...d.data(), id: d.id } as UserProgress;
-          pData[p.vocabId] = p;
-        });
-        setProgressData(pData);
-        
-        // Filter out vocabs that are not due (e.g. good/easy with nextReviewTime in the future)
-        // Or for now, we just put everything in queue, but "Ingat" removes them from queue.
-        // For SRS: if it's already 'good'/'easy', we can count it as mastered for this session.
-        const dueQueue: Vocabulary[] = [];
-        fetchedVocabs.forEach(v => {
-          const prog = pData[v.id];
-          if (prog && (prog.srsLevel === 'good' || prog.srsLevel === 'easy')) {
-            mCount++;
-          }
-          // In a real SRS we'd check if nextReviewTime < Date.now(), 
-          // but let's just let the user study all in the category for now, 
-          // just placing them in queue
-          dueQueue.push(v); 
-        });
-        
-        setQueue(dueQueue);
-        setMasteredCount(mCount);
-      } else {
-        setQueue(fetchedVocabs);
-      }
+      setProgressData(pData);
+      setQueue(fetchedVocabs);
+      setSessionTotal(fetchedVocabs.length);
+      setMasteredCount(0);
       setLoading(false);
+
     };
     fetchVocabs();
-  }, [category, currentUser]);
+  }, [currentUser]);
 
   const handleRating = async (isRemembered: boolean) => {
     if (queue.length === 0) return;
@@ -102,9 +99,9 @@ export default function Flashcard() {
       let reps = 1;
       
       if (currentProg) {
-        reps = currentProg.reps + 1;
+        reps = currentProg.reps + (isRemembered ? 1 : 0);
         if (isRemembered) {
-          nextInterval = currentProg.interval * 2.5; 
+          nextInterval = Math.max(24 * 60, currentProg.interval * 2.5); 
         } else {
           nextInterval = 1;
         }
@@ -140,8 +137,11 @@ export default function Flashcard() {
         const card = newQueue.shift(); // remove from front
         
         if (!isRemembered && card) {
-          // If not remembered, add back to end of queue
           newQueue.push(card);
+          setNotRememberedIds(prev => {
+            if (!prev.includes(card.id)) return [...prev, card.id];
+            return prev;
+          });
         } else {
           setMasteredCount(m => m + 1);
         }
@@ -168,6 +168,25 @@ export default function Flashcard() {
     );
   }
 
+  if (sessionTotal === 0 && initialVocabs.length > 0 && !isFinished) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F1F5F9] p-4">
+        <div className="text-center">
+          <h2 className="text-3xl font-black text-[#1a1f36] mb-4">Hebat! 🎉</h2>
+          <p className="text-lg text-slate-600 mb-8 max-w-md">
+            Kamu sudah mengingat semua kartu dalam kategori ini. Tidak ada kartu yang perlu diulang saat ini. Silakan kembali lagi nanti untuk mereview.
+          </p>
+          <button 
+            onClick={() => navigate(`/deck/${encodeURIComponent('Review')}`)} 
+            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow hover:bg-indigo-700 transition"
+          >
+            Kembali ke Menu
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (isFinished) {
     return (
       <motion.div 
@@ -181,7 +200,7 @@ export default function Flashcard() {
         </p>
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <button 
-            onClick={() => navigate(\`/deck/\${encodeURIComponent(category!)}\`)}
+            onClick={() => navigate(`/deck/${encodeURIComponent('Review')}`)}
             className="py-3 px-6 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors w-full"
           >
             Kembali ke Menu
@@ -192,14 +211,14 @@ export default function Flashcard() {
   }
 
   const currentCard = queue[0];
-  const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
+  const isKana = false;
   const remainingCount = queue.length;
   
   return (
     <div className="min-h-screen bg-[#F1F5F9] text-slate-800 flex flex-col font-sans overflow-hidden">
       <header className="flex justify-between items-center p-6 relative max-w-5xl mx-auto w-full">
         <button 
-          onClick={() => navigate(\`/deck/\${encodeURIComponent(category!)}\`)}
+          onClick={() => navigate(`/deck/${encodeURIComponent('Review')}`)}
           className="flex items-center gap-2 font-bold text-lg text-indigo-600 hover:text-indigo-800 transition-colors z-10"
         >
           <ArrowLeft size={20} /> Kembali
@@ -215,10 +234,10 @@ export default function Flashcard() {
         <div className="w-full max-w-xl mb-6">
           <div className="flex justify-between items-center">
             <div className="w-auto px-4 h-12 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg shadow-sm">
-              Sisa: {remainingCount}
+              Belum Hafal: {notRememberedIds.length}
             </div>
             <div className="font-bold text-xl text-slate-700">
-              {initialVocabs.length - remainingCount} / {initialVocabs.length}
+              {sessionTotal - remainingCount + 1 > sessionTotal ? sessionTotal : sessionTotal - remainingCount + 1} / {sessionTotal}
             </div>
             <div className="w-auto px-4 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold text-lg shadow-sm">
               Ingat: {masteredCount}
@@ -238,7 +257,7 @@ export default function Flashcard() {
             >
               <div 
                 onClick={() => setIsFlipped(!isFlipped)}
-                className={\`relative w-full aspect-[4/3] max-h-[400px] cursor-pointer transition-all duration-500 transform-style-3d \${isFlipped ? 'rotate-x-180' : ''}\`}
+                className={`relative w-full aspect-[4/3] max-h-[400px] cursor-pointer transition-all duration-500 transform-style-3d ${isFlipped ? 'rotate-x-180' : ''}`}
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 {/* Front */}
@@ -283,7 +302,3 @@ export default function Flashcard() {
     </div>
   );
 }
-`;
-
-fs.writeFileSync('src/pages/Flashcard.tsx', code);
-console.log("Updated Flashcard.tsx");

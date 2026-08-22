@@ -11,8 +11,8 @@ import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData 
 import { getVocabulariesByCategory, allVocabularies, formatCategoryName } from '../data';
 import { motion, AnimatePresence } from 'motion/react';
 
-export default function Quiz() {
-  const { category, sessionIndex } = useParams<{ category: string, sessionIndex: string }>();
+export default function Review() {
+  
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   
@@ -38,11 +38,11 @@ export default function Quiz() {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!currentUser || !category || !sessionIndex) return;
+    if (!currentUser) return;
     
     const fetchData = async () => {
       setLoading(true);
-    const savedState = localStorage.getItem('quiz_state_' + category + '_' + sessionIndex);
+    const savedState = localStorage.getItem('review_state');
     if (savedState) {
       try {
         const parsed = JSON.parse(savedState);
@@ -64,59 +64,27 @@ export default function Quiz() {
     }
 
       
-      let allV: Vocabulary[] = [];
-      let catV: Vocabulary[] = [];
-
-      if (category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan') {
-        catV = (category === 'Hiragana' ? hiraganaData : category === 'Katakana' ? katakanaData : category === 'Hiragana Lanjutan' ? hiraganaAdvancedData : katakanaAdvancedData) as any;
-        allV = catV;
-        setAllVocabs(allV);
-      } else {
-        allV = allVocabularies;
-        setAllVocabs(allV);
-        
-        const rawCatV = getVocabulariesByCategory(category);
-        
-        // Remove duplicates
-        const seen = new Set();
-        catV = rawCatV.filter(v => {
-          if (seen.has(v.jp)) return false;
-          seen.add(v.jp);
-          return true;
-        });
-      }
-
-      // Fetch user progress to sort by difficulty
-      if (currentUser && catV.length > 0) {
-        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
-        const progSnap = await getDocs(progQ);
-        const pMap: Record<string, any> = {};
-        progSnap.docs.forEach(d => {
-          pMap[d.data().vocabId] = d.data();
-        });
-        setUserProgressMap(pMap);
-
-        // Sort by difficulty: again/hard first, then new/no progress, then good/easy
-        catV.sort((a, b) => {
-          const pa = pMap[a.id];
-          const pb = pMap[b.id];
-          
-          const getScore = (p: any) => {
-            if (!p) return 1; // New / No progress
-            if (p.srsLevel === 'again') return 3;
-            if (p.srsLevel === 'hard') return 2;
-            if (p.srsLevel === 'good') return 0;
-            if (p.srsLevel === 'easy') return -1;
-            return 1;
-          };
-
-          return getScore(pb) - getScore(pa);
-        });
-      }
-
-      // Slice for this session
-      const sIdx = parseInt(sessionIndex, 10);
-      const baseCards = catV.slice(sIdx * 10, (sIdx + 1) * 10);
+            let allV: Vocabulary[] = allVocabularies;
+      setAllVocabs(allV);
+      
+      const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid), where('nextReviewTime', '<=', Date.now()));
+      const progSnap = await getDocs(progQ);
+      const pMap: Record<string, any> = {};
+      const baseCards: Vocabulary[] = [];
+      
+      progSnap.docs.forEach(d => {
+        const data = d.data();
+        pMap[data.vocabId] = data;
+        const v = allV.find(voc => voc.id === data.vocabId);
+        if (v) {
+          baseCards.push(v);
+        }
+      });
+      setUserProgressMap(pMap);
+      
+      // Limit to max 20 reviews per session, and sort by most overdue
+      baseCards.sort((a, b) => pMap[a.id].nextReviewTime - pMap[b.id].nextReviewTime);
+      baseCards.splice(20);
       
       const shuffle = <T,>(array: T[]): T[] => array.slice().sort(() => 0.5 - Math.random());
 
@@ -142,12 +110,12 @@ export default function Quiz() {
     };
     
     fetchData();
-  }, [currentUser, category, sessionIndex]);
+  }, [currentUser]);
 
 
   useEffect(() => {
     if (!loading && sessionCards.length > 0 && !isFinished) {
-      localStorage.setItem('quiz_state_' + category + '_' + sessionIndex, JSON.stringify({
+      localStorage.setItem('review_state', JSON.stringify({
         sessionCards,
         currentIndex,
         reports,
@@ -156,16 +124,16 @@ export default function Quiz() {
         options,
         selectedAnswer
       }));
-      localStorage.setItem('last_activity', JSON.stringify({ 
-        category, 
-        type: 'Kuis', 
-        title: `Kuis: ${formatCategoryName(category!)}`, 
-        link: `/quiz/${encodeURIComponent(category!)}/${sessionIndex}` 
-      }));
+      localStorage.setItem('last_activity', JSON.stringify({
+         category: 'Review',
+         type: 'Review',
+         title: 'Review Kelemahan',
+         link: '/review'
+       }));
     } else if (isFinished) {
-      localStorage.removeItem('quiz_state_' + category + '_' + sessionIndex);
+      localStorage.removeItem('review_state');
     }
-  }, [currentIndex, reports, loading, isFinished, category, sessionIndex, options, selectedAnswer]);
+  }, [currentIndex, reports, loading, isFinished, options, selectedAnswer]);
 
   const setupCard = (vocab: Vocabulary, allV: Vocabulary[], dir: 'jp-to-id' | 'id-to-jp') => {
     setStartTime(Date.now());
@@ -245,7 +213,7 @@ export default function Quiz() {
         jp: currentVocab.jp,
         id_translation: currentVocab.id_translation,
         romaji: currentVocab.romaji || '',
-        category: currentVocab.category || category
+        category: currentVocab.category || 'Review'
       }, { merge: true }).catch(console.error);
     } else if (timeSpentSec > 10) {
       setDoc(vocabStatsRef, { 
@@ -253,7 +221,7 @@ export default function Quiz() {
         jp: currentVocab.jp,
         id_translation: currentVocab.id_translation,
         romaji: currentVocab.romaji || '',
-        category: currentVocab.category || category
+        category: currentVocab.category || 'Review'
       }, { merge: true }).catch(console.error);
     }
 
@@ -289,8 +257,8 @@ export default function Quiz() {
         cardsReviewed: sessionCards.length,
         correctCount,
         incorrectCount,
-        type: 'Kuis',
-        category: category,
+        type: 'Review',
+        category: 'Review',
         failedVocabs: currentReports.filter(r => !r.isCorrect).map(r => ({ jp: r.jp, id_translation: r.id_translation }))
       }).catch(console.error);
       
@@ -299,7 +267,7 @@ export default function Quiz() {
   };
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-slate-500">Menyiapkan Makanan Bergizi...</div>;
+    return <div className="min-h-screen flex items-center justify-center text-slate-500">Mencari Kotoba yang perlu diulang...</div>;
   }
 
   if (sessionCards.length === 0) {
@@ -307,7 +275,7 @@ export default function Quiz() {
       <div className="max-w-xl mx-auto p-8 mt-12 bg-white rounded-2xl shadow-md border border-slate-200 text-center">
         <h2 className="text-3xl font-black text-slate-800 mb-4">Sesi Selesai</h2>
         <p className="text-slate-500 mb-6">Tidak ada kosakata lagi di sesi ini.</p>
-        <button onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)} className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold">
+        <button onClick={() => navigate('/')} className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold">
           Kembali
         </button>
       </div>
@@ -325,7 +293,7 @@ export default function Quiz() {
           <p className="text-indigo-600 font-bold mb-6 flex items-center justify-center gap-2">
             ⏱️ Total Waktu: {(totalTime / 1000).toFixed(1)} detik
           </p>
-          <button onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)} className="mt-4 bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 shadow-md">
+          <button onClick={() => navigate('/')} className="mt-4 bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 shadow-md">
             Kembali ke Daftar Menu
           </button>
         </div>
@@ -361,7 +329,7 @@ export default function Quiz() {
   const dir = directions[currentIndex];
   const questionText = dir === 'jp-to-id' ? currentVocab.jp : currentVocab.id_translation;
 
-  const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
+  const isKana = false;
   const promptText = dir === 'jp-to-id' 
     ? (isKana ? 'Huruf Jepang → Romaji' : 'Japanese → Indonesian') 
     : (isKana ? 'Romaji → Huruf Jepang' : 'Indonesian → Japanese');
@@ -377,7 +345,7 @@ export default function Quiz() {
             Latihan {currentIndex + 1} / {sessionCards.length}
           </h1>
         </div>
-        <button onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)} className="text-sm font-bold text-slate-500 hover:text-indigo-600">
+        <button onClick={() => navigate('/')} className="text-sm font-bold text-slate-500 hover:text-indigo-600">
           KELUAR
         </button>
       </header>

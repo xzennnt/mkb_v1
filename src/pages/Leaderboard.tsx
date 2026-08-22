@@ -16,10 +16,9 @@ export default function Leaderboard() {
     if (!currentUser) return;
     const fetchLeaders = async () => {
       try {
-        const snap = await getDocs(collection(db, 'users'));
+        const snap = await getDocs(query(collection(db, 'users'), orderBy('points', 'desc'), limit(100)));
         let fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));
-        fetchedLeaders.sort((a, b) => (b.points || 0) - (a.points || 0));
-        setLeaders(fetchedLeaders.slice(0, 100));
+        setLeaders(fetchedLeaders);
       } catch (err: any) {
         console.error(err);
         setError('Gagal memuat leaderboard. ' + err.message);

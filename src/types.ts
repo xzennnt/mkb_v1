@@ -44,6 +44,9 @@ export interface StudySession {
   cardsReviewed: number;
   correctCount?: number;
   incorrectCount?: number;
+  type?: string;
+  category?: string;
+  failedVocabs?: { jp: string, id_translation: string }[];
 }
 
 export interface StudyReport {

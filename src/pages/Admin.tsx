@@ -57,12 +57,20 @@ export default function Admin() {
 
       if (activeTab === 'difficult') {
         const statsSnap = await getDocs(collection(db, 'vocabStats'));
-        const statsMap: Record<string, { failCount?: number, hardCount?: number }> = {};
-        statsSnap.docs.forEach(d => {
-          statsMap[d.id] = d.data();
-        });
         
-        const mappedVocabs = allVocabularies.map(v => ({ ...v, ...statsMap[v.id] }));
+        let mappedVocabs = statsSnap.docs.map(d => {
+           const data = d.data();
+           const original = allVocabularies.find(v => v.id === d.id) || {} as any;
+           return {
+             id: d.id,
+             jp: data.jp || original.jp || 'Unknown',
+             romaji: data.romaji || original.romaji || '',
+             id_translation: data.id_translation || original.id_translation || 'Unknown',
+             category: data.category || original.category || 'Unknown',
+             failCount: data.failCount || 0,
+             hardCount: data.hardCount || 0
+           } as Vocabulary;
+        });
         
         const filteredAndSorted = mappedVocabs
           .filter(v => ((v.failCount || 0) > 0) || ((v.hardCount || 0) > 0))
@@ -385,6 +393,7 @@ export default function Admin() {
                 <tr>
                   <th className="p-4 font-bold">Waktu Mulai</th>
                   <th className="p-4 font-bold">Pengguna</th>
+                  <th className="p-4 font-bold">Materi & Kendala Siswa</th>
                   <th className="p-4 font-bold text-center">Durasi</th>
                   <th className="p-4 font-bold text-center">Jumlah Soal</th>
                   <th className="p-4 font-bold text-center">Benar / Salah</th>
@@ -401,6 +410,20 @@ export default function Admin() {
                       <td className="p-4">
                         <div className="font-bold text-slate-800">{u?.displayName || u?.email?.split('@')[0] || 'Unknown'}</div>
                         <div className="text-slate-500 text-xs">{u?.email || s.userId}</div>
+                      </td>
+                      <td className="p-4">
+                        <div className="font-bold text-slate-700 text-sm mb-1">{s.category || s.type || 'Latihan'}</div>
+                        {s.failedVocabs && s.failedVocabs.length > 0 ? (
+                          <div className="flex flex-wrap gap-1">
+                            {s.failedVocabs.map((fv, i) => (
+                              <span key={i} className="inline-block bg-rose-50 border border-rose-200 text-rose-700 text-[10px] px-2 py-0.5 rounded" title={fv.id_translation}>
+                                {fv.jp}
+                              </span>
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="text-xs text-emerald-500 font-medium">Sempurna (Tidak ada salah)</span>
+                        )}
                       </td>
                       <td className="p-4 text-center">
                         <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-xs font-bold px-2 py-1 rounded">

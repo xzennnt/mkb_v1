@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { auth, db } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
-import { collection, query, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs, where } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 import StreakCalendar from '../components/StreakCalendar';
@@ -17,6 +17,7 @@ export default function Dashboard() {
   const [showMnn1, setShowMnn1] = useState(true);
   const [showMnn2, setShowMnn2] = useState(false);
   const [lastActivity, setLastActivity] = useState<{title: string, type: string, link: string} | null>(null);
+  const [dueReviewCount, setDueReviewCount] = useState<number>(0);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -32,7 +33,21 @@ export default function Dashboard() {
     // Using local static vocabularies
     const catArray = getCategoriesCount();
     setCategories(catArray);
-    setLoading(false);
+    
+    // Fetch Due Reviews
+    const fetchReviews = async () => {
+      try {
+        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid), where('nextReviewTime', '<=', Date.now()));
+        const progSnap = await getDocs(progQ);
+        setDueReviewCount(progSnap.size);
+      } catch (err) {
+        console.error("Error fetching reviews", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchReviews();
   }, [currentUser]);
 
   const handleLogout = async () => {
@@ -128,6 +143,30 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <div className="lg:col-span-2">
+        
+          {/* LONG-TERM MEMORY (SRS) REVIEW BANNER */}
+          {dueReviewCount > 0 && (
+            <div className="mb-6 bg-gradient-to-r from-rose-500 to-orange-500 rounded-2xl shadow-md p-6 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-white/20 p-3 rounded-xl">
+                  <BrainCircuit size={28} className="text-white" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold tracking-tight">Review Kotoba Lemah</h2>
+                  <p className="text-sm text-rose-100 mt-1">Ada {dueReviewCount} kosakata yang perlu Anda ulang agar masuk ke ingatan jangka panjang.</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto shrink-0">
+                <button onClick={() => navigate('/review-flashcard')} className="bg-white/20 text-white hover:bg-white/30 border border-white/30 px-5 py-3 rounded-xl font-bold transition-colors w-full sm:w-auto text-center shadow-sm flex items-center justify-center gap-2">
+                  <BookOpen size={18} /> via Flashcard
+                </button>
+                <button onClick={() => navigate('/review')} className="bg-white text-rose-600 hover:bg-rose-50 px-5 py-3 rounded-xl font-bold transition-colors w-full sm:w-auto text-center shadow-sm flex items-center justify-center gap-2">
+                  <Play size={18} /> via Kuis
+                </button>
+              </div>
+            </div>
+          )}
+
           {loading ? (
             <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-8 text-center animate-pulse">
               <p className="text-slate-500 font-medium">Memuat deck...</p>
