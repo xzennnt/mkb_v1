@@ -4,13 +4,16 @@ import { db } from '../lib/firebase';
 import { UserData } from '../types';
 import { Trophy, ArrowLeft, Clock, BrainCircuit } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Leaderboard() {
+  const { currentUser } = useAuth();
   const [leaders, setLeaders] = useState<UserData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
+    if (!currentUser) return;
     const fetchLeaders = async () => {
       try {
         const snap = await getDocs(collection(db, 'users'));
@@ -25,7 +28,7 @@ export default function Leaderboard() {
       }
     };
     fetchLeaders();
-  }, []);
+  }, [currentUser]);
 
   const formatTime = (seconds: number) => {
     const h = Math.floor(seconds / 3600);

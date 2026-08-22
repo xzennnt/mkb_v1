@@ -1,15 +1,25 @@
 const fs = require('fs');
-let content = fs.readFileSync('src/pages/Leaderboard.tsx', 'utf-8');
+let code = fs.readFileSync('src/pages/Leaderboard.tsx', 'utf-8');
 
-content = content.replace(
-  "const q = query(collection(db, 'users'), orderBy('points', 'desc'), limit(100));\n        const snap = await getDocs(q);",
-  "const snap = await getDocs(collection(db, 'users'));"
+code = code.replace(
+  "import { Link } from 'react-router-dom';",
+  "import { Link } from 'react-router-dom';\nimport { useAuth } from '../contexts/AuthContext';"
 );
 
-content = content.replace(
-  "const fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));\n        setLeaders(fetchedLeaders);",
-  "let fetchedLeaders = snap.docs.map(doc => ({ ...doc.data(), uid: doc.id } as UserData));\n        fetchedLeaders.sort((a, b) => (b.points || 0) - (a.points || 0));\n        setLeaders(fetchedLeaders.slice(0, 100));"
+code = code.replace(
+  "export default function Leaderboard() {",
+  "export default function Leaderboard() {\n  const { currentUser } = useAuth();"
 );
 
-fs.writeFileSync('src/pages/Leaderboard.tsx', content);
-console.log('Success');
+code = code.replace(
+  "  useEffect(() => {\n    const fetchLeaders = async () => {",
+  "  useEffect(() => {\n    if (!currentUser) return;\n    const fetchLeaders = async () => {"
+);
+
+code = code.replace(
+  "    fetchLeaders();\n  }, []);",
+  "    fetchLeaders();\n  }, [currentUser]);"
+);
+
+fs.writeFileSync('src/pages/Leaderboard.tsx', code);
+console.log('Leaderboard updated');
