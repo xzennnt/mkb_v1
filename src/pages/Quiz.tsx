@@ -11,6 +11,7 @@ import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData 
 
 import { getVocabulariesByCategory, allVocabularies, formatCategoryName } from '../data';
 import { motion, AnimatePresence } from 'motion/react';
+import { getSessionState, saveSessionState, removeSessionState } from '../utils/sessionState';
 
 export default function Quiz() {
   const { category, sessionIndex } = useParams<{ category: string, sessionIndex: string }>();
@@ -43,7 +44,7 @@ export default function Quiz() {
     
     const fetchData = async () => {
       setLoading(true);
-    const savedState = localStorage.getItem('quiz_state_' + category + '_' + sessionIndex);
+    const savedState = await getSessionState(currentUser?.uid, 'quiz_state_' + category + '_' + sessionIndex);
     if (savedState) {
       try {
         const parsed = JSON.parse(savedState);
@@ -147,25 +148,28 @@ export default function Quiz() {
 
 
   useEffect(() => {
-    if (!loading && sessionCards.length > 0 && !isFinished) {
-      localStorage.setItem('quiz_state_' + category + '_' + sessionIndex, JSON.stringify({
-        sessionCards,
-        currentIndex,
-        reports,
-        directions,
-        allVocabs,
-        options,
-        selectedAnswer
-      }));
-      localStorage.setItem('last_activity', JSON.stringify({ 
-        category, 
-        type: 'Kuis', 
-        title: `Kuis: ${formatCategoryName(category!)}`, 
-        link: `/quiz/${encodeURIComponent(category!)}/${sessionIndex}` 
-      }));
-    } else if (isFinished) {
-      localStorage.removeItem('quiz_state_' + category + '_' + sessionIndex);
-    }
+    const saveState = async () => {
+      if (!loading && sessionCards.length > 0 && !isFinished) {
+        await saveSessionState(currentUser?.uid, 'quiz_state_' + category + '_' + sessionIndex, {
+          sessionCards,
+          currentIndex,
+          reports,
+          directions,
+          allVocabs,
+          options,
+          selectedAnswer
+        });
+        localStorage.setItem('last_activity', JSON.stringify({ 
+          category, 
+          type: 'Kuis', 
+          title: `Kuis: ${formatCategoryName(category!)}`, 
+          link: `/quiz/${encodeURIComponent(category!)}/${sessionIndex}` 
+        }));
+      } else if (isFinished) {
+        await removeSessionState(currentUser?.uid, 'quiz_state_' + category + '_' + sessionIndex);
+      }
+    };
+    saveState();
   }, [currentIndex, reports, loading, isFinished, category, sessionIndex, options, selectedAnswer]);
 
   const setupCard = (vocab: Vocabulary, allV: Vocabulary[], dir: 'jp-to-id' | 'id-to-jp' | 'jp-to-romaji' | 'romaji-to-id' | 'id-to-romaji') => {
@@ -176,7 +180,7 @@ export default function Quiz() {
 
 
   const handleReset = () => {
-    localStorage.removeItem('quiz_state_' + category + '_' + sessionIndex);
+    removeSessionState(currentUser?.uid, 'quiz_state_' + category + '_' + sessionIndex);
     setCurrentIndex(0);
     setReports([]);
     setIsFinished(false);

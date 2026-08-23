@@ -114,6 +114,16 @@ export default function Admin() {
           await deleteDoc(docSnap.ref);
         }
         
+        try {
+          const activeQ = query(collection(db, 'active_sessions'), where('userId', '==', uid));
+          const activeSnap = await getDocs(activeQ);
+          for (const docSnap of activeSnap.docs) {
+            await deleteDoc(docSnap.ref);
+          }
+        } catch(e) {
+          console.warn("Could not fetch active_sessions to delete", e);
+        }
+        
         const resetData = { 
           points: 0, 
           level: 1, 
@@ -128,7 +138,7 @@ export default function Admin() {
         alert('Progress berhasil direset!');
       } catch (err) {
         console.error('Gagal reset progress', err);
-        alert('Gagal reset progress');
+        alert('Gagal reset progress: ' + (err.message || err));
       } finally {
         setLoading(false);
       }
@@ -177,6 +187,16 @@ export default function Admin() {
         const sessSnap = await getDocs(sessQ);
         for (const docSnap of sessSnap.docs) {
           await deleteDoc(docSnap.ref);
+        }
+        
+        try {
+          const activeQ = query(collection(db, 'active_sessions'), where('userId', '==', uid));
+          const activeSnap = await getDocs(activeQ);
+          for (const docSnap of activeSnap.docs) {
+            await deleteDoc(docSnap.ref);
+          }
+        } catch(e) {
+          console.warn("Could not fetch active_sessions to delete", e);
         }
 
         // Delete user doc

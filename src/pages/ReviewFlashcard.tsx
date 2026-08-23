@@ -8,6 +8,7 @@ import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData 
 import { useAuth } from '../contexts/AuthContext';
 import { getVocabulariesByCategory, formatCategoryName, allVocabularies } from '../data';
 import { motion, AnimatePresence } from 'motion/react';
+import { getSessionState, saveSessionState, removeSessionState } from '../utils/sessionState';
 
 export default function ReviewFlashcard() {
   
@@ -31,7 +32,7 @@ export default function ReviewFlashcard() {
     const fetchVocabs = async () => {
       
       
-      const savedState = localStorage.getItem('review_flashcard_state');
+      const savedState = await getSessionState(currentUser?.uid, 'review_flashcard_state');
       if (savedState) {
         try {
           const parsed = JSON.parse(savedState);
@@ -97,17 +98,20 @@ export default function ReviewFlashcard() {
   }, [currentUser]);
 
   useEffect(() => {
-    if (!loading && initialVocabs.length > 0 && !isFinished && queue.length > 0) {
-      localStorage.setItem('review_flashcard_state', JSON.stringify({
-        queue,
-        initialVocabs,
-        sessionTotal,
-        masteredCount,
-        notRememberedIds
-      }));
-    } else if (isFinished || (sessionTotal === 0 && initialVocabs.length > 0)) {
-      localStorage.removeItem('review_flashcard_state');
-    }
+    const saveState = async () => {
+      if (!loading && initialVocabs.length > 0 && !isFinished && queue.length > 0) {
+        await saveSessionState(currentUser?.uid, 'review_flashcard_state', {
+          queue,
+          initialVocabs,
+          sessionTotal,
+          masteredCount,
+          notRememberedIds
+        });
+      } else if (isFinished || (sessionTotal === 0 && initialVocabs.length > 0)) {
+        await removeSessionState(currentUser?.uid, 'review_flashcard_state');
+      }
+    };
+    saveState();
   }, [queue, initialVocabs, sessionTotal, masteredCount, notRememberedIds, loading, isFinished]);
 
   const handleRating = async (isRemembered: boolean) => {
@@ -182,7 +186,7 @@ export default function ReviewFlashcard() {
   };
 
   const handleReset = () => {
-    localStorage.removeItem('review_flashcard_state');
+    removeSessionState(currentUser?.uid, 'review_flashcard_state');
     setQueue([...initialVocabs]);
     setSessionTotal(initialVocabs.length);
     setMasteredCount(0);

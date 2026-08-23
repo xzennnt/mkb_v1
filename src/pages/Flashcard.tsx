@@ -8,6 +8,7 @@ import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData 
 import { useAuth } from '../contexts/AuthContext';
 import { getVocabulariesByCategory, formatCategoryName } from '../data';
 import { motion, AnimatePresence } from 'motion/react';
+import { getSessionState, saveSessionState, removeSessionState } from '../utils/sessionState';
 
 export default function Flashcard() {
   const { category } = useParams<{ category: string }>();
@@ -31,7 +32,7 @@ export default function Flashcard() {
     const fetchVocabs = async () => {
       if (!category) return;
       
-      const savedState = localStorage.getItem('flashcard_state_' + category);
+      const savedState = await getSessionState(currentUser?.uid, 'flashcard_state_' + category);
       if (savedState) {
         try {
           const parsed = JSON.parse(savedState);
@@ -113,17 +114,20 @@ export default function Flashcard() {
   }, [category, currentUser]);
 
   useEffect(() => {
-    if (!loading && initialVocabs.length > 0 && !isFinished && queue.length > 0) {
-      localStorage.setItem('flashcard_state_' + category, JSON.stringify({
-        queue,
-        initialVocabs,
-        sessionTotal,
-        masteredCount,
-        notRememberedIds
-      }));
-    } else if (isFinished || (sessionTotal === 0 && initialVocabs.length > 0)) {
-      localStorage.removeItem('flashcard_state_' + category);
-    }
+    const saveState = async () => {
+      if (!loading && initialVocabs.length > 0 && !isFinished && queue.length > 0) {
+        await saveSessionState(currentUser?.uid, 'flashcard_state_' + category, {
+          queue,
+          initialVocabs,
+          sessionTotal,
+          masteredCount,
+          notRememberedIds
+        });
+      } else if (isFinished || (sessionTotal === 0 && initialVocabs.length > 0)) {
+        await removeSessionState(currentUser?.uid, 'flashcard_state_' + category);
+      }
+    };
+    saveState();
   }, [queue, initialVocabs, sessionTotal, masteredCount, notRememberedIds, loading, isFinished, category]);
 
   const handleRating = async (isRemembered: boolean) => {
@@ -177,32 +181,29 @@ export default function Flashcard() {
     setIsFlipped(false);
     
     setTimeout(() => {
-      setQueue(prevQueue => {
-        const newQueue = [...prevQueue];
-        const card = newQueue.shift(); // remove from front
-        
-        if (!isRemembered && card) {
-          // Do NOT push it back to newQueue. The session is single-pass.
-          setNotRememberedIds(prev => {
-            if (!prev.includes(card.id)) return [...prev, card.id];
-            return prev;
-          });
-        } else {
-          setMasteredCount(m => m + 1);
-        }
-        
-        if (newQueue.length === 0) {
-          setIsFinished(true);
-        }
-        
-        setIsProcessing(false);
-        return newQueue;
-      });
+      const card = queue[0];
+      
+      if (!isRemembered && card) {
+        setNotRememberedIds(prev => {
+          if (!prev.includes(card.id)) return [...prev, card.id];
+          return prev;
+        });
+      } else {
+        setMasteredCount(m => m + 1);
+      }
+      
+      const newQueue = queue.slice(1);
+      if (newQueue.length === 0) {
+        setIsFinished(true);
+      }
+      
+      setQueue(newQueue);
+      setIsProcessing(false);
     }, 200);
   };
 
   const handleReset = () => {
-    localStorage.removeItem('flashcard_state_' + category);
+    removeSessionState(currentUser?.uid, 'flashcard_state_' + category);
     setQueue([...initialVocabs]);
     setSessionTotal(initialVocabs.length);
     setMasteredCount(0);

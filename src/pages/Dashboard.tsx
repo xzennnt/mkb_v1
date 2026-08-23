@@ -13,6 +13,7 @@ import { getCategoriesCount } from '../data';
 export default function Dashboard() {
   const { userData, currentUser } = useAuth();
   const navigate = useNavigate();
+  const [showAdminMenu, setShowAdminMenu] = useState(false);
 
   const handleResetMyProgress = async () => {
     if (!userData) return;
@@ -20,21 +21,36 @@ export default function Dashboard() {
       try {
         const uid = userData.uid;
         
-        // Delete user_progress
-        const progQ = query(collection(db, 'user_progress'), where('userId', '==', uid));
-        const progSnap = await getDocs(progQ);
-        for (const docSnap of progSnap.docs) {
-          await deleteDoc(docSnap.ref);
+        try {
+          const progQ = query(collection(db, 'user_progress'), where('userId', '==', uid));
+          const progSnap = await getDocs(progQ);
+          for (const docSnap of progSnap.docs) {
+            await deleteDoc(docSnap.ref);
+          }
+        } catch(e: any) {
+          throw new Error("Gagal hapus user_progress: " + e.message);
         }
         
-        // Delete study_sessions
-        const sessQ = query(collection(db, 'study_sessions'), where('userId', '==', uid));
-        const sessSnap = await getDocs(sessQ);
-        for (const docSnap of sessSnap.docs) {
-          await deleteDoc(docSnap.ref);
+        try {
+          const sessQ = query(collection(db, 'study_sessions'), where('userId', '==', uid));
+          const sessSnap = await getDocs(sessQ);
+          for (const docSnap of sessSnap.docs) {
+            await deleteDoc(docSnap.ref);
+          }
+        } catch(e: any) {
+          throw new Error("Gagal hapus study_sessions: " + e.message);
         }
         
-        // Clear all local states so it doesn't resume from old sessions
+        try {
+          const activeQ = query(collection(db, 'active_sessions'), where('userId', '==', uid));
+          const activeSnap = await getDocs(activeQ);
+          for (const docSnap of activeSnap.docs) {
+            await deleteDoc(docSnap.ref);
+          }
+        } catch (e) {
+          console.warn("Could not fetch active_sessions to delete", e);
+        }
+        
         Object.keys(localStorage).forEach(key => {
           if (key.startsWith('flashcard_state_') || key.startsWith('quiz_state_') || key.startsWith('review_flashcard_state')) {
             localStorage.removeItem(key);
@@ -49,12 +65,16 @@ export default function Dashboard() {
           loginStreak: 1,
           loginHistory: []
         };
-        await updateDoc(doc(db, 'users', uid), resetData);
+        try {
+          await updateDoc(doc(db, 'users', uid), resetData);
+        } catch(e: any) {
+          throw new Error("Gagal update users: " + e.message);
+        }
         alert('Progress berhasil direset!');
         window.location.reload();
-      } catch (err) {
+      } catch (err: any) {
         console.error('Gagal reset progress', err);
-        alert('Gagal reset progress');
+        alert('Gagal reset progress: ' + (err.message || err));
       }
     }
   };
@@ -175,25 +195,7 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-5xl mx-auto p-4 py-8 w-full flex-1">
-      {(userData?.role === 'admin' || userData?.role === 'sub_admin') && (
-        <div className="bg-slate-800 text-white p-3 rounded-xl mb-4 flex items-center justify-between shadow-sm">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-sm uppercase tracking-widest text-slate-300">
-              {userData.role === 'admin' ? 'Admin Mode' : 'Sub Admin Mode'}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            {userData.role === 'admin' && (
-              <button onClick={handleResetMyProgress} className="bg-rose-500 hover:bg-rose-600 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
-                Reset Progress Saya
-              </button>
-            )}
-            <button onClick={() => navigate('/admin')} className="bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
-              Ke Admin Panel
-            </button>
-          </div>
-        </div>
-      )}
+      
       <header className="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6">
         <div className="flex items-center gap-4">
           <div className="bg-indigo-600 text-white p-2 rounded-lg">
@@ -226,9 +228,26 @@ export default function Dashboard() {
           <div className="h-10 w-[1px] bg-slate-200"></div>
           <div className="flex items-center gap-2">
             {(userData.role === 'admin' || userData.role === 'sub_admin') && (
-              <Link to="/admin" className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
-                <Settings size={20} />
-              </Link>
+              <div className="relative">
+                <button onClick={() => setShowAdminMenu(!showAdminMenu)} className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                  <Settings size={20} />
+                </button>
+                {showAdminMenu && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-slate-200 py-2 z-50">
+                    <div className="px-4 py-2 border-b border-slate-100 mb-1">
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">{userData.role === 'admin' ? 'Admin Mode' : 'Sub Admin Mode'}</p>
+                    </div>
+                    <Link to="/admin" className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 font-medium">
+                      Ke Admin Panel
+                    </Link>
+                    {userData.role === 'admin' && (
+                      <button onClick={() => { setShowAdminMenu(false); handleResetMyProgress(); }} className="w-full text-left px-4 py-2 text-sm text-rose-600 hover:bg-rose-50 font-medium">
+                        Reset Progress Saya
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
             )}
             <button onClick={handleLogout} className="p-2 text-rose-500 hover:bg-rose-50 rounded-lg transition-colors">
               <LogOut size={20} />
