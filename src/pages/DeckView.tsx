@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { Vocabulary } from '../types';
-import { ArrowLeft, Play, BookOpen, ArrowUp, Zap } from 'lucide-react';
+import { ArrowLeft, Play, BookOpen, ArrowUp, Zap , Flame } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaGrid, katakanaGrid, hiraganaAdvancedData, katakanaAdvancedData, hiraganaAdvancedGrid, katakanaAdvancedGrid } from '../data/kana';
 import { getVocabulariesByCategory, formatCategoryName, allVocabularies } from '../data';
 import { useAuth } from '../contexts/AuthContext';

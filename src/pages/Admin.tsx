@@ -111,7 +111,7 @@ export default function Admin() {
         const deleteInBatches = async (collName: string) => {
           let hasMore = true;
           while (hasMore) {
-            const q = query(collection(db, collName), limit(500));
+            const q = query(collection(db, collName), limit(250));
             const snap = await getDocs(q);
             if (snap.docs.length === 0) {
               hasMore = false;
@@ -120,6 +120,7 @@ export default function Admin() {
             const batch = writeBatch(db);
             snap.docs.forEach(d => batch.delete(d.ref));
             await batch.commit();
+            await new Promise(r => setTimeout(r, 1000)); // 1s delay to prevent resource exhaustion
           }
         };
 

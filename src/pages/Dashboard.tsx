@@ -4,7 +4,7 @@ import { auth, db } from '../lib/firebase';
 import { signOut } from 'firebase/auth';
 import { collection, query, getDocs, where, limit, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
-import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
+import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronRight, ChevronDown, ChevronUp, AlertCircle , Flame } from 'lucide-react';
 import StreakCalendar from '../components/StreakCalendar';
 import { getXpForLevel } from '../utils/levelUtils';
 
