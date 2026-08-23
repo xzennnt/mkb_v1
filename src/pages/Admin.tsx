@@ -257,7 +257,7 @@ export default function Admin() {
         setUsers(prev => prev.filter(u => u.uid !== uid));
       } catch (err) {
         console.error('Gagal menghapus user', err);
-        alert('Gagal menghapus user');
+        alert('Gagal menghapus user: ' + (err.message || err));
       } finally {
         setLoading(false);
       }
