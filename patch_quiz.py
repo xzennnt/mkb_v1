@@ -1,47 +1,26 @@
 import re
-
 with open('src/pages/Quiz.tsx', 'r') as f:
     content = f.read()
 
-reset_func = """
-  const handleReset = () => {
-    localStorage.removeItem('quiz_state_' + category + '_' + sessionIndex);
-    setCurrentIndex(0);
-    setReports([]);
-    setIsFinished(false);
-    setSelectedAnswer(null);
-    setTotalTime(0);
-    
-    // Generate new directions
-    const newDirs: any[] = [];
-    sessionCards.forEach(() => {
-      const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
-      const possibleDirs = isKana ? ['jp-to-romaji', 'romaji-to-jp'] : ['jp-to-id', 'id-to-jp', 'jp-to-romaji', 'romaji-to-id', 'id-to-romaji'];
-      newDirs.push(possibleDirs[Math.floor(Math.random() * possibleDirs.length)]);
-    });
-    setDirections(newDirs);
-    
-    if (sessionCards.length > 0) {
-      setupCard(sessionCards[0], allVocabs, newDirs[0]);
-    }
-  };
-"""
+old_code = """        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
+        const progSnap = await getDocs(progQ);
+        const pMap: Record<string, any> = {};
+        progSnap.docs.forEach(d => {
+          pMap[d.data().vocabId] = d.data();
+        });"""
 
-content = content.replace("  const handleAnswer = async (answer: string) => {", reset_func + "\n  const handleAnswer = async (answer: string) => {")
+new_code = """        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
+        const progSnap = await getDocs(progQ);
+        const pMap: Record<string, any> = {};
+        
+        const docs = progSnap.docs.map(d => ({ ...d.data(), id: d.id } as any));
+        docs.sort((a, b) => (b.nextReviewTime || 0) - (a.nextReviewTime || 0));
+        
+        docs.forEach(p => {
+          if (!pMap[p.vocabId]) pMap[p.vocabId] = p;
+        });"""
 
-old_btns = """          <button onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)} className="mt-4 bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 shadow-md">
-            Kembali ke Daftar Menu
-          </button>"""
-new_btns = """          <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button onClick={handleReset} className="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 shadow-md w-full sm:w-auto">
-              Ulangi Kuis
-            </button>
-            <button onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)} className="bg-slate-200 text-slate-700 px-8 py-3 rounded-xl font-bold hover:bg-slate-300 shadow-md w-full sm:w-auto">
-              Kembali ke Menu
-            </button>
-          </div>"""
-
-content = content.replace(old_btns, new_btns)
-
+content = content.replace(old_code, new_code)
 with open('src/pages/Quiz.tsx', 'w') as f:
     f.write(content)
+

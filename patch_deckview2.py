@@ -3,37 +3,8 @@ import re
 with open('src/pages/DeckView.tsx', 'r') as f:
     content = f.read()
 
-# Add weakCount state and fetch
-if 'const [weakCount, setWeakCount]' not in content:
-    content = content.replace("const [hardCount, setHardCount] = useState(0);", "const [hardCount, setHardCount] = useState(0);\n  const [weakCount, setWeakCount] = useState(0);")
-    
-    loop_code = """
-        docs.forEach(p => {
-          if (!pMap[p.vocabId]) {
-            pMap[p.vocabId] = p;
-          }
-        });
-    """
-    new_loop_code = """
-        docs.forEach(p => {
-          if (!pMap[p.vocabId]) {
-            pMap[p.vocabId] = p;
-          }
-        });
-        
-        let wCount = 0;
-        Object.values(pMap).forEach(p => {
-          if (p.isWeak && (p.category === category || category === 'Review')) {
-            wCount++;
-          }
-        });
-        setWeakCount(wCount);
-    """
-    content = content.replace(loop_code, new_loop_code)
-
 # Add UI for Weak
-if 'Bank Kotoba Lemah (Remidial)' not in content:
-    ui_code = """
+ui_code = """
             {hardCount > 0 && (
               <button 
                 onClick={() => navigate(`/srs/${category}`)}
@@ -41,12 +12,13 @@ if 'Bank Kotoba Lemah (Remidial)' not in content:
               >
                 <div className="flex items-center gap-2 group-hover:scale-105 transition-transform">
                   <BookOpen size={20} />
-                  <span>({hardCount}) Review Berkala (SRS)</span>
+                  <span>REMIDI FLASHCARD ({hardCount})</span>
                 </div>
               </button>
             )}
 """
-    new_ui_code = """
+
+new_ui_code = """
             {hardCount > 0 && (
               <button 
                 onClick={() => navigate(`/srs/${category}`)}
@@ -54,7 +26,7 @@ if 'Bank Kotoba Lemah (Remidial)' not in content:
               >
                 <div className="flex items-center gap-2 group-hover:scale-105 transition-transform">
                   <BookOpen size={20} />
-                  <span>({hardCount}) Review Berkala (SRS)</span>
+                  <span>Review Berkala SRS ({hardCount})</span>
                 </div>
               </button>
             )}
@@ -63,7 +35,7 @@ if 'Bank Kotoba Lemah (Remidial)' not in content:
               <div className="w-full max-w-sm mx-auto bg-rose-50 border border-rose-200 p-4 rounded-2xl mt-4 shadow-sm">
                 <div className="flex items-center gap-2 text-rose-600 font-bold mb-3 justify-center">
                   <Flame size={20} />
-                  <span>Bank Kotoba Lemah (Remidial)</span>
+                  <span>Bank Kotoba Lemah (Remidial Bab)</span>
                 </div>
                 <div className="flex flex-col gap-2">
                   <button 
@@ -82,10 +54,12 @@ if 'Bank Kotoba Lemah (Remidial)' not in content:
               </div>
             )}
 """
-    content = content.replace(ui_code, new_ui_code)
+content = content.replace(ui_code, new_ui_code)
 
-if 'import { Zap' not in content:
+if 'import { Zap' in content and 'Flame' not in content:
     content = content.replace("import { Zap, Play, ArrowLeft, BookOpen, Star, BrainCircuit }", "import { Zap, Play, ArrowLeft, BookOpen, Star, BrainCircuit, Flame }")
+elif 'Flame' not in content:
+    content = content.replace("import { Zap", "import { Flame, Zap")
 
 with open('src/pages/DeckView.tsx', 'w') as f:
     f.write(content)

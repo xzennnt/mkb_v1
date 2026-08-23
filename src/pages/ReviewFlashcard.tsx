@@ -73,8 +73,14 @@ export default function ReviewFlashcard() {
       const pData: Record<string, UserProgress> = {};
       const fetchedVocabs: Vocabulary[] = [];
       
-      progSnap.docs.forEach(d => {
-        const p = { ...d.data(), id: d.id } as UserProgress;
+      const docs = progSnap.docs.map(d => ({ ...d.data(), id: d.id } as UserProgress));
+      docs.sort((a, b) => b.nextReviewTime - a.nextReviewTime);
+      
+      const seenVocabs = new Set<string>();
+      
+      docs.forEach(p => {
+        if (seenVocabs.has(p.vocabId)) return;
+        seenVocabs.add(p.vocabId);
         pData[p.vocabId] = p;
         const v = allV.find(voc => voc.id === p.vocabId);
         if (v) {
@@ -138,7 +144,7 @@ export default function ReviewFlashcard() {
       }
       
       const nextReviewTime = now + (nextInterval * 60 * 1000);
-      const progressId = currentProg?.id || doc(collection(db, 'user_progress')).id;
+      const progressId = currentProg?.id && currentProg.id.includes('_') ? currentProg.id : `${currentUser.uid}_${currentCard.id}`;
       
       const newProg: UserProgress = {
         id: progressId,
@@ -153,7 +159,7 @@ export default function ReviewFlashcard() {
       setProgressData(prev => ({ ...prev, [currentCard.id]: newProg }));
       
       try {
-        await setDoc(doc(db, 'user_progress', progressId), newProg);
+        await setDoc(doc(db, 'user_progress', progressId), newProg, { merge: true });
       } catch (err) {
         console.error('Failed to update progress', err);
       }
@@ -162,27 +168,34 @@ export default function ReviewFlashcard() {
     setIsFlipped(false);
     
     setTimeout(() => {
-      setQueue(prevQueue => {
-        const newQueue = [...prevQueue];
-        const card = newQueue.shift(); // remove from front
-        
-        if (!isRemembered && card) {
-          setNotRememberedIds(prev => {
-            if (!prev.includes(card.id)) return [...prev, card.id];
-            return prev;
-          });
-        } else {
-          setMasteredCount(m => m + 1);
-        }
-        
-        if (newQueue.length === 0) {
-          setIsFinished(true);
-        }
-        
-        setIsProcessing(false);
-        return newQueue;
-      });
+      const card = queue[0];
+      
+      if (!isRemembered && card) {
+        setNotRememberedIds(prev => {
+          if (!prev.includes(card.id)) return [...prev, card.id];
+          return prev;
+        });
+      } else {
+        setMasteredCount(m => m + 1);
+      }
+      
+      const newQueue = queue.slice(1);
+      if (newQueue.length === 0) {
+        setIsFinished(true);
+      }
+      
+      setQueue(newQueue);
+      setIsProcessing(false);
     }, 200);
+  };
+
+  const handleRemidi = () => {
+    const remidiVocabs = initialVocabs.filter(v => notRememberedIds.includes(v.id));
+    setQueue([...remidiVocabs]);
+    setSessionTotal(remidiVocabs.length);
+    setMasteredCount(0);
+    setNotRememberedIds([]);
+    setIsFinished(false);
   };
 
   const handleReset = () => {
@@ -246,11 +259,19 @@ export default function ReviewFlashcard() {
           Kamu telah mengingat semua kartu pada sesi ini.
         </p>
         <div className="flex flex-col gap-3 w-full max-w-sm">
+          {notRememberedIds.length > 0 && (
+            <button 
+              onClick={handleRemidi}
+              className="py-3 px-6 bg-rose-500 text-white font-bold rounded-xl hover:bg-rose-600 transition-colors w-full shadow-sm"
+            >
+              Ulangi yang Salah (Remidi)
+            </button>
+          )}
           <button 
             onClick={handleReset}
             className="py-3 px-6 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors w-full"
           >
-            Ulangi Flashcard
+            Ulangi Semua
           </button>
           <button 
             onClick={() => navigate(`/deck/${encodeURIComponent('Review')}`)}

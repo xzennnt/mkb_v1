@@ -19,6 +19,9 @@ import Flashcard from './pages/Flashcard';
 import Quiz from './pages/Quiz';
 import Review from './pages/Review';
 import ReviewFlashcard from './pages/ReviewFlashcard';
+import WeakQuiz from './pages/WeakQuiz';
+import WeakFlashcard from './pages/WeakFlashcard';
+
 import ReviewFlashcardSRS from './pages/ReviewFlashcardSRS';
 import LevelUpModal from './components/LevelUpModal';
 
@@ -93,6 +96,10 @@ export default function App() {
             <Route path="/quiz/:category/:sessionIndex" element={<PrivateRoute><Quiz /></PrivateRoute>} />
             <Route path="/review" element={<PrivateRoute><Review /></PrivateRoute>} />
             <Route path="/review-flashcard" element={<PrivateRoute><ReviewFlashcard /></PrivateRoute>} />
+                        <Route path="/weak-quiz" element={<PrivateRoute><WeakQuiz /></PrivateRoute>} />
+            <Route path="/weak-quiz/:category" element={<PrivateRoute><WeakQuiz /></PrivateRoute>} />
+            <Route path="/weak-flashcard" element={<PrivateRoute><WeakFlashcard /></PrivateRoute>} />
+            <Route path="/weak-flashcard/:category" element={<PrivateRoute><WeakFlashcard /></PrivateRoute>} />
             <Route path="/srs/:category" element={<PrivateRoute><ReviewFlashcardSRS /></PrivateRoute>} />
             <Route path="/study" element={<PrivateRoute><Study /></PrivateRoute>} />
             <Route path="/leaderboard" element={<PrivateRoute><Leaderboard /></PrivateRoute>} />

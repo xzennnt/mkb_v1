@@ -98,10 +98,20 @@ export function formatInterval(minutes: number): string {
 export function generateOptions(
   correctVocab: Vocabulary,
   allVocabs: Vocabulary[],
-  direction: 'jp-to-id' | 'id-to-jp'
+  direction: 'jp-to-id' | 'id-to-jp' | 'jp-to-romaji' | 'romaji-to-id' | 'id-to-romaji'
 ): string[] {
   const options = new Set<string>();
-  const correctAns = direction === 'jp-to-id' ? correctVocab.id_translation : correctVocab.jp;
+  
+  const getAns = (v: Vocabulary) => {
+    if (direction === 'jp-to-id' || direction === 'romaji-to-id') return v.id_translation;
+    if (direction === 'id-to-jp') return v.jp;
+    if (direction === 'jp-to-romaji' || direction === 'id-to-romaji') return v.romaji || v.jp;
+    return v.jp;
+  };
+
+  const correctAns = getAns(correctVocab);
+  if (!correctAns) return [];
+  
   options.add(correctAns);
   
   // Try to find distractors in the same category first if possible, otherwise anywhere
@@ -112,8 +122,10 @@ export function generateOptions(
   
   for (const v of distractors) {
     if (options.size >= 4) break;
-    const opt = direction === 'jp-to-id' ? v.id_translation : v.jp;
-    options.add(opt);
+    const opt = getAns(v);
+    if (opt && opt.trim() !== '') {
+      options.add(opt);
+    }
   }
   
   return Array.from(options).sort(() => 0.5 - Math.random());

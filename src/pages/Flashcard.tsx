@@ -82,9 +82,14 @@ export default function Flashcard() {
         const pData: Record<string, UserProgress> = {};
         
         let mCount = 0;
-        progSnap.docs.forEach(d => {
-          const p = { ...d.data(), id: d.id } as UserProgress;
-          pData[p.vocabId] = p;
+        
+        const docs = progSnap.docs.map(d => ({ ...d.data(), id: d.id } as UserProgress));
+        docs.sort((a, b) => (b.nextReviewTime || 0) - (a.nextReviewTime || 0));
+
+        docs.forEach(p => {
+          if (!pData[p.vocabId]) {
+            pData[p.vocabId] = p;
+          }
         });
         setProgressData(pData);
         
@@ -154,7 +159,7 @@ export default function Flashcard() {
       }
       
       const nextReviewTime = now + (nextInterval * 60 * 1000);
-      const progressId = currentProg?.id || doc(collection(db, 'user_progress')).id;
+      const progressId = currentProg?.id && currentProg.id.includes('_') ? currentProg.id : `${currentUser.uid}_${currentCard.id}`;
       
       const newProg: UserProgress = {
         id: progressId,
@@ -172,7 +177,7 @@ export default function Flashcard() {
       setProgressData(prev => ({ ...prev, [currentCard.id]: newProg }));
       
       try {
-        await setDoc(doc(db, 'user_progress', progressId), newProg);
+        await setDoc(doc(db, 'user_progress', progressId), newProg, { merge: true });
       } catch (err) {
         console.error('Failed to update progress', err);
       }
@@ -200,6 +205,15 @@ export default function Flashcard() {
       setQueue(newQueue);
       setIsProcessing(false);
     }, 200);
+  };
+
+  const handleRemidi = () => {
+    const remidiVocabs = initialVocabs.filter(v => notRememberedIds.includes(v.id));
+    setQueue([...remidiVocabs]);
+    setSessionTotal(remidiVocabs.length);
+    setMasteredCount(0);
+    setNotRememberedIds([]);
+    setIsFinished(false);
   };
 
   const handleReset = () => {
@@ -263,11 +277,19 @@ export default function Flashcard() {
           Kamu telah mengingat semua kartu pada sesi ini.
         </p>
         <div className="flex flex-col gap-3 w-full max-w-sm">
+          {notRememberedIds.length > 0 && (
+            <button 
+              onClick={handleRemidi}
+              className="py-3 px-6 bg-rose-500 text-white font-bold rounded-xl hover:bg-rose-600 transition-colors w-full shadow-sm"
+            >
+              Ulangi yang Salah (Remidi)
+            </button>
+          )}
           <button 
             onClick={handleReset}
             className="py-3 px-6 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors w-full"
           >
-            Ulangi Flashcard
+            Ulangi Semua
           </button>
           <button 
             onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)}

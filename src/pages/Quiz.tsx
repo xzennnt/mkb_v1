@@ -93,8 +93,12 @@ export default function Quiz() {
         const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
         const progSnap = await getDocs(progQ);
         const pMap: Record<string, any> = {};
-        progSnap.docs.forEach(d => {
-          pMap[d.data().vocabId] = d.data();
+        
+        const docs = progSnap.docs.map(d => ({ ...d.data(), id: d.id } as any));
+        docs.sort((a, b) => (b.nextReviewTime || 0) - (a.nextReviewTime || 0));
+        
+        docs.forEach(p => {
+          if (!pMap[p.vocabId]) pMap[p.vocabId] = p;
         });
         setUserProgressMap(pMap);
 
@@ -179,6 +183,31 @@ export default function Quiz() {
   };
 
 
+  const handleRemidi = () => {
+    removeSessionState(currentUser?.uid, 'quiz_state_' + category + '_' + sessionIndex);
+    const wrongVocabIds = reports.filter(r => !r.isCorrect).map(r => r.vocabId);
+    const remidiCards = sessionCards.filter(c => wrongVocabIds.includes(c.id));
+    
+    setSessionCards(remidiCards);
+    setCurrentIndex(0);
+    setReports([]);
+    setIsFinished(false);
+    setSelectedAnswer(null);
+    setTotalTime(0);
+    
+    const newDirs: any[] = [];
+    remidiCards.forEach(() => {
+      const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
+      const possibleDirs = isKana ? ['jp-to-romaji', 'romaji-to-jp'] : ['jp-to-id', 'id-to-jp', 'jp-to-romaji', 'romaji-to-id', 'id-to-romaji'];
+      newDirs.push(possibleDirs[Math.floor(Math.random() * possibleDirs.length)]);
+    });
+    setDirections(newDirs);
+    
+    if (remidiCards.length > 0) {
+      setupCard(remidiCards[0], allVocabs, newDirs[0]);
+    }
+  };
+
   const handleReset = () => {
     removeSessionState(currentUser?.uid, 'quiz_state_' + category + '_' + sessionIndex);
     setCurrentIndex(0);
@@ -241,7 +270,8 @@ export default function Quiz() {
       nextReviewTime: srsResult.nextReviewTime,
       interval: srsResult.nextInterval,
       reps: (prevProgress?.reps || 0) + srsResult.reps,
-      srsLevel: srsResult.srsLevel
+      srsLevel: srsResult.srsLevel,
+      ...(isCorrect ? {} : { isWeak: true })
     }, { merge: true }).catch(console.error);
 
     setUserProgressMap(prev => ({
@@ -287,7 +317,6 @@ export default function Quiz() {
       }, { merge: true }).catch(console.error);
     }
 
-    // Wait a bit before next card
     setTimeout(() => {
       if (currentIndex + 1 < sessionCards.length) {
         setCurrentIndex(prev => prev + 1);
@@ -356,8 +385,13 @@ export default function Quiz() {
             ⏱️ Total Waktu: {(totalTime / 1000).toFixed(1)} detik
           </p>
           <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            {reports.filter(r => !r.isCorrect).length > 0 && (
+              <button onClick={handleRemidi} className="bg-rose-500 text-white px-8 py-3 rounded-xl font-bold hover:bg-rose-600 shadow-md w-full sm:w-auto">
+                Remidi yang Salah
+              </button>
+            )}
             <button onClick={handleReset} className="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 shadow-md w-full sm:w-auto">
-              Ulangi Kuis
+              Ulangi Semua
             </button>
             <button onClick={() => navigate(`/deck/${encodeURIComponent(category!)}`)} className="bg-slate-200 text-slate-700 px-8 py-3 rounded-xl font-bold hover:bg-slate-300 shadow-md w-full sm:w-auto">
               Kembali ke Menu

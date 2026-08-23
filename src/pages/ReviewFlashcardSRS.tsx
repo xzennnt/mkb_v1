@@ -39,12 +39,16 @@ export default function ReviewFlashcardSRS() {
         const hardVocabIds: string[] = [];
         
         const now = Date.now();
+        
+        const docs = querySnapshot.docs.map(d => ({ ...d.data(), id: d.id } as UserProgress));
+        docs.sort((a, b) => (b.nextReviewTime || 0) - (a.nextReviewTime || 0));
 
-        querySnapshot.forEach(docSnap => {
-          const prog = docSnap.data() as UserProgress;
-          if (prog.category === category && ((prog.failCount && prog.failCount > 0) || prog.srsLevel === 'again' || prog.srsLevel === 'hard')) {
+        docs.forEach(prog => {
+          if (!progresses[prog.vocabId]) {
             progresses[prog.vocabId] = prog;
-            hardVocabIds.push(prog.vocabId);
+            if (prog.category === category && ((prog.failCount && prog.failCount > 0) || prog.srsLevel === 'again' || prog.srsLevel === 'hard')) {
+              hardVocabIds.push(prog.vocabId);
+            }
           }
         });
         
@@ -99,7 +103,7 @@ export default function ReviewFlashcardSRS() {
       }
       
       const nextReviewTime = now + (nextInterval * 60 * 1000);
-      const progressId = currentProg?.id || doc(collection(db, 'user_progress')).id;
+      const progressId = currentProg?.id && currentProg.id.includes('_') ? currentProg.id : `${currentUser.uid}_${currentCard.id}`;
       
       // We reduce failCount slightly on easy/good so it eventually drops out of "hard" if they actually learn it?
       // Wait, user says "jika user sudah memencet tombol mudah 2x maka kalikan sesuai SRS algoritma". 
@@ -126,7 +130,7 @@ export default function ReviewFlashcardSRS() {
       setProgressData(prev => ({ ...prev, [currentCard.id]: newProg }));
       
       try {
-        await setDoc(doc(db, 'user_progress', progressId), newProg);
+        await setDoc(doc(db, 'user_progress', progressId), newProg, { merge: true });
       } catch (err) {
         console.error('Failed to update progress', err);
       }

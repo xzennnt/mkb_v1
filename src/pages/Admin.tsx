@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, setDoc, doc, getDocs, query, orderBy, limit, deleteDoc, where, updateDoc } from 'firebase/firestore';
+import { collection, setDoc, doc, getDocs, query, orderBy, limit, deleteDoc, writeBatch, where, updateDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { ArrowLeft, Users, Clock, LayoutDashboard, LogOut, AlertTriangle, Trash2, Edit2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -95,6 +95,54 @@ export default function Admin() {
         console.error('Gagal mem-ban/unban user', err);
         alert('Gagal mem-ban/unban user');
       }
+    }
+  };
+
+
+  const handleResetAllProgress = async () => {
+    if (window.confirm('PERINGATAN KERAS: Yakin ingin mereset progress belajar SEMUA AKUN secara total? Data tidak dapat dikembalikan!')) {
+      const pin = window.prompt('Masukkan kata sandi "RESETALL" untuk melanjutkan penghapusan total:');
+      if (pin !== 'RESETALL') {
+        alert('Kata sandi salah. Batal.');
+        return;
+      }
+      setLoading(true);
+      try {
+        const deleteInBatches = async (collName: string) => {
+          let hasMore = true;
+          while (hasMore) {
+            const q = query(collection(db, collName), limit(500));
+            const snap = await getDocs(q);
+            if (snap.docs.length === 0) {
+              hasMore = false;
+              break;
+            }
+            const batch = writeBatch(db);
+            snap.docs.forEach(d => batch.delete(d.ref));
+            await batch.commit();
+          }
+        };
+
+        await deleteInBatches('user_progress');
+        await deleteInBatches('study_sessions');
+        await deleteInBatches('active_sessions');
+        
+        // Wipe local storage keys starting with quiz_state
+        const keys = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('quiz_state_')) {
+            keys.push(key);
+          }
+        }
+        keys.forEach(k => localStorage.removeItem(k));
+        
+        alert('Progress semua akun berhasil direset total!');
+      } catch (error) {
+        console.error(error);
+        alert('Gagal mereset progress semua akun.');
+      }
+      setLoading(false);
     }
   };
 

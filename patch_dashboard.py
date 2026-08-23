@@ -3,71 +3,138 @@ import re
 with open('src/pages/Dashboard.tsx', 'r') as f:
     content = f.read()
 
-# Add imports
-content = content.replace(
-    "import { collection, query, getDocs, where, limit } from 'firebase/firestore';",
-    "import { collection, query, getDocs, where, limit, updateDoc, doc, deleteDoc } from 'firebase/firestore';"
-)
-
-# Add handleResetMyProgress
-reset_func = """
-  const handleResetMyProgress = async () => {
-    if (!userData) return;
-    if (window.confirm('Yakin ingin mereset progress belajar Anda untuk penelitian? (Semua riwayat belajar akan terhapus)')) {
+# 1. Fetch weak vocabs count
+fetch_reviews_code = """
+    // Fetch Due Reviews & Hard Vocabs
+    const fetchReviews = async () => {
       try {
-        const uid = userData.uid;
-        
-        // Delete user_progress
-        const progQ = query(collection(db, 'user_progress'), where('userId', '==', uid));
+        // We fetch ALL progress for this user to avoid composite index requirements
+        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
         const progSnap = await getDocs(progQ);
-        for (const docSnap of progSnap.docs) {
-          await deleteDoc(docSnap.ref);
-        }
-        
-        // Delete study_sessions
-        const sessQ = query(collection(db, 'study_sessions'), where('userId', '==', uid));
-        const sessSnap = await getDocs(sessQ);
-        for (const docSnap of sessSnap.docs) {
-          await deleteDoc(docSnap.ref);
-        }
-        
-        const resetData = { 
-          points: 0, 
-          level: 1, 
-          masteredVocabCount: 0, 
-          totalStudyTime: 0,
-          loginStreak: 1,
-          loginHistory: []
-        };
-        await updateDoc(doc(db, 'users', uid), resetData);
-        alert('Progress berhasil direset!');
-        window.location.reload();
-      } catch (err) {
-        console.error('Gagal reset progress', err);
-        alert('Gagal reset progress');
-      }
-    }
-  };
 """
 
-content = content.replace("const navigate = useNavigate();", "const navigate = useNavigate();\n" + reset_func)
+new_fetch_reviews = """
+    const [weakCount, setWeakCount] = useState<number>(0);
 
-# Add button
-old_buttons = """          <button onClick={() => navigate('/admin')} className="bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
-            Ke Admin Panel
-          </button>"""
-new_buttons = """          <div className="flex items-center gap-2">
-            {userData.role === 'admin' && (
-              <button onClick={handleResetMyProgress} className="bg-rose-500 hover:bg-rose-600 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
-                Reset Progress Saya
-              </button>
-            )}
-            <button onClick={() => navigate('/admin')} className="bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-colors">
-              Ke Admin Panel
-            </button>
-          </div>"""
+    // Fetch Due Reviews & Hard Vocabs
+    const fetchReviews = async () => {
+      try {
+        // We fetch ALL progress for this user to avoid composite index requirements
+        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
+        const progSnap = await getDocs(progQ);
+"""
+content = content.replace(fetch_reviews_code, new_fetch_reviews)
 
-content = content.replace(old_buttons, new_buttons)
+loop_code = """
+        docs.forEach(data => {
+           if (seenVocabs.has(data.vocabId)) return;
+           seenVocabs.add(data.vocabId);
+
+           if (data.nextReviewTime <= now) {
+              dueCount++;
+           }
+        });
+        
+        setDueReviewCount(dueCount);
+"""
+
+new_loop_code = """
+        let wCount = 0;
+        docs.forEach(data => {
+           if (seenVocabs.has(data.vocabId)) return;
+           seenVocabs.add(data.vocabId);
+
+           if (data.nextReviewTime <= now) {
+              dueCount++;
+           }
+           if (data.isWeak) {
+              wCount++;
+           }
+        });
+        
+        setDueReviewCount(dueCount);
+        setWeakCount(wCount);
+"""
+content = content.replace(loop_code, new_loop_code)
+
+# Update Banner UI
+banner_ui = """
+          {/* LONG-TERM MEMORY (SRS) REVIEW BANNER */}
+          {dueReviewCount > 0 && (
+            <div className="mb-6 bg-gradient-to-r from-rose-500 to-orange-500 rounded-2xl shadow-md p-6 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-white/20 p-3 rounded-xl">
+                  <BrainCircuit size={28} className="text-white" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold tracking-tight">Review Kotoba Lemah</h2>
+                  <p className="text-sm text-rose-100 mt-1">Ada {dueReviewCount} kosakata yang perlu Anda ulang agar masuk ke ingatan jangka panjang.</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto shrink-0">
+                <button onClick={() => navigate('/review-flashcard')} className="bg-white/20 text-white hover:bg-white/30 border border-white/30 px-5 py-3 rounded-xl font-bold transition-colors w-full sm:w-auto text-center shadow-sm flex items-center justify-center gap-2">
+                  <BookOpen size={18} /> via Flashcard
+                </button>
+                <button onClick={() => navigate('/review')} className="bg-white text-rose-600 hover:bg-rose-50 px-5 py-3 rounded-xl font-bold transition-colors w-full sm:w-auto text-center shadow-sm flex items-center justify-center gap-2">
+                  <Play size={18} /> via Kuis
+                </button>
+              </div>
+            </div>
+          )}
+"""
+
+new_banner_ui = """
+          {/* LONG-TERM MEMORY (SRS) REVIEW BANNER */}
+          {dueReviewCount > 0 && (
+            <div className="mb-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl shadow-md p-6 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-white/20 p-3 rounded-xl">
+                  <BrainCircuit size={28} className="text-white" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold tracking-tight">Review Berkala (Spaced Repetition)</h2>
+                  <p className="text-sm text-blue-100 mt-1">Ada {dueReviewCount} kosakata yang sudah waktunya diulang berdasarkan jadwal.</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto shrink-0">
+                <button onClick={() => navigate('/review-flashcard')} className="bg-white/20 text-white hover:bg-white/30 border border-white/30 px-5 py-3 rounded-xl font-bold transition-colors w-full sm:w-auto text-center shadow-sm flex items-center justify-center gap-2">
+                  <BookOpen size={18} /> via Flashcard
+                </button>
+                <button onClick={() => navigate('/review')} className="bg-white text-indigo-600 hover:bg-indigo-50 px-5 py-3 rounded-xl font-bold transition-colors w-full sm:w-auto text-center shadow-sm flex items-center justify-center gap-2">
+                  <Play size={18} /> via Kuis
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* BANK KOTOBA LEMAH BANNER */}
+          {weakCount > 0 && (
+            <div className="mb-6 bg-gradient-to-r from-rose-500 to-orange-500 rounded-2xl shadow-md p-6 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-white/20 p-3 rounded-xl">
+                  <Flame size={28} className="text-white" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold tracking-tight">Bank Kotoba Lemah</h2>
+                  <p className="text-sm text-rose-100 mt-1">Ada {weakCount} kosakata yang perlu Anda perdalam (Remidial).</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto shrink-0">
+                <button onClick={() => navigate('/weak-flashcard')} className="bg-white/20 text-white hover:bg-white/30 border border-white/30 px-5 py-3 rounded-xl font-bold transition-colors w-full sm:w-auto text-center shadow-sm flex items-center justify-center gap-2">
+                  <BookOpen size={18} /> via Flashcard
+                </button>
+                <button onClick={() => navigate('/weak-quiz')} className="bg-white text-rose-600 hover:bg-rose-50 px-5 py-3 rounded-xl font-bold transition-colors w-full sm:w-auto text-center shadow-sm flex items-center justify-center gap-2">
+                  <Play size={18} /> via Kuis (2 Arah)
+                </button>
+              </div>
+            </div>
+          )}
+"""
+content = content.replace(banner_ui, new_banner_ui)
+
+if 'Flame' not in content:
+    content = content.replace("BrainCircuit, Play, BookOpen", "BrainCircuit, Play, BookOpen, Flame")
 
 with open('src/pages/Dashboard.tsx', 'w') as f:
     f.write(content)
+
