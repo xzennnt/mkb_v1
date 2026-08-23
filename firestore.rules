@@ -22,6 +22,7 @@ service cloud.firestore {
       allow read: if isAuthenticated();
       allow create: if isOwner(userId);
       allow update: if isOwner(userId) || isStaff();
+      allow delete: if isStaff();
     }
     
     match /vocabStats/{statId} {
