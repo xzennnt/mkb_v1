@@ -10,6 +10,8 @@ import { UserData, StudySession, Vocabulary } from '../types';
 import mnnBab1_5 from '../data/mnn1_bab1_5.json';
 import mnnBab6_8 from '../data/mnn1_bab6_8.json';
 import mnnBab9_10 from '../data/mnn1_bab9_10.json';
+import { kataKerja, kataSifatI, kataSifatNa, kataBenda } from '../data/newMaterials';
+
 import { allVocabularies } from '../data';
 
 export default function Admin() {
@@ -317,6 +319,88 @@ export default function Admin() {
       setStatus('Berhasil menambahkan data Hiragana & Katakana!');
     } catch (err: any) {
       setStatus(`Error seeding: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  const handleSeedNewMaterials = async () => {
+    try {
+      setLoading(true);
+      setStatus('Menambahkan materi baru (Kata Kerja, Sifat, Benda)...');
+      
+      let count = 0;
+      const categories = [
+        { items: kataKerja, cat: 'Kata Kerja' },
+        { items: kataSifatI, cat: 'Kata Sifat I' },
+        { items: kataSifatNa, cat: 'Kata Sifat Na' },
+        { items: kataBenda, cat: 'Kata Benda' }
+      ];
+
+      for (const group of categories) {
+        for (const item of group.items) {
+          const safeId = `${group.cat}_${item.jp}`.replace(/[^a-zA-Z0-9_]/g, '_');
+          const docRef = doc(db, 'vocabularies', safeId);
+          await setDoc(docRef, {
+            jp: item.jp,
+            romaji: "", // None provided in new material
+            id_translation: item.id_translation || "",
+            category: group.cat,
+            createdAt: Date.now()
+          });
+          count++;
+        }
+      }
+      
+      setStatus(`Berhasil menambahkan ${count} kosakata baru!`);
+    } catch (err: any) {
+      console.error(err);
+      setStatus('Gagal: ' + err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  const handleDynamicBackfill = async () => {
+    try {
+      setLoading(true);
+      setStatus('Menambal data kategori yang hilang (Backfill)...');
+      
+      const progSnap = await getDocs(collection(db, 'user_progress'));
+      let count = 0;
+      
+      const batch = writeBatch(db);
+      
+      progSnap.docs.forEach((d) => {
+        const data = d.data();
+        if (!data.category) {
+          let cat = null;
+          const v = allVocabularies.find(voc => voc.id === data.vocabId);
+          if (v) cat = v.category;
+          else if (data.vocabId && data.vocabId.includes('_')) {
+             const parts = data.vocabId.split('_');
+             parts.pop();
+             cat = parts.join('_');
+          }
+          
+          if (cat) {
+            batch.update(doc(db, 'user_progress', d.id), { category: cat });
+            count++;
+          }
+        }
+      });
+      
+      if (count > 0) {
+        await batch.commit();
+        setStatus(`Berhasil menambal ${count} riwayat belajar!`);
+      } else {
+        setStatus('Semua riwayat belajar sudah memiliki kategori (Tidak ada yang ditambal).');
+      }
+    } catch (err: any) {
+      console.error(err);
+      setStatus('Gagal: ' + err.message);
     } finally {
       setLoading(false);
     }

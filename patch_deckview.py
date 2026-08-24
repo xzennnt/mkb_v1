@@ -1,69 +1,67 @@
 import re
 
-with open('src/pages/DeckView.tsx', 'r') as f:
-    content = f.read()
+def replace_in_file(filename, old_str, new_str):
+    with open(filename, 'r') as f:
+        content = f.read()
+    if old_str not in content:
+        print(f"Failed to find old string in {filename}")
+        return
+    content = content.replace(old_str, new_str)
+    with open(filename, 'w') as f:
+        f.write(content)
 
-# Add weakCount state and fetch
-if 'const [weakCount, setWeakCount]' not in content:
-    content = content.replace("const [hardCount, setHardCount] = useState(0);", "const [hardCount, setHardCount] = useState(0);\n  const [weakCount, setWeakCount] = useState(0);")
-    
-    loop_code = """
-        docs.forEach(p => {
-          if (!pMap[p.vocabId]) {
-            pMap[p.vocabId] = p;
-          }
-        });
-    """
-    new_loop_code = """
-        docs.forEach(p => {
-          if (!pMap[p.vocabId]) {
-            pMap[p.vocabId] = p;
-          }
-        });
-        
-        let wCount = 0;
+old_state = "  const [weakCount, setWeakCount] = useState(0);"
+new_state = """  const [weakCount, setWeakCount] = useState(0);
+  const [weakFlashcardCount, setWeakFlashcardCount] = useState(0);
+  const [weakQuizCount, setWeakQuizCount] = useState(0);"""
+replace_in_file('src/pages/DeckView.tsx', old_state, new_state)
+
+old_calc = """        let wCount = 0;
         Object.values(pMap).forEach(p => {
-          if (p.isWeak && (p.category === category || category === 'Review')) {
+          let pCat = p.category;
+          if (!pCat) {
+            const v = allVocabularies.find(voc => voc.id === p.vocabId);
+            if (v) pCat = v.category;
+            
+            // Dynamic Backfill: Fire and forget to fix the DB
+            if (pCat && p.id) {
+               updateDoc(doc(db, 'user_progress', p.id), { category: pCat }).catch(() => {});
+            }
+          }
+          if (p.isWeak && (pCat === category || category === 'Review')) {
             wCount++;
           }
         });
+        setWeakCount(wCount);"""
+new_calc = """        let wCount = 0;
+        let wFCount = 0;
+        let wQCount = 0;
+        Object.values(pMap).forEach(p => {
+          let pCat = p.category;
+          if (!pCat) {
+            const v = allVocabularies.find(voc => voc.id === p.vocabId);
+            if (v) pCat = v.category;
+            
+            if (pCat && p.id) {
+               updateDoc(doc(db, 'user_progress', p.id), { category: pCat }).catch(() => {});
+            }
+          }
+          if (p.isWeak && (pCat === category || category === 'Review')) {
+            wCount++;
+            if (p.weakFlashcard !== false) wFCount++;
+            if (p.weakQuiz !== false) wQCount++;
+          }
+        });
         setWeakCount(wCount);
-    """
-    content = content.replace(loop_code, new_loop_code)
+        setWeakFlashcardCount(wFCount);
+        setWeakQuizCount(wQCount);"""
+replace_in_file('src/pages/DeckView.tsx', old_calc, new_calc)
 
-# Add UI for Weak
-if 'Bank Kotoba Lemah (Remidial)' not in content:
-    ui_code = """
-            {hardCount > 0 && (
-              <button 
-                onClick={() => navigate(`/srs/${category}`)}
-                className="flex items-center justify-center gap-2 bg-rose-500 border border-rose-600 hover:bg-rose-600 text-white font-bold py-4 px-6 rounded-2xl transition-all shadow-md group w-full max-w-sm mx-auto"
-              >
-                <div className="flex items-center gap-2 group-hover:scale-105 transition-transform">
-                  <BookOpen size={20} />
-                  <span>({hardCount}) Review Berkala (SRS)</span>
-                </div>
-              </button>
-            )}
-"""
-    new_ui_code = """
-            {hardCount > 0 && (
-              <button 
-                onClick={() => navigate(`/srs/${category}`)}
-                className="flex items-center justify-center gap-2 bg-indigo-500 border border-indigo-600 hover:bg-indigo-600 text-white font-bold py-4 px-6 rounded-2xl transition-all shadow-md group w-full max-w-sm mx-auto"
-              >
-                <div className="flex items-center gap-2 group-hover:scale-105 transition-transform">
-                  <BookOpen size={20} />
-                  <span>({hardCount}) Review Berkala (SRS)</span>
-                </div>
-              </button>
-            )}
-
-            {weakCount > 0 && (
+old_ui = """            {weakCount > 0 && (
               <div className="w-full max-w-sm mx-auto bg-rose-50 border border-rose-200 p-4 rounded-2xl mt-4 shadow-sm">
                 <div className="flex items-center gap-2 text-rose-600 font-bold mb-3 justify-center">
                   <Flame size={20} />
-                  <span>Bank Kotoba Lemah (Remidial)</span>
+                  <span>Bank Kotoba Lemah (Remidial Bab)</span>
                 </div>
                 <div className="flex flex-col gap-2">
                   <button 
@@ -80,12 +78,33 @@ if 'Bank Kotoba Lemah (Remidial)' not in content:
                   </button>
                 </div>
               </div>
-            )}
-"""
-    content = content.replace(ui_code, new_ui_code)
+            )}"""
 
-if 'import { Zap' not in content:
-    content = content.replace("import { Zap, Play, ArrowLeft, BookOpen, Star, BrainCircuit }", "import { Zap, Play, ArrowLeft, BookOpen, Star, BrainCircuit, Flame }")
+new_ui = """            {(weakFlashcardCount > 0 || weakQuizCount > 0) && (
+              <div className="w-full max-w-sm mx-auto bg-rose-50 border border-rose-200 p-4 rounded-2xl mt-4 shadow-sm">
+                <div className="flex items-center gap-2 text-rose-600 font-bold mb-3 justify-center">
+                  <Flame size={20} />
+                  <span>Bank Kotoba Lemah (Remidial Bab)</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  {weakFlashcardCount > 0 && (
+                    <button 
+                      onClick={() => navigate(`/weak-flashcard/${category}`)}
+                      className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm"
+                    >
+                      <BookOpen size={18} /> Flashcard ({weakFlashcardCount})
+                    </button>
+                  )}
+                  {weakQuizCount > 0 && (
+                    <button 
+                      onClick={() => navigate(`/weak-quiz/${category}`)}
+                      className="flex items-center justify-center gap-2 bg-white text-rose-600 hover:bg-rose-100 border border-rose-200 font-bold py-3 px-4 rounded-xl transition-all shadow-sm"
+                    >
+                      <Play size={18} /> Kuis 2 Arah ({weakQuizCount})
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}"""
+replace_in_file('src/pages/DeckView.tsx', old_ui, new_ui)
 
-with open('src/pages/DeckView.tsx', 'w') as f:
-    f.write(content)

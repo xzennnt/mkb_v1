@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
 import { Vocabulary } from '../types';
 import { ArrowLeft, Play, BookOpen, ArrowUp, Zap , Flame } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaGrid, katakanaGrid, hiraganaAdvancedData, katakanaAdvancedData, hiraganaAdvancedGrid, katakanaAdvancedGrid } from '../data/kana';
@@ -14,6 +14,8 @@ export default function DeckView() {
   const [userProgressMap, setUserProgressMap] = useState<Record<string, any>>({});
   const [hardCount, setHardCount] = useState(0);
   const [weakCount, setWeakCount] = useState(0);
+  const [weakFlashcardCount, setWeakFlashcardCount] = useState(0);
+  const [weakQuizCount, setWeakQuizCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
@@ -60,12 +62,27 @@ export default function DeckView() {
         });
         
         let wCount = 0;
+        let wFCount = 0;
+        let wQCount = 0;
         Object.values(pMap).forEach(p => {
-          if (p.isWeak && (p.category === category || category === 'Review')) {
+          let pCat = p.category;
+          if (!pCat) {
+            const v = allVocabularies.find(voc => voc.id === p.vocabId);
+            if (v) pCat = v.category;
+            
+            if (pCat && p.id) {
+               updateDoc(doc(db, 'user_progress', p.id), { category: pCat }).catch(() => {});
+            }
+          }
+          if (p.isWeak && (pCat === category || category === 'Review')) {
             wCount++;
+            if (p.weakFlashcard !== false) wFCount++;
+            if (p.weakQuiz !== false) wQCount++;
           }
         });
         setWeakCount(wCount);
+        setWeakFlashcardCount(wFCount);
+        setWeakQuizCount(wQCount);
       }
 
       if (category === 'Review') {
@@ -187,25 +204,29 @@ export default function DeckView() {
               </button>
             )}
 
-            {weakCount > 0 && (
+            {(weakFlashcardCount > 0 || weakQuizCount > 0) && (
               <div className="w-full max-w-sm mx-auto bg-rose-50 border border-rose-200 p-4 rounded-2xl mt-4 shadow-sm">
                 <div className="flex items-center gap-2 text-rose-600 font-bold mb-3 justify-center">
                   <Flame size={20} />
                   <span>Bank Kotoba Lemah (Remidial Bab)</span>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <button 
-                    onClick={() => navigate(`/weak-flashcard/${category}`)}
-                    className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-4 rounded-xl transition-all"
-                  >
-                    <BookOpen size={18} /> Flashcard ({weakCount})
-                  </button>
-                  <button 
-                    onClick={() => navigate(`/weak-quiz/${category}`)}
-                    className="flex items-center justify-center gap-2 bg-white text-rose-600 hover:bg-rose-100 border border-rose-200 font-bold py-3 px-4 rounded-xl transition-all"
-                  >
-                    <Play size={18} /> Kuis 2 Arah ({weakCount})
-                  </button>
+                  {weakFlashcardCount > 0 && (
+                    <button 
+                      onClick={() => navigate(`/weak-flashcard/${category}`)}
+                      className="flex items-center justify-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm"
+                    >
+                      <BookOpen size={18} /> Flashcard ({weakFlashcardCount})
+                    </button>
+                  )}
+                  {weakQuizCount > 0 && (
+                    <button 
+                      onClick={() => navigate(`/weak-quiz/${category}`)}
+                      className="flex items-center justify-center gap-2 bg-white text-rose-600 hover:bg-rose-100 border border-rose-200 font-bold py-3 px-4 rounded-xl transition-all shadow-sm"
+                    >
+                      <Play size={18} /> Kuis 2 Arah ({weakQuizCount})
+                    </button>
+                  )}
                 </div>
               </div>
             )}

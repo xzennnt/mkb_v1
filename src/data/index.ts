@@ -12,6 +12,8 @@ import mnn2_bab41_45 from './mnn2_bab41_45.json';
 import mnn2_bab46_50 from './mnn2_bab46_50.json';
 import jft_a2 from './jft_a2_1_50.json';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from './kana';
+import { kataKerja, kataSifatI, kataSifatNa, kataBenda } from './newMaterials';
+
 
 // Combine all JSON
 const allJson = [
@@ -31,9 +33,24 @@ const allJson = [
 
 const kana = [...hiraganaData, ...katakanaData, ...hiraganaAdvancedData, ...katakanaAdvancedData];
 
+const newMats = [
+  ...kataKerja.map((item, idx) => ({ ...item, category: 'Kata Kerja' })),
+  ...kataSifatI.map((item, idx) => ({ ...item, category: 'Kata Sifat I' })),
+  ...kataSifatNa.map((item, idx) => ({ ...item, category: 'Kata Sifat Na' })),
+  ...kataBenda.map((item, idx) => ({ ...item, category: 'Kata Benda' }))
+];
+
+
 // Combine JSON and Kana, then map to Vocabulary format with deterministic ID
 export const allVocabularies: Vocabulary[] = [
   ...allJson.map((item: any, idx: number) => ({
+    id: `${item.category}_${idx}`,
+    jp: item.jp,
+    romaji: item.romaji || "",
+    id_translation: item.id_translation || "",
+    category: item.category,
+  })),
+  ...newMats.map((item, idx) => ({
     id: `${item.category}_${idx}`,
     jp: item.jp,
     romaji: item.romaji || "",

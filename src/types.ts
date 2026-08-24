@@ -26,6 +26,9 @@ export interface Vocabulary {
 }
 
 export interface UserProgress {
+  isWeak?: boolean;
+  weakFlashcard?: boolean;
+  weakQuiz?: boolean;
   id: string; // Document ID
   userId: string;
   vocabId: string;

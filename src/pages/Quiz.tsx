@@ -52,7 +52,16 @@ export default function Quiz() {
         setCurrentIndex(parsed.currentIndex);
         setReports(parsed.reports);
         setDirections(parsed.directions);
-        setAllVocabs(parsed.allVocabs);
+        
+        // Reconstruct allVocabs instead of pulling from storage
+        let allV: Vocabulary[] = [];
+        if (category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan') {
+          allV = (category === 'Hiragana' ? hiraganaData : category === 'Katakana' ? katakanaData : category === 'Hiragana Lanjutan' ? hiraganaAdvancedData : katakanaAdvancedData) as any;
+        } else {
+          allV = allVocabularies;
+        }
+        setAllVocabs(allV);
+        
         setOptions(parsed.options || []);
         setSelectedAnswer(parsed.selectedAnswer || null);
         
@@ -159,7 +168,6 @@ export default function Quiz() {
           currentIndex,
           reports,
           directions,
-          allVocabs,
           options,
           selectedAnswer
         });
@@ -267,11 +275,12 @@ export default function Quiz() {
       id: `${currentUser?.uid}_${currentVocab.id}`,
       userId: currentUser?.uid,
       vocabId: currentVocab.id,
+      category: currentVocab.category || category,
       nextReviewTime: srsResult.nextReviewTime,
       interval: srsResult.nextInterval,
       reps: (prevProgress?.reps || 0) + srsResult.reps,
       srsLevel: srsResult.srsLevel,
-      ...(isCorrect ? {} : { isWeak: true })
+      ...(isCorrect ? {} : { isWeak: true, weakFlashcard: true, weakQuiz: true })
     }, { merge: true }).catch(console.error);
 
     setUserProgressMap(prev => ({

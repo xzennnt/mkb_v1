@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
@@ -81,6 +81,28 @@ const SetupRoute = ({ children }: { children: React.ReactElement }) => {
 };
 
 export default function App() {
+
+  useEffect(() => {
+    // Cleanup old large state from localStorage to prevent QuotaExceededError
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.startsWith('quiz_state_') || key.startsWith('review_state'))) {
+          const val = localStorage.getItem(key);
+          if (val && val.includes('"allVocabs":')) {
+            const parsed = JSON.parse(val);
+            if (parsed.allVocabs) {
+              delete parsed.allVocabs;
+              localStorage.setItem(key, JSON.stringify(parsed));
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Failed to cleanup localStorage', e);
+    }
+  }, []);
+
   return (
     <AuthProvider>
       <LevelUpModal />

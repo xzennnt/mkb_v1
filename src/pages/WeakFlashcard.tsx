@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../lib/firebase';
-import { collection, query, getDocs, where, doc, updateDoc } from 'firebase/firestore';
+import { collection, query, getDocs, where, doc, updateDoc, getDoc } from 'firebase/firestore';
 import { Vocabulary, UserProgress } from '../types';
 import { Trophy, ArrowLeft, RefreshCw, XCircle, CheckCircle } from 'lucide-react';
 import { allVocabularies } from '../data';
@@ -32,8 +32,12 @@ export default function WeakFlashcard() {
       const docs = progSnap.docs.map(d => ({ ...d.data(), id: d.id } as UserProgress));
       
       docs.forEach(data => {
-        if (category && data.category !== category && category !== 'Review') return;
+        if (data.weakFlashcard === false) return;
+        let pCat = data.category;
         const v = allVocabularies.find(voc => voc.id === data.vocabId);
+        if (!pCat && v) pCat = v.category;
+        
+        if (category && pCat !== category && category !== 'Review') return;
         if (v) baseCards.push(v);
       });
       
@@ -48,13 +52,19 @@ export default function WeakFlashcard() {
     if (correct) {
       const vId = vocabs[currentIndex].id;
       setSuccessVocabs(prev => new Set(prev).add(vId));
-      // NOTE: Flashcard review alone does NOT graduate from Weak Words, 
-      // User requested "di ujikan di kuiz 2 arah" for graduation, but we can allow it 
-      // if they just click "Hafal" here to make it easier if they want.
-      // But let's follow strict instruction: only Kuiz graduates it. 
-      // Wait, let's just make "Hafal" here remove it from weak too, as an alternate way.
+      
       const progressRef = doc(db, 'user_progress', `${currentUser?.uid}_${vId}`);
-      await updateDoc(progressRef, { isWeak: false }).catch(console.error);
+      try {
+        const progSnap = await getDoc(progressRef);
+        if (progSnap.exists()) {
+          const pData = progSnap.data();
+          if (pData.weakQuiz === false) {
+             await updateDoc(progressRef, { isWeak: false, weakFlashcard: false });
+          } else {
+             await updateDoc(progressRef, { weakFlashcard: false });
+          }
+        }
+      } catch(e) { console.error(e); }
     }
     
     if (currentIndex + 1 < vocabs.length) {

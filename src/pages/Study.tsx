@@ -137,7 +137,7 @@ export default function Study() {
       nextReviewTime,
       reps: reps + 1,
       srsLevel,
-      ...(correct ? {} : { isWeak: true })
+      ...(correct ? {} : { isWeak: true, weakFlashcard: true, weakQuiz: true })
     };
 
     await setDoc(doc(db, 'user_progress', progressId), newProg);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../lib/firebase';
-import { collection, query, getDocs, doc, setDoc, where, updateDoc } from 'firebase/firestore';
+import { collection, query, getDocs, doc, setDoc, where, updateDoc, getDoc } from 'firebase/firestore';
 import { Vocabulary, StudyReport, UserProgress } from '../types';
 import { generateOptions } from '../lib/srs';
 import { Trophy, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
@@ -43,8 +43,12 @@ export default function WeakQuiz() {
       const docs = progSnap.docs.map(d => ({ ...d.data(), id: d.id } as UserProgress));
       
       docs.forEach(data => {
-        if (category && data.category !== category && category !== 'Review') return;
+        if (data.weakQuiz === false) return;
+        let pCat = data.category;
         const v = allV.find(voc => voc.id === data.vocabId);
+        if (!pCat && v) pCat = v.category;
+        
+        if (category && pCat !== category && category !== 'Review') return;
         if (v) baseCards.push(v);
       });
       
@@ -130,7 +134,17 @@ export default function WeakQuiz() {
         if (success.p1 && success.p2) {
           // LULUS!
           const progressRef = doc(db, 'user_progress', `${currentUser.uid}_${vId}`);
-          await updateDoc(progressRef, { isWeak: false }).catch(console.error);
+          try {
+            const progSnap = await getDoc(progressRef);
+            if (progSnap.exists()) {
+              const pData = progSnap.data();
+              if (pData.weakFlashcard === false) {
+                 await updateDoc(progressRef, { isWeak: false, weakQuiz: false });
+              } else {
+                 await updateDoc(progressRef, { weakQuiz: false });
+              }
+            }
+          } catch(e) { console.error(e); }
         }
       });
       

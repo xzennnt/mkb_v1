@@ -104,6 +104,13 @@ export default function Dashboard() {
     }
     return true;
   });
+  const [showKosakata, setShowKosakata] = useState(() => {
+    if (currentUser?.uid) {
+      const stored = localStorage.getItem(`ui_showKosakata_${currentUser.uid}`);
+      if (stored !== null) return stored === 'true';
+    }
+    return true;
+  });
 
   const toggleMnn1 = () => {
     const newVal = !showMnn1;
@@ -121,6 +128,11 @@ export default function Dashboard() {
     const newVal = !showJft;
     setShowJft(newVal);
     if (currentUser?.uid) localStorage.setItem(`ui_showJft_${currentUser.uid}`, String(newVal));
+  };
+  const toggleKosakata = () => {
+    const newVal = !showKosakata;
+    setShowKosakata(newVal);
+    if (currentUser?.uid) localStorage.setItem(`ui_showKosakata_${currentUser.uid}`, String(newVal));
   };
   const [lastActivity, setLastActivity] = useState<{title: string, type: string, link: string} | null>(null);
   const [dueReviewCount, setDueReviewCount] = useState<number>(0);
@@ -164,8 +176,18 @@ export default function Dashboard() {
            if (data.nextReviewTime <= now) {
               dueCount++;
            }
-           if (data.category && ((data.failCount && data.failCount > 0) || data.srsLevel === 'again' || data.srsLevel === 'hard')) {
-              hardMap[data.category] = (hardMap[data.category] || 0) + 1;
+           let pCat = data.category;
+           if (!pCat) {
+             const v = allVocabularies.find(voc => voc.id === data.vocabId);
+             if (v) pCat = v.category;
+             
+             // Dynamic Backfill: Fire and forget to fix the DB when we encounter a broken one
+             if (pCat && data.id) {
+               updateDoc(doc(db, 'user_progress', data.id), { category: pCat }).catch(() => {});
+             }
+           }
+           if (pCat && ((data.failCount && data.failCount > 0) || data.srsLevel === 'again' || data.srsLevel === 'hard')) {
+              hardMap[pCat] = (hardMap[pCat] || 0) + 1;
            }
         });
         
@@ -639,12 +661,57 @@ export default function Dashboard() {
                 )}
               </div>
 
+              {/* Kosakata Tambahan Section */}
+              <div className="mb-6">
+                <button 
+                  onClick={toggleKosakata}
+                  className="w-full flex items-center justify-between bg-white rounded-2xl shadow-sm border border-slate-200 p-4 mb-4 hover:bg-slate-50 transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600">
+                      <BookOpen size={20} />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="font-bold text-slate-800">Kosakata Dasar</h3>
+                      <p className="text-xs text-slate-500">Kata Kerja, Sifat, Benda</p>
+                    </div>
+                  </div>
+                  {showKosakata ? <ChevronUp size={20} className="text-slate-500" /> : <ChevronDown size={20} className="text-slate-500" />}
+                </button>
+                
+                {showKosakata && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {categories.filter(c => c.name.startsWith('Kata ')).map((cat, idx) => (
+                      <div 
+                        key={idx}
+                        className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4"
+                      >
+                        <div className="flex justify-between items-center">
+                          <h3 className="font-bold text-slate-800 text-lg">{cat.formattedName || cat.name}</h3>
+                          <span className="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">
+                            {cat.count} kata
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2 mt-2">
+                          <Link to={`/deck/${cat.name}`} className="bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white text-center py-2 rounded-xl font-bold transition-colors shadow-sm flex items-center justify-center gap-2">
+                            <BookOpen size={16} /> Pelajari
+                          </Link>
+                          <Link to={`/flashcard/${cat.name}`} className="bg-slate-50 text-slate-700 hover:bg-slate-800 hover:text-white text-center py-2 rounded-xl font-bold transition-colors shadow-sm">
+                            Flashcard
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               {/* Other Categories if any */}
-              {categories.filter(c => !c.name.startsWith('MNN')).length > 0 && (
+              {categories.filter(c => !c.name.startsWith('MNN') && !c.name.startsWith('JFT') && !c.name.startsWith('Kata ')).length > 0 && (
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-slate-800 mb-4">Lainnya</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {categories.filter(c => !c.name.startsWith('MNN')).map((cat, idx) => (
+                    {categories.filter(c => !c.name.startsWith('MNN') && !c.name.startsWith('JFT') && !c.name.startsWith('Kata ')).map((cat, idx) => (
                   <div 
                     key={idx}
                     className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4"

@@ -51,7 +51,10 @@ export default function Review() {
         setCurrentIndex(parsed.currentIndex);
         setReports(parsed.reports);
         setDirections(parsed.directions);
-        setAllVocabs(parsed.allVocabs);
+        
+        let allV: Vocabulary[] = allVocabularies;
+        setAllVocabs(allV);
+        
         setOptions(parsed.options || []);
         setSelectedAnswer(parsed.selectedAnswer || null);
         
@@ -125,7 +128,6 @@ export default function Review() {
         currentIndex,
         reports,
         directions,
-        allVocabs,
         options,
         selectedAnswer
       }));
