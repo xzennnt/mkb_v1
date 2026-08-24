@@ -50,14 +50,14 @@ export const allVocabularies: Vocabulary[] = [
     id_translation: item.id_translation || "",
     category: item.category,
   })),
-  ...newMats.map((item, idx) => ({
+  ...newMats.map((item: any, idx) => ({
     id: `${item.category}_${idx}`,
     jp: item.jp,
     romaji: item.romaji || "",
     id_translation: item.id_translation || "",
     category: item.category,
   })),
-  ...kana.map((item, idx) => ({
+  ...kana.map((item: any, idx) => ({
     id: `${item.category}_${idx}`,
     jp: item.jp,
     romaji: item.romaji || "",

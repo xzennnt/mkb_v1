@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../lib/firebase';
-import { collection, query, getDocs, where, doc, updateDoc, getDoc } from 'firebase/firestore';
+import { collection, query, getDocs, where, doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
 import { Vocabulary, UserProgress } from '../types';
 import { Trophy, ArrowLeft, RefreshCw, XCircle, CheckCircle } from 'lucide-react';
 import { allVocabularies } from '../data';
@@ -19,6 +19,8 @@ export default function WeakFlashcard() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [successVocabs, setSuccessVocabs] = useState<Set<string>>(new Set());
+  const [sessionStartTime] = useState(Date.now());
+  const [failedList, setFailedList] = useState<{jp: string, id_translation: string}[]>([]);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -67,11 +69,33 @@ export default function WeakFlashcard() {
       } catch(e) { console.error(e); }
     }
     
+    if (!correct) {
+      setFailedList(prev => [...prev, { jp: vocabs[currentIndex].jp, id_translation: vocabs[currentIndex].id_translation }]);
+    }
+    
     if (currentIndex + 1 < vocabs.length) {
       setIsFlipped(false);
       setCurrentIndex(prev => prev + 1);
     } else {
       setIsFinished(true);
+      const sessionEndTime = Date.now();
+      const durationSec = Math.floor((sessionEndTime - sessionStartTime) / 1000);
+      const sessionId = doc(collection(db, 'study_sessions')).id;
+      // We pass doc from firebase/firestore which is already imported.
+      // Wait, let's use setDoc
+      setDoc(doc(db, 'study_sessions', sessionId), {
+        id: sessionId,
+        userId: currentUser?.uid,
+        startTime: sessionStartTime,
+        endTime: sessionEndTime,
+        totalDuration: durationSec,
+        cardsReviewed: vocabs.length,
+        correctCount: successVocabs.size + (correct ? 1 : 0),
+        incorrectCount: vocabs.length - (successVocabs.size + (correct ? 1 : 0)),
+        type: 'Flashcard Remidial',
+        category: category || 'Remidial',
+        failedVocabs: correct ? failedList : [...failedList, { jp: vocabs[currentIndex].jp, id_translation: vocabs[currentIndex].id_translation }]
+      }).catch(console.error);
     }
   };
 

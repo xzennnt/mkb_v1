@@ -8,7 +8,7 @@ import { Play, Trophy, Clock, BrainCircuit, Settings, LogOut, BookOpen, ChevronR
 import StreakCalendar from '../components/StreakCalendar';
 import { getXpForLevel } from '../utils/levelUtils';
 
-import { getCategoriesCount } from '../data';
+import { getCategoriesCount, allVocabularies } from '../data';
 
 export default function Dashboard() {
   const { userData, currentUser } = useAuth();

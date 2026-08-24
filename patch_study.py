@@ -1,29 +1,34 @@
 import re
+
 with open('src/pages/Study.tsx', 'r') as f:
     content = f.read()
 
-old_code = """      const q = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
-      const progSnap = await getDocs(q);
-      const progMap: Record<string, UserProgress> = {};
-      progSnap.docs.forEach(d => {
-        const data = { ...d.data(), id: d.id } as UserProgress;
-        progMap[data.vocabId] = data;
-      });"""
+old_str = """      setDoc(doc(db, 'study_sessions', sessionId), {
+        id: sessionId,
+        userId: currentUser.uid,
+        startTime: sessionStartTime,
+        endTime: sessionEndTime,
+        totalDuration: durationSec,
+        cardsReviewed: sessionCards.length,
+        correctCount,
+        incorrectCount
+      }).catch(console.error);"""
 
-new_code = """      const q = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
-      const progSnap = await getDocs(q);
-      const progMap: Record<string, UserProgress> = {};
-      
-      const docs = progSnap.docs.map(d => ({ ...d.data(), id: d.id } as UserProgress));
-      docs.sort((a, b) => (b.nextReviewTime || 0) - (a.nextReviewTime || 0));
+new_str = """      setDoc(doc(db, 'study_sessions', sessionId), {
+        id: sessionId,
+        userId: currentUser.uid,
+        startTime: sessionStartTime,
+        endTime: sessionEndTime,
+        totalDuration: durationSec,
+        cardsReviewed: sessionCards.length,
+        correctCount,
+        incorrectCount,
+        type: 'Belajar Baru',
+        category: category || 'Materi Baru',
+        failedVocabs: currentReports.filter(r => !r.isCorrect).map(r => ({ jp: r.jp, id_translation: r.id_translation }))
+      }).catch(console.error);"""
 
-      docs.forEach(data => {
-        if (!progMap[data.vocabId]) {
-          progMap[data.vocabId] = data;
-        }
-      });"""
+content = content.replace(old_str, new_str)
 
-content = content.replace(old_code, new_code)
 with open('src/pages/Study.tsx', 'w') as f:
     f.write(content)
-

@@ -224,7 +224,10 @@ export default function Study() {
         totalDuration: durationSec,
         cardsReviewed: sessionCards.length,
         correctCount,
-        incorrectCount
+        incorrectCount,
+        type: 'Belajar Baru',
+        category: 'Campuran / Semua Materi',
+        failedVocabs: currentReports.filter(r => !r.isCorrect).map(r => ({ jp: r.jp, id_translation: r.id_translation }))
       }).catch(console.error);
       
       return currentReports;

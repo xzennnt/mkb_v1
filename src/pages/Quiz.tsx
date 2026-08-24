@@ -278,7 +278,7 @@ export default function Quiz() {
       category: currentVocab.category || category,
       nextReviewTime: srsResult.nextReviewTime,
       interval: srsResult.nextInterval,
-      reps: (prevProgress?.reps || 0) + srsResult.reps,
+      reps: (prevProgress?.reps || 0) + (srsResult as any).reps,
       srsLevel: srsResult.srsLevel,
       ...(isCorrect ? {} : { isWeak: true, weakFlashcard: true, weakQuiz: true })
     }, { merge: true }).catch(console.error);
@@ -288,7 +288,7 @@ export default function Quiz() {
       [currentVocab.id]: {
         ...prev[currentVocab.id],
         interval: srsResult.nextInterval,
-        reps: (prevProgress?.reps || 0) + srsResult.reps
+        reps: (prevProgress?.reps || 0) + (srsResult as any).reps
       }
     }));
     // -------------------------------------

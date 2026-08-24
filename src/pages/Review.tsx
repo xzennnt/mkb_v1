@@ -185,7 +185,7 @@ export default function Review() {
       vocabId: currentVocab.id,
       nextReviewTime: srsResult.nextReviewTime,
       interval: srsResult.nextInterval,
-      reps: (prevProgress?.reps || 0) + srsResult.reps,
+      reps: (prevProgress?.reps || 0) + (srsResult as any).reps,
       srsLevel: srsResult.srsLevel
     }, { merge: true }).catch(console.error);
 
@@ -194,7 +194,7 @@ export default function Review() {
       [currentVocab.id]: {
         ...prev[currentVocab.id],
         interval: srsResult.nextInterval,
-        reps: (prevProgress?.reps || 0) + srsResult.reps
+        reps: (prevProgress?.reps || 0) + (srsResult as any).reps
       }
     }));
     // -------------------------------------

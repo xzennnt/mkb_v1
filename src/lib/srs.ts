@@ -1,3 +1,4 @@
+import { Vocabulary } from '../types';
 import { UserProgress } from '../types';
 
 export interface AnkiResult {
