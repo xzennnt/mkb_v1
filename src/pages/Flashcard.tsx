@@ -87,10 +87,7 @@ export default function Flashcard() {
         }
         
         // Shuffle initially
-        for (let i = fetchedVocabs.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [fetchedVocabs[i], fetchedVocabs[j]] = [fetchedVocabs[j], fetchedVocabs[i]];
-        }
+        // Removed initial shuffle for stable order
         setInitialVocabs(fetchedVocabs);
       }
       
@@ -150,10 +147,7 @@ export default function Flashcard() {
         });
         
         // Shuffle the due queue so different directions are mixed
-        for (let i = dueQueue.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [dueQueue[i], dueQueue[j]] = [dueQueue[j], dueQueue[i]];
-        }
+        // Removed dueQueue shuffle for stable order
         
         setQueue(dueQueue);
         setSessionTotal(dueQueue.length);

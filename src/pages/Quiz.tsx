@@ -137,7 +137,7 @@ export default function Quiz() {
       const sIdx = parseInt(sessionIndex, 10);
       const baseCards = catV.slice(sIdx * 10, (sIdx + 1) * 10);
       
-      const shuffle = <T,>(array: T[]): T[] => array.slice().sort(() => 0.5 - Math.random());
+      const shuffle = <T,>(array: T[]): T[] => array.slice(); // Removed Math.random() for stable order
 
       let combinedCards: Vocabulary[] = [];
       let combinedDirs: ('jp-to-id' | 'id-to-jp' | 'jp-to-romaji' | 'romaji-to-id' | 'id-to-romaji')[] = [];
