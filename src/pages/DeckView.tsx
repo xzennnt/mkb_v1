@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
-import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
+import { collection, query, where, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { Vocabulary } from '../types';
-import { ArrowLeft, Play, BookOpen, ArrowUp, Zap , Flame } from 'lucide-react';
+import { ArrowLeft, Play, BookOpen, ArrowUp, Zap , Flame, Search, RotateCcw } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaGrid, katakanaGrid, hiraganaAdvancedData, katakanaAdvancedData, hiraganaAdvancedGrid, katakanaAdvancedGrid } from '../data/kana';
 import { getVocabulariesByCategory, formatCategoryName, allVocabularies } from '../data';
 import { useAuth } from '../contexts/AuthContext';
@@ -17,6 +17,8 @@ export default function DeckView() {
   const [weakFlashcardCount, setWeakFlashcardCount] = useState(0);
   const [weakQuizCount, setWeakQuizCount] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isResetting, setIsResetting] = useState(false);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
 
@@ -171,8 +173,76 @@ export default function DeckView() {
     );
   }
 
-  // Calculate number of sessions (10 vocabs per session)
   const totalSessions = Math.ceil(vocabs.length / 10);
+
+  const handleResetProgress = async () => {
+    if (!currentUser) return;
+    if (!window.confirm(`Apakah Anda yakin ingin mereset semua progress flashcard untuk bab ini? Aksi ini tidak dapat dibatalkan.`)) {
+      return;
+    }
+    setIsResetting(true);
+    try {
+      const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
+      const progSnap = await getDocs(progQ);
+      
+      const docsToDelete: any[] = [];
+      
+      // Some progress might not have the category saved perfectly, so we'll check both by category field and by vocab prefix
+      const vocabIds = new Set(vocabs.map(v => v.id));
+      
+      progSnap.docs.forEach(d => {
+        const p = d.data();
+        let shouldDelete = false;
+        
+        if (p.category === category) {
+          shouldDelete = true;
+        } else if (p.vocabId) {
+           // Also check if the vocabId matches this category's vocab
+           const baseId = p.vocabId.replace(/_(kanji-to-hiragana|hiragana-to-id|kanji-to-id|jp-to-romaji|romaji-to-id|jp-to-id)$/, '');
+           if (vocabIds.has(baseId) || vocabIds.has(p.vocabId)) {
+             shouldDelete = true;
+           }
+        }
+        
+        if (shouldDelete) {
+          docsToDelete.push(d.id);
+        }
+      });
+      
+      const batchSize = 100;
+      for (let i = 0; i < docsToDelete.length; i += batchSize) {
+        const chunk = docsToDelete.slice(i, i + batchSize);
+        const promises = chunk.map(id => {
+          const docRef = doc(db, 'user_progress', id);
+          return deleteDoc(docRef);
+        });
+        await Promise.all(promises);
+      }
+      
+      setUserProgressMap({});
+      setHardCount(0);
+      setWeakCount(0);
+      setWeakFlashcardCount(0);
+      setWeakQuizCount(0);
+      
+    } catch (err) {
+      console.error(err);
+      alert("Gagal mereset progress");
+    } finally {
+      setIsResetting(false);
+    }
+  };
+
+  const filteredVocabs = vocabs.filter(v => {
+    if (!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return (
+      v.jp.toLowerCase().includes(q) ||
+      (v.romaji && v.romaji.toLowerCase().includes(q)) ||
+      (v.id_translation && v.id_translation.toLowerCase().includes(q))
+    );
+  });
+
 
   return (
     <div className="max-w-5xl mx-auto p-4 py-8 w-full flex-1">
@@ -268,12 +338,38 @@ export default function DeckView() {
         </div>
       ) : (
       <div className="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
-        <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-slate-800">Daftar Kotoba</h2>
-          <span className="text-sm text-slate-500 font-medium">Diurutkan berdasarkan yang paling sering salah</span>
+        <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 className="text-xl font-bold text-slate-800">Daftar Kotoba</h2>
+            <span className="text-sm text-slate-500 font-medium">Diurutkan berdasarkan yang paling sering salah</span>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <div className="relative flex-1 sm:w-64">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search size={16} className="text-slate-400" />
+              </div>
+              <input
+                type="text"
+                placeholder="Cari kosakata..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-shadow"
+              />
+            </div>
+            {category !== 'Review' && (
+              <button
+                onClick={handleResetProgress}
+                disabled={isResetting}
+                className="flex items-center justify-center gap-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 font-bold py-2 px-4 rounded-xl transition-all shadow-sm disabled:opacity-50"
+              >
+                <RotateCcw size={16} className={isResetting ? "animate-spin" : ""} />
+                <span className="text-sm whitespace-nowrap">{isResetting ? "Mereset..." : "Reset Progress"}</span>
+              </button>
+            )}
+          </div>
         </div>
         <div className="divide-y divide-slate-100">
-          {vocabs.map((v, index) => {
+          {filteredVocabs.map((v, index) => {
             const p = userProgressMap[v.id];
             const status = p ? p.srsLevel : 'new';
             return (
@@ -304,7 +400,7 @@ export default function DeckView() {
             </div>
             );
           })}
-          {vocabs.length === 0 && (
+          {filteredVocabs.length === 0 && (
             <div className="p-8 text-center text-slate-500">Belum ada kosakata.</div>
           )}
         </div>
