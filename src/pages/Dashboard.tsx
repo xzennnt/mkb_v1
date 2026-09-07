@@ -633,7 +633,7 @@ export default function Dashboard() {
                 
                 {showJft && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {categories.filter(c => c.name.startsWith('JFT_A2')).map((cat, idx) => (
+                    {categories.filter(c => c.name.startsWith('JFT_A2') || c.name.includes('KANJI')).map((cat, idx) => (
                       <div 
                         key={idx}
                         className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4"
@@ -654,7 +654,7 @@ export default function Dashboard() {
                         </div>
                       </div>
                     ))}
-                    {categories.filter(c => c.name.startsWith('JFT_A2')).length === 0 && (
+                    {categories.filter(c => c.name.startsWith('JFT_A2') || c.name.includes('KANJI')).length === 0 && (
                       <div className="col-span-1 sm:col-span-2 text-center p-4 text-slate-500">Belum ada data.</div>
                     )}
                   </div>
@@ -707,11 +707,11 @@ export default function Dashboard() {
               </div>
 
               {/* Other Categories if any */}
-              {categories.filter(c => !c.name.startsWith('MNN') && !c.name.startsWith('JFT') && !c.name.startsWith('Kata ')).length > 0 && (
+              {categories.filter(c => !c.name.startsWith('MNN') && !c.name.startsWith('JFT') && !c.name.startsWith('Kata ') && !c.name.includes('KANJI')).length > 0 && (
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-slate-800 mb-4">Lainnya</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {categories.filter(c => !c.name.startsWith('MNN') && !c.name.startsWith('JFT') && !c.name.startsWith('Kata ')).map((cat, idx) => (
+                    {categories.filter(c => !c.name.startsWith('MNN') && !c.name.startsWith('JFT') && !c.name.startsWith('Kata ') && !c.name.includes('KANJI')).map((cat, idx) => (
                   <div 
                     key={idx}
                     className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4"

@@ -9,7 +9,7 @@ import { generateOptions, calculateNextReview } from '../lib/srs';
 import { Trophy, CheckCircle, XCircle } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from '../data/kana';
 
-import { getVocabulariesByCategory, allVocabularies, formatCategoryName } from '../data';
+import { getVocabulariesByCategory, allVocabularies, formatCategoryName, isKanjiCategory } from '../data';
 import { motion, AnimatePresence } from 'motion/react';
 import { getSessionState, saveSessionState, removeSessionState } from '../utils/sessionState';
 
@@ -99,7 +99,11 @@ export default function Quiz() {
 
       // Fetch user progress to sort by difficulty
       if (currentUser && catV.length > 0) {
-        const progQ = query(collection(db, 'user_progress'), where('userId', '==', currentUser.uid));
+        const progQ = query(
+          collection(db, 'user_progress'), 
+          where('userId', '==', currentUser.uid),
+          where('category', '==', category)
+        );
         const progSnap = await getDocs(progQ);
         const pMap: Record<string, any> = {};
         
@@ -135,16 +139,37 @@ export default function Quiz() {
       
       const shuffle = <T,>(array: T[]): T[] => array.slice().sort(() => 0.5 - Math.random());
 
-      // Phase 1: JP to ID (10 items shuffled)
-      const phase1Cards = shuffle(baseCards);
-      const phase1Dirs = phase1Cards.map(() => 'jp-to-id' as const);
+      let combinedCards: Vocabulary[] = [];
+      let combinedDirs: ('jp-to-id' | 'id-to-jp' | 'jp-to-romaji' | 'romaji-to-id' | 'id-to-romaji')[] = [];
 
-      // Phase 2: ID to JP (10 items shuffled)
-      const phase2Cards = shuffle(baseCards);
-      const phase2Dirs = phase2Cards.map(() => 'id-to-jp' as const);
+      if (isKanjiCategory(category)) {
+        // 3 Arah khusus Kanji:
+        // 1. Kanji -> Hiragana
+        // 2. Hiragana -> Bahasa Indonesia
+        // 3. Kanji -> Bahasa Indonesia
+        const phase1Cards = shuffle(baseCards);
+        const phase1Dirs = phase1Cards.map(() => 'jp-to-romaji' as const);
 
-      const combinedCards = [...phase1Cards, ...phase2Cards];
-      const combinedDirs = [...phase1Dirs, ...phase2Dirs];
+        const phase2Cards = shuffle(baseCards);
+        const phase2Dirs = phase2Cards.map(() => 'romaji-to-id' as const);
+
+        const phase3Cards = shuffle(baseCards);
+        const phase3Dirs = phase3Cards.map(() => 'jp-to-id' as const);
+
+        combinedCards = [...phase1Cards, ...phase2Cards, ...phase3Cards];
+        combinedDirs = [...phase1Dirs, ...phase2Dirs, ...phase3Dirs];
+      } else {
+        // Phase 1: JP to ID (10 items shuffled)
+        const phase1Cards = shuffle(baseCards);
+        const phase1Dirs = phase1Cards.map(() => 'jp-to-id' as const);
+
+        // Phase 2: ID to JP (10 items shuffled)
+        const phase2Cards = shuffle(baseCards);
+        const phase2Dirs = phase2Cards.map(() => 'id-to-jp' as const);
+
+        combinedCards = [...phase1Cards, ...phase2Cards];
+        combinedDirs = [...phase1Dirs, ...phase2Dirs];
+      }
       
       setSessionCards(combinedCards);
       setDirections(combinedDirs);
@@ -206,7 +231,12 @@ export default function Quiz() {
     const newDirs: any[] = [];
     remidiCards.forEach(() => {
       const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
-      const possibleDirs = isKana ? ['jp-to-romaji', 'romaji-to-jp'] : ['jp-to-id', 'id-to-jp', 'jp-to-romaji', 'romaji-to-id', 'id-to-romaji'];
+      const isKanji = isKanjiCategory(category);
+      const possibleDirs = isKana 
+        ? ['jp-to-romaji', 'romaji-to-jp'] 
+        : isKanji 
+        ? ['jp-to-romaji', 'romaji-to-id', 'jp-to-id']
+        : ['jp-to-id', 'id-to-jp', 'jp-to-romaji', 'romaji-to-id', 'id-to-romaji'];
       newDirs.push(possibleDirs[Math.floor(Math.random() * possibleDirs.length)]);
     });
     setDirections(newDirs);
@@ -228,7 +258,12 @@ export default function Quiz() {
     const newDirs: any[] = [];
     sessionCards.forEach(() => {
       const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
-      const possibleDirs = isKana ? ['jp-to-romaji', 'romaji-to-jp'] : ['jp-to-id', 'id-to-jp', 'jp-to-romaji', 'romaji-to-id', 'id-to-romaji'];
+      const isKanji = isKanjiCategory(category);
+      const possibleDirs = isKana 
+        ? ['jp-to-romaji', 'romaji-to-jp'] 
+        : isKanji 
+        ? ['jp-to-romaji', 'romaji-to-id', 'jp-to-id']
+        : ['jp-to-id', 'id-to-jp', 'jp-to-romaji', 'romaji-to-id', 'id-to-romaji'];
       newDirs.push(possibleDirs[Math.floor(Math.random() * possibleDirs.length)]);
     });
     setDirections(newDirs);
@@ -267,12 +302,20 @@ export default function Quiz() {
     const timeSpentSec = timeSpentMs / 1000;
     // --- LONG-TERM MEMORY (SRS) UPDATE ---
     
-    const prevProgress = userProgressMap[currentVocab.id];
+    let progressSuffix = '';
+    if (isKanjiCategory(category || currentVocab.category || '')) {
+      if (dir === 'jp-to-romaji') progressSuffix = '_kanji-to-hiragana';
+      else if (dir === 'romaji-to-id') progressSuffix = '_hiragana-to-id';
+      else if (dir === 'jp-to-id') progressSuffix = '_kanji-to-id';
+    }
+    
+    const progressId = `${currentUser?.uid}_${currentVocab.id}${progressSuffix}`;
+    const prevProgress = userProgressMap[progressId] || userProgressMap[currentVocab.id];
     const srsResult = calculateNextReview(timeSpentSec, isCorrect, prevProgress?.interval || 0);
     
-    const progressRef = doc(db, 'user_progress', `${currentUser?.uid}_${currentVocab.id}`);
+    const progressRef = doc(db, 'user_progress', progressId);
     setDoc(progressRef, {
-      id: `${currentUser?.uid}_${currentVocab.id}`,
+      id: progressId,
       userId: currentUser?.uid,
       vocabId: currentVocab.id,
       category: currentVocab.category || category,
@@ -285,8 +328,8 @@ export default function Quiz() {
 
     setUserProgressMap(prev => ({
       ...prev,
-      [currentVocab.id]: {
-        ...prev[currentVocab.id],
+      [progressId]: {
+        ...prev[progressId],
         interval: srsResult.nextInterval,
         reps: (prevProgress?.reps || 0) + (srsResult as any).reps
       }
@@ -303,7 +346,8 @@ export default function Quiz() {
     updateDoc(userRef, {
       points: increment(pointsGained),
       masteredVocabCount: increment(newlyMastered),
-      totalStudyTime: increment(Math.ceil(timeSpentSec))
+      totalStudyTime: increment(Math.ceil(timeSpentSec)),
+      lastActiveDate: new Date().toISOString()
     }).catch(console.error);
 
     // Update vocab difficult stats
@@ -442,12 +486,13 @@ export default function Quiz() {
   else if (dir === 'romaji-to-id') questionText = currentVocab.romaji || currentVocab.jp;
 
   const isKana = category === 'Hiragana' || category === 'Katakana' || category === 'Hiragana Lanjutan' || category === 'Katakana Lanjutan';
+  const isKanji = isKanjiCategory(category);
   let promptText = '';
-  if (dir === 'jp-to-romaji') promptText = 'Kanji → Hiragana';
-  else if (dir === 'romaji-to-id') promptText = 'Hiragana → Indonesian';
-  else if (dir === 'id-to-romaji') promptText = 'Indonesian → Hiragana';
-  else if (dir === 'jp-to-id') promptText = isKana ? 'Huruf Jepang → Romaji' : 'Japanese → Indonesian';
-  else promptText = isKana ? 'Romaji → Huruf Jepang' : 'Indonesian → Japanese';
+  if (dir === 'jp-to-romaji') promptText = 'Kanji → Hiragana (Cara Baca)';
+  else if (dir === 'romaji-to-id') promptText = 'Hiragana → Bahasa Indonesia (Arti)';
+  else if (dir === 'id-to-romaji') promptText = 'Bahasa Indonesia → Hiragana';
+  else if (dir === 'jp-to-id') promptText = isKana ? 'Huruf Jepang → Romaji' : isKanji ? 'Kanji → Bahasa Indonesia (Arti)' : 'Bahasa Jepang → Bahasa Indonesia';
+  else promptText = isKana ? 'Romaji → Huruf Jepang' : 'Bahasa Indonesia → Bahasa Jepang';
 
   return (
     <div className="max-w-4xl mx-auto p-4 py-8 min-h-screen flex flex-col w-full">
@@ -468,7 +513,7 @@ export default function Quiz() {
       <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-8 flex-1 flex flex-col items-center justify-center relative overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div 
-            key={currentVocab.id}
+            key={`${currentVocab.id}_${dir}_${currentIndex}`}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}

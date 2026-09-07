@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, setDoc, doc, getDocs, query, orderBy, limit, deleteDoc, writeBatch, where, updateDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { ArrowLeft, Users, Clock, LayoutDashboard, LogOut, AlertTriangle, Trash2, Edit2 } from 'lucide-react';
+import { ArrowLeft, Users, Clock, LayoutDashboard, LogOut, AlertTriangle, Trash2, Edit2, Search, Filter, RefreshCw, CheckCircle2, XCircle, BookOpen, Layers, BarChart2, Activity, User, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../lib/firebase';
@@ -18,6 +18,9 @@ export default function Admin() {
   const [activeTab, setActiveTab] = useState<'users' | 'sessions' | 'difficult'>('users');
   const [activeUserTab, setActiveUserTab] = useState<'active' | 'banned'>('active');
   const [selectedUserForLogs, setSelectedUserForLogs] = useState<string | null>(null);
+  const [sessionSearch, setSessionSearch] = useState('');
+  const [sessionTypeFilter, setSessionTypeFilter] = useState<string>('all');
+  const [sessionCategoryFilter, setSessionCategoryFilter] = useState<string>('all');
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   
@@ -35,7 +38,6 @@ export default function Admin() {
 
   useEffect(() => {
     if (activeTab === 'users' || activeTab === 'sessions' || activeTab === 'difficult') {
-      if (activeTab !== 'sessions') setSelectedUserForLogs(null);
       fetchData();
     }
   }, [activeTab, selectedUserForLogs]);
@@ -55,14 +57,19 @@ export default function Admin() {
       }
 
       if (activeTab === 'sessions') {
-        if (selectedUserForLogs) {
-          const sessionsQ = query(collection(db, 'study_sessions'), where('userId', '==', selectedUserForLogs));
+        try {
+          let sessionsQ;
+          if (selectedUserForLogs && selectedUserForLogs !== 'all') {
+            sessionsQ = query(collection(db, 'study_sessions'), where('userId', '==', selectedUserForLogs));
+          } else {
+            sessionsQ = query(collection(db, 'study_sessions'), limit(300));
+          }
           const sessionsSnap = await getDocs(sessionsQ);
-          let userSessions = sessionsSnap.docs.map(d => ({ ...d.data(), id: d.id } as StudySession));
-          userSessions.sort((a, b) => b.startTime - a.startTime);
-          setSessions(userSessions.slice(0, 100));
-        } else {
-          setSessions([]);
+          let userSessions = sessionsSnap.docs.map(d => ({ id: d.id, ...(d.data() as any) } as StudySession));
+          userSessions.sort((a, b) => (b.startTime || 0) - (a.startTime || 0));
+          setSessions(userSessions);
+        } catch (sessionErr) {
+          console.error("Error fetching study_sessions:", sessionErr);
         }
       }
 
@@ -442,12 +449,57 @@ export default function Admin() {
     return `${h}j ${m}m`;
   };
 
+  const formatDuration = (seconds?: number) => {
+    if (!seconds || seconds <= 0) return '0s';
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    if (m === 0) return `${s}s`;
+    return `${m}m ${s}s`;
+  };
+
   const formatDateTime = (ms: number) => {
     return new Date(ms).toLocaleString('id-ID', {
       day: 'numeric', month: 'short', year: 'numeric',
       hour: '2-digit', minute: '2-digit'
     });
   };
+
+  // Derived data for sessions tab
+  const sessionCategories = Array.from(new Set(sessions.map(s => s.category).filter(Boolean))) as string[];
+  
+  const filteredSessions = sessions.filter(s => {
+    if (selectedUserForLogs && selectedUserForLogs !== 'all' && s.userId !== selectedUserForLogs) {
+      return false;
+    }
+    if (sessionTypeFilter !== 'all' && s.type !== sessionTypeFilter) {
+      return false;
+    }
+    if (sessionCategoryFilter !== 'all' && s.category !== sessionCategoryFilter) {
+      return false;
+    }
+    if (sessionSearch.trim()) {
+      const q = sessionSearch.toLowerCase();
+      const u = userMap[s.userId];
+      const userName = (u?.displayName || '').toLowerCase();
+      const userEmail = (u?.email || '').toLowerCase();
+      const categoryName = (s.category || '').toLowerCase();
+      const typeName = (s.type || '').toLowerCase();
+      const matchFailed = (s.failedVocabs || []).some(fv => 
+        (fv.jp || '').toLowerCase().includes(q) || (fv.id_translation || '').toLowerCase().includes(q)
+      );
+      if (!userName.includes(q) && !userEmail.includes(q) && !categoryName.includes(q) && !typeName.includes(q) && !matchFailed) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  const totalSessionDuration = filteredSessions.reduce((acc, s) => acc + (s.totalDuration || 0), 0);
+  const totalCorrectReviews = filteredSessions.reduce((acc, s) => acc + (s.correctCount || 0), 0);
+  const totalIncorrectReviews = filteredSessions.reduce((acc, s) => acc + (s.incorrectCount || 0), 0);
+  const totalAnswers = totalCorrectReviews + totalIncorrectReviews;
+  const averageAccuracy = totalAnswers > 0 ? Math.round((totalCorrectReviews / totalAnswers) * 100) : 0;
+  const uniqueActiveUsersCount = new Set(filteredSessions.map(s => s.userId)).size;
 
   return (
     <div className="max-w-6xl mx-auto p-4 py-8">
@@ -605,6 +657,16 @@ export default function Admin() {
                                 </button>
                              </>
                           )}
+                          <button
+                            onClick={() => {
+                              setSelectedUserForLogs(u.uid);
+                              setActiveTab('sessions');
+                            }}
+                            className="px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded-lg text-[10px] font-bold transition-colors whitespace-nowrap"
+                            title="Lihat Log Belajar"
+                          >
+                            Log Belajar
+                          </button>
                         </div>
                       </div>
                     </td>
@@ -622,121 +684,321 @@ export default function Admin() {
       )}
 
             {activeTab === 'sessions' && (
-        <div className="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
-          {!selectedUserForLogs ? (
-            <>
-              <div className="p-6 border-b border-slate-100">
-                <h2 className="text-lg font-bold text-slate-800">Pilih Pengguna untuk Melihat Log</h2>
-                <p className="text-slate-500 text-sm mt-1">Pilih salah satu pengguna di bawah ini untuk melihat detail riwayat aktivitas belajar mereka.</p>
+        <div className="space-y-6">
+          {/* Header & Controls */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-black text-slate-800 flex items-center gap-2">
+                  <Activity className="text-indigo-600" size={24} />
+                  Log Aktivitas Belajar Siswa
+                </h2>
+                <p className="text-slate-500 text-sm mt-1">
+                  Pantau riwayat sesi kuis, flashcard, dan remidial semua pengguna secara langsung.
+                </p>
               </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
-                  <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider text-xs border-b border-slate-200">
-                    <tr>
-                      <th className="p-4 font-bold">Nama Pengguna</th>
-                      <th className="p-4 font-bold">Email</th>
-                      <th className="p-4 font-bold text-right">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => fetchData()}
+                  disabled={loading}
+                  className="flex items-center gap-2 px-4 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs rounded-xl transition-colors disabled:opacity-50"
+                  title="Segarkan Data"
+                >
+                  <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
+                  Segarkan
+                </button>
+              </div>
+            </div>
+
+            {/* Metric Summary Cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+              <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Total Sesi Terdata</div>
+                <div className="text-2xl font-black text-slate-800">{filteredSessions.length}</div>
+                <div className="text-[11px] text-slate-500 mt-1">Sesi latihan tersimpan</div>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Total Durasi Belajar</div>
+                <div className="text-2xl font-black text-indigo-600">{formatTime(totalSessionDuration)}</div>
+                <div className="text-[11px] text-slate-500 mt-1">Waktu terakumulasi</div>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Rata-Rata Akurasi</div>
+                <div className="text-2xl font-black text-emerald-600">{averageAccuracy}%</div>
+                <div className="text-[11px] text-slate-500 mt-1">{totalCorrectReviews} benar / {totalAnswers} soal</div>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Siswa Aktif</div>
+                <div className="text-2xl font-black text-amber-600">{uniqueActiveUsersCount}</div>
+                <div className="text-[11px] text-slate-500 mt-1">Akun yang berlatih</div>
+              </div>
+            </div>
+
+            {/* Filter Bar */}
+            <div className="mt-6 pt-6 border-t border-slate-100 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+              <div className="flex flex-wrap items-center gap-3 flex-1">
+                {/* User Filter Dropdown */}
+                <div className="w-full sm:w-auto min-w-[200px]">
+                  <select
+                    value={selectedUserForLogs || 'all'}
+                    onChange={(e) => setSelectedUserForLogs(e.target.value === 'all' ? null : e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option value="all">👥 Semua Pengguna ({users.length})</option>
                     {users.map(u => (
-                      <tr key={u.uid} className="hover:bg-slate-50 transition-colors">
+                      <option key={u.uid} value={u.uid}>
+                        {u.displayName || u.email?.split('@')[0]} ({u.email})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Type Filter Dropdown */}
+                <div className="w-full sm:w-auto">
+                  <select
+                    value={sessionTypeFilter}
+                    onChange={(e) => setSessionTypeFilter(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option value="all">🎯 Semua Tipe Sesi</option>
+                    <option value="Kuis">Kuis</option>
+                    <option value="Flashcard">Flashcard</option>
+                    <option value="Kuis Remidial">Kuis Remidial</option>
+                    <option value="Flashcard Remidial">Flashcard Remidial</option>
+                    <option value="Review">Review</option>
+                  </select>
+                </div>
+
+                {/* Category Filter Dropdown */}
+                {sessionCategories.length > 0 && (
+                  <div className="w-full sm:w-auto">
+                    <select
+                      value={sessionCategoryFilter}
+                      onChange={(e) => setSessionCategoryFilter(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    >
+                      <option value="all">📚 Semua Materi / Bab</option>
+                      {sessionCategories.map(cat => (
+                        <option key={cat} value={cat}>{cat}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+              </div>
+
+              {/* Search Box */}
+              <div className="relative min-w-[220px]">
+                <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Cari user, materi, kotoba..."
+                  value={sessionSearch}
+                  onChange={(e) => setSessionSearch(e.target.value)}
+                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+
+            {/* Filter Active Pill Indicator */}
+            {(selectedUserForLogs || sessionTypeFilter !== 'all' || sessionCategoryFilter !== 'all' || sessionSearch) && (
+              <div className="mt-3 flex items-center gap-2 flex-wrap text-xs">
+                <span className="text-slate-400 font-medium">Filter aktif:</span>
+                {selectedUserForLogs && (
+                  <span className="inline-flex items-center gap-1 bg-indigo-50 text-indigo-700 font-bold px-2.5 py-1 rounded-lg border border-indigo-200">
+                    User: {userMap[selectedUserForLogs]?.displayName || userMap[selectedUserForLogs]?.email}
+                    <button onClick={() => setSelectedUserForLogs(null)} className="hover:text-indigo-900 font-black ml-1">×</button>
+                  </span>
+                )}
+                {sessionTypeFilter !== 'all' && (
+                  <span className="inline-flex items-center gap-1 bg-violet-50 text-violet-700 font-bold px-2.5 py-1 rounded-lg border border-violet-200">
+                    Tipe: {sessionTypeFilter}
+                    <button onClick={() => setSessionTypeFilter('all')} className="hover:text-violet-900 font-black ml-1">×</button>
+                  </span>
+                )}
+                {sessionCategoryFilter !== 'all' && (
+                  <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-700 font-bold px-2.5 py-1 rounded-lg border border-amber-200">
+                    Materi: {sessionCategoryFilter}
+                    <button onClick={() => setSessionCategoryFilter('all')} className="hover:text-amber-900 font-black ml-1">×</button>
+                  </span>
+                )}
+                {sessionSearch && (
+                  <span className="inline-flex items-center gap-1 bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-lg border border-slate-200">
+                    Pencarian: "{sessionSearch}"
+                    <button onClick={() => setSessionSearch('')} className="hover:text-slate-900 font-black ml-1">×</button>
+                  </span>
+                )}
+                <button
+                  onClick={() => {
+                    setSelectedUserForLogs(null);
+                    setSessionTypeFilter('all');
+                    setSessionCategoryFilter('all');
+                    setSessionSearch('');
+                  }}
+                  className="text-xs text-rose-600 font-bold hover:underline ml-2"
+                >
+                  Reset Semua Filter
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Table Container */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider text-xs border-b border-slate-200">
+                  <tr>
+                    <th className="p-4 font-bold">Siswa</th>
+                    <th className="p-4 font-bold">Waktu</th>
+                    <th className="p-4 font-bold">Tipe & Materi</th>
+                    <th className="p-4 font-bold text-center">Durasi</th>
+                    <th className="p-4 font-bold text-center">Soal & Hasil</th>
+                    <th className="p-4 font-bold">Kendala / Soal Salah</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {filteredSessions.map((s, index) => {
+                    const u = userMap[s.userId];
+                    const userName = u?.displayName || u?.email?.split('@')[0] || 'Unknown User';
+                    const userInitial = (userName[0] || 'U').toUpperCase();
+                    const totalCard = s.cardsReviewed || ((s.correctCount || 0) + (s.incorrectCount || 0)) || 0;
+                    const accuracy = totalCard > 0 ? Math.round(((s.correctCount || 0) / totalCard) * 100) : 0;
+                    
+                    let typeBadgeClass = "bg-indigo-50 text-indigo-700 border-indigo-200";
+                    if (s.type?.includes('Flashcard')) {
+                      typeBadgeClass = "bg-sky-50 text-sky-700 border-sky-200";
+                    } else if (s.type?.includes('Remidial')) {
+                      typeBadgeClass = "bg-amber-50 text-amber-700 border-amber-200";
+                    } else if (s.type?.includes('Review')) {
+                      typeBadgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200";
+                    }
+
+                    return (
+                      <tr key={s.id || index} className="hover:bg-slate-50/80 transition-colors">
+                        {/* Siswa */}
                         <td className="p-4">
-                          <div className="font-bold text-slate-800">{u.displayName || u.email?.split('@')[0] || 'Unknown'}</div>
-                        </td>
-                        <td className="p-4 text-slate-500">{u.email}</td>
-                        <td className="p-4 text-right">
-                          <button 
-                            onClick={() => setSelectedUserForLogs(u.uid)}
-                            className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-4 py-2 rounded-lg font-bold text-xs transition-colors"
+                          <button
+                            onClick={() => setSelectedUserForLogs(s.userId)}
+                            className="flex items-center gap-3 text-left group"
+                            title="Klik untuk memfilter log siswa ini"
                           >
-                            Lihat Log
+                            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-600 to-indigo-400 text-white font-black text-xs flex items-center justify-center shadow-sm">
+                              {userInitial}
+                            </div>
+                            <div>
+                              <div className="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">
+                                {userName}
+                              </div>
+                              <div className="text-[11px] text-slate-400">{u?.email || s.userId}</div>
+                            </div>
                           </button>
                         </td>
-                      </tr>
-                    ))}
-                    {users.length === 0 && !loading && (
-                      <tr>
-                        <td colSpan={3} className="p-8 text-center text-slate-500">Belum ada pengguna.</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-                <div>
-                  <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-                    <button 
-                      onClick={() => setSelectedUserForLogs(null)}
-                      className="text-slate-400 hover:text-indigo-600 transition-colors"
-                      title="Kembali"
-                    >
-                      <ArrowLeft size={20} />
-                    </button>
-                    Log Aktivitas Belajar
-                  </h2>
-                  <p className="text-slate-500 text-sm mt-1 ml-7">
-                    Pengguna: <strong className="text-slate-700">{userMap[selectedUserForLogs]?.displayName || userMap[selectedUserForLogs]?.email}</strong>
-                  </p>
-                </div>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
-                  <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider text-xs border-b border-slate-200">
-                    <tr>
-                      <th className="p-4 font-bold">Waktu Mulai</th>
-                      <th className="p-4 font-bold">Materi & Kendala Siswa</th>
-                      <th className="p-4 font-bold text-center">Durasi</th>
-                      <th className="p-4 font-bold text-center">Jumlah Soal</th>
-                      <th className="p-4 font-bold text-center">Benar / Salah</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {sessions.map((s, index) => (
-                      <tr key={s.id || index} className="hover:bg-slate-50 transition-colors">
-                        <td className="p-4 font-medium text-slate-700 whitespace-nowrap">
-                          {formatDateTime(s.startTime)}
+
+                        {/* Waktu */}
+                        <td className="p-4 text-xs font-medium text-slate-600 whitespace-nowrap">
+                          <div>{formatDateTime(s.startTime)}</div>
+                          <div className="text-[10px] text-slate-400 mt-0.5">
+                            {s.endTime ? `${formatDuration(s.totalDuration)} sesi` : '-'}
+                          </div>
                         </td>
+
+                        {/* Tipe & Materi */}
                         <td className="p-4">
-                          <div className="font-bold text-slate-700 text-sm mb-1">{s.category || s.type || 'Latihan'}</div>
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded border ${typeBadgeClass}`}>
+                              {s.type || 'Latihan'}
+                            </span>
+                          </div>
+                          <div className="font-bold text-slate-800 text-xs">
+                            {s.category || 'Umum'}
+                          </div>
+                        </td>
+
+                        {/* Durasi */}
+                        <td className="p-4 text-center whitespace-nowrap">
+                          <span className="bg-slate-100 text-slate-700 font-mono text-xs font-bold px-2.5 py-1 rounded-lg">
+                            {formatDuration(s.totalDuration)}
+                          </span>
+                        </td>
+
+                        {/* Soal & Hasil */}
+                        <td className="p-4 text-center">
+                          <div className="font-bold text-xs">
+                            <span className="text-emerald-600 font-black">{s.correctCount || 0}</span>
+                            <span className="text-slate-400 mx-1">/</span>
+                            <span className="text-rose-500 font-black">{s.incorrectCount || 0}</span>
+                          </div>
+                          <div className="text-[10px] font-semibold text-slate-400 mt-0.5">
+                            {totalCard} Soal ({accuracy}%)
+                          </div>
+                        </td>
+
+                        {/* Kendala / Soal Salah */}
+                        <td className="p-4 max-w-xs">
                           {s.failedVocabs && s.failedVocabs.length > 0 ? (
                             <div className="flex flex-wrap gap-1">
                               {s.failedVocabs.map((fv, i) => (
-                                <span key={i} className="inline-block bg-rose-50 border border-rose-200 text-rose-700 text-[10px] px-2 py-0.5 rounded" title={fv.id_translation}>
-                                  {fv.jp}
+                                <span
+                                  key={i}
+                                  className="inline-flex items-center bg-rose-50 border border-rose-200 text-rose-700 text-[11px] px-2 py-0.5 rounded-md"
+                                  title={fv.id_translation ? `${fv.jp}: ${fv.id_translation}` : fv.jp}
+                                >
+                                  <span className="font-bold mr-1">{fv.jp}</span>
+                                  {fv.id_translation && (
+                                    <span className="text-[10px] text-rose-500 opacity-80 max-w-[100px] truncate">({fv.id_translation})</span>
+                                  )}
                                 </span>
                               ))}
                             </div>
                           ) : (
-                            <span className="text-xs text-emerald-500 font-medium">Sempurna (Tidak ada salah)</span>
+                            <span className="inline-flex items-center gap-1 text-xs text-emerald-600 font-semibold bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-lg">
+                              <CheckCircle2 size={13} />
+                              Sempurna (100% Benar)
+                            </span>
                           )}
                         </td>
-                        <td className="p-4 text-center">
-                          <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-xs font-bold px-2 py-1 rounded">
-                            {Math.floor(s.totalDuration / 60)}m {s.totalDuration % 60}s
-                          </span>
-                        </td>
-                        <td className="p-4 text-center font-bold text-indigo-600">
-                          {s.cardsReviewed}
-                        </td>
-                        <td className="p-4 text-center font-bold">
-                          <span className="text-emerald-500">{s.correctCount}</span> / <span className="text-rose-500">{s.incorrectCount}</span>
-                        </td>
                       </tr>
-                    ))}
-                    {sessions.length === 0 && !loading && (
-                      <tr>
-                        <td colSpan={5} className="p-8 text-center text-slate-500">Belum ada riwayat aktivitas untuk pengguna ini.</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </>
-          )}
+                    );
+                  })}
+
+                  {filteredSessions.length === 0 && !loading && (
+                    <tr>
+                      <td colSpan={6} className="p-12 text-center">
+                        <div className="max-w-md mx-auto flex flex-col items-center">
+                          <BookOpen size={48} className="text-slate-300 mb-3" />
+                          <p className="font-bold text-slate-700 text-base mb-1">
+                            Tidak Ada Log Aktivitas Belajar
+                          </p>
+                          <p className="text-slate-500 text-xs mb-4">
+                            {sessions.length === 0 
+                              ? 'Belum ada data sesi belajar yang tercatat di database.'
+                              : 'Tidak ada aktivitas belajar yang cocok dengan filter atau pencarian saat ini.'}
+                          </p>
+                          {(selectedUserForLogs || sessionTypeFilter !== 'all' || sessionCategoryFilter !== 'all' || sessionSearch) && (
+                            <button
+                              onClick={() => {
+                                setSelectedUserForLogs(null);
+                                setSessionTypeFilter('all');
+                                setSessionCategoryFilter('all');
+                                setSessionSearch('');
+                              }}
+                              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm"
+                            >
+                              Reset Semua Filter
+                            </button>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       )}
 

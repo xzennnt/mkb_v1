@@ -118,8 +118,10 @@ export function generateOptions(
   // Try to find distractors in the same category first if possible, otherwise anywhere
   let distractors = allVocabs.filter(v => v.id !== correctVocab.id);
   
-  // Shuffle distractors
-  distractors = distractors.sort(() => 0.5 - Math.random());
+  // Prioritize same category for better context relevance (especially Kanji)
+  const sameCat = distractors.filter(v => v.category === correctVocab.category).sort(() => 0.5 - Math.random());
+  const otherCat = distractors.filter(v => v.category !== correctVocab.category).sort(() => 0.5 - Math.random());
+  distractors = [...sameCat, ...otherCat];
   
   for (const v of distractors) {
     if (options.size >= 4) break;

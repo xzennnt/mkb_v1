@@ -11,6 +11,8 @@ import mnn2_bab36_40 from './mnn2_bab36_40.json';
 import mnn2_bab41_45 from './mnn2_bab41_45.json';
 import mnn2_bab46_50 from './mnn2_bab46_50.json';
 import jft_a2 from './jft_a2_1_50.json';
+import kanjiN4Jft from './flashcardkanjin4(jft)2.json';
+import kanjiJft from './flashcardkanjijft3.json';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from './kana';
 import { kataKerja, kataSifatI, kataSifatNa, kataBenda } from './newMaterials';
 
@@ -28,7 +30,9 @@ const allJson = [
   ...mnn2_bab36_40,
   ...mnn2_bab41_45,
   ...mnn2_bab46_50,
-  ...jft_a2
+  ...jft_a2,
+  ...kanjiN4Jft,
+  ...kanjiJft
 ];
 
 const kana = [...hiraganaData, ...katakanaData, ...hiraganaAdvancedData, ...katakanaAdvancedData];
@@ -42,7 +46,7 @@ const newMats = [
 
 
 // Combine JSON and Kana, then map to Vocabulary format with deterministic ID
-export const allVocabularies: Vocabulary[] = [
+const rawVocabularies: Vocabulary[] = [
   ...allJson.map((item: any, idx: number) => ({
     id: `${item.category}_${idx}`,
     jp: item.jp,
@@ -66,12 +70,26 @@ export const allVocabularies: Vocabulary[] = [
   }))
 ];
 
+const seenVocabs = new Set<string>();
+export const allVocabularies: Vocabulary[] = rawVocabularies.filter(v => {
+  const key = `${v.category}_${v.jp}`;
+  if (seenVocabs.has(key)) return false;
+  seenVocabs.add(key);
+  return true;
+});
+
 export const getVocabulariesByCategory = (category: string): Vocabulary[] => {
   return allVocabularies.filter(v => v.category === category);
 };
 
+export const isKanjiCategory = (cat: string): boolean => {
+  return cat === 'KANJI N4(JFT)' || cat === 'KANJI (JFT)' || cat === 'KANJI(JFT)';
+};
+
 export const formatCategoryName = (cat: string) => {
   if (cat === 'Review') return 'Kotoba Lemah';
+  if (cat === 'KANJI N4(JFT)') return 'KANJI N4 (JFT)';
+  if (cat === 'KANJI (JFT)' || cat === 'KANJI(JFT)') return 'KANJI (JFT)';
   if (cat.startsWith('MNN1_Bab')) {
     return cat.replace('MNN1_Bab', 'Minna no Nihongo 1 Bab ');
   }

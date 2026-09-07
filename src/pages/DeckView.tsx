@@ -67,7 +67,13 @@ export default function DeckView() {
         Object.values(pMap).forEach(p => {
           let pCat = p.category;
           if (!pCat) {
-            const v = allVocabularies.find(voc => voc.id === p.vocabId);
+            let v = allVocabularies.find(voc => voc.id === p.vocabId);
+            if (!v && p.vocabId) {
+              const parts = p.vocabId.split('_');
+              if (parts.length >= 2) {
+                v = allVocabularies.find(voc => voc.id === `${parts[0]}_${parts[1]}`);
+              }
+            }
             if (v) pCat = v.category;
             
             if (pCat && p.id) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
-import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, setDoc, updateDoc, increment } from 'firebase/firestore';
 import { Vocabulary, UserProgress } from '../types';
 import { ArrowLeft } from 'lucide-react';
 import { hiraganaData, katakanaData, hiraganaAdvancedData, katakanaAdvancedData } from '../data/kana';
@@ -27,6 +27,7 @@ export default function ReviewFlashcard() {
   
   const [masteredCount, setMasteredCount] = useState(0);
   const [sessionTotal, setSessionTotal] = useState(0);
+  const [sessionStartTime, setSessionStartTime] = useState<number>(Date.now());
 
   useEffect(() => {
     const fetchVocabs = async () => {
@@ -170,18 +171,50 @@ export default function ReviewFlashcard() {
     setTimeout(() => {
       const card = queue[0];
       
+      let updatedFailed = notRememberedIds;
+      let updatedMastered = masteredCount;
+
       if (!isRemembered && card) {
-        setNotRememberedIds(prev => {
-          if (!prev.includes(card.id)) return [...prev, card.id];
-          return prev;
-        });
+        if (!notRememberedIds.includes(card.id)) {
+          updatedFailed = [...notRememberedIds, card.id];
+          setNotRememberedIds(updatedFailed);
+        }
       } else {
-        setMasteredCount(m => m + 1);
+        updatedMastered = masteredCount + 1;
+        setMasteredCount(updatedMastered);
       }
       
       const newQueue = queue.slice(1);
       if (newQueue.length === 0) {
         setIsFinished(true);
+        if (currentUser) {
+          const sessionEndTime = Date.now();
+          const durationSec = Math.max(1, Math.floor((sessionEndTime - sessionStartTime) / 1000));
+          const sessionId = doc(collection(db, 'study_sessions')).id;
+          const failedVocabs = initialVocabs
+            .filter(v => updatedFailed.includes(v.id))
+            .map(v => ({ jp: v.jp, id_translation: v.id_translation }));
+
+          setDoc(doc(db, 'study_sessions', sessionId), {
+            id: sessionId,
+            userId: currentUser.uid,
+            startTime: sessionStartTime,
+            endTime: sessionEndTime,
+            totalDuration: durationSec,
+            cardsReviewed: initialVocabs.length,
+            correctCount: updatedMastered,
+            incorrectCount: updatedFailed.length,
+            type: 'Flashcard',
+            category: 'Review',
+            failedVocabs
+          }).catch(console.error);
+
+          const userRef = doc(db, 'users', currentUser.uid);
+          updateDoc(userRef, {
+            totalStudyTime: increment(durationSec),
+            lastActiveDate: new Date().toISOString()
+          }).catch(console.error);
+        }
       }
       
       setQueue(newQueue);
@@ -195,6 +228,7 @@ export default function ReviewFlashcard() {
     setSessionTotal(remidiVocabs.length);
     setMasteredCount(0);
     setNotRememberedIds([]);
+    setSessionStartTime(Date.now());
     setIsFinished(false);
   };
 
@@ -204,6 +238,7 @@ export default function ReviewFlashcard() {
     setSessionTotal(initialVocabs.length);
     setMasteredCount(0);
     setNotRememberedIds([]);
+    setSessionStartTime(Date.now());
     setIsFinished(false);
   };
 

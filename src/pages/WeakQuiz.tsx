@@ -45,11 +45,17 @@ export default function WeakQuiz() {
       docs.forEach(data => {
         if (data.weakQuiz === false) return;
         let pCat = data.category;
-        const v = allV.find(voc => voc.id === data.vocabId);
+        let v = allV.find(voc => voc.id === data.vocabId);
+        if (!v && data.vocabId) {
+          const parts = data.vocabId.split('_');
+          if (parts.length >= 2) {
+            v = allV.find(voc => voc.id === `${parts[0]}_${parts[1]}`);
+          }
+        }
         if (!pCat && v) pCat = v.category;
         
         if (category && pCat !== category && category !== 'Review') return;
-        if (v) baseCards.push(v);
+        if (v && !baseCards.find(bc => bc.id === v.id)) baseCards.push(v);
       });
       
       // Limit to 20 for a session
@@ -155,17 +161,21 @@ export default function WeakQuiz() {
         const success = vocabSuccessMap[vId];
         if (success.p1 && success.p2) {
           // LULUS!
-          const progressRef = doc(db, 'user_progress', `${currentUser.uid}_${vId}`);
           try {
-            const progSnap = await getDoc(progressRef);
-            if (progSnap.exists()) {
-              const pData = progSnap.data();
-              if (pData.weakFlashcard === false) {
-                 await updateDoc(progressRef, { isWeak: false, weakQuiz: false });
-              } else {
-                 await updateDoc(progressRef, { weakQuiz: false });
+            const progQ = query(
+              collection(db, 'user_progress'),
+              where('userId', '==', currentUser.uid),
+              where('vocabId', '==', vId)
+            );
+            const progSnap = await getDocs(progQ);
+            progSnap.forEach(async (d) => {
+              const pData = d.data();
+              if (pData.weakFlashcard === false) { 
+                 await updateDoc(d.ref, { isWeak: false, weakQuiz: false });
+              } else { 
+                 await updateDoc(d.ref, { weakQuiz: false });
               }
-            }
+            });
           } catch(e) { console.error(e); }
         }
       });

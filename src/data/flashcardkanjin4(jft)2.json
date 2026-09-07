@@ -1,0 +1,1082 @@
+[
+  {
+    "jp": "卵",
+    "romaji": "たまご",
+    "id_translation": "Telur",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "肉",
+    "romaji": "にく",
+    "id_translation": "Daging",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "魚",
+    "romaji": "さかな",
+    "id_translation": "Ikan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "飲みます",
+    "romaji": "のみます",
+    "id_translation": "Minum",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "食べます",
+    "romaji": "たべます",
+    "id_translation": "Makan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "水",
+    "romaji": "みず",
+    "id_translation": "Air",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "新しい",
+    "romaji": "あたらしい",
+    "id_translation": "Baru",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "小さい",
+    "romaji": "ちいさい",
+    "id_translation": "Kecil",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "大きい",
+    "romaji": "おおきい",
+    "id_translation": "Besar",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一分",
+    "romaji": "いっぷん / いちふん",
+    "id_translation": "Menit",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一時",
+    "romaji": "いちじ",
+    "id_translation": "Jam",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "古い",
+    "romaji": "ふるい",
+    "id_translation": "Lama",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "火曜日",
+    "romaji": "かようび",
+    "id_translation": "Hari Selasa",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "月曜日",
+    "romaji": "げつようび",
+    "id_translation": "Hari Senin",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "半",
+    "romaji": "はん",
+    "id_translation": "Setengah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "金曜日",
+    "romaji": "きんようび",
+    "id_translation": "Hari Jumat",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "木曜日",
+    "romaji": "もくようび",
+    "id_translation": "Hari Kamis",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "水曜日",
+    "romaji": "すいようび",
+    "id_translation": "Hari Rabu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "言います",
+    "romaji": "いいます",
+    "id_translation": "Berkata",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "日曜日",
+    "romaji": "にちようび",
+    "id_translation": "Hari Minggu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "土曜日",
+    "romaji": "どようび",
+    "id_translation": "Hari Sabtu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "見ます",
+    "romaji": "みます",
+    "id_translation": "Melihat",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "読みます",
+    "romaji": "よみます",
+    "id_translation": "Membaca",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "話します",
+    "romaji": "はなします",
+    "id_translation": "Berbicara",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一",
+    "romaji": "いち",
+    "id_translation": "Satu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "書きます",
+    "romaji": "かきます",
+    "id_translation": "Menulis",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "聞きます",
+    "romaji": "ききます",
+    "id_translation": "Mendengarkan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "四",
+    "romaji": "よん",
+    "id_translation": "Empat",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "三",
+    "romaji": "さん",
+    "id_translation": "Tiga",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "二",
+    "romaji": "に",
+    "id_translation": "Dua",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "七",
+    "romaji": "なな",
+    "id_translation": "Tujuh",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "六",
+    "romaji": "ろく",
+    "id_translation": "Enam",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "五",
+    "romaji": "ご",
+    "id_translation": "Lima",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "十",
+    "romaji": "じゅう",
+    "id_translation": "Sepuluh",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "九",
+    "romaji": "きゅう",
+    "id_translation": "Sembilan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "八",
+    "romaji": "はち",
+    "id_translation": "Delapan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一年",
+    "romaji": "いちねん",
+    "id_translation": "Tahun",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一月",
+    "romaji": "いちがつ",
+    "id_translation": "Bulan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一日",
+    "romaji": "ついたち / いちにち",
+    "id_translation": "Tanggal",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "南",
+    "romaji": "みなみ",
+    "id_translation": "Selatan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "西",
+    "romaji": "にし",
+    "id_translation": "Barat",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "東",
+    "romaji": "ひがし",
+    "id_translation": "Timur",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "北",
+    "romaji": "きた",
+    "id_translation": "Utara",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "口",
+    "romaji": "ぐち",
+    "id_translation": "Pintu -",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "東口",
+    "romaji": "ひがしぐち",
+    "id_translation": "Pintu Timur",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "北口",
+    "romaji": "きたぐち",
+    "id_translation": "Pintu Utara",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "南口",
+    "romaji": "みなみぐち",
+    "id_translation": "Pintu Selatan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "西口",
+    "romaji": "にしぐち",
+    "id_translation": "Pintu Barat",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "買います",
+    "romaji": "かいます",
+    "id_translation": "Membeli",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "買い物",
+    "romaji": "かいもの",
+    "id_translation": "Belanja",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "お金",
+    "romaji": "おかね",
+    "id_translation": "Uang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "千",
+    "romaji": "せん",
+    "id_translation": "1000",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "百",
+    "romaji": "ひゃく",
+    "id_translation": "100",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一円",
+    "romaji": "いちえん",
+    "id_translation": "Yen",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "万",
+    "romaji": "まん",
+    "id_translation": "10000",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "百円",
+    "romaji": "ひゃくえん",
+    "id_translation": "100 Yen",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "千円",
+    "romaji": "せんえん",
+    "id_translation": "1000 Yen",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "来ます",
+    "romaji": "きます",
+    "id_translation": "Datang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "行きます",
+    "romaji": "いきます",
+    "id_translation": "Pergi",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一万円",
+    "romaji": "いちまんえん",
+    "id_translation": "10.000 Yen",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "合います",
+    "romaji": "あいます",
+    "id_translation": "Bertemu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "休みます",
+    "romaji": "やすみます",
+    "id_translation": "Libur",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "日本",
+    "romaji": "にほん",
+    "id_translation": "Jepang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "東京",
+    "romaji": "とうきょう",
+    "id_translation": "Tokyo",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "私",
+    "romaji": "わたし",
+    "id_translation": "Saya",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "父",
+    "romaji": "ちち",
+    "id_translation": "Ayah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "男",
+    "romaji": "おとこ",
+    "id_translation": "Laki-laki",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "子供",
+    "romaji": "こども",
+    "id_translation": "Anak",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "母",
+    "romaji": "はは",
+    "id_translation": "Ibu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "女",
+    "romaji": "おんな",
+    "id_translation": "Perempuan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "お父さん",
+    "romaji": "おとうさん",
+    "id_translation": "Ayah oranglain",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "お母さん",
+    "romaji": "おかあさん",
+    "id_translation": "Ibu Oranglain",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "外国",
+    "romaji": "がいこく",
+    "id_translation": "Luar Negeri",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "国",
+    "romaji": "くに",
+    "id_translation": "Negara",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "何人",
+    "romaji": "なんにん",
+    "id_translation": "Berapa Orang?",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "~語",
+    "romaji": "~ご",
+    "id_translation": "Bahasa -",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "日本語",
+    "romaji": "にほんご",
+    "id_translation": "B. Jepang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "英語",
+    "romaji": "えいご",
+    "id_translation": "B. Inggris",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "日本人",
+    "romaji": "にほんじん",
+    "id_translation": "Orang Jepang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "~人",
+    "romaji": "~じん / にん",
+    "id_translation": "-Orang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "中国語",
+    "romaji": "ちゅうごくご",
+    "id_translation": "B. China",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "好き",
+    "romaji": "すき",
+    "id_translation": "Suka",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "本",
+    "romaji": "ほん",
+    "id_translation": "Buku",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "読書",
+    "romaji": "どくしょ",
+    "id_translation": "Bacaan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "夏",
+    "romaji": "なつ",
+    "id_translation": "Musim Panas",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "春",
+    "romaji": "はる",
+    "id_translation": "Musim Semi",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "何",
+    "romaji": "なに",
+    "id_translation": "Apa?",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "秋",
+    "romaji": "あき",
+    "id_translation": "Musim Gugur",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "冬",
+    "romaji": "ふゆ",
+    "id_translation": "Musim Dingin",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "今",
+    "romaji": "いま",
+    "id_translation": "Sekarang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "道",
+    "romaji": "みち",
+    "id_translation": "Jalan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "風",
+    "romaji": "かぜ",
+    "id_translation": "Angin",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "花",
+    "romaji": "はな",
+    "id_translation": "Bunga",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "通り",
+    "romaji": "とおり",
+    "id_translation": "Jalan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "空",
+    "romaji": "そら",
+    "id_translation": "Langit",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "海",
+    "romaji": "うみ",
+    "id_translation": "Laut",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "右",
+    "romaji": "みぎ",
+    "id_translation": "Kanan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "町",
+    "romaji": "まち",
+    "id_translation": "Kota",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "山",
+    "romaji": "やま",
+    "id_translation": "Gunung",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "左",
+    "romaji": "ひだり",
+    "id_translation": "Kiri",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "店",
+    "romaji": "みせ",
+    "id_translation": "Toko",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "川",
+    "romaji": "かわ",
+    "id_translation": "Sungai",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一つ",
+    "romaji": "ひとつ",
+    "id_translation": "1 Buah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "人気",
+    "romaji": "にんき",
+    "id_translation": "Popularitas",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "今日",
+    "romaji": "きょう",
+    "id_translation": "Hari Ini",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "二つ",
+    "romaji": "ふたつ",
+    "id_translation": "2 Buah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "多い",
+    "romaji": "おおい",
+    "id_translation": "Banyak",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "天気",
+    "romaji": "てんき",
+    "id_translation": "Cuaca",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "赤い",
+    "romaji": "あかい",
+    "id_translation": "Merah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "少ない",
+    "romaji": "すくない",
+    "id_translation": "Sedikit",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "晴れ",
+    "romaji": "はれ",
+    "id_translation": "Cerah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "青い",
+    "romaji": "あおい",
+    "id_translation": "Biru",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "高い",
+    "romaji": "たかい",
+    "id_translation": "Mahal / Tinggi",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "雨",
+    "romaji": "あめ",
+    "id_translation": "Hujan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "黒い",
+    "romaji": "くろい",
+    "id_translation": "Hitam",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "安い",
+    "romaji": "やすい",
+    "id_translation": "Murah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "雪",
+    "romaji": "ゆき",
+    "id_translation": "Salju",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "白い",
+    "romaji": "しろい",
+    "id_translation": "Putih",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "広い",
+    "romaji": "ひろい",
+    "id_translation": "Luas",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "雲",
+    "romaji": "くも",
+    "id_translation": "Awan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "大学",
+    "romaji": "だいがく",
+    "id_translation": "Universitas",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "前",
+    "romaji": "まえ",
+    "id_translation": "Sebelum",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "人",
+    "romaji": "ひと",
+    "id_translation": "Orang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "先生",
+    "romaji": "せんせい",
+    "id_translation": "Guru",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "後",
+    "romaji": "あと",
+    "id_translation": "Setelah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "時間",
+    "romaji": "じかん",
+    "id_translation": "Waktu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "学生",
+    "romaji": "がくせい",
+    "id_translation": "Murid",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "朝",
+    "romaji": "あさ",
+    "id_translation": "Pagi",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "場所",
+    "romaji": "ばしょ",
+    "id_translation": "Tempat",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一年生",
+    "romaji": "いちねんせい",
+    "id_translation": "Kelas -",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "昼",
+    "romaji": "ひる",
+    "id_translation": "Siang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "駅",
+    "romaji": "えき",
+    "id_translation": "Stasiun",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "勉強",
+    "romaji": "べんきょう",
+    "id_translation": "Pelajaran",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "夜",
+    "romaji": "よる",
+    "id_translation": "Malam",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "日",
+    "romaji": "ひ",
+    "id_translation": "Matahari",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "文化",
+    "romaji": "ぶんか",
+    "id_translation": "Kebudayaan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "乗ります",
+    "romaji": "のります",
+    "id_translation": "Naik",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "出かけます",
+    "romaji": "でかけます",
+    "id_translation": "Meninggalkan Rumah",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "音楽",
+    "romaji": "おんがく",
+    "id_translation": "Musik",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "旅行",
+    "romaji": "りょこう",
+    "id_translation": "Wisata",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "留学",
+    "romaji": "りゅうがく",
+    "id_translation": "Study Luar Negeri",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "学校",
+    "romaji": "がっこう",
+    "id_translation": "Sekolahan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "小学校",
+    "romaji": "しょうがっこう",
+    "id_translation": "SD",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "中学校",
+    "romaji": "ちゅうがっこう",
+    "id_translation": "SMP",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "待ちます",
+    "romaji": "まちます",
+    "id_translation": "Menunggu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "止まります",
+    "romaji": "とまります",
+    "id_translation": "Berhenti",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "食事",
+    "romaji": "しょくじ",
+    "id_translation": "Makan Bersama",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "友達",
+    "romaji": "ともだち",
+    "id_translation": "Teman",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "高校",
+    "romaji": "こうこう",
+    "id_translation": "SMA",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "仕事",
+    "romaji": "しごと",
+    "id_translation": "Pekerjaan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "出張",
+    "romaji": "しゅっちょう",
+    "id_translation": "Dinas luarkota",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "料理",
+    "romaji": "りょうり",
+    "id_translation": "Masakan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "楽しい",
+    "romaji": "たのしい",
+    "id_translation": "Gembira",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "空港",
+    "romaji": "くうこう",
+    "id_translation": "Bandara",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "味",
+    "romaji": "あじ",
+    "id_translation": "Rasa",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "週",
+    "romaji": "しゅう",
+    "id_translation": "Minggu",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "出発",
+    "romaji": "しゅっぱつ",
+    "id_translation": "Keberangkatan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "色",
+    "romaji": "いろ",
+    "id_translation": "Warna",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "一回",
+    "romaji": "いっかい",
+    "id_translation": "~kali",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "到着",
+    "romaji": "とうちゃく",
+    "id_translation": "Kedatangan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "野菜",
+    "romaji": "やさい",
+    "id_translation": "Sayuran",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "食べ物",
+    "romaji": "たべもの",
+    "id_translation": "Makanan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "午前",
+    "romaji": "ごぜん",
+    "id_translation": "AM",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "少し",
+    "romaji": "すこし",
+    "id_translation": "Sedikit",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "飲み物",
+    "romaji": "のみもの",
+    "id_translation": "Minuman",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "午後",
+    "romaji": "ごご",
+    "id_translation": "PM",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "中",
+    "romaji": "なか",
+    "id_translation": "Dalam",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "お茶",
+    "romaji": "おちゃ",
+    "id_translation": "Teh Hijau",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "自分",
+    "romaji": "じぶん",
+    "id_translation": "Sendiri",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "入っています",
+    "romaji": "はいっています",
+    "id_translation": "Masuk",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "お酒",
+    "romaji": "おさけ",
+    "id_translation": "Sake",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "電話",
+    "romaji": "でんわ",
+    "id_translation": "Telepon",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "会社",
+    "romaji": "かいしゃ",
+    "id_translation": "Perusahaan",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "作ります",
+    "romaji": "つくります",
+    "id_translation": "Membuat",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "電気",
+    "romaji": "でんき",
+    "id_translation": "Listrik",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "本社",
+    "romaji": "ほんしゃ",
+    "id_translation": "Kantor Pusat",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "持っていきます",
+    "romaji": "もっていきます",
+    "id_translation": "Membawa pergi",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "電車",
+    "romaji": "でんしゃ",
+    "id_translation": "Kereta",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "支社",
+    "romaji": "ししゃ",
+    "id_translation": "Kantor Cabang",
+    "category": "KANJI (JFT)"
+  },
+  {
+    "jp": "お願いします",
+    "romaji": "おねがいします",
+    "id_translation": "Tolong",
+    "category": "KANJI (JFT)"
+  }
+]
