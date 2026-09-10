@@ -232,6 +232,37 @@ export default function Flashcard() {
       
       try {
         await setDoc(doc(db, 'user_progress', progressId), newProg, { merge: true });
+        
+        // Update global vocab stats for Admin Kotoba Lemah
+        const safeVocabId = currentCard.originalId || currentCard.id;
+        if (safeVocabId && safeVocabId !== 'undefined') {
+          const vocabStatsRef = doc(db, 'vocabStats', safeVocabId);
+          if (!isRemembered) {
+             setDoc(vocabStatsRef, {
+               failCount: increment(1),
+               jp: currentCard.jp,
+               romaji: currentCard.romaji,
+               id_translation: currentCard.id_translation,
+               category: category || currentCard.category
+             }, { merge: true }).catch(() => {});
+          } else if (srsLevel === 'hard') {
+             setDoc(vocabStatsRef, {
+               hardCount: increment(1),
+               jp: currentCard.jp,
+               romaji: currentCard.romaji,
+               id_translation: currentCard.id_translation,
+               category: category || currentCard.category
+             }, { merge: true }).catch(() => {});
+          }
+        }
+
+        
+        if (isRemembered && currentUser) {
+           const userRef = doc(db, 'users', currentUser.uid);
+           await updateDoc(userRef, {
+             points: increment(5)
+           }).catch(() => {});
+        }
       } catch (err) {
         console.error('Failed to update progress', err);
       }

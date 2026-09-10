@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { calculateAnkiProgress, formatInterval } from '../lib/srs';
-import { collection, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, setDoc, updateDoc, increment } from "firebase/firestore";
 import { Vocabulary, UserProgress } from '../types';
 import { ArrowLeft, BookOpen } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
@@ -131,6 +131,37 @@ export default function ReviewFlashcardSRS() {
       
       try {
         await setDoc(doc(db, 'user_progress', progressId), newProg, { merge: true });
+        
+        // Update global vocab stats for Admin Kotoba Lemah
+        const safeVocabId = currentCard.originalId || currentCard.id;
+        if (safeVocabId && safeVocabId !== 'undefined') {
+          const vocabStatsRef = doc(db, 'vocabStats', safeVocabId);
+          if (rating === 'again') {
+             setDoc(vocabStatsRef, {
+               failCount: increment(1),
+               jp: currentCard.jp,
+               romaji: currentCard.romaji,
+               id_translation: currentCard.id_translation,
+               category: category || currentCard.category
+             }, { merge: true }).catch(() => {});
+          } else if (rating === 'hard') {
+             setDoc(vocabStatsRef, {
+               hardCount: increment(1),
+               jp: currentCard.jp,
+               romaji: currentCard.romaji,
+               id_translation: currentCard.id_translation,
+               category: category || currentCard.category
+             }, { merge: true }).catch(() => {});
+          }
+        }
+
+        
+        if (rating !== 'again' && currentUser) {
+           const userRef = doc(db, 'users', currentUser.uid);
+           await updateDoc(userRef, {
+             points: increment(5)
+           }).catch(() => {});
+        }
       } catch (err) {
         console.error('Failed to update progress', err);
       }
